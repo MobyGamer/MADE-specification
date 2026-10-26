@@ -1,27 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIDE v1.0 — AI Disclosure of Ideation &amp; Execution</title>
+  <title>AIDR v1.0: Artificial Intelligence Disclosure Rating</title>
   <style>
-    :root {
+    /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
+    :root, [data-theme="light"] {
+      --base03: #002b36;
+      --base02: #073642;
+      --base01: #586e75;
+      --base00: #657b83;
+      --base0:  #839496;
+      --base1:  #93a1a1;
+      --base2:  #eee8d5;
+      --base3:  #fdf6e3;
+
+      --sol-yellow:  #b58900;
+      --sol-orange:  #cb4b16;
+      --sol-red:     #dc322f;
+      --sol-magenta: #d33682;
+      --sol-violet:  #6c71c4;
+      --sol-blue:    #268bd2;
+      --sol-cyan:    #2aa198;
+      --sol-green:   #859900;
+
+      --bg: #fdf6e3;          /* base3 */
+      --bg-card: #eee8d5;     /* base2 */
+      --bg-elevated: #fdf6e3; /* base3 */
+      --bg-header: #eee8d5;   /* base2 */
+      --border: #d3cbb7;
+      --border-strong: #93a1a1; /* base1 */
+      --text: #073642;        /* base02 */
+      --text-dim: #586e75;    /* base01 */
+      --text-muted: #657b83;  /* base00 */
+      --accent: #268bd2;      /* solarized blue */
+      --accent-hover: #2aa198;/* solarized cyan */
+      --accent-soft: rgba(38, 139, 210, 0.12);
+      --code-text: #073642;
+
+      --lvl-0: #859900;       /* solarized green */
+      --lvl-1: #2aa198;       /* solarized cyan */
+      --lvl-2: #268bd2;       /* solarized blue */
+      --lvl-3: #cb4b16;       /* solarized orange */
+      --lvl-4: #dc322f;       /* solarized red */
+
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    /* Optional Dark Theme */
+    [data-theme="dark"] {
       --bg: #0f172a;
       --bg-card: #1e293b;
       --bg-elevated: #0b1120;
+      --bg-header: #0b1120;
       --border: #334155;
+      --border-strong: #64748b;
       --text: #f8fafc;
       --text-dim: #cbd5e1;
       --text-muted: #94a3b8;
       --accent: #38bdf8;
       --accent-hover: #0284c7;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --code-text: #e2e8f0;
+
       --lvl-0: #16a34a;
       --lvl-1: #0d9488;
       --lvl-2: #2563eb;
       --lvl-3: #d97706;
       --lvl-4: #dc2626;
-      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,19 +80,30 @@
       font-family: var(--font-sans);
       line-height: 1.65;
       padding-bottom: 4rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     header {
-      background: linear-gradient(180deg, #0b1120 0%, var(--bg) 100%);
+      background: var(--bg-header);
       border-bottom: 1px solid var(--border);
-      padding: 3rem 1.5rem 2.5rem;
+      padding: 2.5rem 1.5rem 2rem;
       text-align: center;
+      position: relative;
     }
 
     .container {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 0 1.5rem;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
     .version-pill {
@@ -52,58 +111,81 @@
       font-family: var(--font-mono);
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--accent);
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
       padding: 0.25rem 0.75rem;
       border-radius: 999px;
-      margin-bottom: 1rem;
+    }
+
+    .theme-toggle {
+      background: var(--bg-elevated);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all 0.15s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     h1 {
-      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-size: clamp(1.85rem, 3.8vw, 2.6rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 0.75rem;
+      color: var(--text);
     }
 
     .subtitle {
       color: var(--text-dim);
-      max-width: 740px;
+      max-width: 780px;
       margin: 0 auto;
-      font-size: 1.08rem;
+      font-size: 1.05rem;
     }
 
     nav.tabs {
       display: flex;
       justify-content: center;
       gap: 0.75rem;
-      margin-top: 2rem;
+      margin-top: 1.75rem;
       flex-wrap: wrap;
     }
 
     .tab-btn {
-      background: var(--bg-card);
+      background: var(--bg-elevated);
       color: var(--text-dim);
-      border: 1px solid var(--border);
-      padding: 0.6rem 1.25rem;
+      border: 1px solid var(--border-strong);
+      padding: 0.65rem 1.35rem;
       border-radius: 8px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.92rem;
       cursor: pointer;
       transition: all 0.15s ease;
     }
 
-    .tab-btn:hover, .tab-btn.active {
+    .tab-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .tab-btn.active {
       background: var(--accent);
-      color: #0b1120;
+      color: #ffffff;
       border-color: var(--accent);
     }
 
     section {
-      margin-top: 2.5rem;
+      margin-top: 2.25rem;
     }
 
     .card {
@@ -115,7 +197,7 @@
     }
 
     h2 {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       margin-bottom: 1rem;
       padding-bottom: 0.6rem;
       border-bottom: 1px solid var(--border);
@@ -124,17 +206,37 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.5rem;
+      color: var(--text);
     }
 
     h3 {
-      font-size: 1.1rem;
-      margin: 1.25rem 0 0.6rem;
+      font-size: 1.08rem;
+      margin: 1.35rem 0 0.55rem;
       color: var(--accent);
     }
 
     p {
       color: var(--text-dim);
       margin-bottom: 0.9rem;
+    }
+
+    ul, ol {
+      color: var(--text-dim);
+      margin: 0.5rem 0 1rem 1.4rem;
+    }
+
+    li {
+      margin-bottom: 0.45rem;
+    }
+
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 0.12rem 0.4rem;
+      border-radius: 4px;
+      color: var(--code-text);
     }
 
     .grid-2 {
@@ -150,30 +252,32 @@
       background: var(--bg-elevated);
       border: 2px solid var(--border);
       border-radius: 10px;
-      padding: 0.9rem 1rem;
+      padding: 0.85rem 1rem;
       margin-bottom: 0.65rem;
       cursor: pointer;
-      transition: border-color 0.15s ease, transform 0.1s ease;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+      user-select: none;
     }
 
     .level-option:hover {
-      border-color: var(--text-muted);
+      border-color: var(--border-strong);
     }
 
     .level-option.selected {
       border-color: var(--accent);
-      background: rgba(56, 189, 248, 0.07);
+      background: var(--accent-soft);
     }
 
     .lvl-badge {
       font-family: var(--font-mono);
       font-weight: 700;
-      font-size: 0.88rem;
-      padding: 0.25rem 0.55rem;
+      font-size: 0.86rem;
+      padding: 0.22rem 0.55rem;
       border-radius: 6px;
-      color: #fff;
+      color: #ffffff;
       flex-shrink: 0;
       margin-top: 0.1rem;
+      display: inline-block;
     }
 
     .b-0 { background: var(--lvl-0); }
@@ -185,8 +289,8 @@
     .level-info strong {
       display: block;
       color: var(--text);
-      font-size: 0.96rem;
-      margin-bottom: 0.2rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.18rem;
     }
 
     .level-info span {
@@ -198,7 +302,7 @@
 
     .preset-bar {
       display: flex;
-      gap: 0.6rem;
+      gap: 0.55rem;
       flex-wrap: wrap;
       margin-bottom: 1.25rem;
       align-items: center;
@@ -206,7 +310,8 @@
 
     .preset-label {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 700;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -215,9 +320,9 @@
 
     .btn-sm {
       background: var(--bg-elevated);
-      color: var(--text-dim);
-      border: 1px solid var(--border);
-      padding: 0.4rem 0.8rem;
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      padding: 0.42rem 0.8rem;
       border-radius: 6px;
       font-size: 0.82rem;
       font-weight: 600;
@@ -230,19 +335,33 @@
       color: var(--accent);
     }
 
+    .comp-header {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1.8fr auto;
+      gap: 0.6rem;
+      padding: 0 0.2rem 0.4rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+
     .comp-row {
       display: grid;
-      grid-template-columns: 1.5fr 0.9fr 2fr auto;
-      gap: 0.65rem;
+      grid-template-columns: 1.4fr 1fr 1fr 1.8fr auto;
+      gap: 0.6rem;
       margin-bottom: 0.65rem;
       align-items: center;
     }
 
-    @media (max-width: 720px) {
+    @media (max-width: 860px) {
+      .comp-header { display: none; }
       .comp-row {
         grid-template-columns: 1fr;
         background: var(--bg-elevated);
-        padding: 0.75rem;
+        padding: 0.85rem;
+        border: 1px solid var(--border);
         border-radius: 8px;
       }
     }
@@ -250,12 +369,12 @@
     input[type="text"], select, textarea {
       width: 100%;
       background: var(--bg-elevated);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-strong);
       color: var(--text);
-      padding: 0.55rem 0.75rem;
+      padding: 0.52rem 0.7rem;
       border-radius: 6px;
       font-family: var(--font-sans);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
 
     input[type="text"]:focus, select:focus, textarea:focus {
@@ -270,7 +389,7 @@
       flex-wrap: wrap;
       gap: 1.25rem;
       background: var(--bg-elevated);
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-strong);
       border-radius: 10px;
       padding: 1.25rem 1.5rem;
       margin-bottom: 1.5rem;
@@ -288,8 +407,8 @@
       padding: 1rem;
       overflow-x: auto;
       font-family: var(--font-mono);
-      font-size: 0.83rem;
-      color: #e2e8f0;
+      font-size: 0.82rem;
+      color: var(--code-text);
       white-space: pre-wrap;
       word-break: break-word;
     }
@@ -300,11 +419,12 @@
       right: 0.5rem;
       background: var(--bg-card);
       color: var(--text);
-      border: 1px solid var(--border);
-      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--border-strong);
+      padding: 0.28rem 0.65rem;
       border-radius: 5px;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-family: var(--font-mono);
+      font-weight: 600;
       cursor: pointer;
     }
 
@@ -316,7 +436,7 @@
     table.spec-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1rem 0 1.5rem;
+      margin: 0.85rem 0 1.5rem;
       font-size: 0.88rem;
     }
 
@@ -332,7 +452,7 @@
       color: var(--text);
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       letter-spacing: 0.05em;
     }
 
@@ -340,9 +460,24 @@
       color: var(--text-dim);
     }
 
-    .matrix-cell-active {
-      outline: 2px solid var(--accent);
-      background: rgba(56, 189, 248, 0.12) !important;
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 0.85rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.86rem;
+    }
+
+    .meta-item strong {
+      display: block;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
     }
 
     .hidden { display: none; }
@@ -356,9 +491,9 @@
       font-size: 0.85rem;
     }
 
-    footer a {
+    footer a, .card a {
       color: var(--accent);
-      text-decoration: none;
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -366,70 +501,294 @@
 
 <header>
   <div class="container">
-    <span class="version-pill">AIDE Standard v1.0</span>
-    <h1>AIDE: AI Disclosure of Ideation &amp; Execution</h1>
+    <div class="top-bar">
+      <span class="version-pill">AIDR Standard v1.0</span>
+      <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
+    </div>
+    <h1>AIDR: Artificial Intelligence Disclosure Rating</h1>
     <p class="subtitle">
-      A dual-axis self-disclosure rating scale for software engineering and creative works that separates
+      A self-disclosure rating scale for programming, creative writing, graphical art, and music composition that separates
       <strong>human conceptual authorship (Ideation)</strong> from <strong>mechanical production (Execution)</strong>.
     </p>
     <nav class="tabs">
-      <button class="tab-btn active" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure Builder</button>
-      <button class="tab-btn" onclick="switchTab('spec', this)">Full v1.0 Specification &amp; 5&times;5 Matrix</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0 Specification</button>
+      <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure Builder</button>
     </nav>
   </div>
 </header>
 
 <main class="container">
 
-  <!-- ================= TAB 1: INTERACTIVE GENERATOR ================= -->
-  <section id="tab-generator">
+  <!-- ================= TAB 1 (DEFAULT): FULL v1.0 SPECIFICATION ================= -->
+  <section id="tab-spec">
+    <div class="card">
+      <div class="meta-grid">
+        <div class="meta-item">
+          <strong>Version &amp; Status</strong>
+          <span>1.0 (Canonical Specification)</span>
+        </div>
+        <div class="meta-item">
+          <strong>Initial Author</strong>
+          <span>Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</span>
+        </div>
+        <div class="meta-item">
+          <strong>Specification License</strong>
+          <span><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></span>
+        </div>
+        <div class="meta-item">
+          <strong>Badges &amp; Templates License</strong>
+          <span><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Public Domain</a></span>
+        </div>
+      </div>
+
+      <h2><span>1. Purpose &amp; Philosophy</span></h2>
+      <p>
+        <strong>AIDR (Artificial Intelligence Disclosure Rating)</strong> is a voluntary, author-declared rating framework that enables creators of software, creative writing, graphical art, music composition, and other public works to transparently communicate how artificial intelligence was used in their projects.
+      </p>
+      <h3>Why Single-Number Scales Fail</h3>
+      <p>
+        Existing linear disclosure scales, such as the REAL Rating (0 to 5), the AI Assessment Scale (1 to 5), and the GAIT Framework, collapse all AI usage onto a single numeric spectrum. Worse, linear scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.
+      </p>
+      <ul>
+        <li>A creator with no original ideas who prompts an AI model to invent a plot, composition structure, or software design, and then manually types or illustrates the result, receives a low AI rating.</li>
+        <li>An author, artist, composer, or programmer who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive mechanical tasks (such as generating file-conversion utilities from a strict specification, cleaning up room reverb on a live recording, or generating flat background textures) is penalized with a high AI rating. This lumps original human creation together with unreviewed, end-to-end AI output.</li>
+      </ul>
+
+      <h3>The AIDR Solution: Separating Ideation from Execution</h3>
+      <p>
+        AIDR resolves this distortion by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:
+      </p>
+      <ul>
+        <li><strong>Ideation Levels (<code>I0</code> to <code>I4</code>)</strong> measure who conceived the ideas, concepts, structure, composition, or algorithms.</li>
+        <li><strong>Execution Levels (<code>E0</code> to <code>E4</code>)</strong> measure how the tangible work (code, prose, visual art, or music/audio) was mechanically produced.</li>
+      </ul>
+      <p>
+        Both categories share five symmetrical, whole-number level titles:
+        <strong><code>0</code> (Unassisted), <code>1</code> (Assisted), <code>2</code> (Collaborative), <code>3</code> (Directed), and <code>4</code> (Autonomous)</strong>.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2><span>2. Category 1: Ideation Levels (I0 to I4)</span></h2>
+      <p>
+        The <strong>Ideation</strong> level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.
+      </p>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Title</th>
+            <th>Definition</th>
+            <th>Examples Across Creative &amp; Technical Fields</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="lvl-badge b-0">I0</span></td>
+            <td><strong>Unassisted</strong></td>
+            <td>All concepts, designs, compositions, narratives, and algorithms are 100% human-originated, with zero AI consultation even for background research.</td>
+            <td>
+              <strong>Programming:</strong> Designing an algorithm or architecture solely from personal knowledge and non-AI documentation.<br>
+              <strong>Writing:</strong> Conceiving a novel's plot, characters, and chapter structure independently.<br>
+              <strong>Art:</strong> Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>
+              <strong>Music:</strong> Composing melodies, harmonies, and arrangements without querying any AI tool.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-1">I1</span></td>
+            <td><strong>Assisted</strong></td>
+            <td>All core concepts, designs, and primary structures are human-originated. AI was used only for background research (explaining theory, summarizing reference material) or as a sounding board that suggested minor local refinements which the human evaluated and selectively adopted.</td>
+            <td>
+              <strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>
+              <strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>
+              <strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br>
+              <strong>Music:</strong> Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-2">I2</span></td>
+            <td><strong>Collaborative</strong></td>
+            <td>The human established the overarching creative vision and goals, and actively partnered with AI to co-brainstorm sub-components, solve structural problems, or develop outlines together.</td>
+            <td>
+              <strong>Programming:</strong> Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>
+              <strong>Writing:</strong> Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>
+              <strong>Art:</strong> Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>
+              <strong>Music:</strong> Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-3">I3</span></td>
+            <td><strong>Directed</strong></td>
+            <td>The human provided a broad problem statement, theme, or high-level prompt, and AI generated the primary structure, outline, or design choices, which the human then curated, evaluated, and refined.</td>
+            <td>
+              <strong>Programming:</strong> Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br>
+              <strong>Writing:</strong> Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>
+              <strong>Art:</strong> Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>
+              <strong>Music:</strong> Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-4">I4</span></td>
+            <td><strong>Autonomous</strong></td>
+            <td>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</td>
+            <td>
+              <strong>All Fields:</strong> Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><span>3. Category 2: Execution Levels (E0 to E4)</span></h2>
+      <p>
+        The <strong>Execution</strong> level measures how the final deliverables of the work (source code, text, visual artwork, or audio recordings) were mechanically constructed and verified.
+      </p>
+      <table class="spec-table">
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Title</th>
+            <th>Definition</th>
+            <th>Examples Across Creative &amp; Technical Fields</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="lvl-badge b-0">E0</span></td>
+            <td><strong>Unassisted</strong></td>
+            <td>Every line of code, word of prose, brushstroke, or musical note was manually authored or performed by the human with zero AI involvement.</td>
+            <td>
+              <strong>Programming:</strong> Writing source code or assembly routines completely by hand.<br>
+              <strong>Writing:</strong> Typing and editing a manuscript manually without generative text tools.<br>
+              <strong>Art:</strong> Drawing, painting, or modeling artwork entirely by hand.<br>
+              <strong>Music:</strong> Performing, sequencing, mixing, and mastering audio manually without AI plugins.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-1">E1</span></td>
+            <td><strong>Assisted</strong></td>
+            <td>The delivered work is human-authored. AI or machine-learning tools were used only for read-only diagnostics (bug-finding, grammar checking), reference lookups (phrase thesaurus, syntax lookup), non-generative signal cleanup (audio denoising, upscaling), or minor inline autocomplete and boilerplate.</td>
+            <td>
+              <strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>
+              <strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>
+              <strong>Art:</strong> Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br>
+              <strong>Music:</strong> Recording live instruments and using a neural audio filter to remove room reverb or microphone hum.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-2">E2</span></td>
+            <td><strong>Collaborative</strong></td>
+            <td>Human and AI each produced substantial portions of the delivered work, such as a human creating the core work while AI generated supporting utilities, background elements, or data visualizations.</td>
+            <td>
+              <strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>
+              <strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>
+              <strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br>
+              <strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-3">E3</span></td>
+            <td><strong>Directed</strong></td>
+            <td>Generative AI produced the vast majority of the component's output, operating strictly as an implementation engine under human direction, detailed multi-paragraph specifications, explicit constraints, and human verification or editing.</td>
+            <td>
+              <strong>Programming:</strong> Providing an LLM with a detailed, human-authored specification and algorithm so it writes a companion utility in a secondary language, followed by human testing.<br>
+              <strong>Writing:</strong> Translating a human-authored book into another language using AI under strict glossary constraints, followed by human review.<br>
+              <strong>Art:</strong> Generating rendered assets using a workflow tightly constrained by human-drawn control maps, depth maps, and manual paint-overs.<br>
+              <strong>Music:</strong> Synthesizing a vocal or orchestral performance from a human-written score and lyric sheet, followed by manual mixing.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="lvl-badge b-4">E4</span></td>
+            <td><strong>Autonomous</strong></td>
+            <td>The delivered output was generated end-to-end by AI from minimal prompts with little or no human specification, review, or manual modification.</td>
+            <td>
+              <strong>All Fields:</strong> Accepting bulk AI-generated code without reviewing the logic ("vibe-coding"), or publishing raw AI-generated text, images, or music directly from a prompt.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2><span>4. Disclosure Format &amp; Syntax</span></h2>
+      <p>
+        AIDR uses a human-readable syntax that supports both uniform single-score projects and multi-component hybrid works.
+      </p>
+      <h3>4.1 Compact &amp; Expanded Notation</h3>
+      <ul>
+        <li><strong>Slash Separator Between Categories:</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>). Never use a hyphen between <code>I</code> and <code>E</code>.<br>
+          Example: <code>AIDR: I1 / E0</code></li>
+        <li><strong>Comma Separator in Expanded Prose:</strong> When writing out the full rating in text, separate Ideation and Execution with a comma:<br>
+          Example: <code>AIDR: Ideation 1 (Assisted), Execution 0 (Unassisted)</code></li>
+        <li><strong>Discrete Multiple Levels (<code>E0,E3</code>):</strong> When a project combines components with specific distinct levels (for example, hand-crafted core work at <code>E0</code> and a spec-driven utility at <code>E3</code>, without <code>E1</code> and <code>E2</code>), separate the levels with a comma:<br>
+          Example: <code>AIDR: I0,I1 / E0,E3</code></li>
+        <li><strong>Contiguous Ranges (<code>E0-E3</code>):</strong> When a project spans three or more consecutive levels (for example, components covering <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix on both ends:<br>
+          Example: <code>AIDR: I1 / E0-E3</code> (Never write <code>E0-3</code>.)</li>
+      </ul>
+
+      <h3>4.2 Component-Level Breakdown</h3>
+      <p>
+        For hybrid projects, follow the summary rating with a component breakdown where <strong>each component specifies both its Ideation level and its Execution level</strong> (for example, <code>Core Engine: I0 / E0</code> and <code>Conversion Scripts: I1 / E3</code>).
+      </p>
+
+      <h2><span>5. Licensing &amp; Authorship</span></h2>
+      <p>
+        <strong>Initial Author:</strong> Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>).<br>
+        <strong>Using AIDR in Your Projects (CC0 1.0 Public Domain):</strong> All AIDR badges, disclosure templates, and <code>AIDR-Usage</code> tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>.<br>
+        <strong>Specification Document License (CC BY-ND 4.0):</strong> This canonical specification document is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a> so that its level definitions cannot be altered or misrepresented under the AIDR name.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= TAB 2: INTERACTIVE GENERATOR ================= -->
+  <section id="tab-generator" class="hidden">
     <div class="card">
       <h2>
         <span>1. Select Project Ideation &amp; Execution Levels</span>
       </h2>
       <div class="preset-bar">
         <span class="preset-label">Quick Presets:</span>
-        <button class="btn-sm" onclick="applyPreset('pcm')">8-Bit PCM Audio Compressor + 8086 ASM Project (I1 / E0–3)</button>
-        <button class="btn-sm" onclick="applyPreset('pure')">100% Hand-Crafted / Zero AI (I0 / E0)</button>
-        <button class="btn-sm" onclick="applyPreset('diag')">Human Code/Prose + AI Bug-Check/Cleanup (I1 / E1)</button>
-        <button class="btn-sm" onclick="applyPreset('spec')">Human Algorithm + Spec-Driven AI Code (I1 / E3)</button>
+        <button class="btn-sm" onclick="applyPreset('software')">Programming: Hybrid App (I0,I1 / E0,E3)</button>
+        <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0,E1)</button>
+        <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0,I1 / E0-E2)</button>
+        <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0,E1)</button>
+        <button class="btn-sm" onclick="applyPreset('pure')">100% Unassisted Human Work (I0 / E0)</button>
       </div>
 
       <div class="grid-2">
-        <!-- Axis 1: Ideation -->
+        <!-- Category 1: Ideation -->
         <div>
-          <h3>Axis 1: Ideation &amp; Design (I0–I4)</h3>
-          <p style="font-size:0.86rem;">Who conceived the ideas, algorithms, system architecture, and creative structure?</p>
+          <h3>Category 1: Ideation Levels (I0 to I4)</h3>
+          <p style="font-size:0.86rem;">Who conceived the ideas, designs, compositions, or algorithms? <em>(Click one or more levels that apply across your project.)</em></p>
           <div id="ideation-options">
-            <div class="level-option" data-level="0" onclick="selectIdeation(0)">
+            <div class="level-option selected" data-level="0" onclick="toggleIdeation(0)">
               <span class="lvl-badge b-0">I0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% human-originated concepts, algorithms, and design. Zero AI consultation even for background research.</span>
+                <span>100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.</span>
               </div>
             </div>
-            <div class="level-option selected" data-level="1" onclick="selectIdeation(1)">
+            <div class="level-option selected" data-level="1" onclick="toggleIdeation(1)">
               <span class="lvl-badge b-1">I1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Core concepts and algorithms are human-originated. AI used only for background domain research or minor edge-case tweaks tested by the author.</span>
+                <span>Core concepts and designs are human-originated. AI used only for background research or minor tested refinements.</span>
               </div>
             </div>
-            <div class="level-option" data-level="2" onclick="selectIdeation(2)">
+            <div class="level-option" data-level="2" onclick="toggleIdeation(2)">
               <span class="lvl-badge b-2">I2</span>
               <div class="level-info">
                 <strong>Collaborative</strong>
-                <span>Human set the vision and partnered with AI to co-brainstorm sub-algorithms, architecture, or outlines.</span>
+                <span>Human set the creative vision and partnered with AI to co-brainstorm sub-components or outlines.</span>
               </div>
             </div>
-            <div class="level-option" data-level="3" onclick="selectIdeation(3)">
+            <div class="level-option" data-level="3" onclick="toggleIdeation(3)">
               <span class="lvl-badge b-3">I3</span>
               <div class="level-info">
                 <strong>Directed</strong>
-                <span>Human provided a high-level goal; AI proposed the primary architecture, algorithm choices, or structure, curated by the human.</span>
+                <span>Human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.</span>
               </div>
             </div>
-            <div class="level-option" data-level="4" onclick="selectIdeation(4)">
+            <div class="level-option" data-level="4" onclick="toggleIdeation(4)">
               <span class="lvl-badge b-4">I4</span>
               <div class="level-info">
                 <strong>Autonomous</strong>
@@ -439,44 +798,44 @@
           </div>
         </div>
 
-        <!-- Axis 2: Execution -->
+        <!-- Category 2: Execution -->
         <div>
-          <h3>Axis 2: Execution &amp; Implementation (E0–E4)</h3>
-          <p style="font-size:0.86rem;">How was the code, prose, or media mechanically produced? <em>(Click multiple levels if your project has hybrid components.)</em></p>
+          <h3>Category 2: Execution Levels (E0 to E4)</h3>
+          <p style="font-size:0.86rem;">How was the code, prose, art, or music mechanically produced? <em>(Click one or more levels that apply across your project.)</em></p>
           <div id="execution-options">
             <div class="level-option selected" data-level="0" onclick="toggleExecution(0)">
               <span class="lvl-badge b-0">E0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% hand-crafted code, assembly, prose, or assets by the human author with zero AI involvement.</span>
+                <span>100% hand-crafted code, prose, illustration, or musical performance by the human creator.</span>
               </div>
             </div>
             <div class="level-option" data-level="1" onclick="toggleExecution(1)">
               <span class="lvl-badge b-1">E1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Human-authored output. AI used only for read-only bug diagnostics, phrase thesaurus, non-generative signal cleanup, or minor inline boilerplate.</span>
+                <span>Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
               <span class="lvl-badge b-2">E2</span>
               <div class="level-info">
                 <strong>Collaborative</strong>
-                <span>Shared human-AI implementation, such as human-written core logic paired with AI-generated helper scripts or data charts.</span>
+                <span>Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.</span>
               </div>
             </div>
             <div class="level-option selected" data-level="3" onclick="toggleExecution(3)">
               <span class="lvl-badge b-3">E3</span>
               <div class="level-info">
                 <strong>Directed</strong>
-                <span>AI wrote the component's code or content strictly from detailed, multi-paragraph human specifications, algorithms, and testing.</span>
+                <span>AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.</span>
               </div>
             </div>
             <div class="level-option" data-level="4" onclick="toggleExecution(4)">
               <span class="lvl-badge b-4">E4</span>
               <div class="level-info">
                 <strong>Autonomous</strong>
-                <span>Generated end-to-end by AI from minimal prompts with little or no human specification or code review ("vibe-coded").</span>
+                <span>Generated end-to-end by AI from minimal prompts with little or no human specification or review.</span>
               </div>
             </div>
           </div>
@@ -487,44 +846,54 @@
     <!-- Component Breakdown Editor -->
     <div class="card">
       <h2>
-        <span>2. Component-Level Breakdown (Optional for Hybrid Projects)</span>
-        <button class="btn-sm" onclick="addComponentRow('', 'E0', '')">+ Add Component Row</button>
+        <span>2. Component-Level Breakdown (Specify Both Ideation &amp; Execution per Component)</span>
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button class="btn-sm" onclick="syncTopLevelsFromComponents()" title="Set Section 1 Ideation and Execution selections to match the components listed below">Sync Section 1 from Components</button>
+          <button class="btn-sm" onclick="addComponentRow('', 'I0', 'E0', '')">+ Add Component Row</button>
+        </div>
       </h2>
       <p style="font-size:0.88rem;">
-        Define individual project deliverables so readers immediately see which parts are hand-crafted (such as 8086 assembly) and which parts used AI tooling.
+        Specify both the <strong>Ideation Level (<code>I0</code> to <code>I4</code>)</strong> and the <strong>Execution Level (<code>E0</code> to <code>E4</code>)</strong> for each distinct part of your work.
       </p>
+      <div class="comp-header">
+        <div>Component / Deliverable Name</div>
+        <div>Ideation Level</div>
+        <div>Execution Level</div>
+        <div>Details / Role of Human vs. AI</div>
+        <div></div>
+      </div>
       <div id="component-list"></div>
     </div>
 
     <!-- Generated Outputs -->
     <div class="card">
-      <h2><span>3. Generated Badges, README Snippets &amp; Source Headers</span></h2>
+      <h2><span>3. Generated Badges, Disclosure Blocks &amp; Metadata Headers</span></h2>
 
       <div class="preview-banner">
         <div>
-          <div style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);text-transform:uppercase;">Live AIDE Score</div>
-          <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">AIDE: I1 / E0–3</div>
-          <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: 1 (Assisted) | Execution: 0–3 (Unassisted to Directed)</div>
+          <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Live AIDR Score</div>
+          <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">AIDR: I0,I1 / E0,E3</div>
+          <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0, I1 (Unassisted, Assisted), Execution: E0, E3 (Unassisted, Directed)</div>
         </div>
-        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
           <div id="svg-badge-container"></div>
           <button class="btn-sm" onclick="downloadSvgBadge()">Download SVG Badge</button>
         </div>
       </div>
 
-      <h3>Markdown Disclosure Block (for README.md)</h3>
+      <h3>Markdown Disclosure Block (for README.md, Portfolio, or Colophon)</h3>
       <div class="code-box">
         <button class="copy-btn" onclick="copyText('out-markdown', this)">Copy</button>
         <pre id="out-markdown"></pre>
       </div>
 
-      <h3>Plain-Text / .NFO Disclosure Block (72-Column ASCII)</h3>
+      <h3>Plain-Text / .NFO / Liner Notes Disclosure Block (72-Column ASCII)</h3>
       <div class="code-box">
         <button class="copy-btn" onclick="copyText('out-nfo', this)">Copy</button>
         <pre id="out-nfo"></pre>
       </div>
 
-      <h3>Per-File Source Code Header Tags</h3>
+      <h3>Per-File Source Code &amp; Asset Metadata Header Tags</h3>
       <div class="code-box">
         <button class="copy-btn" onclick="copyText('out-headers', this)">Copy</button>
         <pre id="out-headers"></pre>
@@ -532,113 +901,10 @@
     </div>
   </section>
 
-  <!-- ================= TAB 2: SPECIFICATION & MATRIX ================= -->
-  <section id="tab-spec" class="hidden">
-    <div class="card">
-      <h2><span>Why AIDE Separates Ideation from Execution</span></h2>
-      <p>
-        Single-axis AI rating systems (such as REAL Rating, GAIT, and linear SPDX tags) conflate <strong>conceptual authorship</strong> with <strong>mechanical labor</strong>. Worse, linear scales typically treat AI brainstorming as a low level of AI usage while penalizing projects where a human author invented 100% of the algorithms and specifications but used an LLM to generate a companion utility in a secondary programming language.
-      </p>
-      <p>
-        <strong>AIDE (AI Disclosure of Ideation &amp; Execution)</strong> solves this by evaluating works across two orthogonal 0-to-4 axes using five symmetrical level titles: <strong>0 (Unassisted), 1 (Assisted), 2 (Collaborative), 3 (Directed), and 4 (Autonomous)</strong>.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2><span>Axis 1: Ideation (I0–I4)</span></h2>
-      <table class="spec-table">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Title</th>
-            <th>Definition</th>
-            <th>Software &amp; Creative Examples</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="lvl-badge b-0">I0</span></td>
-            <td><strong>Unassisted</strong></td>
-            <td>All concepts, algorithms, architecture, and creative designs are 100% human-originated, with zero AI consultation even for background research.</td>
-            <td>Designing a novel compression algorithm or hardware routine solely from personal knowledge and paper datasheets; conceiving a story or musical composition independently.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-1">I1</span></td>
-            <td><strong>Assisted</strong></td>
-            <td>All core concepts, architecture, and primary algorithms are human-originated. AI was used only for background research (explaining domain math/theory, summarizing references) or as a sounding board that suggested minor optimizations or edge-case tweaks which the human tested and selectively adopted.</td>
-            <td>Inventing a novel 8-bit PCM lossy compression algorithm, using an LLM to review DSP math, and testing minor edge-case refinements suggested by the model.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-2">I2</span></td>
-            <td><strong>Collaborative</strong></td>
-            <td>The human established the overarching vision and goals, and actively partnered with AI to brainstorm sub-algorithms, solve structural design problems, or develop outlines together.</td>
-            <td>Co-designing subsystem architectures or narrative plot structures through iterative back-and-forth brainstorming sessions with an LLM.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-3">I3</span></td>
-            <td><strong>Directed</strong></td>
-            <td>The human provided a broad problem statement, theme, or high-level prompt, and AI generated the primary architecture, algorithm choices, or creative structure, which the human then curated and refined.</td>
-            <td>Prompting an AI with desired input/output goals and allowing the AI to select the underlying algorithms and architecture, which the human reviews and approves.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-4">I4</span></td>
-            <td><strong>Autonomous</strong></td>
-            <td>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</td>
-            <td>Prompting an autonomous agent to invent and design a utility or creative work from a single open-ended request.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h2><span>Axis 2: Execution (E0–E4)</span></h2>
-      <table class="spec-table">
-        <thead>
-          <tr>
-            <th>Code</th>
-            <th>Title</th>
-            <th>Definition</th>
-            <th>Software &amp; Creative Examples</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="lvl-badge b-0">E0</span></td>
-            <td><strong>Unassisted</strong></td>
-            <td>Every line of code, word of prose, or creative asset was manually authored by the human with zero AI involvement.</td>
-            <td>Hand-writing an 8086 assembly decompressor instruction-by-instruction; typing an essay on a mechanical keyboard without AI tools.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-1">E1</span></td>
-            <td><strong>Assisted</strong></td>
-            <td>The delivered work is human-authored. AI/ML tools were used only for read-only diagnostics (bug-finding, code review), reference lookups (phrase thesaurus), non-generative signal cleanup (audio denoising, speech-to-text transcription), or minor inline autocomplete/boilerplate.</td>
-            <td>Writing C or assembly code manually and using an LLM to check for off-by-one bugs; using neural audio filters to clean reverb from field recordings.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-2">E2</span></td>
-            <td><strong>Collaborative</strong></td>
-            <td>Human and AI each produced substantial portions of the delivered work, such as a human writing the core engine or prose while AI generated supporting utilities, build scripts, or data charts/diagrams.</td>
-            <td>Hand-coding a core runtime engine while using an LLM to generate test harnesses, CLI parsers, or charts from human-supplied data.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-3">E3</span></td>
-            <td><strong>Directed</strong></td>
-            <td>Generative AI wrote the vast majority of the component's code or content, operating strictly as an implementation engine under human direction, detailed multi-paragraph specifications, explicit algorithms, constraints, and human verification/testing.</td>
-            <td>Providing an LLM with a complete, human-authored algorithm specification and bit-stream format so it writes a host compressor utility, verified by the author.</td>
-          </tr>
-          <tr>
-            <td><span class="lvl-badge b-4">E4</span></td>
-            <td><strong>Autonomous</strong></td>
-            <td>The delivered output was generated end-to-end by AI from minimal prompts with little or no human specification, code review, or manual modification.</td>
-            <td>Accepting bulk agent-generated code without reviewing the internal logic ("vibe-coding") or publishing raw synthetic media.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
   <footer>
     <p>
-      <strong>AIDE Specification v1.0</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.
-      All generated badges, README snippets, and source code header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>.
+      <strong>AIDR Specification v1.0</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>.
     </p>
   </footer>
 
@@ -646,23 +912,38 @@
 
 <script>
   const LEVEL_NAMES = ['Unassisted', 'Assisted', 'Collaborative', 'Directed', 'Autonomous'];
-  const LEVEL_COLORS = ['#16a34a', '#0d9488', '#2563eb', '#d97706', '#dc2626'];
 
-  let currentIdeation = 1;
+  let selectedIdeations = [0, 1];
   let selectedExecutions = [0, 3];
 
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme') || 'light';
+    const next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    const btn = document.getElementById('theme-toggle-btn');
+    btn.textContent = next === 'light' ? 'Switch to Dark Theme' : 'Switch to Solarized Light';
+    updateOutputs();
+  }
+
   function switchTab(tabId, btn) {
-    document.getElementById('tab-generator').classList.toggle('hidden', tabId !== 'generator');
     document.getElementById('tab-spec').classList.toggle('hidden', tabId !== 'spec');
+    document.getElementById('tab-generator').classList.toggle('hidden', tabId !== 'generator');
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
   }
 
-  function selectIdeation(lvl) {
-    currentIdeation = lvl;
-    document.querySelectorAll('#ideation-options .level-option').forEach(el => {
-      el.classList.toggle('selected', parseInt(el.dataset.level, 10) === lvl);
-    });
+  function toggleIdeation(lvl) {
+    const idx = selectedIdeations.indexOf(lvl);
+    if (idx > -1) {
+      if (selectedIdeations.length > 1) {
+        selectedIdeations.splice(idx, 1);
+      }
+    } else {
+      selectedIdeations.push(lvl);
+      selectedIdeations.sort((a, b) => a - b);
+    }
+    syncOptionCards();
     updateOutputs();
   }
 
@@ -676,38 +957,128 @@
       selectedExecutions.push(lvl);
       selectedExecutions.sort((a, b) => a - b);
     }
+    syncOptionCards();
+    updateOutputs();
+  }
+
+  function syncOptionCards() {
+    document.querySelectorAll('#ideation-options .level-option').forEach(el => {
+      const l = parseInt(el.dataset.level, 10);
+      el.classList.toggle('selected', selectedIdeations.includes(l));
+    });
     document.querySelectorAll('#execution-options .level-option').forEach(el => {
       const l = parseInt(el.dataset.level, 10);
       el.classList.toggle('selected', selectedExecutions.includes(l));
     });
-    updateOutputs();
+  }
+
+  /**
+   * Formats a sorted array of integer levels (0..4) with a given prefix ('I' or 'E').
+   * Consecutive runs of 3 or more levels (e.g., [0, 1, 2] or [0, 1, 2, 3]) are formatted
+   * as a contiguous hyphenated range with the prefix on both ends: "E0-E2" or "E0-E3".
+   * Non-contiguous or 2-element discrete selections (e.g., [0, 3] or [0, 1]) are formatted
+   * with commas: "E0,E3" (compact) and "E0, E3" (spaced).
+   */
+  function formatLevels(prefix, levels) {
+    const sorted = Array.from(new Set(levels)).sort((a, b) => a - b);
+    if (sorted.length === 0) sorted.push(0);
+
+    const runs = [];
+    let runStart = sorted[0];
+    let prev = sorted[0];
+
+    for (let i = 1; i < sorted.length; i++) {
+      if (sorted[i] === prev + 1) {
+        prev = sorted[i];
+      } else {
+        runs.push([runStart, prev]);
+        runStart = sorted[i];
+        prev = sorted[i];
+      }
+    }
+    runs.push([runStart, prev]);
+
+    const compactParts = [];
+    const spacedParts = [];
+    const descParts = [];
+
+    runs.forEach(([start, end]) => {
+      const count = end - start + 1;
+      if (count >= 3) {
+        compactParts.push(`${prefix}${start}-${prefix}${end}`);
+        spacedParts.push(`${prefix}${start}-${prefix}${end}`);
+        descParts.push(`${LEVEL_NAMES[start]} through ${LEVEL_NAMES[end]}`);
+      } else if (count === 2) {
+        compactParts.push(`${prefix}${start},${prefix}${end}`);
+        spacedParts.push(`${prefix}${start}, ${prefix}${end}`);
+        descParts.push(`${LEVEL_NAMES[start]}, ${LEVEL_NAMES[end]}`);
+      } else {
+        compactParts.push(`${prefix}${start}`);
+        spacedParts.push(`${prefix}${start}`);
+        descParts.push(`${LEVEL_NAMES[start]}`);
+      }
+    });
+
+    const compact = compactParts.join(',');
+    const spaced = spacedParts.join(', ');
+    const titles = descParts.join(', ');
+
+    return {
+      compact,
+      spaced,
+      titles,
+      min: sorted[0],
+      max: sorted[sorted.length - 1],
+      isMultiple: sorted.length > 1
+    };
   }
 
   function clearComponents() {
     document.getElementById('component-list').innerHTML = '';
   }
 
-  function addComponentRow(name = '', rating = 'E0', desc = '') {
+  function addComponentRow(name = '', iCode = 'I0', eCode = 'E0', desc = '') {
     const list = document.getElementById('component-list');
     const row = document.createElement('div');
     row.className = 'comp-row';
-    const optionsHtml = [
-      'I0', 'I1', 'I2', 'I3', 'I4',
-      'E0', 'E1', 'E2', 'E3', 'E4'
-    ].map(code => {
-      const lvl = parseInt(code.slice(1), 10);
-      const axisName = code[0] === 'I' ? 'Ideation' : 'Execution';
-      const selected = code === rating ? 'selected' : '';
-      return `<option value="${code}" ${selected}>${code} — ${LEVEL_NAMES[lvl]} ${axisName}</option>`;
+
+    const iOptions = [0, 1, 2, 3, 4].map(n => {
+      const code = `I${n}`;
+      const sel = code === iCode ? 'selected' : '';
+      return `<option value="${code}" ${sel}>${code}: ${LEVEL_NAMES[n]} Ideation</option>`;
+    }).join('');
+
+    const eOptions = [0, 1, 2, 3, 4].map(n => {
+      const code = `E${n}`;
+      const sel = code === eCode ? 'selected' : '';
+      return `<option value="${code}" ${sel}>${code}: ${LEVEL_NAMES[n]} Execution</option>`;
     }).join('');
 
     row.innerHTML = `
-      <input type="text" class="comp-name" placeholder="Component name (e.g., 8086 ASM Decompressors)" value="${escapeHtml(name)}" oninput="updateOutputs()">
-      <select class="comp-rating" onchange="updateOutputs()">${optionsHtml}</select>
+      <input type="text" class="comp-name" placeholder="Component name (e.g., Core Engine, Illustrations)" value="${escapeHtml(name)}" oninput="updateOutputs()">
+      <select class="comp-i" onchange="updateOutputs()" aria-label="Component Ideation Level">${iOptions}</select>
+      <select class="comp-e" onchange="updateOutputs()" aria-label="Component Execution Level">${eOptions}</select>
       <input type="text" class="comp-desc" placeholder="Brief description of human vs. AI role" value="${escapeHtml(desc)}" oninput="updateOutputs()">
       <button class="btn-sm" onclick="this.parentElement.remove(); updateOutputs();" title="Remove component">&times;</button>
     `;
     list.appendChild(row);
+    updateOutputs();
+  }
+
+  function syncTopLevelsFromComponents() {
+    const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
+    if (compRows.length === 0) return;
+    const iSet = new Set();
+    const eSet = new Set();
+    compRows.forEach(r => {
+      const iVal = parseInt(r.querySelector('.comp-i').value.slice(1), 10);
+      const eVal = parseInt(r.querySelector('.comp-e').value.slice(1), 10);
+      iSet.add(iVal);
+      eSet.add(eVal);
+    });
+    selectedIdeations = Array.from(iSet).sort((a, b) => a - b);
+    selectedExecutions = Array.from(eSet).sort((a, b) => a - b);
+    syncOptionCards();
     updateOutputs();
   }
 
@@ -717,128 +1088,186 @@
 
   function applyPreset(preset) {
     clearComponents();
-    if (preset === 'pcm') {
-      currentIdeation = 1;
+    if (preset === 'software') {
+      selectedIdeations = [0, 1];
       selectedExecutions = [0, 3];
       addComponentRow(
-        'Compression Algorithms & Design',
-        'I1',
-        'Original human concepts conceived over decades; AI used only for background DSP math research and minor tested tweaks.'
-      );
-      addComponentRow(
-        '8086 Assembly Decompressors',
+        'Core Application Engine',
+        'I0',
         'E0',
-        '100% hand-crafted 8086 assembly language written manually by the human author.'
+        'Conceived, architected, and hand-coded 100% by the human developer with zero AI involvement.'
       );
       addComponentRow(
-        'Host Compressor Utilities',
+        'Data Import & Conversion Utilities',
+        'I1',
         'E3',
-        'Implemented by AI strictly from multi-paragraph human specifications, algorithms, and constraints, verified by the author.'
+        'Algorithms and file formats designed by the author (I1), with utility code generated by an LLM from detailed human specifications and verified by hand (E3).'
+      );
+      addComponentRow(
+        'Documentation & User Guide',
+        'I0',
+        'E0',
+        'Written and edited manually by the human author.'
+      );
+    } else if (preset === 'writing') {
+      selectedIdeations = [1];
+      selectedExecutions = [0, 1];
+      addComponentRow(
+        'Plot, Characters & Outline',
+        'I1',
+        'E0',
+        'Conceived and structured by the human author, with AI consulted only to summarize historical archival references.'
+      );
+      addComponentRow(
+        'Manuscript Prose & Editing',
+        'I0',
+        'E1',
+        'Every chapter drafted manually by the author; AI used only as an interactive phrase thesaurus and proofreader.'
+      );
+    } else if (preset === 'art') {
+      selectedIdeations = [0, 1];
+      selectedExecutions = [0, 1, 2];
+      addComponentRow(
+        'Character Design & Key Illustrations',
+        'I0',
+        'E0',
+        '100% conceived, sketched, inked, and painted by hand by the human artist.'
+      );
+      addComponentRow(
+        'High-Resolution Print Exports',
+        'I0',
+        'E1',
+        'Hand-painted illustrations processed through a non-generative machine-learning upscaler and denoiser for print.'
+      );
+      addComponentRow(
+        'Repeating Background Surface Textures',
+        'I1',
+        'E2',
+        'Secondary environmental patterns created via a hybrid human-AI texture workflow and manually composited.'
+      );
+    } else if (preset === 'music') {
+      selectedIdeations = [0, 2];
+      selectedExecutions = [0, 1];
+      addComponentRow(
+        'Main Compositions & Live Instruments',
+        'I0',
+        'E0',
+        'All melodies, lyrics, arrangements, and instrumental performances composed and played by the human musician.'
+      );
+      addComponentRow(
+        'Bridge Chord Variations (Track 4)',
+        'I2',
+        'E0',
+        'Alternate harmonic voicings co-brainstormed with an AI tool (I2) and performed manually on hardware instruments by the artist (E0).'
+      );
+      addComponentRow(
+        'Audio Restoration & Mastering',
+        'I0',
+        'E1',
+        'Acoustic microphone recordings cleaned up using a neural de-reverb and noise-reduction filter during mixing.'
       );
     } else if (preset === 'pure') {
-      currentIdeation = 0;
+      selectedIdeations = [0];
       selectedExecutions = [0];
-      addComponentRow('Entire Project', 'E0', '100% human-conceived and hand-crafted with zero AI involvement.');
-    } else if (preset === 'diag') {
-      currentIdeation = 1;
-      selectedExecutions = [1];
-      addComponentRow('Core Source / Prose', 'E1', 'Written by the human author; AI used only for read-only bug diagnostics, phrase lookup, or signal cleanup.');
-    } else if (preset === 'spec') {
-      currentIdeation = 1;
-      selectedExecutions = [3];
-      addComponentRow('Architecture & Spec', 'I1', '100% human-designed algorithms and specifications.');
-      addComponentRow('Implementation Code', 'E3', 'Generated by AI from the author\'s detailed technical specification and verified by hand.');
+      addComponentRow(
+        'Entire Project',
+        'I0',
+        'E0',
+        '100% human-conceived and hand-crafted with zero AI involvement in ideation or execution.'
+      );
     }
-    selectIdeation(currentIdeation);
-    document.querySelectorAll('#execution-options .level-option').forEach(el => {
-      const l = parseInt(el.dataset.level, 10);
-      el.classList.toggle('selected', selectedExecutions.includes(l));
-    });
+    syncOptionCards();
     updateOutputs();
   }
 
-  function getExecutionInfo() {
-    const minE = Math.min(...selectedExecutions);
-    const maxE = Math.max(...selectedExecutions);
-    const isRange = minE !== maxE;
-    const code = isRange ? `E${minE}–${maxE}` : `E${minE}`;
-    const asciiCode = isRange ? `E${minE}-${maxE}` : `E${minE}`;
-    const label = isRange
-      ? `${minE}–${maxE} (${LEVEL_NAMES[minE]} to ${LEVEL_NAMES[maxE]})`
-      : `${minE} (${LEVEL_NAMES[minE]})`;
-    return { minE, maxE, isRange, code, asciiCode, label };
+  function getThemeBadgeColors(maxLevel) {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const solarizedPalette = ['#859900', '#2aa198', '#268bd2', '#cb4b16', '#dc322f'];
+    const darkPalette = ['#16a34a', '#0d9488', '#2563eb', '#d97706', '#dc322f'];
+    return {
+      leftBg: isDark ? '#1e293b' : '#073642',
+      rightBg: isDark ? darkPalette[maxLevel] : solarizedPalette[maxLevel]
+    };
   }
 
-  function buildSvgBadgeString(scoreText, colorHex) {
-    const leftText = 'AIDE Rating';
-    const leftWidth = 84;
-    const rightWidth = Math.max(76, scoreText.length * 8 + 20);
-    const totalWidth = leftWidth + rightWidth;
+  function buildSvgBadgeString(scoreText, leftBg, rightBg) {
+    const leftText = 'AIDR';
+    const leftWidth = 54;
+    const rightWidth = Math.max(82, scoreText.length * 7.8 + 22);
+    const totalWidth = Math.round(leftWidth + rightWidth);
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="24" role="img" aria-label="${leftText}: ${scoreText}">
   <title>${leftText}: ${scoreText}</title>
-  <rect width="${leftWidth}" height="24" fill="#1e293b" rx="4"/>
-  <rect x="${leftWidth - 4}" width="4" height="24" fill="#1e293b"/>
-  <rect x="${leftWidth}" width="${rightWidth}" height="24" fill="${colorHex}" rx="4"/>
-  <rect x="${leftWidth}" width="4" height="24" fill="${colorHex}"/>
+  <rect width="${leftWidth}" height="24" fill="${leftBg}" rx="4"/>
+  <rect x="${leftWidth - 4}" width="4" height="24" fill="${leftBg}"/>
+  <rect x="${leftWidth}" width="${totalWidth - leftWidth}" height="24" fill="${rightBg}" rx="4"/>
+  <rect x="${leftWidth}" width="4" height="24" fill="${rightBg}"/>
   <g fill="#ffffff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
-    <text x="${leftWidth / 2}" y="16" font-weight="bold">${leftText}</text>
-    <text x="${leftWidth + rightWidth / 2}" y="16" font-weight="bold">${scoreText}</text>
+    <text x="${Math.round(leftWidth / 2)}" y="16" font-weight="bold">${leftText}</text>
+    <text x="${Math.round(leftWidth + (totalWidth - leftWidth) / 2)}" y="16" font-weight="bold">${scoreText}</text>
   </g>
 </svg>`;
   }
 
   function updateOutputs() {
-    const eInfo = getExecutionInfo();
-    const scoreDisplay = `I${currentIdeation} / ${eInfo.code}`;
-    const scoreAscii = `I${currentIdeation} / ${eInfo.asciiCode}`;
-    const subDisplay = `Ideation: ${currentIdeation} (${LEVEL_NAMES[currentIdeation]}) | Execution: ${eInfo.label}`;
+    const iInfo = formatLevels('I', selectedIdeations);
+    const eInfo = formatLevels('E', selectedExecutions);
 
-    document.getElementById('live-score-text').textContent = `AIDE: ${scoreDisplay}`;
+    const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
+    const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}), Execution: ${eInfo.spaced} (${eInfo.titles})`;
+
+    document.getElementById('live-score-text').textContent = `AIDR: ${scoreCompact}`;
     document.getElementById('live-score-sub').textContent = subDisplay;
 
-    const badgeColor = LEVEL_COLORS[Math.max(currentIdeation, eInfo.minE)];
-    const svgString = buildSvgBadgeString(scoreDisplay, badgeColor);
+    const maxLvl = Math.max(iInfo.max, eInfo.max);
+    const badgeColors = getThemeBadgeColors(maxLvl);
+    const svgString = buildSvgBadgeString(scoreCompact, badgeColors.leftBg, badgeColors.rightBg);
     document.getElementById('svg-badge-container').innerHTML = svgString;
 
     // Collect components
     const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
-    const comps = compRows.map(r => ({
-      name: r.querySelector('.comp-name').value.trim() || 'Component',
-      rating: r.querySelector('.comp-rating').value,
-      desc: r.querySelector('.comp-desc').value.trim() || ''
-    }));
+    const comps = compRows.map(r => {
+      const iCode = r.querySelector('.comp-i').value;
+      const eCode = r.querySelector('.comp-e').value;
+      const iNum = parseInt(iCode.slice(1), 10);
+      const eNum = parseInt(eCode.slice(1), 10);
+      return {
+        name: r.querySelector('.comp-name').value.trim() || 'Component',
+        iCode,
+        eCode,
+        iNum,
+        eNum,
+        iTitle: LEVEL_NAMES[iNum],
+        eTitle: LEVEL_NAMES[eNum],
+        desc: r.querySelector('.comp-desc').value.trim() || ''
+      };
+    });
 
     // 1. Markdown Output
-    let md = `## AI Usage Disclosure — AIDE Rating: \`${scoreDisplay}\`\n\n`;
-    md += `This project is self-disclosed under the **AIDE (AI Disclosure of Ideation & Execution) v1.0** scale:\n`;
-    md += `- **Ideation (\`I${currentIdeation}\` — ${LEVEL_NAMES[currentIdeation]}):** `;
-    md += getIdeationSummary(currentIdeation) + `\n`;
-    md += `- **Execution (\`${eInfo.code}\` — ${eInfo.isRange ? LEVEL_NAMES[eInfo.minE] + ' to ' + LEVEL_NAMES[eInfo.maxE] : LEVEL_NAMES[eInfo.minE]}):** `;
-    md += getExecutionSummary(eInfo) + `\n`;
+    let md = `## AI Usage Disclosure: AIDR \`${scoreCompact}\`\n\n`;
+    md += `This work is self-disclosed under the **AIDR (Artificial Intelligence Disclosure Rating) v1.0** standard:\n`;
+    md += `- **Ideation (\`${iInfo.spaced}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo)}\n`;
+    md += `- **Execution (\`${eInfo.spaced}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo)}\n`;
 
     if (comps.length > 0) {
       md += `\n### Component Breakdown\n\n`;
-      md += `| Component / Deliverable | AIDE Score | Level | Details |\n`;
+      md += `| Component / Deliverable | AIDR Score | Classification | Details |\n`;
       md += `| :--- | :--- | :--- | :--- |\n`;
       comps.forEach(c => {
-        const lvlNum = parseInt(c.rating.slice(1), 10);
-        const axisWord = c.rating[0] === 'I' ? 'Ideation' : 'Execution';
-        md += `| **${c.name}** | **\`${c.rating}\`** | ${LEVEL_NAMES[lvlNum]} ${axisWord} | ${c.desc} |\n`;
+        md += `| **${c.name}** | **\`${c.iCode} / ${c.eCode}\`** | ${c.iTitle} Ideation, ${c.eTitle} Execution | ${c.desc} |\n`;
       });
     }
     document.getElementById('out-markdown').textContent = md;
 
-    // 2. NFO Output
+    // 2. NFO / Liner Notes Output
     let nfo = `========================================================================\n`;
-    nfo += ` AI DISCLOSURE (AIDE v1.0 Rating: ${scoreAscii})\n`;
+    nfo += ` AI DISCLOSURE (AIDR v1.0: ${scoreCompact})\n`;
     nfo += `------------------------------------------------------------------------\n`;
-    nfo += ` Ideation  : I${currentIdeation} (${LEVEL_NAMES[currentIdeation]})\n`;
-    nfo += ` Execution : ${eInfo.asciiCode} (${eInfo.isRange ? LEVEL_NAMES[eInfo.minE] + ' to ' + LEVEL_NAMES[eInfo.maxE] : LEVEL_NAMES[eInfo.minE]})\n`;
+    nfo += ` Ideation  : ${iInfo.spaced} (${iInfo.titles})\n`;
+    nfo += ` Execution : ${eInfo.spaced} (${eInfo.titles})\n`;
     if (comps.length > 0) {
       nfo += `------------------------------------------------------------------------\n`;
       comps.forEach(c => {
-        const lvlNum = parseInt(c.rating.slice(1), 10);
-        nfo += ` * ${c.name} [${c.rating} - ${LEVEL_NAMES[lvlNum]}]\n`;
+        nfo += ` * ${c.name} [${c.iCode} / ${c.eCode}: ${c.iTitle} Ideation, ${c.eTitle} Execution]\n`;
         if (c.desc) {
           nfo += `   ${c.desc}\n`;
         }
@@ -847,39 +1276,50 @@
     nfo += `========================================================================`;
     document.getElementById('out-nfo').textContent = nfo;
 
-    // 3. Headers Output
-    let headers = `; --- Assembly (.asm / .inc) Header ---\n`;
-    headers += `; AIDE-Usage: I${currentIdeation}/E${eInfo.minE} (Ideation: ${LEVEL_NAMES[currentIdeation]} | Execution: ${LEVEL_NAMES[eInfo.minE]})\n\n`;
-    headers += `// --- C / C++ / Rust / JS Header ---\n`;
-    headers += `// AIDE-Usage: I${currentIdeation}/E${eInfo.maxE} (Ideation: ${LEVEL_NAMES[currentIdeation]} | Execution: ${LEVEL_NAMES[eInfo.maxE]})\n\n`;
-    headers += `# --- Python / Shell / Makefile Header ---\n`;
-    headers += `# AIDE-Usage: I${currentIdeation}/E${eInfo.maxE} (Ideation: ${LEVEL_NAMES[currentIdeation]} | Execution: ${LEVEL_NAMES[eInfo.maxE]})`;
+    // 3. Per-File / Asset Metadata Header Tags
+    let headers = '';
+    if (comps.length > 0) {
+      headers += `# --- Component-Specific AIDR-Usage Header Lines ---\n`;
+      comps.forEach(c => {
+        headers += `# [${c.name}] AIDR-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}, Execution: ${c.eTitle})\n`;
+      });
+      headers += `\n`;
+    }
+    headers += `// --- C / C++ / Rust / JavaScript / C# Header ---\n`;
+    headers += `// AIDR-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+    headers += `# --- Python / Shell / YAML / Markdown Metadata Header ---\n`;
+    headers += `# AIDR-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+    headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
+    headers += `; AIDR-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})`;
     document.getElementById('out-headers').textContent = headers;
   }
 
-  function getIdeationSummary(lvl) {
-    const summaries = [
-      'All concepts, algorithms, and designs are 100% human-originated with zero AI consultation.',
-      'All core concepts, architecture, and primary algorithms originated from the human author; AI was consulted only for background domain research or minor tested refinements.',
-      'The human author established the overarching vision and collaborated with AI to brainstorm sub-algorithms or structural designs.',
-      'The human author provided a high-level goal and curated the primary architecture or structure proposed by AI.',
-      'AI conceived the project concept and design with minimal human input.'
-    ];
-    return summaries[lvl];
-  }
-
-  function getExecutionSummary(eInfo) {
-    if (eInfo.isRange) {
-      return `Hybrid execution ranging from ${LEVEL_NAMES[eInfo.minE]} (E${eInfo.minE}) to ${LEVEL_NAMES[eInfo.maxE]} (E${eInfo.maxE}) across project components.`;
+  function getIdeationSummary(levels, info) {
+    if (levels.length > 1) {
+      return `Project components span multiple ideation levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
     }
     const summaries = [
-      '100% hand-crafted by the human author with zero AI involvement.',
+      'All concepts, designs, compositions, and algorithms are 100% human-originated with zero AI consultation.',
+      'All core concepts, designs, and primary structures originated from the human creator; AI was consulted only for background research or minor tested refinements.',
+      'The human creator established the overarching vision and collaborated with AI to co-brainstorm sub-components or outlines.',
+      'The human creator provided a high-level goal and curated the primary structure or design choices proposed by AI.',
+      'AI conceived the project concept and creative direction with minimal human input.'
+    ];
+    return summaries[levels[0]];
+  }
+
+  function getExecutionSummary(levels, info) {
+    if (levels.length > 1) {
+      return `Project components span multiple execution levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
+    }
+    const summaries = [
+      '100% hand-crafted or performed by the human creator with zero AI involvement.',
       'Authored by the human creator; AI was used only for read-only diagnostics, reference lookups, non-generative signal cleanup, or minor boilerplate.',
-      'Shared human-AI implementation where the human wrote core logic/prose and AI generated secondary utilities or charts.',
-      'Implemented by AI operating strictly from detailed human specifications, algorithms, and constraints, verified by the author.',
+      'Shared human-AI production where the human created the core work and AI generated secondary utilities or supporting elements.',
+      'Produced by AI operating strictly from detailed human specifications and constraints, verified by the creator.',
       'Generated end-to-end by AI with minimal human specification or modification.'
     ];
-    return summaries[eInfo.minE];
+    return summaries[levels[0]];
   }
 
   function copyText(elementId, btn) {
@@ -898,15 +1338,15 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'aide-badge.svg';
+    a.download = 'aidr-badge.svg';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
   }
 
-  // Initialize with the 8-bit PCM Audio Compression + 8086 Assembly preset
-  applyPreset('pcm');
+  // Initialize with the general Software Hybrid preset
+  applyPreset('software');
 </script>
 
 </body>
