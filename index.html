@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- SYNC:HEAD-TITLE:START -->
   <title>AIDR v1.0: Artificial Intelligence Disclosure Rating</title>
+  <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
     :root, [data-theme="light"] {
@@ -215,6 +217,12 @@
       color: var(--accent);
     }
 
+    h4 {
+      font-size: 0.96rem;
+      margin: 1.1rem 0 0.45rem;
+      color: var(--text);
+    }
+
     p {
       color: var(--text-dim);
       margin-bottom: 0.9rem;
@@ -225,8 +233,19 @@
       margin: 0.5rem 0 1rem 1.4rem;
     }
 
+    li > ul, li > ol {
+      margin: 0.4rem 0 0.5rem 1.25rem;
+    }
+
     li {
       margin-bottom: 0.45rem;
+    }
+
+    blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 0.4rem 0 0.4rem 1rem;
+      margin: 0.75rem 0 1rem;
+      color: var(--text-dim);
     }
 
     code {
@@ -237,6 +256,19 @@
       padding: 0.12rem 0.4rem;
       border-radius: 4px;
       color: var(--code-text);
+    }
+
+    pre code {
+      background: transparent;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: inherit;
+      color: inherit;
+    }
+
+    #tab-spec pre {
+      margin: 0.5rem 0 1.15rem;
     }
 
     .grid-2 {
@@ -462,7 +494,7 @@
 
     .meta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 0.85rem;
       background: var(--bg-elevated);
       border: 1px solid var(--border);
@@ -502,16 +534,22 @@
 <header>
   <div class="container">
     <div class="top-bar">
+      <!-- SYNC:VERSION-PILL:START -->
       <span class="version-pill">AIDR Standard v1.0</span>
+      <!-- SYNC:VERSION-PILL:END -->
       <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
     </div>
+    <!-- SYNC:HEADER-H1:START -->
     <h1>AIDR: Artificial Intelligence Disclosure Rating</h1>
+    <!-- SYNC:HEADER-H1:END -->
     <p class="subtitle">
       A self-disclosure rating scale for programming, creative writing, graphical art, and music composition that separates
       <strong>human conceptual authorship (Ideation)</strong> from <strong>mechanical production (Execution)</strong>.
     </p>
     <nav class="tabs">
+      <!-- SYNC:TAB1-BTN:START -->
       <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0 Specification</button>
+      <!-- SYNC:TAB1-BTN:END -->
       <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure Builder</button>
     </nav>
   </div>
@@ -521,58 +559,63 @@
 
   <!-- ================= TAB 1 (DEFAULT): FULL v1.0 SPECIFICATION ================= -->
   <section id="tab-spec">
+    <!-- SYNC:TAB-SPEC:START -->
     <div class="card">
       <div class="meta-grid">
         <div class="meta-item">
-          <strong>Version &amp; Status</strong>
-          <span>1.0 (Canonical Specification)</span>
+          <strong>Version</strong>
+          <span>1.0</span>
         </div>
         <div class="meta-item">
-          <strong>Initial Author</strong>
+          <strong>Status</strong>
+          <span>Canonical Specification</span>
+        </div>
+        <div class="meta-item">
+          <strong>Author</strong>
           <span>Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</span>
+        </div>
+        <div class="meta-item">
+          <strong>Date</strong>
+          <span>November 2026</span>
         </div>
         <div class="meta-item">
           <strong>Specification License</strong>
           <span><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></span>
         </div>
         <div class="meta-item">
-          <strong>Badges &amp; Templates License</strong>
-          <span><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Public Domain</a></span>
+          <strong>Templates, Badges &amp; Header Tags License</strong>
+          <span><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a></span>
         </div>
       </div>
 
       <h2><span>1. Purpose &amp; Philosophy</span></h2>
-      <p>
-        <strong>AIDR (Artificial Intelligence Disclosure Rating)</strong> is a voluntary, author-declared rating framework that enables creators of software, creative writing, graphical art, music composition, and other public works to transparently communicate how artificial intelligence was used in their projects.
-      </p>
+      <p><strong>AIDR (Artificial Intelligence Disclosure Rating)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets AIDR apart from previous AI disclosure scales is that it rates original human ideas separately from mechanical implementation, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>
-        Existing linear disclosure scales, such as the REAL Rating (0 to 5), the AI Assessment Scale (1 to 5), and the GAIT Framework, collapse all AI usage onto a single numeric spectrum. Worse, linear scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.
-      </p>
+      <p>Existing linear disclosure scales, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, and the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, collapse all AI usage onto a single numeric spectrum. Worse, linear scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.</p>
+      <p>A single-number scale incentivizes the wrong signals:</p>
+      <ol>
+        <li>A creator with no original ideas who prompts an AI model to invent a plot, composition structure, or software design, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the creator relying on AI for all original ideas.</li>
+        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up room reverb on a live recording, or generating textured fills) is <strong>penalized</strong> with a high AI rating, despite relying on AI only for mechanical tasks.</li>
+      </ol>
+      <h3>AIDR's Balanced Alternative: Separating Ideation from Execution</h3>
+      <p>AIDR resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
       <ul>
-        <li>A creator with no original ideas who prompts an AI model to invent a plot, composition structure, or software design, and then manually types or illustrates the result, receives a low AI rating.</li>
-        <li>An author, artist, composer, or programmer who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive mechanical tasks (such as generating file-conversion utilities from a strict specification, cleaning up room reverb on a live recording, or generating flat background textures) is penalized with a high AI rating. This lumps original human creation together with unreviewed, end-to-end AI output.</li>
+        <li><strong>Ideation (<code>I0</code> to <code>I4</code>)</strong> measures who conceived the ideas, concepts, structure, design, composition, or algorithms.</li>
+        <li><strong>Execution (<code>E0</code> to <code>E4</code>)</strong> measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.</li>
       </ul>
-
-      <h3>The AIDR Solution: Separating Ideation from Execution</h3>
-      <p>
-        AIDR resolves this distortion by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:
-      </p>
+      <p>Both categories share five symmetrical, whole-number level titles:</p>
       <ul>
-        <li><strong>Ideation Levels (<code>I0</code> to <code>I4</code>)</strong> measure who conceived the ideas, concepts, structure, composition, or algorithms.</li>
-        <li><strong>Execution Levels (<code>E0</code> to <code>E4</code>)</strong> measure how the tangible work (code, prose, visual art, or music/audio) was mechanically produced.</li>
+        <li><strong><code>0</code>: Unassisted</strong></li>
+        <li><strong><code>1</code>: Assisted</strong></li>
+        <li><strong><code>2</code>: Collaborative</strong></li>
+        <li><strong><code>3</code>: Directed</strong></li>
+        <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
-      <p>
-        Both categories share five symmetrical, whole-number level titles:
-        <strong><code>0</code> (Unassisted), <code>1</code> (Assisted), <code>2</code> (Collaborative), <code>3</code> (Directed), and <code>4</code> (Autonomous)</strong>.
-      </p>
     </div>
 
     <div class="card">
-      <h2><span>2. Category 1: Ideation Levels (I0 to I4)</span></h2>
-      <p>
-        The <strong>Ideation</strong> level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.
-      </p>
+      <h2><span>2. Category 1: Ideation Levels (<code>I0</code> to <code>I4</code>)</span></h2>
+      <p>The <strong>Ideation</strong> level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.</p>
       <table class="spec-table">
         <thead>
           <tr>
@@ -587,61 +630,39 @@
             <td><span class="lvl-badge b-0">I0</span></td>
             <td><strong>Unassisted</strong></td>
             <td>All concepts, designs, compositions, narratives, and algorithms are 100% human-originated, with zero AI consultation even for background research.</td>
-            <td>
-              <strong>Programming:</strong> Designing an algorithm or architecture solely from personal knowledge and non-AI documentation.<br>
-              <strong>Writing:</strong> Conceiving a novel's plot, characters, and chapter structure independently.<br>
-              <strong>Art:</strong> Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>
-              <strong>Music:</strong> Composing melodies, harmonies, and arrangements without querying any AI tool.
-            </td>
+            <td><strong>Programming:</strong> Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br><strong>Writing:</strong> Conceiving a novel's plot, characters, and chapter structure independently.<br><strong>Art:</strong> Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br><strong>Music:</strong> Composing melodies, harmonies, and arrangements without querying any AI tool.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-1">I1</span></td>
             <td><strong>Assisted</strong></td>
             <td>All core concepts, designs, and primary structures are human-originated. AI was used only for background research (explaining theory, summarizing reference material) or as a sounding board that suggested minor local refinements which the human evaluated and selectively adopted.</td>
-            <td>
-              <strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>
-              <strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>
-              <strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br>
-              <strong>Music:</strong> Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges.
-            </td>
+            <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">I2</span></td>
             <td><strong>Collaborative</strong></td>
             <td>The human established the overarching creative vision and goals, and actively partnered with AI to co-brainstorm sub-components, solve structural problems, or develop outlines together.</td>
-            <td>
-              <strong>Programming:</strong> Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>
-              <strong>Writing:</strong> Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>
-              <strong>Art:</strong> Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>
-              <strong>Music:</strong> Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies.
-            </td>
+            <td><strong>Programming:</strong> Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br><strong>Writing:</strong> Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br><strong>Art:</strong> Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br><strong>Music:</strong> Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-3">I3</span></td>
             <td><strong>Directed</strong></td>
             <td>The human provided a broad problem statement, theme, or high-level prompt, and AI generated the primary structure, outline, or design choices, which the human then curated, evaluated, and refined.</td>
-            <td>
-              <strong>Programming:</strong> Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br>
-              <strong>Writing:</strong> Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>
-              <strong>Art:</strong> Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>
-              <strong>Music:</strong> Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement.
-            </td>
+            <td><strong>Programming:</strong> Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br><strong>Writing:</strong> Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br><strong>Art:</strong> Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br><strong>Music:</strong> Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-4">I4</span></td>
             <td><strong>Autonomous</strong></td>
             <td>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</td>
-            <td>
-              <strong>All Fields:</strong> Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request.
-            </td>
+            <td><strong>All Fields:</strong> Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request.</td>
           </tr>
         </tbody>
       </table>
+    </div>
 
-      <h2><span>3. Category 2: Execution Levels (E0 to E4)</span></h2>
-      <p>
-        The <strong>Execution</strong> level measures how the final deliverables of the work (source code, text, visual artwork, or audio recordings) were mechanically constructed and verified.
-      </p>
+    <div class="card">
+      <h2><span>3. Category 2: Execution Levels (<code>E0</code> to <code>E4</code>)</span></h2>
+      <p>The <strong>Execution</strong> level measures how the final deliverables of the work (source code, text, visual artwork, or audio recordings) were mechanically constructed and verified.</p>
       <table class="spec-table">
         <thead>
           <tr>
@@ -656,53 +677,31 @@
             <td><span class="lvl-badge b-0">E0</span></td>
             <td><strong>Unassisted</strong></td>
             <td>Every line of code, word of prose, brushstroke, or musical note was manually authored or performed by the human with zero AI involvement.</td>
-            <td>
-              <strong>Programming:</strong> Writing source code or assembly routines completely by hand.<br>
-              <strong>Writing:</strong> Typing and editing a manuscript manually without generative text tools.<br>
-              <strong>Art:</strong> Drawing, painting, or modeling artwork entirely by hand.<br>
-              <strong>Music:</strong> Performing, sequencing, mixing, and mastering audio manually without AI plugins.
-            </td>
+            <td><strong>Programming:</strong> Writing source code or assembly routines completely by hand.<br><strong>Writing:</strong> Typing and editing a manuscript manually without generative text tools.<br><strong>Art:</strong> Drawing, painting, or modeling artwork entirely by hand.<br><strong>Music:</strong> Performing, sequencing, mixing, and mastering audio manually without AI plugins.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-1">E1</span></td>
             <td><strong>Assisted</strong></td>
             <td>The delivered work is human-authored. AI or machine-learning tools were used only for read-only diagnostics (bug-finding, grammar checking), reference lookups (phrase thesaurus, syntax lookup), non-generative signal cleanup (audio denoising, upscaling), or minor inline autocomplete and boilerplate.</td>
-            <td>
-              <strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>
-              <strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>
-              <strong>Art:</strong> Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br>
-              <strong>Music:</strong> Recording live instruments and using a neural audio filter to remove room reverb or microphone hum.
-            </td>
+            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br><strong>Music:</strong> Recording live instruments and using a neural audio filter to remove room reverb or microphone hum.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">E2</span></td>
             <td><strong>Collaborative</strong></td>
             <td>Human and AI each produced substantial portions of the delivered work, such as a human creating the core work while AI generated supporting utilities, background elements, or data visualizations.</td>
-            <td>
-              <strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>
-              <strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>
-              <strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br>
-              <strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.
-            </td>
+            <td><strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br><strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br><strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br><strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-3">E3</span></td>
             <td><strong>Directed</strong></td>
             <td>Generative AI produced the vast majority of the component's output, operating strictly as an implementation engine under human direction, detailed multi-paragraph specifications, explicit constraints, and human verification or editing.</td>
-            <td>
-              <strong>Programming:</strong> Providing an LLM with a detailed, human-authored specification and algorithm so it writes a companion utility in a secondary language, followed by human testing.<br>
-              <strong>Writing:</strong> Translating a human-authored book into another language using AI under strict glossary constraints, followed by human review.<br>
-              <strong>Art:</strong> Generating rendered assets using a workflow tightly constrained by human-drawn control maps, depth maps, and manual paint-overs.<br>
-              <strong>Music:</strong> Synthesizing a vocal or orchestral performance from a human-written score and lyric sheet, followed by manual mixing.
-            </td>
+            <td><strong>Programming:</strong> Providing an LLM with a detailed, human-authored specification and algorithm so it writes a companion utility in a secondary language, followed by human testing.<br><strong>Writing:</strong> Translating a human-authored book into another language using AI under strict glossary constraints, followed by human review.<br><strong>Art:</strong> Generating rendered assets using a workflow tightly constrained by human-drawn control maps, depth maps, and manual paint-overs.<br><strong>Music:</strong> Synthesizing a vocal or orchestral performance from a human-written score and lyric sheet, followed by manual mixing.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-4">E4</span></td>
             <td><strong>Autonomous</strong></td>
             <td>The delivered output was generated end-to-end by AI from minimal prompts with little or no human specification, review, or manual modification.</td>
-            <td>
-              <strong>All Fields:</strong> Accepting bulk AI-generated code without reviewing the logic ("vibe-coding"), or publishing raw AI-generated text, images, or music directly from a prompt.
-            </td>
+            <td><strong>All Fields:</strong> Accepting bulk AI-generated code without reviewing the logic ("vibe-coding"), or publishing raw AI-generated text, images, or music directly from a prompt.</td>
           </tr>
         </tbody>
       </table>
@@ -710,33 +709,63 @@
 
     <div class="card">
       <h2><span>4. Disclosure Format &amp; Syntax</span></h2>
-      <p>
-        AIDR uses a human-readable syntax that supports both uniform single-score projects and multi-component hybrid works.
-      </p>
-      <h3>4.1 Compact &amp; Expanded Notation</h3>
-      <ul>
-        <li><strong>Slash Separator Between Categories:</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>). Never use a hyphen between <code>I</code> and <code>E</code>.<br>
-          Example: <code>AIDR: I1 / E0</code></li>
-        <li><strong>Comma Separator in Expanded Prose:</strong> When writing out the full rating in text, separate Ideation and Execution with a comma:<br>
-          Example: <code>AIDR: Ideation 1 (Assisted), Execution 0 (Unassisted)</code></li>
-        <li><strong>Discrete Multiple Levels (<code>E0,E3</code>):</strong> When a project combines components with specific distinct levels (for example, hand-crafted core work at <code>E0</code> and a spec-driven utility at <code>E3</code>, without <code>E1</code> and <code>E2</code>), separate the levels with a comma:<br>
-          Example: <code>AIDR: I0,I1 / E0,E3</code></li>
-        <li><strong>Contiguous Ranges (<code>E0-E3</code>):</strong> When a project spans three or more consecutive levels (for example, components covering <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix on both ends:<br>
-          Example: <code>AIDR: I1 / E0-E3</code> (Never write <code>E0-3</code>.)</li>
-      </ul>
-
-      <h3>4.2 Component-Level Breakdown</h3>
-      <p>
-        For hybrid projects, follow the summary rating with a component breakdown where <strong>each component specifies both its Ideation level and its Execution level</strong> (for example, <code>Core Engine: I0 / E0</code> and <code>Conversion Scripts: I1 / E3</code>).
-      </p>
-
-      <h2><span>5. Licensing &amp; Authorship</span></h2>
-      <p>
-        <strong>Initial Author:</strong> Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>).<br>
-        <strong>Using AIDR in Your Projects (CC0 1.0 Public Domain):</strong> All AIDR badges, disclosure templates, and <code>AIDR-Usage</code> tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>.<br>
-        <strong>Specification Document License (CC BY-ND 4.0):</strong> This canonical specification document is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a> so that its level definitions cannot be altered or misrepresented under the AIDR name.
-      </p>
+      <p>AIDR supports a <strong>two-tier disclosure format</strong> so hybrid projects (such as a project where the core work is hand-crafted at <code>E0</code> and a secondary component is AI-generated from specifications at <code>E3</code>) can represent both the overall release and its individual components accurately.</p>
+      <h3>4.1 Tier 1: Compact Shorthand Notation</h3>
+      <ol>
+        <li>
+          <strong>Separating Ideation and Execution (Always Use a Slash):</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>). Never use a hyphen between <code>I</code> and <code>E</code>, as a hyphen implies a range.
+          <ul>
+            <li>Correct: <code>AIDR: I1 / E0</code></li>
+            <li>Incorrect: <code>AIDR: I1-E0</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Expanded Human-Readable Format (Use a Comma):</strong> When writing out the full rating in prose, separate the Ideation and Execution clauses with a comma rather than a pipe symbol:
+          <ul>
+            <li><code>AIDR: Ideation 1 (Assisted), Execution 0 (Unassisted)</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Multi-Component Projects: Discrete Levels (<code>E0,E3</code>) vs. Contiguous Ranges (<code>E0-E3</code>):</strong> When a project contains multiple components with different AI involvement levels, AIDR distinguishes between discrete selections and continuous ranges:
+          <ul>
+            <li><strong>Discrete Levels (Comma-Separated):</strong> If a project uses only specific, non-contiguous levels (or just two distinct levels, such as <code>E0</code> for hand-crafted work and <code>E3</code> for a spec-driven utility, with no <code>E1</code> or <code>E2</code> components), list the exact levels separated by a comma: <code>AIDR: I1 / E0,E3</code> (or <code>AIDR: I1 / E0, E3</code>)</li>
+            <li><strong>Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):</strong> If a project spans three or more consecutive levels (for example, components covering <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix (<code>I</code> or <code>E</code>) on both numbers: <code>AIDR: I1 / E0-E3</code> (Never write <code>E0-3</code>, which is visually ambiguous.)</li>
+          </ul>
+        </li>
+      </ol>
+      <h3>4.2 Tier 2: Component-Level Breakdown</h3>
+      <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where <strong>each component declares both its Ideation level and its Execution level</strong>:</p>
+      <pre><code>**AI Disclosure ([AIDR v1.0](AIDR-SPECIFICATION.md)): `I0,I1 / E0,E3`**
+- **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
+- **Data Import &amp; Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
+      <h3>4.3 Per-File Source Code &amp; Asset Metadata Headers</h3>
+      <p>To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place an <code>AIDR-Usage</code> line tag in file headers or asset metadata comments:</p>
+      <p><strong>Assembly (<code>.asm</code>, <code>.inc</code>, <code>.s</code>):</strong></p>
+      <pre><code>; AIDR-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)</code></pre>
+      <p><strong>C / C++ / Rust / Go / JavaScript / C#:</strong></p>
+      <pre><code>// AIDR-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)</code></pre>
+      <p><strong>Python / Shell / YAML / Makefile / Markdown / Text Metadata:</strong></p>
+      <pre><code># AIDR-Usage: I1/E1 (Ideation: Assisted, Execution: Assisted)</code></pre>
     </div>
+
+    <div class="card">
+      <h2><span>5. Licensing &amp; Governance</span></h2>
+      <p>To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, AIDR uses a two-part licensing structure:</p>
+      <ol>
+        <li><strong>Using AIDR Ratings, Badges, and Templates in Your Works (<code>CC0 1.0 Public Domain</code>):</strong> Declaring an AIDR rating on your project, embedding AIDR badges, copying disclosure templates, or placing <code>AIDR-Usage</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.</li>
+        <li><strong>Republishing the Specification Document (<code>CC BY-ND 4.0</code>):</strong> This specification document itself (<code>AIDR-SPECIFICATION.md</code>) is licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a>. This ensures that if someone republishes the specification document itself, the initial authorship remains recorded in the specification text and third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "AIDR."</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2><span>6. Authorship &amp; Provenance</span></h2>
+      <ul>
+        <li><strong>Initial Author:</strong> Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</li>
+        <li><strong>Version:</strong> 1.0 (October 2026)</li>
+        <li><strong>Origin &amp; Intent:</strong> Created to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</li>
+      </ul>
+    </div>
+    <!-- SYNC:TAB-SPEC:END -->
   </section>
 
   <!-- ================= TAB 2: INTERACTIVE GENERATOR ================= -->
@@ -760,41 +789,43 @@
           <h3>Category 1: Ideation Levels (I0 to I4)</h3>
           <p style="font-size:0.86rem;">Who conceived the ideas, designs, compositions, or algorithms? <em>(Click one or more levels that apply across your project.)</em></p>
           <div id="ideation-options">
+            <!-- SYNC:IDEATION-OPTIONS:START -->
             <div class="level-option selected" data-level="0" onclick="toggleIdeation(0)">
               <span class="lvl-badge b-0">I0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.</span>
+                <span>All concepts, designs, compositions, narratives, and algorithms are 100% human-originated, with zero AI consultation even for background research.</span>
               </div>
             </div>
             <div class="level-option selected" data-level="1" onclick="toggleIdeation(1)">
               <span class="lvl-badge b-1">I1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Core concepts and designs are human-originated. AI used only for background research or minor tested refinements.</span>
+                <span>All core concepts, designs, and primary structures are human-originated. AI was used only for background research (explaining theory, summarizing reference material) or as a sounding board that suggested minor local refinements which the human evaluated and selectively adopted.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleIdeation(2)">
               <span class="lvl-badge b-2">I2</span>
               <div class="level-info">
                 <strong>Collaborative</strong>
-                <span>Human set the creative vision and partnered with AI to co-brainstorm sub-components or outlines.</span>
+                <span>The human established the overarching creative vision and goals, and actively partnered with AI to co-brainstorm sub-components, solve structural problems, or develop outlines together.</span>
               </div>
             </div>
             <div class="level-option" data-level="3" onclick="toggleIdeation(3)">
               <span class="lvl-badge b-3">I3</span>
               <div class="level-info">
                 <strong>Directed</strong>
-                <span>Human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.</span>
+                <span>The human provided a broad problem statement, theme, or high-level prompt, and AI generated the primary structure, outline, or design choices, which the human then curated, evaluated, and refined.</span>
               </div>
             </div>
             <div class="level-option" data-level="4" onclick="toggleIdeation(4)">
               <span class="lvl-badge b-4">I4</span>
               <div class="level-info">
                 <strong>Autonomous</strong>
-                <span>AI conceived the project concept, design, and creative direction with minimal human input.</span>
+                <span>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</span>
               </div>
             </div>
+            <!-- SYNC:IDEATION-OPTIONS:END -->
           </div>
         </div>
 
@@ -803,41 +834,43 @@
           <h3>Category 2: Execution Levels (E0 to E4)</h3>
           <p style="font-size:0.86rem;">How was the code, prose, art, or music mechanically produced? <em>(Click one or more levels that apply across your project.)</em></p>
           <div id="execution-options">
+            <!-- SYNC:EXECUTION-OPTIONS:START -->
             <div class="level-option selected" data-level="0" onclick="toggleExecution(0)">
               <span class="lvl-badge b-0">E0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% hand-crafted code, prose, illustration, or musical performance by the human creator.</span>
+                <span>Every line of code, word of prose, brushstroke, or musical note was manually authored or performed by the human with zero AI involvement.</span>
               </div>
             </div>
             <div class="level-option" data-level="1" onclick="toggleExecution(1)">
               <span class="lvl-badge b-1">E1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</span>
+                <span>The delivered work is human-authored. AI or machine-learning tools were used only for read-only diagnostics (bug-finding, grammar checking), reference lookups (phrase thesaurus, syntax lookup), non-generative signal cleanup (audio denoising, upscaling), or minor inline autocomplete and boilerplate.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
               <span class="lvl-badge b-2">E2</span>
               <div class="level-info">
                 <strong>Collaborative</strong>
-                <span>Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.</span>
+                <span>Human and AI each produced substantial portions of the delivered work, such as a human creating the core work while AI generated supporting utilities, background elements, or data visualizations.</span>
               </div>
             </div>
             <div class="level-option selected" data-level="3" onclick="toggleExecution(3)">
               <span class="lvl-badge b-3">E3</span>
               <div class="level-info">
                 <strong>Directed</strong>
-                <span>AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.</span>
+                <span>Generative AI produced the vast majority of the component's output, operating strictly as an implementation engine under human direction, detailed multi-paragraph specifications, explicit constraints, and human verification or editing.</span>
               </div>
             </div>
             <div class="level-option" data-level="4" onclick="toggleExecution(4)">
               <span class="lvl-badge b-4">E4</span>
               <div class="level-info">
                 <strong>Autonomous</strong>
-                <span>Generated end-to-end by AI from minimal prompts with little or no human specification or review.</span>
+                <span>The delivered output was generated end-to-end by AI from minimal prompts with little or no human specification, review, or manual modification.</span>
               </div>
             </div>
+            <!-- SYNC:EXECUTION-OPTIONS:END -->
           </div>
         </div>
       </div>
@@ -902,16 +935,52 @@
   </section>
 
   <footer>
+    <!-- SYNC:FOOTER:START -->
     <p>
       <strong>AIDR Specification v1.0</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
-      All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a>.
+      All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.
     </p>
+    <!-- SYNC:FOOTER:END -->
   </footer>
 
 </main>
 
 <script>
-  const LEVEL_NAMES = ['Unassisted', 'Assisted', 'Collaborative', 'Directed', 'Autonomous'];
+  /* SYNC:SPEC-DATA:START */
+  const SPEC_DATA = {
+    "acronym": "AIDR",
+    "fullName": "Artificial Intelligence Disclosure Rating",
+    "version": "1.0",
+    "ideationTitles": [
+      "Unassisted",
+      "Assisted",
+      "Collaborative",
+      "Directed",
+      "Autonomous"
+    ],
+    "executionTitles": [
+      "Unassisted",
+      "Assisted",
+      "Collaborative",
+      "Directed",
+      "Autonomous"
+    ],
+    "ideationDefinitions": [
+      "All concepts, designs, compositions, narratives, and algorithms are 100% human-originated, with zero AI consultation even for background research.",
+      "All core concepts, designs, and primary structures are human-originated. AI was used only for background research (explaining theory, summarizing reference material) or as a sounding board that suggested minor local refinements which the human evaluated and selectively adopted.",
+      "The human established the overarching creative vision and goals, and actively partnered with AI to co-brainstorm sub-components, solve structural problems, or develop outlines together.",
+      "The human provided a broad problem statement, theme, or high-level prompt, and AI generated the primary structure, outline, or design choices, which the human then curated, evaluated, and refined.",
+      "AI conceived the project concept, design, and creative direction with minimal or no human conceptual input."
+    ],
+    "executionDefinitions": [
+      "Every line of code, word of prose, brushstroke, or musical note was manually authored or performed by the human with zero AI involvement.",
+      "The delivered work is human-authored. AI or machine-learning tools were used only for read-only diagnostics (bug-finding, grammar checking), reference lookups (phrase thesaurus, syntax lookup), non-generative signal cleanup (audio denoising, upscaling), or minor inline autocomplete and boilerplate.",
+      "Human and AI each produced substantial portions of the delivered work, such as a human creating the core work while AI generated supporting utilities, background elements, or data visualizations.",
+      "Generative AI produced the vast majority of the component's output, operating strictly as an implementation engine under human direction, detailed multi-paragraph specifications, explicit constraints, and human verification or editing.",
+      "The delivered output was generated end-to-end by AI from minimal prompts with little or no human specification, review, or manual modification."
+    ]
+  };
+  /* SYNC:SPEC-DATA:END */
 
   let selectedIdeations = [0, 1];
   let selectedExecutions = [0, 3];
@@ -980,6 +1049,7 @@
    * with commas: "E0,E3" (compact) and "E0, E3" (spaced).
    */
   function formatLevels(prefix, levels) {
+    const titlesList = prefix === 'I' ? SPEC_DATA.ideationTitles : SPEC_DATA.executionTitles;
     const sorted = Array.from(new Set(levels)).sort((a, b) => a - b);
     if (sorted.length === 0) sorted.push(0);
 
@@ -1007,15 +1077,15 @@
       if (count >= 3) {
         compactParts.push(`${prefix}${start}-${prefix}${end}`);
         spacedParts.push(`${prefix}${start}-${prefix}${end}`);
-        descParts.push(`${LEVEL_NAMES[start]} through ${LEVEL_NAMES[end]}`);
+        descParts.push(`${titlesList[start]} through ${titlesList[end]}`);
       } else if (count === 2) {
         compactParts.push(`${prefix}${start},${prefix}${end}`);
         spacedParts.push(`${prefix}${start}, ${prefix}${end}`);
-        descParts.push(`${LEVEL_NAMES[start]}, ${LEVEL_NAMES[end]}`);
+        descParts.push(`${titlesList[start]}, ${titlesList[end]}`);
       } else {
         compactParts.push(`${prefix}${start}`);
         spacedParts.push(`${prefix}${start}`);
-        descParts.push(`${LEVEL_NAMES[start]}`);
+        descParts.push(`${titlesList[start]}`);
       }
     });
 
@@ -1045,13 +1115,13 @@
     const iOptions = [0, 1, 2, 3, 4].map(n => {
       const code = `I${n}`;
       const sel = code === iCode ? 'selected' : '';
-      return `<option value="${code}" ${sel}>${code}: ${LEVEL_NAMES[n]} Ideation</option>`;
+      return `<option value="${code}" ${sel}>${code}: ${SPEC_DATA.ideationTitles[n]} Ideation</option>`;
     }).join('');
 
     const eOptions = [0, 1, 2, 3, 4].map(n => {
       const code = `E${n}`;
       const sel = code === eCode ? 'selected' : '';
-      return `<option value="${code}" ${sel}>${code}: ${LEVEL_NAMES[n]} Execution</option>`;
+      return `<option value="${code}" ${sel}>${code}: ${SPEC_DATA.executionTitles[n]} Execution</option>`;
     }).join('');
 
     row.innerHTML = `
@@ -1191,8 +1261,8 @@
   }
 
   function buildSvgBadgeString(scoreText, leftBg, rightBg) {
-    const leftText = 'AIDR';
-    const leftWidth = 54;
+    const leftText = SPEC_DATA.acronym;
+    const leftWidth = Math.max(54, leftText.length * 9 + 18);
     const rightWidth = Math.max(82, scoreText.length * 7.8 + 22);
     const totalWidth = Math.round(leftWidth + rightWidth);
     return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="24" role="img" aria-label="${leftText}: ${scoreText}">
@@ -1215,7 +1285,7 @@
     const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
     const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}), Execution: ${eInfo.spaced} (${eInfo.titles})`;
 
-    document.getElementById('live-score-text').textContent = `AIDR: ${scoreCompact}`;
+    document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
     document.getElementById('live-score-sub').textContent = subDisplay;
 
     const maxLvl = Math.max(iInfo.max, eInfo.max);
@@ -1236,21 +1306,21 @@
         eCode,
         iNum,
         eNum,
-        iTitle: LEVEL_NAMES[iNum],
-        eTitle: LEVEL_NAMES[eNum],
+        iTitle: SPEC_DATA.ideationTitles[iNum],
+        eTitle: SPEC_DATA.executionTitles[eNum],
         desc: r.querySelector('.comp-desc').value.trim() || ''
       };
     });
 
     // 1. Markdown Output
-    let md = `## AI Usage Disclosure: AIDR \`${scoreCompact}\`\n\n`;
-    md += `This work is self-disclosed under the **AIDR (Artificial Intelligence Disclosure Rating) v1.0** standard:\n`;
+    let md = `## AI Usage Disclosure: ${SPEC_DATA.acronym} \`${scoreCompact}\`\n\n`;
+    md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName}) v${SPEC_DATA.version}** standard:\n`;
     md += `- **Ideation (\`${iInfo.spaced}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo)}\n`;
     md += `- **Execution (\`${eInfo.spaced}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo)}\n`;
 
     if (comps.length > 0) {
       md += `\n### Component Breakdown\n\n`;
-      md += `| Component / Deliverable | AIDR Score | Classification | Details |\n`;
+      md += `| Component / Deliverable | ${SPEC_DATA.acronym} Score | Classification | Details |\n`;
       md += `| :--- | :--- | :--- | :--- |\n`;
       comps.forEach(c => {
         md += `| **${c.name}** | **\`${c.iCode} / ${c.eCode}\`** | ${c.iTitle} Ideation, ${c.eTitle} Execution | ${c.desc} |\n`;
@@ -1260,7 +1330,7 @@
 
     // 2. NFO / Liner Notes Output
     let nfo = `========================================================================\n`;
-    nfo += ` AI DISCLOSURE (AIDR v1.0: ${scoreCompact})\n`;
+    nfo += ` AI DISCLOSURE (${SPEC_DATA.acronym} v${SPEC_DATA.version}: ${scoreCompact})\n`;
     nfo += `------------------------------------------------------------------------\n`;
     nfo += ` Ideation  : ${iInfo.spaced} (${iInfo.titles})\n`;
     nfo += ` Execution : ${eInfo.spaced} (${eInfo.titles})\n`;
@@ -1279,18 +1349,18 @@
     // 3. Per-File / Asset Metadata Header Tags
     let headers = '';
     if (comps.length > 0) {
-      headers += `# --- Component-Specific AIDR-Usage Header Lines ---\n`;
+      headers += `# --- Component-Specific ${SPEC_DATA.acronym}-Usage Header Lines ---\n`;
       comps.forEach(c => {
-        headers += `# [${c.name}] AIDR-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}, Execution: ${c.eTitle})\n`;
+        headers += `# [${c.name}] ${SPEC_DATA.acronym}-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}, Execution: ${c.eTitle})\n`;
       });
       headers += `\n`;
     }
     headers += `// --- C / C++ / Rust / JavaScript / C# Header ---\n`;
-    headers += `// AIDR-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+    headers += `// ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
     headers += `# --- Python / Shell / YAML / Markdown Metadata Header ---\n`;
-    headers += `# AIDR-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+    headers += `# ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
     headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
-    headers += `; AIDR-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})`;
+    headers += `; ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})`;
     document.getElementById('out-headers').textContent = headers;
   }
 
@@ -1298,28 +1368,14 @@
     if (levels.length > 1) {
       return `Project components span multiple ideation levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
     }
-    const summaries = [
-      'All concepts, designs, compositions, and algorithms are 100% human-originated with zero AI consultation.',
-      'All core concepts, designs, and primary structures originated from the human creator; AI was consulted only for background research or minor tested refinements.',
-      'The human creator established the overarching vision and collaborated with AI to co-brainstorm sub-components or outlines.',
-      'The human creator provided a high-level goal and curated the primary structure or design choices proposed by AI.',
-      'AI conceived the project concept and creative direction with minimal human input.'
-    ];
-    return summaries[levels[0]];
+    return SPEC_DATA.ideationDefinitions[levels[0]];
   }
 
   function getExecutionSummary(levels, info) {
     if (levels.length > 1) {
       return `Project components span multiple execution levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
     }
-    const summaries = [
-      '100% hand-crafted or performed by the human creator with zero AI involvement.',
-      'Authored by the human creator; AI was used only for read-only diagnostics, reference lookups, non-generative signal cleanup, or minor boilerplate.',
-      'Shared human-AI production where the human created the core work and AI generated secondary utilities or supporting elements.',
-      'Produced by AI operating strictly from detailed human specifications and constraints, verified by the creator.',
-      'Generated end-to-end by AI with minimal human specification or modification.'
-    ];
-    return summaries[levels[0]];
+    return SPEC_DATA.executionDefinitions[levels[0]];
   }
 
   function copyText(elementId, btn) {

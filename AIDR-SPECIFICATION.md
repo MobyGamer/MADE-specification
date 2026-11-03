@@ -3,7 +3,7 @@
 **Version:** 1.0  
 **Status:** Canonical Specification  
 **Author:** Jim Leonard (<mobygamer@gmail.com>)  
-**Date:** October 2026  
+**Date:** November 2026  
 **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
 **Templates, Badges & Header Tags License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
 
@@ -11,19 +11,19 @@
 
 ## 1. Purpose & Philosophy
 
-**AIDR (Artificial Intelligence Disclosure Rating)** is a voluntary, author-declared rating framework that enables creators of software, creative writing, graphical art, music composition, and other public works to transparently communicate how artificial intelligence was used in their projects.
+**AIDR (Artificial Intelligence Disclosure Rating)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets AIDR apart from previous AI disclosure scales is that it rates original human ideas separately from mechanical implementation, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing linear disclosure scales, such as the REAL Rating (0 to 5), the AI Assessment Scale (1 to 5), and the GAIT Framework, collapse all AI usage onto a single numeric spectrum. Worse, linear scales routinely place *AI brainstorming and ideation* at a lower number than *AI mechanical implementation*.
+Existing linear disclosure scales, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and the [GAIT Framework](https://hypervisor.studio/gait/#levels), collapse all AI usage onto a single numeric spectrum. Worse, linear scales routinely place *AI brainstorming and ideation* at a lower number than *AI mechanical implementation*. 
 
-Under a single-number scale:
-1. A creator with no original ideas who prompts an AI model to invent a plot, composition structure, or software design, and then manually types or illustrates the result, receives a low AI rating.
-2. An author, artist, composer, or programmer who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive mechanical tasks (such as generating file-conversion utilities from a strict specification, cleaning up room reverb on a live recording, or generating flat color fills) is penalized with a high AI rating. This lumps original human creation together with unreviewed, end-to-end AI output.
+A single-number scale incentivizes the wrong signals:
+1. A creator with no original ideas who prompts an AI model to invent a plot, composition structure, or software design, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the creator relying on AI for all original ideas.
+2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is **penalized** with a high AI rating, despite relying on AI only for mechanical tasks.
 
-### The AIDR Solution: Separating Ideation from Execution
+### AIDR's Balanced Alternative: Separating Ideation from Execution
 AIDR resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
-- **Ideation (`I0` to `I4`)** measures who conceived the ideas, concepts, structure, composition, or algorithms.
-- **Execution (`E0` to `E4`)** measures how the tangible work (code, prose, visual art, or music/audio) was mechanically produced.
+- **Ideation (`I0` to `I4`)** measures who conceived the ideas, concepts, structure, design, composition, or algorithms.
+- **Execution (`E0` to `E4`)** measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.
 
 Both categories share five symmetrical, whole-number level titles:
 - **`0`: Unassisted**
