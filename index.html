@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>AIDR v0.1: Artificial Intelligence Disclosure Rating</title>
+  <title>MADE v0.1: Measure of AI in Design &amp; Execution</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -535,16 +535,16 @@
   <div class="container">
     <div class="top-bar">
       <!-- SYNC:VERSION-PILL:START -->
-      <span class="version-pill">AIDR Standard v0.1</span>
+      <span class="version-pill">MADE Standard v0.1</span>
       <!-- SYNC:VERSION-PILL:END -->
       <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
     </div>
     <!-- SYNC:HEADER-H1:START -->
-    <h1>AIDR: Artificial Intelligence Disclosure Rating</h1>
+    <h1>MADE: Measure of AI in Design &amp; Execution</h1>
     <!-- SYNC:HEADER-H1:END -->
     <p class="subtitle">
       A self-disclosure rating scale for programming, creative writing, graphical art, and music composition that separates
-      <strong>human conceptual authorship (Ideation)</strong> from <strong>mechanical production (Execution)</strong>.
+      <strong>human conceptual authorship (Ideation / Design)</strong> from <strong>mechanical production (Execution)</strong>.
     </p>
     <nav class="tabs">
       <!-- SYNC:TAB1-BTN:START -->
@@ -589,15 +589,15 @@
       </div>
 
       <h2><span>1. Purpose &amp; Philosophy</span></h2>
-      <p><strong>AIDR (Artificial Intelligence Disclosure Rating)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets AIDR apart from previous AI disclosure scales is that it rates <strong>original human ideas</strong> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
+      <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <strong>original human ideas</strong> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
       <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure (RAID)</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.  This incentivizes the wrong signals:</p>
       <ol>
         <li>A creator with no original ideas who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
         <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is <strong>penalized</strong> with a "high" AI rating, despite only using AI for mechanical tasks.</li>
       </ol>
-      <h3>AIDR's Balanced Alternative: Separating Ideation from Execution</h3>
-      <p>AIDR resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
+      <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
+      <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
       <ul>
         <li><strong>Ideation (<code>I0</code> to <code>I4</code>)</strong> measures who conceived the ideas, concepts, structure, design, composition, or algorithms.</li>
         <li><strong>Execution (<code>E0</code> to <code>E4</code>)</strong> measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.</li>
@@ -708,51 +708,51 @@
 
     <div class="card">
       <h2><span>4. Disclosure Format &amp; Syntax</span></h2>
-      <p>AIDR supports a <strong>two-tier disclosure format</strong> so hybrid projects (such as a project where the core work is hand-crafted at <code>E0</code> and a secondary component is AI-generated from specifications at <code>E3</code>) can represent both the overall release and its individual components accurately.</p>
+      <p>MADE supports a <strong>two-tier disclosure format</strong> so hybrid projects (such as a project where the core work is hand-crafted at <code>E0</code> and a secondary component is AI-generated from specifications at <code>E3</code>) can represent both the overall release and its individual components accurately.</p>
       <h3>4.1 Tier 1: Compact Shorthand Notation</h3>
       <ol>
         <li>
           <strong>Separating Ideation and Execution (Always Use a Slash):</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>). Never use a hyphen between <code>I</code> and <code>E</code>, as a hyphen implies a range.
           <ul>
-            <li>Correct: <code>AIDR: I1 / E0</code></li>
-            <li>Incorrect: <code>AIDR: I1-E0</code></li>
+            <li>Correct: <code>MADE: I1 / E0</code></li>
+            <li>Incorrect: <code>MADE: I1-E0</code></li>
           </ul>
         </li>
         <li>
           <strong>Expanded Human-Readable Format (Use a Comma):</strong> When writing out the full rating in prose, separate the Ideation and Execution clauses with a comma rather than a pipe symbol:
           <ul>
-            <li><code>AIDR: Ideation 1 (Assisted), Execution 0 (Unassisted)</code></li>
+            <li><code>MADE: Ideation 1 (Assisted), Execution 0 (Unassisted)</code></li>
           </ul>
         </li>
         <li>
-          <strong>Multi-Component Projects: Discrete Levels (<code>E0,E3</code>) vs. Contiguous Ranges (<code>E0-E3</code>):</strong> When a project contains multiple components with different AI involvement levels, AIDR distinguishes between discrete selections and continuous ranges:
+          <strong>Multi-Component Projects: Discrete Levels (<code>E0,E3</code>) vs. Contiguous Ranges (<code>E0-E3</code>):</strong> When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
           <ul>
-            <li><strong>Discrete Levels (Comma-Separated):</strong> If a project uses only specific, non-contiguous levels (or just two distinct levels, such as <code>E0</code> for hand-crafted work and <code>E3</code> for a spec-driven utility, with no <code>E1</code> or <code>E2</code> components), list the exact levels separated by a comma: <code>AIDR: I1 / E0,E3</code> (or <code>AIDR: I1 / E0, E3</code>)</li>
-            <li><strong>Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):</strong> If a project spans three or more consecutive levels (for example, components covering <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix (<code>I</code> or <code>E</code>) on both numbers: <code>AIDR: I1 / E0-E3</code> (Never write <code>E0-3</code>, which is visually ambiguous.)</li>
+            <li><strong>Discrete Levels (Comma-Separated):</strong> If a project uses only specific, non-contiguous levels (or just two distinct levels, such as <code>E0</code> for hand-crafted work and <code>E3</code> for a spec-driven utility, with no <code>E1</code> or <code>E2</code> components), list the exact levels separated by a comma: <code>MADE: I1 / E0,E3</code> (or <code>MADE: I1 / E0, E3</code>)</li>
+            <li><strong>Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):</strong> If a project spans three or more consecutive levels (for example, components covering <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix (<code>I</code> or <code>E</code>) on both numbers: <code>MADE: I1 / E0-E3</code> (Never write <code>E0-3</code>, which is visually ambiguous.)</li>
           </ul>
         </li>
       </ol>
       <h3>4.2 Tier 2: Component-Level Breakdown</h3>
       <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where <strong>each component declares both its Ideation level and its Execution level</strong>:</p>
-      <pre><code>**AI Disclosure ([AIDR v1.0](AIDR-SPECIFICATION.md)): `I0,I1 / E0,E3`**
+      <pre><code>**AI Disclosure ([MADE v1.0](MADE-SPECIFICATION.md)): `I0,I1 / E0,E3`**
 - **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import &amp; Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
       <h3>4.3 Per-File Source Code &amp; Asset Metadata Headers</h3>
-      <p>To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place an <code>AIDR-Usage</code> line tag in file headers or asset metadata comments:</p>
+      <p>To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a <code>MADE-Usage</code> line tag in file headers or asset metadata comments:</p>
       <p><strong>Assembly (<code>.asm</code>, <code>.inc</code>, <code>.s</code>):</strong></p>
-      <pre><code>; AIDR-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)</code></pre>
+      <pre><code>; MADE-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)</code></pre>
       <p><strong>C / C++ / Rust / Go / JavaScript / C#:</strong></p>
-      <pre><code>// AIDR-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)</code></pre>
+      <pre><code>// MADE-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)</code></pre>
       <p><strong>Python / Shell / YAML / Makefile / Markdown / Text Metadata:</strong></p>
-      <pre><code># AIDR-Usage: I1/E1 (Ideation: Assisted, Execution: Assisted)</code></pre>
+      <pre><code># MADE-Usage: I1/E1 (Ideation: Assisted, Execution: Assisted)</code></pre>
     </div>
 
     <div class="card">
       <h2><span>5. Licensing &amp; Governance</span></h2>
-      <p>To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, AIDR uses a two-part licensing structure:</p>
+      <p>To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, MADE uses a two-part licensing structure:</p>
       <ol>
-        <li><strong>Using AIDR Ratings, Badges, and Templates in Your Works (<code>CC0 1.0 Public Domain</code>):</strong> Declaring an AIDR rating on your project, embedding AIDR badges, copying disclosure templates, or placing <code>AIDR-Usage</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.</li>
-        <li><strong>Republishing the Specification Document (<code>CC BY-ND 4.0</code>):</strong> This specification document itself (<code>AIDR-SPECIFICATION.md</code>) is licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a>. This ensures that if someone republishes the specification document itself, the initial authorship remains recorded in the specification text and third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "AIDR."</li>
+        <li><strong>Using MADE Ratings, Badges, and Templates in Your Works (<code>CC0 1.0 Public Domain</code>):</strong> Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing <code>MADE-Usage</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.</li>
+        <li><strong>Republishing the Specification Document (<code>CC BY-ND 4.0</code>):</strong> This specification document itself (<code>MADE-SPECIFICATION.md</code>) is licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a>. This ensures that if someone republishes the specification document itself, the initial authorship remains recorded in the specification text and third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "MADE."</li>
       </ol>
     </div>
 
@@ -903,8 +903,8 @@
 
       <div class="preview-banner">
         <div>
-          <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Live AIDR Score</div>
-          <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">AIDR: I0,I1 / E0,E3</div>
+          <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Live MADE Score</div>
+          <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0,I1 / E0,E3</div>
           <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0, I1 (Unassisted, Assisted), Execution: E0, E3 (Unassisted, Directed)</div>
         </div>
         <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
@@ -936,7 +936,7 @@
   <footer>
     <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>AIDR Specification v0.1</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>MADE Specification v0.1</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.
     </p>
     <!-- SYNC:FOOTER:END -->
@@ -947,8 +947,8 @@
 <script>
   /* SYNC:SPEC-DATA:START */
   const SPEC_DATA = {
-    "acronym": "AIDR",
-    "fullName": "Artificial Intelligence Disclosure Rating",
+    "acronym": "MADE",
+    "fullName": "Measure of AI in Design & Execution",
     "version": "0.1",
     "ideationTitles": [
       "Unassisted",
@@ -1393,7 +1393,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'aidr-badge.svg';
+    a.download = 'made-badge.svg';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

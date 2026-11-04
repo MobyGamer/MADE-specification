@@ -1,4 +1,4 @@
-# AIDR: Artificial Intelligence Disclosure Rating, Specification v1.0
+# MADE: Measure of AI in Design & Execution, Specification v1.0
 
 **Version:** 0.1  
 **Status:** Canonical Specification  
@@ -11,15 +11,15 @@
 
 ## 1. Purpose & Philosophy
 
-**AIDR (Artificial Intelligence Disclosure Rating)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets AIDR apart from previous AI disclosure scales is that it rates **original human ideas** separately from *mechanical implementation*, rather than reducing an entire project to a single number.
+**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates **original human ideas** separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
 Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure (RAID)](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *AI brainstorming and ideation* at a lower number than *AI mechanical implementation*.  This incentivizes the wrong signals:
 1. A creator with no original ideas who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
 2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is **penalized** with a "high" AI rating, despite only using AI for mechanical tasks.
 
-### AIDR's Balanced Alternative: Separating Ideation from Execution
-AIDR resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
+### MADE's Balanced Alternative: Separating Ideation from Execution
+MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
 - **Ideation (`I0` to `I4`)** measures who conceived the ideas, concepts, structure, design, composition, or algorithms.
 - **Execution (`E0` to `E4`)** measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.
 
@@ -62,65 +62,65 @@ The **Execution** level measures how the final deliverables of the work (source 
 
 ## 4. Disclosure Format & Syntax
 
-AIDR supports a **two-tier disclosure format** so hybrid projects (such as a project where the core work is hand-crafted at `E0` and a secondary component is AI-generated from specifications at `E3`) can represent both the overall release and its individual components accurately.
+MADE supports a **two-tier disclosure format** so hybrid projects (such as a project where the core work is hand-crafted at `E0` and a secondary component is AI-generated from specifications at `E3`) can represent both the overall release and its individual components accurately.
 
 ### 4.1 Tier 1: Compact Shorthand Notation
 
 1. **Separating Ideation and Execution (Always Use a Slash):**
    Ideation (`I`) and Execution (`E`) are always separated by a forward slash (`/`). Never use a hyphen between `I` and `E`, as a hyphen implies a range.
-   - Correct: `AIDR: I1 / E0`
-   - Incorrect: `AIDR: I1-E0`
+   - Correct: `MADE: I1 / E0`
+   - Incorrect: `MADE: I1-E0`
 
 2. **Expanded Human-Readable Format (Use a Comma):**
    When writing out the full rating in prose, separate the Ideation and Execution clauses with a comma rather than a pipe symbol:
-   - `AIDR: Ideation 1 (Assisted), Execution 0 (Unassisted)`
+   - `MADE: Ideation 1 (Assisted), Execution 0 (Unassisted)`
 
 3. **Multi-Component Projects: Discrete Levels (`E0,E3`) vs. Contiguous Ranges (`E0-E3`):**
-   When a project contains multiple components with different AI involvement levels, AIDR distinguishes between discrete selections and continuous ranges:
+   When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
    - **Discrete Levels (Comma-Separated):** If a project uses only specific, non-contiguous levels (or just two distinct levels, such as `E0` for hand-crafted work and `E3` for a spec-driven utility, with no `E1` or `E2` components), list the exact levels separated by a comma:
-     `AIDR: I1 / E0,E3` (or `AIDR: I1 / E0, E3`)
+     `MADE: I1 / E0,E3` (or `MADE: I1 / E0, E3`)
    - **Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):** If a project spans three or more consecutive levels (for example, components covering `E0`, `E1`, `E2`, and `E3`), express the span using a hyphen and repeat the letter prefix (`I` or `E`) on both numbers:
-     `AIDR: I1 / E0-E3` (Never write `E0-3`, which is visually ambiguous.)
+     `MADE: I1 / E0-E3` (Never write `E0-3`, which is visually ambiguous.)
 
 ### 4.2 Tier 2: Component-Level Breakdown
 
 Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where **each component declares both its Ideation level and its Execution level**:
 
 ```markdown
-**AI Disclosure ([AIDR v1.0](AIDR-SPECIFICATION.md)): `I0,I1 / E0,E3`**
+**AI Disclosure ([MADE v1.0](MADE-SPECIFICATION.md)): `I0,I1 / E0,E3`**
 - **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import & Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).
 ```
 
 ### 4.3 Per-File Source Code & Asset Metadata Headers
 
-To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place an `AIDR-Usage` line tag in file headers or asset metadata comments:
+To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a `MADE-Usage` line tag in file headers or asset metadata comments:
 
 **Assembly (`.asm`, `.inc`, `.s`):**
 ```nasm
-; AIDR-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)
+; MADE-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)
 ```
 
 **C / C++ / Rust / Go / JavaScript / C#:**
 ```c
-// AIDR-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)
+// MADE-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)
 ```
 
 **Python / Shell / YAML / Makefile / Markdown / Text Metadata:**
 ```python
-# AIDR-Usage: I1/E1 (Ideation: Assisted, Execution: Assisted)
+# MADE-Usage: I1/E1 (Ideation: Assisted, Execution: Assisted)
 ```
 
 ---
 
 ## 5. Licensing & Governance
 
-To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, AIDR uses a two-part licensing structure:
+To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, MADE uses a two-part licensing structure:
 
-1. **Using AIDR Ratings, Badges, and Templates in Your Works (`CC0 1.0 Public Domain`):**
-   Declaring an AIDR rating on your project, embedding AIDR badges, copying disclosure templates, or placing `AIDR-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/).
+1. **Using MADE Ratings, Badges, and Templates in Your Works (`CC0 1.0 Public Domain`):**
+   Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/).
 2. **Republishing the Specification Document (`CC BY-ND 4.0`):**
-   This specification document itself (`AIDR-SPECIFICATION.md`) is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/). This ensures that if someone republishes the specification document itself, the initial authorship remains recorded in the specification text and third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "AIDR."
+   This specification document itself (`MADE-SPECIFICATION.md`) is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/). This ensures that if someone republishes the specification document itself, the initial authorship remains recorded in the specification text and third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE."
 
 ---
 

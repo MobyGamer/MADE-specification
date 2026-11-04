@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Synchronize AIDR-SPECIFICATION.md (ground truth) into index.html.
+"""Synchronize MADE-SPECIFICATION.md (ground truth) into index.html.
 
-Zero-dependency Python 3 script that validates AIDR-SPECIFICATION.md against
+Zero-dependency Python 3 script that validates MADE-SPECIFICATION.md against
 structural and stylistic rules, then updates all marked regions of index.html
 (Tab 1 full specification, Tab 2 Ideation/Execution level buttons, header/footer
 metadata, and the JavaScript SPEC_DATA object driving generated disclosures).
@@ -9,7 +9,7 @@ metadata, and the JavaScript SPEC_DATA object driving generated disclosures).
 Usage:
   python sync_spec.py           # Validate spec and update index.html in-place
   python sync_spec.py --check   # Dry-run check (exit 0 if synced, 1 otherwise)
-  python sync_spec.py --watch   # Watch AIDR-SPECIFICATION.md and auto-sync
+  python sync_spec.py --watch   # Watch MADE-SPECIFICATION.md and auto-sync
 """
 
 from __future__ import annotations
@@ -24,7 +24,7 @@ import time
 from typing import Any
 
 
-DEFAULT_SPEC_FILENAME = "AIDR-SPECIFICATION.md"
+DEFAULT_SPEC_FILENAME = "MADE-SPECIFICATION.md"
 DEFAULT_HTML_FILENAME = "index.html"
 
 REQUIRED_META_KEYS = (
@@ -42,11 +42,11 @@ DEFAULT_SELECTED_EXECUTIONS = {0, 3}
 
 
 class SpecValidationError(Exception):
-    """Raised when AIDR-SPECIFICATION.md or index.html fails validation."""
+    """Raised when MADE-SPECIFICATION.md or index.html fails validation."""
 
 
 def validate_stylistic_rules(spec_text: str) -> None:
-    """Enforce strict fail-fast stylistic invariants on AIDR-SPECIFICATION.md."""
+    """Enforce strict fail-fast stylistic invariants on MADE-SPECIFICATION.md."""
     violations: list[str] = []
     checks: list[tuple[re.Pattern[str], str]] = [
         (
@@ -66,8 +66,12 @@ def validate_stylistic_rules(spec_text: str) -> None:
             "Deprecated '5x5' matrix reference detected",
         ),
         (
+            re.compile(r"\bAIDR\b"),
+            "Legacy acronym 'AIDR' detected (use 'MADE')",
+        ),
+        (
             re.compile(r"\bAIDE\b"),
-            "Legacy acronym 'AIDE' detected (use 'AIDR')",
+            "Legacy acronym 'AIDE' detected (use 'MADE')",
         ),
     ]
 
@@ -277,7 +281,7 @@ def parse_header_chunk(lines: list[str]) -> dict[str, Any]:
     if ":" in display_h1:
         acronym, full_name = [part.strip() for part in display_h1.split(":", 1)]
     else:
-        acronym = "AIDR"
+        acronym = "MADE"
         full_name = display_h1
 
     return {
@@ -627,7 +631,7 @@ def render_blocks(
 
 
 def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
-    """Validate AIDR-SPECIFICATION.md and compile all synced HTML & JS fragments."""
+    """Validate MADE-SPECIFICATION.md and compile all synced HTML & JS fragments."""
     validate_stylistic_rules(spec_text)
     sections = split_top_level_sections(spec_text)
     header_info = parse_header_chunk(sections[0])
@@ -925,7 +929,7 @@ def main(argv: list[str] | None = None) -> int:
     base_dir = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(
         description=(
-            "Validate AIDR-SPECIFICATION.md and synchronize all specification "
+            "Validate MADE-SPECIFICATION.md and synchronize all specification "
             "prose, level definitions, and metadata into index.html."
         )
     )
