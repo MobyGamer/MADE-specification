@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>AIDR v1.0: Artificial Intelligence Disclosure Rating</title>
+  <title>AIDR v0.1: Artificial Intelligence Disclosure Rating</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -535,7 +535,7 @@
   <div class="container">
     <div class="top-bar">
       <!-- SYNC:VERSION-PILL:START -->
-      <span class="version-pill">AIDR Standard v1.0</span>
+      <span class="version-pill">AIDR Standard v0.1</span>
       <!-- SYNC:VERSION-PILL:END -->
       <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
     </div>
@@ -548,7 +548,7 @@
     </p>
     <nav class="tabs">
       <!-- SYNC:TAB1-BTN:START -->
-      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0 Specification</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v0.1 Specification</button>
       <!-- SYNC:TAB1-BTN:END -->
       <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure Builder</button>
     </nav>
@@ -564,7 +564,7 @@
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
-          <span>1.0</span>
+          <span>0.1</span>
         </div>
         <div class="meta-item">
           <strong>Status</strong>
@@ -591,7 +591,7 @@
       <h2><span>1. Purpose &amp; Philosophy</span></h2>
       <p><strong>AIDR (Artificial Intelligence Disclosure Rating)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets AIDR apart from previous AI disclosure scales is that it rates <strong>original human ideas</strong> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>Existing linear disclosure scales, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, and the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, collapse all AI usage onto a single numeric spectrum. Such scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.  This incentivizes the wrong signals:</p>
+      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure (RAID)</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.  This incentivizes the wrong signals:</p>
       <ol>
         <li>A creator with no original ideas who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
         <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is <strong>penalized</strong> with a "high" AI rating, despite only using AI for mechanical tasks.</li>
@@ -760,7 +760,7 @@
       <h2><span>6. Authorship &amp; Provenance</span></h2>
       <ul>
         <li><strong>Initial Author:</strong> Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</li>
-        <li><strong>Version:</strong> 1.0 (October 2026)</li>
+        <li><strong>Version:</strong> 0.1 (November 2026)</li>
         <li><strong>Origin &amp; Intent:</strong> Created to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</li>
       </ul>
     </div>
@@ -936,7 +936,7 @@
   <footer>
     <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>AIDR Specification v1.0</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>AIDR Specification v0.1</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.
     </p>
     <!-- SYNC:FOOTER:END -->
@@ -949,7 +949,7 @@
   const SPEC_DATA = {
     "acronym": "AIDR",
     "fullName": "Artificial Intelligence Disclosure Rating",
-    "version": "1.0",
+    "version": "0.1",
     "ideationTitles": [
       "Unassisted",
       "Assisted",

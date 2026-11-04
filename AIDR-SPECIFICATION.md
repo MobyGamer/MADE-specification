@@ -1,6 +1,6 @@
 # AIDR: Artificial Intelligence Disclosure Rating, Specification v1.0
 
-**Version:** 1.0  
+**Version:** 0.1  
 **Status:** Canonical Specification  
 **Author:** Jim Leonard (<mobygamer@gmail.com>)  
 **Date:** November 2026  
@@ -14,7 +14,7 @@
 **AIDR (Artificial Intelligence Disclosure Rating)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets AIDR apart from previous AI disclosure scales is that it rates **original human ideas** separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing linear disclosure scales, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and the [GAIT Framework](https://hypervisor.studio/gait/#levels), collapse all AI usage onto a single numeric spectrum. Such scales routinely place *AI brainstorming and ideation* at a lower number than *AI mechanical implementation*.  This incentivizes the wrong signals:
+Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure (RAID)](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *AI brainstorming and ideation* at a lower number than *AI mechanical implementation*.  This incentivizes the wrong signals:
 1. A creator with no original ideas who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
 2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is **penalized** with a "high" AI rating, despite only using AI for mechanical tasks.
 
@@ -127,5 +127,5 @@ To protect the canonical definitions of the scale from fragmentation while ensur
 ## 6. Authorship & Provenance
 
 - **Initial Author:** Jim Leonard (<mobygamer@gmail.com>)
-- **Version:** 1.0 (October 2026)
+- **Version:** 0.1 (November 2026)
 - **Origin & Intent:** Created to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.
