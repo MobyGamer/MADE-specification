@@ -4,14 +4,14 @@ All templates, badges, and metadata header tags in this document are dedicated t
 
 ---
 
-## 1. Software & Programming Scenario (`MADE: I0,I1 / E0,E3`)
+## 1. Software & Programming Scenario (`MADE: I0-I1 / E0,E3`)
 
 *Scenario: An independent developer designs an original software project and writes the performance-critical core engine entirely by hand (`I0 / E0`), while using an LLM to generate secondary data-conversion utilities from a detailed human specification (`I1 / E3`).*
 
 ### 1.1 Markdown Table (`README.md`)
 
 ```markdown
-## AI Usage Disclosure: MADE `I0,I1 / E0,E3`
+## AI Usage Disclosure: MADE `I0-I1 / E0,E3`
 
 This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution) v1.0](MADE-SPECIFICATION.md)** standard:
 
@@ -39,22 +39,22 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 ---
 
-## 2. Creative Writing & Publishing Scenario (`MADE: I1 / E0,E1`)
+## 2. Creative Writing & Publishing Scenario (`MADE: I1 / E0-E1`)
 
 *Scenario: An author writes an original novel, investigative essay, or tabletop RPG rulebook. The plot, characters, and prose are written by hand, while AI is used only to summarize historical research material (`I1`) and act as an interactive phrase thesaurus and proofreader (`E1`).*
 
 ### 2.1 Copyright Page / Book Colophon / Article Footer
 
 ```markdown
-**AI Disclosure (MADE v1.0: `I1 / E0,E1`):**
-Ideation 1 (Assisted), Execution 0, 1 (Unassisted, Assisted).
+**AI Disclosure (MADE v1.0: `I1 / E0-E1`):**
+Ideation: I1 (Assisted), Execution: E0-E1 (Unassisted, Assisted).
 All plotlines, characters, arguments, and prose in this work were conceived and written by the human author. AI tools were consulted solely for background historical research (`I1`) and used during editing as an interactive phrase thesaurus and grammar checker (`E1`). No AI-generated prose is present in this publication.
 ```
 
-### 2.2 Detailed Breakdown for an Anthology or Tabletop RPG Book (`MADE: I1,I2 / E0,E2`)
+### 2.2 Detailed Breakdown for an Anthology or Tabletop RPG Book (`MADE: I1-I2 / E0,E2`)
 
 ```markdown
-## AI Usage Disclosure: MADE `I1,I2 / E0,E2`
+## AI Usage Disclosure: MADE `I1-I2 / E0,E2`
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -64,14 +64,14 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ---
 
-## 3. Graphical & Visual Art Scenario (`MADE: I0,I1 / E0-E2`)
+## 3. Graphical & Visual Art Scenario (`MADE: I0-I1 / E0-E2`)
 
 *Scenario: A visual artist or indie comic creator designs and illustrates all characters, line art, and key scenes by hand (`I0 / E0`), uses ML denoising/upscaling on final exports (`I0 / E1`), and uses AI-assisted texture tiling for repetitive background patterns (`I1 / E2`). Because Execution spans `E0`, `E1`, and `E2` continuously, it is expressed as the contiguous range `E0-E2`.*
 
 ### 3.1 Portfolio / Artbook / Storefront Disclosure
 
 ```markdown
-## AI Usage Disclosure: MADE `I0,I1 / E0-E2`
+## AI Usage Disclosure: MADE `I0-I1 / E0-E2`
 
 | Artwork Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -82,14 +82,14 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ---
 
-## 4. Music Composition & Audio Production Scenario (`MADE: I0,I2 / E0,E1`)
+## 4. Music Composition & Audio Production Scenario (`MADE: I0,I2 / E0-E1`)
 
 *Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), room noise on acoustic recordings is cleaned up using a neural audio restoration plugin (`I0 / E1`), and one bonus track features chord variations co-brainstormed with an AI tool but performed by the human musician (`I2 / E0`).*
 
 ### 4.1 Album Liner Notes / Bandcamp / Streaming Description
 
 ```markdown
-## AI Usage Disclosure: MADE `I0,I2 / E0,E1`
+## AI Usage Disclosure: MADE `I0,I2 / E0-E1`
 
 - **Lead Compositions & Instrumental Performances (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** All melodies, arrangements, lyrics, and instrumental performances were composed and played by the human artist.
 - **Harmonic Variations on Track 7 (`I2 / E0`, Collaborative Ideation, Unassisted Execution):** Alternate bridge chord voicings were co-brainstormed with an AI assistant (`I2`) and performed manually on hardware synthesizers by the artist (`E0`).
@@ -102,10 +102,10 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ```text
 ========================================================================
- AI DISCLOSURE (MADE v1.0: I0,I1 / E0,E3)
+ AI DISCLOSURE (MADE v1.0: I0-I1 / E0,E3)
 ------------------------------------------------------------------------
  Project Summary:
-   Ideation  : I0, I1 (Unassisted, Assisted)
+   Ideation  : I0-I1 (Unassisted, Assisted)
    Execution : E0, E3 (Unassisted, Directed)
 ------------------------------------------------------------------------
  Component Breakdown:
@@ -142,9 +142,9 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
   ```markdown
   [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-2aa198?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
   ```
-- **Hybrid Discrete Project (`I0,I1 / E0,E3`):**
+- **Hybrid Multi-Level Project (`I0-I1 / E0,E3`):**
   ```markdown
-  [![MADE: I0,I1 / E0,E3](https://img.shields.io/badge/MADE-I0%2CI1_%2F_E0%2CE3-268bd2?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-268bd2?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
   ```
 - **Contiguous Range Project (`I1 / E0-E2`):**
   ```markdown

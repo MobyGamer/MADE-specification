@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,44 +9,60 @@
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
-    :root, [data-theme="light"] {
+    :root,
+    [data-theme="light"] {
       --base03: #002b36;
       --base02: #073642;
       --base01: #586e75;
       --base00: #657b83;
-      --base0:  #839496;
-      --base1:  #93a1a1;
-      --base2:  #eee8d5;
-      --base3:  #fdf6e3;
+      --base0: #839496;
+      --base1: #93a1a1;
+      --base2: #eee8d5;
+      --base3: #fdf6e3;
 
-      --sol-yellow:  #b58900;
-      --sol-orange:  #cb4b16;
-      --sol-red:     #dc322f;
+      --sol-yellow: #b58900;
+      --sol-orange: #cb4b16;
+      --sol-red: #dc322f;
       --sol-magenta: #d33682;
-      --sol-violet:  #6c71c4;
-      --sol-blue:    #268bd2;
-      --sol-cyan:    #2aa198;
-      --sol-green:   #859900;
+      --sol-violet: #6c71c4;
+      --sol-blue: #268bd2;
+      --sol-cyan: #2aa198;
+      --sol-green: #859900;
 
-      --bg: #fdf6e3;          /* base3 */
-      --bg-card: #eee8d5;     /* base2 */
-      --bg-elevated: #fdf6e3; /* base3 */
-      --bg-header: #eee8d5;   /* base2 */
+      --bg: #fdf6e3;
+      /* base3 */
+      --bg-card: #eee8d5;
+      /* base2 */
+      --bg-elevated: #fdf6e3;
+      /* base3 */
+      --bg-header: #eee8d5;
+      /* base2 */
       --border: #d3cbb7;
-      --border-strong: #93a1a1; /* base1 */
-      --text: #073642;        /* base02 */
-      --text-dim: #586e75;    /* base01 */
-      --text-muted: #657b83;  /* base00 */
-      --accent: #268bd2;      /* solarized blue */
-      --accent-hover: #2aa198;/* solarized cyan */
+      --border-strong: #93a1a1;
+      /* base1 */
+      --text: #073642;
+      /* base02 */
+      --text-dim: #586e75;
+      /* base01 */
+      --text-muted: #657b83;
+      /* base00 */
+      --accent: #268bd2;
+      /* solarized blue */
+      --accent-hover: #2aa198;
+      /* solarized cyan */
       --accent-soft: rgba(38, 139, 210, 0.12);
       --code-text: #073642;
 
-      --lvl-0: #859900;       /* solarized green */
-      --lvl-1: #2aa198;       /* solarized cyan */
-      --lvl-2: #268bd2;       /* solarized blue */
-      --lvl-3: #cb4b16;       /* solarized orange */
-      --lvl-4: #dc322f;       /* solarized red */
+      --lvl-0: #859900;
+      /* solarized green */
+      --lvl-1: #2aa198;
+      /* solarized cyan */
+      --lvl-2: #268bd2;
+      /* solarized blue */
+      --lvl-3: #cb4b16;
+      /* solarized orange */
+      --lvl-4: #dc322f;
+      /* solarized red */
 
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -74,7 +91,11 @@
       --lvl-4: #dc2626;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
       background-color: var(--bg);
@@ -228,12 +249,14 @@
       margin-bottom: 0.9rem;
     }
 
-    ul, ol {
+    ul,
+    ol {
       color: var(--text-dim);
       margin: 0.5rem 0 1rem 1.4rem;
     }
 
-    li > ul, li > ol {
+    li>ul,
+    li>ol {
       margin: 0.4rem 0 0.5rem 1.25rem;
     }
 
@@ -312,11 +335,25 @@
       display: inline-block;
     }
 
-    .b-0 { background: var(--lvl-0); }
-    .b-1 { background: var(--lvl-1); }
-    .b-2 { background: var(--lvl-2); }
-    .b-3 { background: var(--lvl-3); }
-    .b-4 { background: var(--lvl-4); }
+    .b-0 {
+      background: var(--lvl-0);
+    }
+
+    .b-1 {
+      background: var(--lvl-1);
+    }
+
+    .b-2 {
+      background: var(--lvl-2);
+    }
+
+    .b-3 {
+      background: var(--lvl-3);
+    }
+
+    .b-4 {
+      background: var(--lvl-4);
+    }
 
     .level-info strong {
       display: block;
@@ -336,7 +373,7 @@
       display: flex;
       gap: 0.55rem;
       flex-wrap: wrap;
-      margin-bottom: 1.25rem;
+      margin-top: 1.25rem;
       align-items: center;
     }
 
@@ -388,7 +425,10 @@
     }
 
     @media (max-width: 860px) {
-      .comp-header { display: none; }
+      .comp-header {
+        display: none;
+      }
+
       .comp-row {
         grid-template-columns: 1fr;
         background: var(--bg-elevated);
@@ -398,7 +438,9 @@
       }
     }
 
-    input[type="text"], select, textarea {
+    input[type="text"],
+    select,
+    textarea {
       width: 100%;
       background: var(--bg-elevated);
       border: 1px solid var(--border-strong);
@@ -409,7 +451,9 @@
       font-size: 0.86rem;
     }
 
-    input[type="text"]:focus, select:focus, textarea:focus {
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
       outline: none;
       border-color: var(--accent);
     }
@@ -472,7 +516,8 @@
       font-size: 0.88rem;
     }
 
-    table.spec-table th, table.spec-table td {
+    table.spec-table th,
+    table.spec-table td {
       border: 1px solid var(--border);
       padding: 0.75rem 0.9rem;
       text-align: left;
@@ -512,7 +557,9 @@
       color: var(--text-muted);
     }
 
-    .hidden { display: none; }
+    .hidden {
+      display: none;
+    }
 
     footer {
       text-align: center;
@@ -523,43 +570,47 @@
       font-size: 0.85rem;
     }
 
-    footer a, .card a {
+    footer a,
+    .card a {
       color: var(--accent);
       text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
 
-<header>
-  <div class="container">
-    <div class="top-bar">
-      <!-- SYNC:VERSION-PILL:START -->
+  <header>
+    <div class="container">
+      <div class="top-bar">
+        <!-- SYNC:VERSION-PILL:START -->
       <span class="version-pill">MADE Standard v0.1</span>
-      <!-- SYNC:VERSION-PILL:END -->
-      <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
-    </div>
-    <!-- SYNC:HEADER-H1:START -->
+        <!-- SYNC:VERSION-PILL:END -->
+        <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
+      </div>
+      <!-- SYNC:HEADER-H1:START -->
     <h1>MADE: Measure of AI in Design &amp; Execution</h1>
-    <!-- SYNC:HEADER-H1:END -->
-    <p class="subtitle">
-      A self-disclosure AI rating scale for programming and other creative works that separates<br>
-      <strong>human conceptual authorship (Ideation / Design)</strong> from <strong>mechanical production (Execution)</strong>.
-    </p>
-    <nav class="tabs">
-      <!-- SYNC:TAB1-BTN:START -->
+      <!-- SYNC:HEADER-H1:END -->
+      <p class="subtitle">
+        A self-disclosure AI rating scale for programming and other creative works that separates<br>
+        <strong>human conceptual authorship (Ideation / Design)</strong> from <strong>mechanical production
+          (Execution)</strong>.
+      </p>
+      <nav class="tabs">
+        <!-- SYNC:TAB1-BTN:START -->
       <button class="tab-btn active" onclick="switchTab('spec', this)">Full v0.1 Specification</button>
-      <!-- SYNC:TAB1-BTN:END -->
-      <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure Builder</button>
-    </nav>
-  </div>
-</header>
+        <!-- SYNC:TAB1-BTN:END -->
+        <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
+          Builder</button>
+      </nav>
+    </div>
+  </header>
 
-<main class="container">
+  <main class="container">
 
-  <!-- ================= TAB 1 (DEFAULT): FULL v1.0 SPECIFICATION ================= -->
-  <section id="tab-spec">
-    <!-- SYNC:TAB-SPEC:START -->
+    <!-- ================= TAB 1 (DEFAULT): FULL v1.0 SPECIFICATION ================= -->
+    <section id="tab-spec">
+      <!-- SYNC:TAB-SPEC:START -->
     <div class="card">
       <div class="meta-grid">
         <div class="meta-item">
@@ -725,16 +776,16 @@
           </ul>
         </li>
         <li>
-          <strong>Multi-Component Projects: Discrete Levels (<code>E0,E3</code>) vs. Contiguous Ranges (<code>E0-E3</code>):</strong> When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
+          <strong>Multi-Component Projects: Discrete Levels (<code>E0,E3</code>) vs. Contiguous Ranges (<code>I0-I1</code>, <code>E0-E3</code>):</strong> When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
           <ul>
-            <li><strong>Discrete Levels (Comma-Separated):</strong> If a project uses only specific, non-contiguous levels (or just two distinct levels, such as <code>E0</code> for hand-crafted work and <code>E3</code> for a spec-driven utility, with no <code>E1</code> or <code>E2</code> components), list the exact levels separated by a comma: <code>MADE: I1 / E0,E3</code> (or <code>MADE: I1 / E0, E3</code>)</li>
-            <li><strong>Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):</strong> If a project spans three or more consecutive levels (for example, components covering <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix (<code>I</code> or <code>E</code>) on both numbers: <code>MADE: I1 / E0-E3</code> (Never write <code>E0-3</code>, which is visually ambiguous.)</li>
+            <li><strong>Discrete Levels (Comma-Separated):</strong> If a project uses non-contiguous levels (such as <code>E0</code> for hand-crafted work and <code>E3</code> for a spec-driven utility, with no <code>E1</code> or <code>E2</code> components), list the exact levels separated by a comma: <code>MADE: I1 / E0,E3</code> (or <code>MADE: I1 / E0, E3</code>)</li>
+            <li><strong>Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):</strong> If a project spans two or more consecutive levels (for example, components covering <code>I0</code> and <code>I1</code>, or <code>E0</code>, <code>E1</code>, <code>E2</code>, and <code>E3</code>), express the span using a hyphen and repeat the letter prefix (<code>I</code> or <code>E</code>) on both numbers: <code>MADE: I0-I1 / E0,E3</code> or <code>MADE: I1 / E0-E3</code> (Never write <code>E0-3</code>, which is visually ambiguous.)</li>
           </ul>
         </li>
       </ol>
       <h3>4.2 Tier 2: Component-Level Breakdown</h3>
       <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where <strong>each component declares both its Ideation level and its Execution level</strong>:</p>
-      <pre><code>**AI Disclosure ([MADE v1.0](MADE-SPECIFICATION.md)): `I0,I1 / E0,E3`**
+      <pre><code>**AI Disclosure ([MADE v1.0](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
 - **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import &amp; Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
       <h3>4.3 Per-File Source Code &amp; Asset Metadata Headers</h3>
@@ -764,31 +815,24 @@
         <li><strong>Origin &amp; Intent:</strong> Created to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</li>
       </ul>
     </div>
-    <!-- SYNC:TAB-SPEC:END -->
-  </section>
+      <!-- SYNC:TAB-SPEC:END -->
+    </section>
 
-  <!-- ================= TAB 2: INTERACTIVE GENERATOR ================= -->
-  <section id="tab-generator" class="hidden">
-    <div class="card">
-      <h2>
-        <span>1. Select Project Ideation &amp; Execution Levels</span>
-      </h2>
-      <div class="preset-bar">
-        <span class="preset-label">Quick Presets:</span>
-        <button class="btn-sm" onclick="applyPreset('software')">Programming: Hybrid App (I0,I1 / E0,E3)</button>
-        <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0,E1)</button>
-        <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0,I1 / E0-E2)</button>
-        <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0,E1)</button>
-        <button class="btn-sm" onclick="applyPreset('pure')">100% Unassisted Human Work (I0 / E0)</button>
-      </div>
+    <!-- ================= TAB 2: INTERACTIVE GENERATOR ================= -->
+    <section id="tab-generator" class="hidden">
+      <div class="card">
+        <h2>
+          <span>1. Select Project Ideation &amp; Execution Levels</span>
+        </h2>
 
-      <div class="grid-2">
-        <!-- Category 1: Ideation -->
-        <div>
-          <h3>Category 1: Ideation Levels (I0 to I4)</h3>
-          <p style="font-size:0.86rem;">Who conceived the ideas, designs, compositions, or algorithms? <em>(Click one or more levels that apply across your project.)</em></p>
-          <div id="ideation-options">
-            <!-- SYNC:IDEATION-OPTIONS:START -->
+        <div class="grid-2">
+          <!-- Category 1: Ideation -->
+          <div>
+            <h3>Category 1: Ideation Levels (I0 to I4)</h3>
+            <p style="font-size:0.86rem;">Who conceived the ideas, designs, compositions, or algorithms? <em>(Click one
+                or more levels that apply across your project.)</em></p>
+            <div id="ideation-options">
+              <!-- SYNC:IDEATION-OPTIONS:START -->
             <div class="level-option selected" data-level="0" onclick="toggleIdeation(0)">
               <span class="lvl-badge b-0">I0</span>
               <div class="level-info">
@@ -824,16 +868,17 @@
                 <span>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</span>
               </div>
             </div>
-            <!-- SYNC:IDEATION-OPTIONS:END -->
+              <!-- SYNC:IDEATION-OPTIONS:END -->
+            </div>
           </div>
-        </div>
 
-        <!-- Category 2: Execution -->
-        <div>
-          <h3>Category 2: Execution Levels (E0 to E4)</h3>
-          <p style="font-size:0.86rem;">How was the code, prose, art, or music mechanically produced? <em>(Click one or more levels that apply across your project.)</em></p>
-          <div id="execution-options">
-            <!-- SYNC:EXECUTION-OPTIONS:START -->
+          <!-- Category 2: Execution -->
+          <div>
+            <h3>Category 2: Execution Levels (E0 to E4)</h3>
+            <p style="font-size:0.86rem;">How was the code, prose, art, or music mechanically produced? <em>(Click one
+                or more levels that apply across your project.)</em></p>
+            <div id="execution-options">
+              <!-- SYNC:EXECUTION-OPTIONS:START -->
             <div class="level-option selected" data-level="0" onclick="toggleExecution(0)">
               <span class="lvl-badge b-0">E0</span>
               <div class="level-info">
@@ -869,83 +914,106 @@
                 <span>Generated end-to-end by AI from minimal prompts with little or no human specification or review.</span>
               </div>
             </div>
-            <!-- SYNC:EXECUTION-OPTIONS:END -->
+              <!-- SYNC:EXECUTION-OPTIONS:END -->
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <!-- Component Breakdown Editor -->
-    <div class="card">
-      <h2>
-        <span>2. Component-Level Breakdown (Specify Both Ideation &amp; Execution per Component)</span>
-        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
-          <button class="btn-sm" onclick="syncTopLevelsFromComponents()" title="Set Section 1 Ideation and Execution selections to match the components listed below">Sync Section 1 from Components</button>
+      <!-- Component Breakdown Editor -->
+      <div class="card">
+        <h2>
+          <span>2. Optional: Component Level Breakdown</span>
+        </h2>
+        <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.5rem;">
+          For works comprised of multiple distinct modules, assets, or deliverables, creators can document the specific
+          human versus AI contribution for each component. <b>This breakdown section is completely optional;
+            skip it if you do not want to provide a more granular breakdown of your project.</b>
+        </p>
+        <p style="font-size:0.88rem;margin-bottom:0.75rem;">
+          Specify both the <strong>Ideation Level (<code>I0</code> to <code>I4</code>)</strong> and the
+          <strong>Execution Level (<code>E0</code> to <code>E4</code>)</strong> for each distinct part of your work.
+        </p>
+        <div style="margin-bottom:1rem;">
           <button class="btn-sm" onclick="addComponentRow('', 'I0', 'E0', '')">+ Add Component Row</button>
         </div>
-      </h2>
-      <p style="font-size:0.88rem;">
-        Specify both the <strong>Ideation Level (<code>I0</code> to <code>I4</code>)</strong> and the <strong>Execution Level (<code>E0</code> to <code>E4</code>)</strong> for each distinct part of your work.
-      </p>
-      <div class="comp-header">
-        <div>Component / Deliverable Name</div>
-        <div>Ideation Level</div>
-        <div>Execution Level</div>
-        <div>Details / Role of Human vs. AI</div>
-        <div></div>
-      </div>
-      <div id="component-list"></div>
-    </div>
-
-    <!-- Generated Outputs -->
-    <div class="card">
-      <h2><span>3. Generated Badges, Disclosure Blocks &amp; Metadata Headers</span></h2>
-
-      <div class="preview-banner">
-        <div>
-          <div style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">Live MADE Score</div>
-          <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0,I1 / E0,E3</div>
-          <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0, I1 (Unassisted, Assisted), Execution: E0, E3 (Unassisted, Directed)</div>
+        <div class="comp-header">
+          <div>Component / Deliverable Name</div>
+          <div>Ideation Level</div>
+          <div>Execution Level</div>
+          <div>Details / Role of Human vs. AI</div>
+          <div></div>
         </div>
-        <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
-          <div id="svg-badge-container"></div>
-          <button class="btn-sm" onclick="downloadSvgBadge()">Download SVG Badge</button>
+        <div id="component-list"></div>
+        <div style="margin-top:1rem;">
+          <button class="btn-sm" onclick="syncTopLevelsFromComponents()"
+            title="Set Section 1 Ideation and Execution selections to match the components listed below">Sync Section 1
+            From These Components</button>
+        </div>
+
+        <div class="preset-bar">
+          <span class="preset-label">Quick Presets:</span>
+          <button class="btn-sm" onclick="applyPreset('software')">Programming: Hybrid App (I0-I1 / E0,E3)</button>
+          <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0-E1)</button>
+          <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0-I1 / E0-E2)</button>
+          <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0-E1)</button>
+          <button class="btn-sm" onclick="applyPreset('pure')">100% Unassisted Human Work (I0 / E0)</button>
         </div>
       </div>
 
-      <h3>Markdown Disclosure Block (for README.md, Portfolio, or Colophon)</h3>
-      <div class="code-box">
-        <button class="copy-btn" onclick="copyText('out-markdown', this)">Copy</button>
-        <pre id="out-markdown"></pre>
-      </div>
+      <!-- Generated Outputs -->
+      <div class="card">
+        <h2><span>3. Generated Badges, Disclosure Blocks &amp; Metadata Headers</span></h2>
 
-      <h3>Plain-Text / .NFO / Liner Notes Disclosure Block (72-Column ASCII)</h3>
-      <div class="code-box">
-        <button class="copy-btn" onclick="copyText('out-nfo', this)">Copy</button>
-        <pre id="out-nfo"></pre>
-      </div>
+        <div class="preview-banner">
+          <div>
+            <div
+              style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">
+              Live MADE Score</div>
+            <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0-I1 / E0,E3
+            </div>
+            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0-I1 (Unassisted,
+              Assisted), Execution: E0, E3 (Unassisted, Directed)</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
+            <div id="svg-badge-container"></div>
+            <button class="btn-sm" onclick="downloadSvgBadge()">Download SVG Badge</button>
+          </div>
+        </div>
 
-      <h3>Per-File Source Code &amp; Asset Metadata Header Tags</h3>
-      <div class="code-box">
-        <button class="copy-btn" onclick="copyText('out-headers', this)">Copy</button>
-        <pre id="out-headers"></pre>
-      </div>
-    </div>
-  </section>
+        <h3>Markdown Disclosure Block (for README.md, Portfolio, or Colophon)</h3>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText('out-markdown', this)">Copy</button>
+          <pre id="out-markdown"></pre>
+        </div>
 
-  <footer>
-    <!-- SYNC:FOOTER:START -->
+        <h3>Plain-Text / .NFO / Liner Notes Disclosure Block (72-Column ASCII)</h3>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText('out-nfo', this)">Copy</button>
+          <pre id="out-nfo"></pre>
+        </div>
+
+        <h3>Per-File Source Code &amp; Asset Metadata Header Tags</h3>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText('out-headers', this)">Copy</button>
+          <pre id="out-headers"></pre>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <!-- SYNC:FOOTER:START -->
     <p>
       <strong>MADE Specification v0.1</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.
     </p>
-    <!-- SYNC:FOOTER:END -->
-  </footer>
+      <!-- SYNC:FOOTER:END -->
+    </footer>
 
-</main>
+  </main>
 
-<script>
-  /* SYNC:SPEC-DATA:START */
+  <script>
+    /* SYNC:SPEC-DATA:START */
   const SPEC_DATA = {
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
@@ -979,292 +1047,292 @@
       "Generated end-to-end by AI from minimal prompts with little or no human specification or review."
     ]
   };
-  /* SYNC:SPEC-DATA:END */
+    /* SYNC:SPEC-DATA:END */
 
-  let selectedIdeations = [0, 1];
-  let selectedExecutions = [0, 3];
+    let selectedIdeations = [0, 1];
+    let selectedExecutions = [0, 3];
 
-  function toggleTheme() {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme') || 'light';
-    const next = current === 'light' ? 'dark' : 'light';
-    html.setAttribute('data-theme', next);
-    const btn = document.getElementById('theme-toggle-btn');
-    btn.textContent = next === 'light' ? 'Switch to Dark Theme' : 'Switch to Solarized Light';
-    updateOutputs();
-  }
-
-  function switchTab(tabId, btn) {
-    document.getElementById('tab-spec').classList.toggle('hidden', tabId !== 'spec');
-    document.getElementById('tab-generator').classList.toggle('hidden', tabId !== 'generator');
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
-
-  function toggleIdeation(lvl) {
-    const idx = selectedIdeations.indexOf(lvl);
-    if (idx > -1) {
-      if (selectedIdeations.length > 1) {
-        selectedIdeations.splice(idx, 1);
-      }
-    } else {
-      selectedIdeations.push(lvl);
-      selectedIdeations.sort((a, b) => a - b);
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      const btn = document.getElementById('theme-toggle-btn');
+      btn.textContent = next === 'light' ? 'Switch to Dark Theme' : 'Switch to Solarized Light';
+      updateOutputs();
     }
-    syncOptionCards();
-    updateOutputs();
-  }
 
-  function toggleExecution(lvl) {
-    const idx = selectedExecutions.indexOf(lvl);
-    if (idx > -1) {
-      if (selectedExecutions.length > 1) {
-        selectedExecutions.splice(idx, 1);
-      }
-    } else {
-      selectedExecutions.push(lvl);
-      selectedExecutions.sort((a, b) => a - b);
+    function switchTab(tabId, btn) {
+      document.getElementById('tab-spec').classList.toggle('hidden', tabId !== 'spec');
+      document.getElementById('tab-generator').classList.toggle('hidden', tabId !== 'generator');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
     }
-    syncOptionCards();
-    updateOutputs();
-  }
 
-  function syncOptionCards() {
-    document.querySelectorAll('#ideation-options .level-option').forEach(el => {
-      const l = parseInt(el.dataset.level, 10);
-      el.classList.toggle('selected', selectedIdeations.includes(l));
-    });
-    document.querySelectorAll('#execution-options .level-option').forEach(el => {
-      const l = parseInt(el.dataset.level, 10);
-      el.classList.toggle('selected', selectedExecutions.includes(l));
-    });
-  }
-
-  /**
-   * Formats a sorted array of integer levels (0..4) with a given prefix ('I' or 'E').
-   * Consecutive runs of 3 or more levels (e.g., [0, 1, 2] or [0, 1, 2, 3]) are formatted
-   * as a contiguous hyphenated range with the prefix on both ends: "E0-E2" or "E0-E3".
-   * Non-contiguous or 2-element discrete selections (e.g., [0, 3] or [0, 1]) are formatted
-   * with commas: "E0,E3" (compact) and "E0, E3" (spaced).
-   */
-  function formatLevels(prefix, levels) {
-    const titlesList = prefix === 'I' ? SPEC_DATA.ideationTitles : SPEC_DATA.executionTitles;
-    const sorted = Array.from(new Set(levels)).sort((a, b) => a - b);
-    if (sorted.length === 0) sorted.push(0);
-
-    const runs = [];
-    let runStart = sorted[0];
-    let prev = sorted[0];
-
-    for (let i = 1; i < sorted.length; i++) {
-      if (sorted[i] === prev + 1) {
-        prev = sorted[i];
+    function toggleIdeation(lvl) {
+      const idx = selectedIdeations.indexOf(lvl);
+      if (idx > -1) {
+        if (selectedIdeations.length > 1) {
+          selectedIdeations.splice(idx, 1);
+        }
       } else {
-        runs.push([runStart, prev]);
-        runStart = sorted[i];
-        prev = sorted[i];
+        selectedIdeations.push(lvl);
+        selectedIdeations.sort((a, b) => a - b);
       }
+      syncOptionCards();
+      updateOutputs();
     }
-    runs.push([runStart, prev]);
 
-    const compactParts = [];
-    const spacedParts = [];
-    const descParts = [];
-
-    runs.forEach(([start, end]) => {
-      const count = end - start + 1;
-      if (count >= 3) {
-        compactParts.push(`${prefix}${start}-${prefix}${end}`);
-        spacedParts.push(`${prefix}${start}-${prefix}${end}`);
-        descParts.push(`${titlesList[start]} through ${titlesList[end]}`);
-      } else if (count === 2) {
-        compactParts.push(`${prefix}${start},${prefix}${end}`);
-        spacedParts.push(`${prefix}${start}, ${prefix}${end}`);
-        descParts.push(`${titlesList[start]}, ${titlesList[end]}`);
+    function toggleExecution(lvl) {
+      const idx = selectedExecutions.indexOf(lvl);
+      if (idx > -1) {
+        if (selectedExecutions.length > 1) {
+          selectedExecutions.splice(idx, 1);
+        }
       } else {
-        compactParts.push(`${prefix}${start}`);
-        spacedParts.push(`${prefix}${start}`);
-        descParts.push(`${titlesList[start]}`);
+        selectedExecutions.push(lvl);
+        selectedExecutions.sort((a, b) => a - b);
       }
-    });
+      syncOptionCards();
+      updateOutputs();
+    }
 
-    const compact = compactParts.join(',');
-    const spaced = spacedParts.join(', ');
-    const titles = descParts.join(', ');
+    function syncOptionCards() {
+      document.querySelectorAll('#ideation-options .level-option').forEach(el => {
+        const l = parseInt(el.dataset.level, 10);
+        el.classList.toggle('selected', selectedIdeations.includes(l));
+      });
+      document.querySelectorAll('#execution-options .level-option').forEach(el => {
+        const l = parseInt(el.dataset.level, 10);
+        el.classList.toggle('selected', selectedExecutions.includes(l));
+      });
+    }
 
-    return {
-      compact,
-      spaced,
-      titles,
-      min: sorted[0],
-      max: sorted[sorted.length - 1],
-      isMultiple: sorted.length > 1
-    };
-  }
+    /**
+     * Formats a sorted array of integer levels (0..4) with a given prefix ('I' or 'E').
+     * Consecutive runs of 2 or more levels (e.g., [0, 1] or [0, 1, 2, 3]) are formatted
+     * as a contiguous hyphenated range with the prefix on both ends: "I0-I1" or "E0-E3".
+     * Non-contiguous discrete selections (e.g., [0, 3] or [0, 4]) are formatted
+     * with commas: "E0,E3" (compact) and "E0, E3" (spaced).
+     */
+    function formatLevels(prefix, levels) {
+      const titlesList = prefix === 'I' ? SPEC_DATA.ideationTitles : SPEC_DATA.executionTitles;
+      const sorted = Array.from(new Set(levels)).sort((a, b) => a - b);
+      if (sorted.length === 0) sorted.push(0);
 
-  function clearComponents() {
-    document.getElementById('component-list').innerHTML = '';
-  }
+      const runs = [];
+      let runStart = sorted[0];
+      let prev = sorted[0];
 
-  function addComponentRow(name = '', iCode = 'I0', eCode = 'E0', desc = '') {
-    const list = document.getElementById('component-list');
-    const row = document.createElement('div');
-    row.className = 'comp-row';
+      for (let i = 1; i < sorted.length; i++) {
+        if (sorted[i] === prev + 1) {
+          prev = sorted[i];
+        } else {
+          runs.push([runStart, prev]);
+          runStart = sorted[i];
+          prev = sorted[i];
+        }
+      }
+      runs.push([runStart, prev]);
 
-    const iOptions = [0, 1, 2, 3, 4].map(n => {
-      const code = `I${n}`;
-      const sel = code === iCode ? 'selected' : '';
-      return `<option value="${code}" ${sel}>${code}: ${SPEC_DATA.ideationTitles[n]} Ideation</option>`;
-    }).join('');
+      const compactParts = [];
+      const spacedParts = [];
+      const descParts = [];
 
-    const eOptions = [0, 1, 2, 3, 4].map(n => {
-      const code = `E${n}`;
-      const sel = code === eCode ? 'selected' : '';
-      return `<option value="${code}" ${sel}>${code}: ${SPEC_DATA.executionTitles[n]} Execution</option>`;
-    }).join('');
+      runs.forEach(([start, end]) => {
+        const count = end - start + 1;
+        if (count >= 2) {
+          compactParts.push(`${prefix}${start}-${prefix}${end}`);
+          spacedParts.push(`${prefix}${start}-${prefix}${end}`);
+          if (count === 2) {
+            descParts.push(`${titlesList[start]}, ${titlesList[end]}`);
+          } else {
+            descParts.push(`${titlesList[start]} through ${titlesList[end]}`);
+          }
+        } else {
+          compactParts.push(`${prefix}${start}`);
+          spacedParts.push(`${prefix}${start}`);
+          descParts.push(`${titlesList[start]}`);
+        }
+      });
 
-    row.innerHTML = `
-      <input type="text" class="comp-name" placeholder="Component name (e.g., Core Engine, Illustrations)" value="${escapeHtml(name)}" oninput="updateOutputs()">
+      const compact = compactParts.join(',');
+      const spaced = spacedParts.join(', ');
+      const titles = descParts.join(', ');
+
+      return {
+        compact,
+        spaced,
+        titles,
+        min: sorted[0],
+        max: sorted[sorted.length - 1],
+        isMultiple: sorted.length > 1
+      };
+    }
+
+    function clearComponents() {
+      document.getElementById('component-list').innerHTML = '';
+    }
+
+    function addComponentRow(name = '', iCode = 'I0', eCode = 'E0', desc = '') {
+      const list = document.getElementById('component-list');
+      const row = document.createElement('div');
+      row.className = 'comp-row';
+
+      const iOptions = [0, 1, 2, 3, 4].map(n => {
+        const code = `I${n}`;
+        const sel = code === iCode ? 'selected' : '';
+        return `<option value="${code}" ${sel}>${code}: ${SPEC_DATA.ideationTitles[n]} Ideation</option>`;
+      }).join('');
+
+      const eOptions = [0, 1, 2, 3, 4].map(n => {
+        const code = `E${n}`;
+        const sel = code === eCode ? 'selected' : '';
+        return `<option value="${code}" ${sel}>${code}: ${SPEC_DATA.executionTitles[n]} Execution</option>`;
+      }).join('');
+
+      row.innerHTML = `
+      <input type="text" class="comp-name" placeholder="Component name (e.g., Art, Core Engine, etc.)" value="${escapeHtml(name)}" oninput="updateOutputs()">
       <select class="comp-i" onchange="updateOutputs()" aria-label="Component Ideation Level">${iOptions}</select>
       <select class="comp-e" onchange="updateOutputs()" aria-label="Component Execution Level">${eOptions}</select>
       <input type="text" class="comp-desc" placeholder="Brief description of human vs. AI role" value="${escapeHtml(desc)}" oninput="updateOutputs()">
       <button class="btn-sm" onclick="this.parentElement.remove(); updateOutputs();" title="Remove component">&times;</button>
     `;
-    list.appendChild(row);
-    updateOutputs();
-  }
-
-  function syncTopLevelsFromComponents() {
-    const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
-    if (compRows.length === 0) return;
-    const iSet = new Set();
-    const eSet = new Set();
-    compRows.forEach(r => {
-      const iVal = parseInt(r.querySelector('.comp-i').value.slice(1), 10);
-      const eVal = parseInt(r.querySelector('.comp-e').value.slice(1), 10);
-      iSet.add(iVal);
-      eSet.add(eVal);
-    });
-    selectedIdeations = Array.from(iSet).sort((a, b) => a - b);
-    selectedExecutions = Array.from(eSet).sort((a, b) => a - b);
-    syncOptionCards();
-    updateOutputs();
-  }
-
-  function escapeHtml(str) {
-    return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function applyPreset(preset) {
-    clearComponents();
-    if (preset === 'software') {
-      selectedIdeations = [0, 1];
-      selectedExecutions = [0, 3];
-      addComponentRow(
-        'Core Application Engine',
-        'I0',
-        'E0',
-        'Conceived, architected, and hand-coded 100% by the human developer with zero AI involvement.'
-      );
-      addComponentRow(
-        'Data Import & Conversion Utilities',
-        'I1',
-        'E3',
-        'Algorithms and file formats designed by the author (I1), with utility code generated by an LLM from detailed human specifications and verified by hand (E3).'
-      );
-      addComponentRow(
-        'Documentation & User Guide',
-        'I0',
-        'E0',
-        'Written and edited manually by the human author.'
-      );
-    } else if (preset === 'writing') {
-      selectedIdeations = [1];
-      selectedExecutions = [0, 1];
-      addComponentRow(
-        'Plot, Characters & Outline',
-        'I1',
-        'E0',
-        'Conceived and structured by the human author, with AI consulted only to summarize historical archival references.'
-      );
-      addComponentRow(
-        'Manuscript Prose & Editing',
-        'I0',
-        'E1',
-        'Every chapter drafted manually by the author; AI used only as an interactive phrase thesaurus and proofreader.'
-      );
-    } else if (preset === 'art') {
-      selectedIdeations = [0, 1];
-      selectedExecutions = [0, 1, 2];
-      addComponentRow(
-        'Character Design & Key Illustrations',
-        'I0',
-        'E0',
-        '100% conceived, sketched, inked, and painted by hand by the human artist.'
-      );
-      addComponentRow(
-        'High-Resolution Print Exports',
-        'I0',
-        'E1',
-        'Hand-painted illustrations processed through a non-generative machine-learning upscaler and denoiser for print.'
-      );
-      addComponentRow(
-        'Repeating Background Surface Textures',
-        'I1',
-        'E2',
-        'Secondary environmental patterns created via a hybrid human-AI texture workflow and manually composited.'
-      );
-    } else if (preset === 'music') {
-      selectedIdeations = [0, 2];
-      selectedExecutions = [0, 1];
-      addComponentRow(
-        'Main Compositions & Live Instruments',
-        'I0',
-        'E0',
-        'All melodies, lyrics, arrangements, and instrumental performances composed and played by the human musician.'
-      );
-      addComponentRow(
-        'Bridge Chord Variations (Track 4)',
-        'I2',
-        'E0',
-        'Alternate harmonic voicings co-brainstormed with an AI tool (I2) and performed manually on hardware instruments by the artist (E0).'
-      );
-      addComponentRow(
-        'Audio Restoration & Mastering',
-        'I0',
-        'E1',
-        'Acoustic microphone recordings cleaned up using a neural de-reverb and noise-reduction filter during mixing.'
-      );
-    } else if (preset === 'pure') {
-      selectedIdeations = [0];
-      selectedExecutions = [0];
-      addComponentRow(
-        'Entire Project',
-        'I0',
-        'E0',
-        '100% human-conceived and hand-crafted with zero AI involvement in ideation or execution.'
-      );
+      list.appendChild(row);
+      updateOutputs();
     }
-    syncOptionCards();
-    updateOutputs();
-  }
 
-  function getThemeBadgeColors(maxLevel) {
-    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    const solarizedPalette = ['#859900', '#2aa198', '#268bd2', '#cb4b16', '#dc322f'];
-    const darkPalette = ['#16a34a', '#0d9488', '#2563eb', '#d97706', '#dc322f'];
-    return {
-      leftBg: isDark ? '#1e293b' : '#073642',
-      rightBg: isDark ? darkPalette[maxLevel] : solarizedPalette[maxLevel]
-    };
-  }
+    function syncTopLevelsFromComponents() {
+      const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
+      if (compRows.length === 0) return;
+      const iSet = new Set();
+      const eSet = new Set();
+      compRows.forEach(r => {
+        const iVal = parseInt(r.querySelector('.comp-i').value.slice(1), 10);
+        const eVal = parseInt(r.querySelector('.comp-e').value.slice(1), 10);
+        iSet.add(iVal);
+        eSet.add(eVal);
+      });
+      selectedIdeations = Array.from(iSet).sort((a, b) => a - b);
+      selectedExecutions = Array.from(eSet).sort((a, b) => a - b);
+      syncOptionCards();
+      updateOutputs();
+    }
 
-  function buildSvgBadgeString(scoreText, leftBg, rightBg) {
-    const leftText = SPEC_DATA.acronym;
-    const leftWidth = Math.max(54, leftText.length * 9 + 18);
-    const rightWidth = Math.max(82, scoreText.length * 7.8 + 22);
-    const totalWidth = Math.round(leftWidth + rightWidth);
-    return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="24" role="img" aria-label="${leftText}: ${scoreText}">
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function applyPreset(preset) {
+      clearComponents();
+      if (preset === 'software') {
+        selectedIdeations = [0, 1];
+        selectedExecutions = [0, 3];
+        addComponentRow(
+          'Core Application Engine',
+          'I0',
+          'E0',
+          'Conceived, architected, and hand-coded 100% by the human developer with zero AI involvement.'
+        );
+        addComponentRow(
+          'Data Import & Conversion Utilities',
+          'I1',
+          'E3',
+          'Algorithms and file formats designed by the author (I1), with utility code generated by an LLM from detailed human specifications and verified by hand (E3).'
+        );
+        addComponentRow(
+          'Documentation & User Guide',
+          'I0',
+          'E0',
+          'Written and edited manually by the human author.'
+        );
+      } else if (preset === 'writing') {
+        selectedIdeations = [1];
+        selectedExecutions = [0, 1];
+        addComponentRow(
+          'Plot, Characters & Outline',
+          'I1',
+          'E0',
+          'Conceived and structured by the human author, with AI consulted only to summarize historical archival references.'
+        );
+        addComponentRow(
+          'Manuscript Prose & Editing',
+          'I0',
+          'E1',
+          'Every chapter drafted manually by the author; AI used only as an interactive phrase thesaurus and proofreader.'
+        );
+      } else if (preset === 'art') {
+        selectedIdeations = [0, 1];
+        selectedExecutions = [0, 1, 2];
+        addComponentRow(
+          'Character Design & Key Illustrations',
+          'I0',
+          'E0',
+          '100% conceived, sketched, inked, and painted by hand by the human artist.'
+        );
+        addComponentRow(
+          'High-Resolution Print Exports',
+          'I0',
+          'E1',
+          'Hand-painted illustrations processed through a non-generative machine-learning upscaler and denoiser for print.'
+        );
+        addComponentRow(
+          'Repeating Background Surface Textures',
+          'I1',
+          'E2',
+          'Secondary environmental patterns created via a hybrid human-AI texture workflow and manually composited.'
+        );
+      } else if (preset === 'music') {
+        selectedIdeations = [0, 2];
+        selectedExecutions = [0, 1];
+        addComponentRow(
+          'Main Compositions & Live Instruments',
+          'I0',
+          'E0',
+          'All melodies, lyrics, arrangements, and instrumental performances composed and played by the human musician.'
+        );
+        addComponentRow(
+          'Bridge Chord Variations (Track 4)',
+          'I2',
+          'E0',
+          'Alternate harmonic voicings co-brainstormed with an AI tool (I2) and performed manually on hardware instruments by the artist (E0).'
+        );
+        addComponentRow(
+          'Audio Restoration & Mastering',
+          'I0',
+          'E1',
+          'Acoustic microphone recordings cleaned up using a neural de-reverb and noise-reduction filter during mixing.'
+        );
+      } else if (preset === 'pure') {
+        selectedIdeations = [0];
+        selectedExecutions = [0];
+        addComponentRow(
+          'Entire Project',
+          'I0',
+          'E0',
+          '100% human-conceived and hand-crafted with zero AI involvement in ideation or execution.'
+        );
+      }
+      syncOptionCards();
+      updateOutputs();
+    }
+
+    function getThemeBadgeColors(maxLevel) {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const solarizedPalette = ['#859900', '#2aa198', '#268bd2', '#cb4b16', '#dc322f'];
+      const darkPalette = ['#16a34a', '#0d9488', '#2563eb', '#d97706', '#dc322f'];
+      return {
+        leftBg: isDark ? '#1e293b' : '#073642',
+        rightBg: isDark ? darkPalette[maxLevel] : solarizedPalette[maxLevel]
+      };
+    }
+
+    function buildSvgBadgeString(scoreText, leftBg, rightBg) {
+      const leftText = SPEC_DATA.acronym;
+      const leftWidth = Math.max(54, leftText.length * 9 + 18);
+      const rightWidth = Math.max(82, scoreText.length * 7.8 + 22);
+      const totalWidth = Math.round(leftWidth + rightWidth);
+      return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="24" role="img" aria-label="${leftText}: ${scoreText}">
   <title>${leftText}: ${scoreText}</title>
   <rect width="${leftWidth}" height="24" fill="${leftBg}" rx="4"/>
   <rect x="${leftWidth - 4}" width="4" height="24" fill="${leftBg}"/>
@@ -1275,134 +1343,135 @@
     <text x="${Math.round(leftWidth + (totalWidth - leftWidth) / 2)}" y="16" font-weight="bold">${scoreText}</text>
   </g>
 </svg>`;
-  }
-
-  function updateOutputs() {
-    const iInfo = formatLevels('I', selectedIdeations);
-    const eInfo = formatLevels('E', selectedExecutions);
-
-    const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
-    const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}), Execution: ${eInfo.spaced} (${eInfo.titles})`;
-
-    document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
-    document.getElementById('live-score-sub').textContent = subDisplay;
-
-    const maxLvl = Math.max(iInfo.max, eInfo.max);
-    const badgeColors = getThemeBadgeColors(maxLvl);
-    const svgString = buildSvgBadgeString(scoreCompact, badgeColors.leftBg, badgeColors.rightBg);
-    document.getElementById('svg-badge-container').innerHTML = svgString;
-
-    // Collect components
-    const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
-    const comps = compRows.map(r => {
-      const iCode = r.querySelector('.comp-i').value;
-      const eCode = r.querySelector('.comp-e').value;
-      const iNum = parseInt(iCode.slice(1), 10);
-      const eNum = parseInt(eCode.slice(1), 10);
-      return {
-        name: r.querySelector('.comp-name').value.trim() || 'Component',
-        iCode,
-        eCode,
-        iNum,
-        eNum,
-        iTitle: SPEC_DATA.ideationTitles[iNum],
-        eTitle: SPEC_DATA.executionTitles[eNum],
-        desc: r.querySelector('.comp-desc').value.trim() || ''
-      };
-    });
-
-    // 1. Markdown Output
-    let md = `## AI Usage Disclosure: ${SPEC_DATA.acronym} \`${scoreCompact}\`\n\n`;
-    md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName}) v${SPEC_DATA.version}** standard:\n`;
-    md += `- **Ideation (\`${iInfo.spaced}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo)}\n`;
-    md += `- **Execution (\`${eInfo.spaced}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo)}\n`;
-
-    if (comps.length > 0) {
-      md += `\n### Component Breakdown\n\n`;
-      md += `| Component / Deliverable | ${SPEC_DATA.acronym} Score | Classification | Details |\n`;
-      md += `| :--- | :--- | :--- | :--- |\n`;
-      comps.forEach(c => {
-        md += `| **${c.name}** | **\`${c.iCode} / ${c.eCode}\`** | ${c.iTitle} Ideation, ${c.eTitle} Execution | ${c.desc} |\n`;
-      });
     }
-    document.getElementById('out-markdown').textContent = md;
 
-    // 2. NFO / Liner Notes Output
-    let nfo = `========================================================================\n`;
-    nfo += ` AI DISCLOSURE (${SPEC_DATA.acronym} v${SPEC_DATA.version}: ${scoreCompact})\n`;
-    nfo += `------------------------------------------------------------------------\n`;
-    nfo += ` Ideation  : ${iInfo.spaced} (${iInfo.titles})\n`;
-    nfo += ` Execution : ${eInfo.spaced} (${eInfo.titles})\n`;
-    if (comps.length > 0) {
+    function updateOutputs() {
+      const iInfo = formatLevels('I', selectedIdeations);
+      const eInfo = formatLevels('E', selectedExecutions);
+
+      const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
+      const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}), Execution: ${eInfo.spaced} (${eInfo.titles})`;
+
+      document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
+      document.getElementById('live-score-sub').textContent = subDisplay;
+
+      const maxLvl = Math.max(iInfo.max, eInfo.max);
+      const badgeColors = getThemeBadgeColors(maxLvl);
+      const svgString = buildSvgBadgeString(scoreCompact, badgeColors.leftBg, badgeColors.rightBg);
+      document.getElementById('svg-badge-container').innerHTML = svgString;
+
+      // Collect components
+      const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
+      const comps = compRows.map(r => {
+        const iCode = r.querySelector('.comp-i').value;
+        const eCode = r.querySelector('.comp-e').value;
+        const iNum = parseInt(iCode.slice(1), 10);
+        const eNum = parseInt(eCode.slice(1), 10);
+        return {
+          name: r.querySelector('.comp-name').value.trim() || 'Component',
+          iCode,
+          eCode,
+          iNum,
+          eNum,
+          iTitle: SPEC_DATA.ideationTitles[iNum],
+          eTitle: SPEC_DATA.executionTitles[eNum],
+          desc: r.querySelector('.comp-desc').value.trim() || ''
+        };
+      });
+
+      // 1. Markdown Output
+      let md = `## AI Usage Disclosure: ${SPEC_DATA.acronym} \`${scoreCompact}\`\n\n`;
+      md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName}) v${SPEC_DATA.version}** standard:\n`;
+      md += `- **Ideation (\`${iInfo.spaced}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo)}\n`;
+      md += `- **Execution (\`${eInfo.spaced}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo)}\n`;
+
+      if (comps.length > 0) {
+        md += `\n### Component Breakdown\n\n`;
+        md += `| Component / Deliverable | ${SPEC_DATA.acronym} Score | Classification | Details |\n`;
+        md += `| :--- | :--- | :--- | :--- |\n`;
+        comps.forEach(c => {
+          md += `| **${c.name}** | **\`${c.iCode} / ${c.eCode}\`** | ${c.iTitle} Ideation, ${c.eTitle} Execution | ${c.desc} |\n`;
+        });
+      }
+      document.getElementById('out-markdown').textContent = md;
+
+      // 2. NFO / Liner Notes Output
+      let nfo = `========================================================================\n`;
+      nfo += ` AI DISCLOSURE (${SPEC_DATA.acronym} v${SPEC_DATA.version}: ${scoreCompact})\n`;
       nfo += `------------------------------------------------------------------------\n`;
-      comps.forEach(c => {
-        nfo += ` * ${c.name} [${c.iCode} / ${c.eCode}: ${c.iTitle} Ideation, ${c.eTitle} Execution]\n`;
-        if (c.desc) {
-          nfo += `   ${c.desc}\n`;
-        }
+      nfo += ` Ideation  : ${iInfo.spaced} (${iInfo.titles})\n`;
+      nfo += ` Execution : ${eInfo.spaced} (${eInfo.titles})\n`;
+      if (comps.length > 0) {
+        nfo += `------------------------------------------------------------------------\n`;
+        comps.forEach(c => {
+          nfo += ` * ${c.name} [${c.iCode} / ${c.eCode}: ${c.iTitle} Ideation, ${c.eTitle} Execution]\n`;
+          if (c.desc) {
+            nfo += `   ${c.desc}\n`;
+          }
+        });
+      }
+      nfo += `========================================================================`;
+      document.getElementById('out-nfo').textContent = nfo;
+
+      // 3. Per-File / Asset Metadata Header Tags
+      let headers = '';
+      if (comps.length > 0) {
+        headers += `# --- Component-Specific ${SPEC_DATA.acronym}-Usage Header Lines ---\n`;
+        comps.forEach(c => {
+          headers += `# [${c.name}] ${SPEC_DATA.acronym}-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}, Execution: ${c.eTitle})\n`;
+        });
+        headers += `\n`;
+      }
+      headers += `// --- C / C++ / Rust / JavaScript / C# Header ---\n`;
+      headers += `// ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+      headers += `# --- Python / Shell / YAML / Markdown Metadata Header ---\n`;
+      headers += `# ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+      headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
+      headers += `; ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})`;
+      document.getElementById('out-headers').textContent = headers;
+    }
+
+    function getIdeationSummary(levels, info) {
+      if (levels.length > 1) {
+        return `Project components span multiple ideation levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
+      }
+      return SPEC_DATA.ideationDefinitions[levels[0]];
+    }
+
+    function getExecutionSummary(levels, info) {
+      if (levels.length > 1) {
+        return `Project components span multiple execution levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
+      }
+      return SPEC_DATA.executionDefinitions[levels[0]];
+    }
+
+    function copyText(elementId, btn) {
+      const text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = old; }, 1500);
       });
     }
-    nfo += `========================================================================`;
-    document.getElementById('out-nfo').textContent = nfo;
 
-    // 3. Per-File / Asset Metadata Header Tags
-    let headers = '';
-    if (comps.length > 0) {
-      headers += `# --- Component-Specific ${SPEC_DATA.acronym}-Usage Header Lines ---\n`;
-      comps.forEach(c => {
-        headers += `# [${c.name}] ${SPEC_DATA.acronym}-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}, Execution: ${c.eTitle})\n`;
-      });
-      headers += `\n`;
+    function downloadSvgBadge() {
+      const svgEl = document.querySelector('#svg-badge-container svg');
+      if (!svgEl) return;
+      const blob = new Blob([svgEl.outerHTML], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'made-badge.svg';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     }
-    headers += `// --- C / C++ / Rust / JavaScript / C# Header ---\n`;
-    headers += `// ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
-    headers += `# --- Python / Shell / YAML / Markdown Metadata Header ---\n`;
-    headers += `# ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
-    headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
-    headers += `; ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})`;
-    document.getElementById('out-headers').textContent = headers;
-  }
 
-  function getIdeationSummary(levels, info) {
-    if (levels.length > 1) {
-      return `Project components span multiple ideation levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
-    }
-    return SPEC_DATA.ideationDefinitions[levels[0]];
-  }
-
-  function getExecutionSummary(levels, info) {
-    if (levels.length > 1) {
-      return `Project components span multiple execution levels (${info.spaced}: ${info.titles}). See the component breakdown for details.`;
-    }
-    return SPEC_DATA.executionDefinitions[levels[0]];
-  }
-
-  function copyText(elementId, btn) {
-    const text = document.getElementById(elementId).textContent;
-    navigator.clipboard.writeText(text).then(() => {
-      const old = btn.textContent;
-      btn.textContent = 'Copied!';
-      setTimeout(() => { btn.textContent = old; }, 1500);
-    });
-  }
-
-  function downloadSvgBadge() {
-    const svgEl = document.querySelector('#svg-badge-container svg');
-    if (!svgEl) return;
-    const blob = new Blob([svgEl.outerHTML], { type: 'image/svg+xml;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'made-badge.svg';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  }
-
-  // Initialize with the general Software Hybrid preset
-  applyPreset('software');
-</script>
+    // Initialize with the general Software Hybrid preset
+    applyPreset('software');
+  </script>
 
 </body>
+
 </html>
