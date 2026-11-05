@@ -13,7 +13,7 @@ All templates, badges, and metadata header tags in this document are dedicated t
 ```markdown
 ## AI Usage Disclosure: MADE `I0-I1 / E0,E3`
 
-This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution) v1.0](MADE-SPECIFICATION.md)** standard:
+This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](MADE-SPECIFICATION.md)** standard:
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -26,13 +26,13 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 **For Hand-Crafted Core Source Files (`.c`, `.cpp`, `.rs`, `.asm`):**
 ```c
-// MADE-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)
+// MADE-Usage: I0/E0 (Ideation: Unassisted; Execution: Unassisted)
 // Note: 100% human-designed and hand-written source code. Zero AI involvement.
 ```
 
 **For Spec-Driven AI Utility Scripts (`.py`, `.js`, `.sh`):**
 ```python
-# MADE-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)
+# MADE-Usage: I1/E3 (Ideation: Assisted; Execution: Directed)
 # Note: Implemented by an LLM strictly from technical specifications and
 # constraints designed and verified by the human author.
 ```
@@ -46,7 +46,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 ### 2.1 Copyright Page / Book Colophon / Article Footer
 
 ```markdown
-**AI Disclosure (MADE v1.0: `I1 / E0-E1`):**
+**AI Disclosure (MADE: `I1 / E0-E1`):**
 Ideation: I1 (Assisted), Execution: E0-E1 (Unassisted, Assisted).
 All plotlines, characters, arguments, and prose in this work were conceived and written by the human author. AI tools were consulted solely for background historical research (`I1`) and used during editing as an interactive phrase thesaurus and grammar checker (`E1`). No AI-generated prose is present in this publication.
 ```
@@ -102,7 +102,10 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ```text
 ========================================================================
- AI DISCLOSURE (MADE v1.0: I0-I1 / E0,E3)
+ AI DISCLOSURE (MADE: I0-I1 / E0,E3)
+------------------------------------------------------------------------
+ This work is self-disclosed under the MADE (Measure of AI in Design &
+ Execution) standard. Learn more: https://example.com
 ------------------------------------------------------------------------
  Project Summary:
    Ideation  : I0-I1 (Unassisted, Assisted)
@@ -125,12 +128,12 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ### 6.1 Purely Human Work (`I0 / E0`)
 ```markdown
-**AI Disclosure (MADE v1.0: `I0 / E0`):** Ideation 0 (Unassisted), Execution 0 (Unassisted). Created 100% by a human with zero AI involvement in concept, research, design, or production.
+**AI Disclosure (MADE: `I0 / E0`):** Ideation 0 (Unassisted), Execution 0 (Unassisted). Created 100% by a human with zero AI involvement in concept, research, design, or production.
 ```
 
 ### 6.2 Human-Created Work with AI Research & Diagnostics (`I1 / E1`)
 ```markdown
-**AI Disclosure (MADE v1.0: `I1 / E1`):** Ideation 1 (Assisted), Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or signal cleanup.
+**AI Disclosure (MADE: `I1 / E1`):** Ideation 1 (Assisted), Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or signal cleanup.
 ```
 
 ### 6.3 Shields.io Markdown Badges

@@ -370,11 +370,9 @@
     }
 
     .preset-bar {
-      display: flex;
-      gap: 0.55rem;
-      flex-wrap: wrap;
-      margin-top: 1.25rem;
-      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
     }
 
     .preset-label {
@@ -384,7 +382,14 @@
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-right: 0.25rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .preset-buttons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
     }
 
     .btn-sm {
@@ -468,7 +473,7 @@
       border: 1px solid var(--border-strong);
       border-radius: 10px;
       padding: 1.25rem 1.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0;
     }
 
     .code-box {
@@ -622,16 +627,16 @@
           <span>Canonical Specification</span>
         </div>
         <div class="meta-item">
-          <strong>Author</strong>
-          <span>Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</span>
+          <strong>Specification License</strong>
+          <span><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></span>
         </div>
         <div class="meta-item">
           <strong>Date</strong>
           <span>November 2026</span>
         </div>
         <div class="meta-item">
-          <strong>Specification License</strong>
-          <span><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></span>
+          <strong>Author</strong>
+          <span>Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</span>
         </div>
         <div class="meta-item">
           <strong>Templates, Badges &amp; Header Tags License</strong>
@@ -639,7 +644,7 @@
         </div>
       </div>
 
-      <h2><span>1. Purpose &amp; Philosophy</span></h2>
+      <h2><span>Purpose &amp; Philosophy</span></h2>
       <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <strong>original human ideas</strong> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
       <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure (RAID)</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.  This incentivizes the wrong signals:</p>
@@ -664,7 +669,7 @@
     </div>
 
     <div class="card">
-      <h2><span>2. Category 1: Ideation Levels (<code>I0</code> to <code>I4</code>)</span></h2>
+      <h2><span>Category 1: Ideation Levels (<code>I0</code> to <code>I4</code>)</span></h2>
       <p>The <strong>Ideation</strong> level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.</p>
       <table class="spec-table">
         <thead>
@@ -711,7 +716,7 @@
     </div>
 
     <div class="card">
-      <h2><span>3. Category 2: Execution Levels (<code>E0</code> to <code>E4</code>)</span></h2>
+      <h2><span>Category 2: Execution Levels (<code>E0</code> to <code>E4</code>)</span></h2>
       <p>The <strong>Execution</strong> level measures how the final deliverables of the work (source code, text, visual artwork, or audio recordings) were mechanically constructed and verified.</p>
       <table class="spec-table">
         <thead>
@@ -758,9 +763,9 @@
     </div>
 
     <div class="card">
-      <h2><span>4. Disclosure Format &amp; Syntax</span></h2>
+      <h2><span>Disclosure Format &amp; Syntax</span></h2>
       <p>MADE supports a <strong>two-tier disclosure format</strong> so hybrid projects (such as a project where the core work is hand-crafted at <code>E0</code> and a secondary component is AI-generated from specifications at <code>E3</code>) can represent both the overall release and its individual components accurately.</p>
-      <h3>4.1 Tier 1: Compact Shorthand Notation</h3>
+      <h3>Tier 1: Compact Shorthand Notation</h3>
       <ol>
         <li>
           <strong>Separating Ideation and Execution (Always Use a Slash):</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>). Never use a hyphen between <code>I</code> and <code>E</code>, as a hyphen implies a range.
@@ -783,23 +788,23 @@
           </ul>
         </li>
       </ol>
-      <h3>4.2 Tier 2: Component-Level Breakdown</h3>
+      <h3>Tier 2: Component-Level Breakdown</h3>
       <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where <strong>each component declares both its Ideation level and its Execution level</strong>:</p>
-      <pre><code>**AI Disclosure ([MADE v1.0](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
+      <pre><code>**AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
 - **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import &amp; Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
-      <h3>4.3 Per-File Source Code &amp; Asset Metadata Headers</h3>
+      <h3>Per-File Source Code &amp; Asset Metadata Headers</h3>
       <p>To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a <code>MADE-Usage</code> line tag in file headers or asset metadata comments:</p>
       <p><strong>Assembly (<code>.asm</code>, <code>.inc</code>, <code>.s</code>):</strong></p>
-      <pre><code>; MADE-Usage: I0/E0 (Ideation: Unassisted, Execution: Unassisted)</code></pre>
+      <pre><code>; MADE-Usage: I0/E0 (Ideation: Unassisted; Execution: Unassisted)</code></pre>
       <p><strong>C / C++ / Rust / Go / JavaScript / C#:</strong></p>
-      <pre><code>// MADE-Usage: I1/E3 (Ideation: Assisted, Execution: Directed)</code></pre>
+      <pre><code>// MADE-Usage: I1/E3 (Ideation: Assisted; Execution: Directed)</code></pre>
       <p><strong>Python / Shell / YAML / Makefile / Markdown / Text Metadata:</strong></p>
-      <pre><code># MADE-Usage: I1/E1 (Ideation: Assisted, Execution: Assisted)</code></pre>
+      <pre><code># MADE-Usage: I1/E1 (Ideation: Assisted; Execution: Assisted)</code></pre>
     </div>
 
     <div class="card">
-      <h2><span>5. Licensing &amp; Governance</span></h2>
+      <h2><span>Licensing &amp; Governance</span></h2>
       <p>To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, MADE uses a two-part licensing structure:</p>
       <ol>
         <li><strong>Using MADE Ratings, Badges, and Templates in Your Works (<code>CC0 1.0 Public Domain</code>):</strong> Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing <code>MADE-Usage</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.</li>
@@ -808,12 +813,8 @@
     </div>
 
     <div class="card">
-      <h2><span>6. Authorship &amp; Provenance</span></h2>
-      <ul>
-        <li><strong>Initial Author:</strong> Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</li>
-        <li><strong>Version:</strong> 0.1 (November 2026)</li>
-        <li><strong>Origin &amp; Intent:</strong> Created to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</li>
-      </ul>
+      <h2><span>Authorship &amp; Provenance</span></h2>
+      <p>The MADE standard was created by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</p>
     </div>
       <!-- SYNC:TAB-SPEC:END -->
     </section>
@@ -822,8 +823,11 @@
     <section id="tab-generator" class="hidden">
       <div class="card">
         <h2>
-          <span>1. Select Project Ideation &amp; Execution Levels</span>
+          <span>Select Project Ideation &amp; Execution Levels</span>
         </h2>
+        <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:1rem;">
+          Select the applicable ideation and execution levels below to accurately communicate the balance between original human creativity and mechanical AI assistance across your project.
+        </p>
 
         <div class="grid-2">
           <!-- Category 1: Ideation -->
@@ -840,7 +844,7 @@
                 <span>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation..</span>
               </div>
             </div>
-            <div class="level-option selected" data-level="1" onclick="toggleIdeation(1)">
+            <div class="level-option" data-level="1" onclick="toggleIdeation(1)">
               <span class="lvl-badge b-1">I1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
@@ -900,7 +904,7 @@
                 <span>Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.</span>
               </div>
             </div>
-            <div class="level-option selected" data-level="3" onclick="toggleExecution(3)">
+            <div class="level-option" data-level="3" onclick="toggleExecution(3)">
               <span class="lvl-badge b-3">E3</span>
               <div class="level-info">
                 <strong>Directed</strong>
@@ -923,7 +927,7 @@
       <!-- Component Breakdown Editor -->
       <div class="card">
         <h2>
-          <span>2. Optional: Component Level Breakdown</span>
+          <span>Optional: Component Level Breakdown</span>
         </h2>
         <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.5rem;">
           For works comprised of multiple distinct modules, assets, or deliverables, creators can document the specific
@@ -952,39 +956,51 @@
         </div>
 
         <div class="preset-bar">
-          <span class="preset-label">Quick Presets:</span>
-          <button class="btn-sm" onclick="applyPreset('software')">Programming: Hybrid App (I0-I1 / E0,E3)</button>
-          <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0-E1)</button>
-          <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0-I1 / E0-E2)</button>
-          <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0-E1)</button>
-          <button class="btn-sm" onclick="applyPreset('pure')">100% Unassisted Human Work (I0 / E0)</button>
+          <div class="preset-label">Quick Presets:</div>
+          <div class="preset-buttons">
+            <button class="btn-sm" onclick="applyPreset('software')">Programming: Hybrid App (I0-I1 / E0,E3)</button>
+            <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0-E1)</button>
+            <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0-I1 / E0-E2)</button>
+            <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0-E1)</button>
+            <button class="btn-sm" onclick="applyPreset('pure')">100% Unassisted Human Work (I0 / E0)</button>
+          </div>
         </div>
       </div>
 
-      <!-- Generated Outputs -->
+      <!-- Section 3: Live MADE Score & Badge -->
       <div class="card">
-        <h2><span>3. Generated Badges, Disclosure Blocks &amp; Metadata Headers</span></h2>
+        <h2><span>Live MADE Score &amp; Badge</span></h2>
 
         <div class="preview-banner">
           <div>
             <div
               style="font-family:var(--font-mono);font-size:0.76rem;color:var(--text-muted);text-transform:uppercase;font-weight:700;">
               Live MADE Score</div>
-            <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0-I1 / E0,E3
+            <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0 / E0
             </div>
-            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0-I1 (Unassisted,
-              Assisted), Execution: E0, E3 (Unassisted, Directed)</div>
+            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0 (Unassisted); Execution: E0 (Unassisted)</div>
           </div>
           <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
             <div id="svg-badge-container"></div>
             <button class="btn-sm" onclick="downloadSvgBadge()">Download SVG Badge</button>
           </div>
         </div>
+      </div>
+
+      <!-- Section 4: Copy-Paste Disclosure Blocks & Metadata Headers -->
+      <div class="card">
+        <h2><span>Copy-Paste Disclosure Blocks &amp; Metadata Headers</span></h2>
 
         <h3>Markdown Disclosure Block (for README.md, Portfolio, or Colophon)</h3>
         <div class="code-box">
           <button class="copy-btn" onclick="copyText('out-markdown', this)">Copy</button>
           <pre id="out-markdown"></pre>
+        </div>
+
+        <h3>HTML Disclosure Block (for Webpages, Blogs &amp; Portfolios)</h3>
+        <div class="code-box">
+          <button class="copy-btn" onclick="copyText('out-html', this)">Copy</button>
+          <pre id="out-html"></pre>
         </div>
 
         <h3>Plain-Text / .NFO / Liner Notes Disclosure Block (72-Column ASCII)</h3>
@@ -1004,7 +1020,7 @@
     <footer>
       <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>MADE Specification v0.1</strong> by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>MADE Specification v0.1</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.
     </p>
       <!-- SYNC:FOOTER:END -->
@@ -1018,6 +1034,7 @@
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
     "version": "0.1",
+    "homepage": "https://example.com",
     "ideationTitles": [
       "Unassisted",
       "Assisted",
@@ -1049,8 +1066,8 @@
   };
     /* SYNC:SPEC-DATA:END */
 
-    let selectedIdeations = [0, 1];
-    let selectedExecutions = [0, 3];
+    let selectedIdeations = [0];
+    let selectedExecutions = [0];
 
     function toggleTheme() {
       const html = document.documentElement;
@@ -1345,12 +1362,32 @@
 </svg>`;
     }
 
+    function wrapText(text, maxLen, prefix) {
+      maxLen = maxLen || 72;
+      prefix = prefix || '';
+      const words = text.split(/\s+/);
+      const lines = [];
+      let current = prefix;
+      for (const word of words) {
+        if (!word) continue;
+        const testLine = current === prefix ? prefix + word : current + ' ' + word;
+        if (testLine.length <= maxLen) {
+          current = testLine;
+        } else {
+          lines.push(current);
+          current = prefix + word;
+        }
+      }
+      if (current !== prefix) lines.push(current);
+      return lines.join('\n');
+    }
+
     function updateOutputs() {
       const iInfo = formatLevels('I', selectedIdeations);
       const eInfo = formatLevels('E', selectedExecutions);
 
       const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
-      const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}), Execution: ${eInfo.spaced} (${eInfo.titles})`;
+      const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}); Execution: ${eInfo.spaced} (${eInfo.titles})`;
 
       document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
       document.getElementById('live-score-sub').textContent = subDisplay;
@@ -1380,8 +1417,14 @@
       });
 
       // 1. Markdown Output
+      const badgeLinkUrl = SPEC_DATA.homepage || 'https://example.com';
+      const badgeAlt = `${SPEC_DATA.acronym}: ${scoreCompact}`;
+      const badgeMd = `[![${badgeAlt}](made-badge.svg)](${badgeLinkUrl})`;
+      const badgeHtml = `<a href="${badgeLinkUrl}"><img src="made-badge.svg" alt="${badgeAlt}" height="24"></a>`;
+
       let md = `## AI Usage Disclosure: ${SPEC_DATA.acronym} \`${scoreCompact}\`\n\n`;
-      md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName}) v${SPEC_DATA.version}** standard:\n`;
+      md += `${badgeMd}\n\n`;
+      md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName})** standard:\n`;
       md += `- **Ideation (\`${iInfo.spaced}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo)}\n`;
       md += `- **Execution (\`${eInfo.spaced}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo)}\n`;
 
@@ -1395,9 +1438,49 @@
       }
       document.getElementById('out-markdown').textContent = md;
 
-      // 2. NFO / Liner Notes Output
+      // 2. HTML Output
+      let htmlBlock = `<section class="made-disclosure">\n`;
+      htmlBlock += `  <h2>AI Usage Disclosure: ${SPEC_DATA.acronym} <code>${escapeHtml(scoreCompact)}</code></h2>\n`;
+      htmlBlock += `  <p>\n    ${badgeHtml}\n  </p>\n`;
+      htmlBlock += `  <p>This work is self-disclosed under the <strong>${SPEC_DATA.acronym} (${escapeHtml(SPEC_DATA.fullName)})</strong> standard:</p>\n`;
+      htmlBlock += `  <ul>\n`;
+      htmlBlock += `    <li><strong>Ideation (<code>${escapeHtml(iInfo.spaced)}</code>, ${escapeHtml(iInfo.titles)}):</strong> ${escapeHtml(getIdeationSummary(selectedIdeations, iInfo))}</li>\n`;
+      htmlBlock += `    <li><strong>Execution (<code>${escapeHtml(eInfo.spaced)}</code>, ${escapeHtml(eInfo.titles)}):</strong> ${escapeHtml(getExecutionSummary(selectedExecutions, eInfo))}</li>\n`;
+      htmlBlock += `  </ul>\n`;
+
+      if (comps.length > 0) {
+        htmlBlock += `  <h3>Component Breakdown</h3>\n`;
+        htmlBlock += `  <table>\n`;
+        htmlBlock += `    <thead>\n`;
+        htmlBlock += `      <tr>\n`;
+        htmlBlock += `        <th>Component / Deliverable</th>\n`;
+        htmlBlock += `        <th>${SPEC_DATA.acronym} Score</th>\n`;
+        htmlBlock += `        <th>Classification</th>\n`;
+        htmlBlock += `        <th>Details</th>\n`;
+        htmlBlock += `      </tr>\n`;
+        htmlBlock += `    </thead>\n`;
+        htmlBlock += `    <tbody>\n`;
+        comps.forEach(c => {
+          htmlBlock += `      <tr>\n`;
+          htmlBlock += `        <td><strong>${escapeHtml(c.name)}</strong></td>\n`;
+          htmlBlock += `        <td><code>${escapeHtml(c.iCode)} / ${escapeHtml(c.eCode)}</code></td>\n`;
+          htmlBlock += `        <td>${escapeHtml(c.iTitle)} Ideation, ${escapeHtml(c.eTitle)} Execution</td>\n`;
+          htmlBlock += `        <td>${escapeHtml(c.desc)}</td>\n`;
+          htmlBlock += `      </tr>\n`;
+        });
+        htmlBlock += `    </tbody>\n`;
+        htmlBlock += `  </table>\n`;
+      }
+      htmlBlock += `</section>`;
+      document.getElementById('out-html').textContent = htmlBlock;
+
+      // 3. NFO / Liner Notes Output
+      const disclosureUrl = SPEC_DATA.homepage || 'https://example.com';
+      const introText = `This work is self-disclosed under the ${SPEC_DATA.acronym} (${SPEC_DATA.fullName}) standard. Learn more: ${disclosureUrl}`;
       let nfo = `========================================================================\n`;
-      nfo += ` AI DISCLOSURE (${SPEC_DATA.acronym} v${SPEC_DATA.version}: ${scoreCompact})\n`;
+      nfo += ` AI DISCLOSURE (${SPEC_DATA.acronym}: ${scoreCompact})\n`;
+      nfo += `------------------------------------------------------------------------\n`;
+      nfo += `${wrapText(introText, 72, ' ')}\n`;
       nfo += `------------------------------------------------------------------------\n`;
       nfo += ` Ideation  : ${iInfo.spaced} (${iInfo.titles})\n`;
       nfo += ` Execution : ${eInfo.spaced} (${eInfo.titles})\n`;
@@ -1406,28 +1489,28 @@
         comps.forEach(c => {
           nfo += ` * ${c.name} [${c.iCode} / ${c.eCode}: ${c.iTitle} Ideation, ${c.eTitle} Execution]\n`;
           if (c.desc) {
-            nfo += `   ${c.desc}\n`;
+            nfo += `${wrapText(c.desc, 72, '   ')}\n`;
           }
         });
       }
       nfo += `========================================================================`;
       document.getElementById('out-nfo').textContent = nfo;
 
-      // 3. Per-File / Asset Metadata Header Tags
+      // 4. Per-File / Asset Metadata Header Tags
       let headers = '';
       if (comps.length > 0) {
         headers += `# --- Component-Specific ${SPEC_DATA.acronym}-Usage Header Lines ---\n`;
         comps.forEach(c => {
-          headers += `# [${c.name}] ${SPEC_DATA.acronym}-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}, Execution: ${c.eTitle})\n`;
+          headers += `# [${c.name}] ${SPEC_DATA.acronym}-Usage: ${c.iCode}/${c.eCode} (Ideation: ${c.iTitle}; Execution: ${c.eTitle})\n`;
         });
         headers += `\n`;
       }
       headers += `// --- C / C++ / Rust / JavaScript / C# Header ---\n`;
-      headers += `// ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+      headers += `// ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}; Execution: ${eInfo.titles})\n\n`;
       headers += `# --- Python / Shell / YAML / Markdown Metadata Header ---\n`;
-      headers += `# ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})\n\n`;
+      headers += `# ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}; Execution: ${eInfo.titles})\n\n`;
       headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
-      headers += `; ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}, Execution: ${eInfo.titles})`;
+      headers += `; ${SPEC_DATA.acronym}-Usage: ${iInfo.compact}/${eInfo.compact} (Ideation: ${iInfo.titles}; Execution: ${eInfo.titles})`;
       document.getElementById('out-headers').textContent = headers;
     }
 
@@ -1468,8 +1551,10 @@
       URL.revokeObjectURL(url);
     }
 
-    // Initialize with the general Software Hybrid preset
-    applyPreset('software');
+    // Initialize with default 100% unassisted human work (I0 / E0) and empty component list
+    clearComponents();
+    syncOptionCards();
+    updateOutputs();
   </script>
 
 </body>

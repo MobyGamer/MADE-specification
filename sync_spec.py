@@ -37,8 +37,8 @@ REQUIRED_META_KEYS = (
 )
 
 # Default initial selected levels rendered into static HTML before JS runs
-DEFAULT_SELECTED_IDEATIONS = {0, 1}
-DEFAULT_SELECTED_EXECUTIONS = {0, 3}
+DEFAULT_SELECTED_IDEATIONS = {0}
+DEFAULT_SELECTED_EXECUTIONS = {0}
 
 
 class SpecValidationError(Exception):
@@ -432,7 +432,9 @@ def render_blocks(
         heading_match = re.match(r"^\s*(#{1,6})\s+(.+?)\s*$", line)
         if heading_match:
             hashes = len(heading_match.group(1))
-            content_html = render_inline(heading_match.group(2))
+            heading_text = heading_match.group(2)
+            clean_heading = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", heading_text)
+            content_html = render_inline(clean_heading)
             tag_level = min(max(hashes, 2), 4)
             if tag_level == 2:
                 blocks.append(("h2", f"<h2><span>{content_html}</span></h2>"))
@@ -641,6 +643,8 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     # Build .meta-grid HTML from all header metadata entries
     meta_items_html: list[str] = []
     for key, val in header_info["meta_items"]:
+        if key.lower() in ("homepage", "specification homepage", "url", "canonical url"):
+            continue
         key_html = render_inline(key)
         val_html = render_inline(val)
         meta_items_html.append(
@@ -758,7 +762,7 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     footer_html = (
         "    <p>\n"
         f"      <strong>{html.escape(acronym, quote=False)} Specification "
-        f"v{html.escape(version, quote=False)}</strong> by {author_html} "
+        f"v{html.escape(version, quote=False)}</strong> "
         f"is licensed under {spec_license_html}.<br>\n"
         "      All generated badges, disclosure snippets, and metadata header tags "
         f"are dedicated to the public domain under {templates_license_html}.\n"
@@ -770,6 +774,7 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
         "acronym": acronym,
         "fullName": full_name,
         "version": version,
+        "homepage": meta_map.get("Homepage") or meta_map.get("Specification Homepage") or "https://example.com",
         "ideationTitles": [r["title"] for r in ideation_rows],
         "executionTitles": [r["title"] for r in execution_rows],
         "ideationDefinitions": [r["definition_md"] for r in ideation_rows],
