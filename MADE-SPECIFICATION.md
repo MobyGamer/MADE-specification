@@ -1,35 +1,40 @@
 # MADE: Measure of AI in Design & Execution, Specification v0.1
 
 **Version:** 0.1  
-**Status:** Canonical Specification  
+**Status:** Draft Specification  
 **Homepage:** https://example.com  
 **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
 **Date:** November 2026  
 **Author:** Jim Leonard (<mobygamer@gmail.com>)  
-**Templates, Badges & Header Tags License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
+**Templates, Badges, & Header Tags License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 ---
 
 ## 1. Purpose & Philosophy
 
-**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates **original human ideas** separately from *mechanical implementation*, rather than reducing an entire project to a single number.
+**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates **original human ideas** separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure (RAID)](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *AI brainstorming and ideation* at a lower number than *AI mechanical implementation*.  This incentivizes the wrong signals:
+Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure (RAID)](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
 1. A creator with no original ideas who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
-2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is **penalized** with a "high" AI rating, despite only using AI for mechanical tasks.
+2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is *penalized* with a "high" AI rating, despite only using AI for mechanical tasks.
 
 ### MADE's Balanced Alternative: Separating Ideation from Execution
 MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
 - **Ideation (`I0` to `I4`)** measures who conceived the ideas, concepts, structure, design, composition, or algorithms.
 - **Execution (`E0` to `E4`)** measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.
 
-Both categories share five symmetrical, whole-number level titles:
+Both categories use the same five symmetrical, whole-number level titles:
 - **`0`: Unassisted**
 - **`1`: Assisted**
 - **`2`: Collaborative**
 - **`3`: Directed**
 - **`4`: Autonomous**
+
+Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate 50% of the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:
+
+> MADE: I0 / E2
+> Ideation: I0 (Unassisted); Execution: E2 (Collaborative)
 
 ---
 
@@ -39,8 +44,8 @@ The **Ideation** level measures the intellectual and creative origin of the work
 
 | Level | Title | Definition | Examples Across Creative & Technical Fields |
 | :--- | :--- | :--- | :--- |
-| **`I0`** | **Unassisted** | 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.. | **Programming:** Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br>**Writing:** Conceiving a novel's plot, characters, and chapter structure independently.<br>**Art:** Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>**Music:** Composing melodies, harmonies, and arrangements without querying any AI tool. |
-| **`I1`** | **Assisted** | Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges. |
+| **`I0`** | **Unassisted** | 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation. | **Programming:** Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br>**Writing:** Conceiving a novel's plot, characters, and chapter structure independently.<br>**Art:** Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>**Music:** Composing melodies, harmonies, and arrangements without querying any AI tool. |
+| **`I1`** | **Assisted** | Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges. |
 | **`I2`** | **Collaborative** | A human set the creative vision and partnered with AI to co-brainstorm subcomponents or outlines. | **Programming:** Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>**Writing:** Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>**Art:** Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>**Music:** Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies. |
 | **`I3`** | **Directed** | A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human. | **Programming:** Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br>**Writing:** Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>**Art:** Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>**Music:** Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement. |
 | **`I4`** | **Autonomous** | AI conceived the project concept, design, and creative direction with minimal or no human conceptual input. | **All Fields:** Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request. |
@@ -68,13 +73,12 @@ MADE supports a **two-tier disclosure format** so hybrid projects (such as a pro
 ### 4.1 Tier 1: Compact Shorthand Notation
 
 1. **Separating Ideation and Execution (Always Use a Slash):**
-   Ideation (`I`) and Execution (`E`) are always separated by a forward slash (`/`). Never use a hyphen between `I` and `E`, as a hyphen implies a range.
-   - Correct: `MADE: I1 / E0`
-   - Incorrect: `MADE: I1-E0`
+   Ideation (`I`) and Execution (`E`) are always separated by a forward slash (`/`).
+   - Example: `MADE: I1 / E0`
 
 2. **Expanded Human-Readable Format (Use a Comma):**
-   When writing out the full rating in prose, separate the Ideation and Execution clauses with a comma rather than a pipe symbol:
-   - `MADE: Ideation 1 (Assisted), Execution 0 (Unassisted)`
+   When writing out the full rating in prose, separate the Ideation and Execution clauses with a semicolon:
+   - `MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)`
 
 3. **Multi-Component Projects: Discrete Levels (`E0,E3`) vs. Contiguous Ranges (`I0-I1`, `E0-E3`):**
    When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
