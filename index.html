@@ -668,7 +668,7 @@
       </ul>
       <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate 50% of the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
-Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
+Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     </div>
 
     <div class="card">
@@ -767,11 +767,12 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
 
     <div class="card">
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
-      <p>MADE supports a <strong>two-tier disclosure format</strong> so hybrid projects (such as a project where the core work is hand-crafted at <code>E0</code> and a secondary component is AI-generated from specifications at <code>E3</code>) can represent both the overall release and its individual components accurately.</p>
-      <h3>Compact Shorthand Notation</h3>
+      <p>At its simplest, a MADE disclosure consists of the <code>MADE:</code> prefix followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>), separated by a forward slash (<code>/</code>), such as <code>MADE: I1 / E0</code>. Ideation is always listed first and Execution second. For standalone works or projects with uniform AI usage throughout, this single rating is all that is required.</p>
+      <p>MADE also provides a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at <code>E0</code> but a helper utility was AI-generated from specifications at <code>E3</code>) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify this process, the accompanying Interactive Badge and Disclosure Builder can automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)</p>
+      <h3>Single-Rating Formats</h3>
       <ol>
         <li>
-          <strong>Separating Ideation and Execution:</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>).
+          <strong>Compact Shorthand:</strong> Separate the Ideation (<code>I</code>) and Execution (<code>E</code>) codes with a forward slash (<code>/</code>). Include the <code>MADE:</code> prefix when the score stands alone, or use the bare score (<code>I1 / E0</code>) inline when <code>MADE</code> is already named in a surrounding heading or label:
           <ul>
             <li>Example: <code>MADE: I1 / E0</code></li>
           </ul>
@@ -782,14 +783,29 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
             <li><code>MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)</code></li>
           </ul>
         </li>
+      </ol>
+      <h3>Multi-Component Projects</h3>
+      <p>When a project contains multiple components with different AI involvement levels, combine all applicable levels within each category in ascending numerical order (<code>0</code> to <code>4</code>). Always prepend the letter prefix (<code>I</code> or <code>E</code>) with every level.</p>
+      <ul>
         <li>
-          <strong>Multi-Component Projects: Discrete Levels (<code>E0,E3</code>) vs. Contiguous Ranges (<code>I0-I1</code>, <code>E0-E3</code>):</strong> When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
+          <strong>Discrete Levels (<code>,</code>):</strong> When components use non-consecutive levels with nothing in between (such as hand-crafted core work at <code>E0</code> and a spec-driven utility at <code>E3</code>), list only the levels used, separated by a comma:
           <ul>
-            <li><strong>Discrete Levels:</strong> If a project uses non-contiguous levels (such as <code>E0</code> for hand-crafted work and <code>E3</code> for a spec-driven utility, with nothing inbetween), list the exact levels separated by a comma: <code>MADE: I1 / E0,E3</code></li>
-            <li><strong>Contiguous Ranges:</strong> If a project spans two or more consecutive levels, express the span using a hyphen, and repeat the letter prefix on both numbers: <code>MADE: I0-I1 / E0,E3</code> or <code>MADE: I1 / E0-E3</code></li>
+            <li>Example: <code>MADE: I1 / E0,E3</code></li>
           </ul>
         </li>
-      </ol>
+        <li>
+          <strong>Contiguous Ranges (<code>-</code>):</strong> When components span consecutive levels with no gaps (such as adjacent levels <code>I0</code> and <code>I1</code>, or every level from <code>E0</code> through <code>E2</code>), join the first and last level with a hyphen:
+          <ul>
+            <li>Examples: <code>MADE: I0-I1 / E0</code> or <code>MADE: I1 / E0-E2</code></li>
+          </ul>
+        </li>
+        <li>
+          <strong>Combined Categories:</strong> Ideation and Execution can apply commas and hyphens independently.  (Both can be combined within a category if needed, such as <code>E0-E1,E3</code>):
+          <ul>
+            <li>Example: <code>MADE: I0-I1 / E0,E3</code></li>
+          </ul>
+        </li>
+      </ul>
       <h3>Component-Level Breakdown</h3>
       <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where each component declares both its Ideation level and its Execution level:</p>
       <pre><code>**AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
@@ -951,7 +967,7 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
           <div></div>
         </div>
         <div id="component-list"></div>
-        <div style="margin-top:1rem;">
+        <div id="sync-components-wrapper" class="hidden" style="margin-top:1rem;">
           <button class="btn-sm" onclick="syncTopLevelsFromComponents()"
             title="Set Section 1 Ideation and Execution selections to match the components listed below">Sync Section 1
             From These Components</button>
@@ -964,7 +980,7 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
             <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0-E1)</button>
             <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0-I1 / E0-E2)</button>
             <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0-E1)</button>
-            <button class="btn-sm" onclick="applyPreset('pure')">100% Unassisted Human Work (I0 / E0)</button>
+            <button class="btn-sm" onclick="applyPreset('vibegame')">Vibe-Coded Retro Game (I3-I4 / E4)</button>
           </div>
         </div>
       </div>
@@ -980,7 +996,7 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
               Live MADE Score</div>
             <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0 / E0
             </div>
-            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation: I0 (Unassisted); Execution: E0 (Unassisted)</div>
+            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">Ideation 0 (Unassisted); Execution 0 (Unassisted)</div>
           </div>
           <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
             <div id="svg-badge-container"></div>
@@ -1156,6 +1172,7 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
 
       const compactParts = [];
       const spacedParts = [];
+      const numericParts = [];
       const descParts = [];
 
       runs.forEach(([start, end]) => {
@@ -1163,6 +1180,7 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
         if (count >= 2) {
           compactParts.push(`${prefix}${start}-${prefix}${end}`);
           spacedParts.push(`${prefix}${start}-${prefix}${end}`);
+          numericParts.push(`${start}-${end}`);
           if (count === 2) {
             descParts.push(`${titlesList[start]}, ${titlesList[end]}`);
           } else {
@@ -1171,17 +1189,20 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
         } else {
           compactParts.push(`${prefix}${start}`);
           spacedParts.push(`${prefix}${start}`);
+          numericParts.push(`${start}`);
           descParts.push(`${titlesList[start]}`);
         }
       });
 
       const compact = compactParts.join(',');
       const spaced = spacedParts.join(', ');
+      const numeric = numericParts.join(', ');
       const titles = descParts.join(', ');
 
       return {
         compact,
         spaced,
+        numeric,
         titles,
         min: sorted[0],
         max: sorted[sorted.length - 1],
@@ -1322,14 +1343,26 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
           'E1',
           'Acoustic microphone recordings cleaned up using a neural de-reverb and noise-reduction filter during mixing.'
         );
-      } else if (preset === 'pure') {
-        selectedIdeations = [0];
-        selectedExecutions = [0];
+      } else if (preset === 'vibegame') {
+        selectedIdeations = [3, 4];
+        selectedExecutions = [4];
         addComponentRow(
-          'Entire Project',
-          'I0',
-          'E0',
-          '100% human-conceived and hand-crafted with zero AI involvement in ideation or execution.'
+          'Game Design & Storytelling',
+          'I3',
+          'E4',
+          'Human provided a generic premise ("retro platformer"); AI conceived all level progression, plot twists, character backstories, and in-game dialogue without curation.'
+        );
+        addComponentRow(
+          'Gameplay Code & Mechanics',
+          'I3',
+          'E4',
+          'High-level gameplay goals prompted by creator; game loop, physics, collision, and state logic generated in bulk by an LLM without code review ("vibe-coded").'
+        );
+        addComponentRow(
+          'Graphics, Music & Sound Effects',
+          'I4',
+          'E4',
+          'All character sprites, environment tilesets, chiptune music tracks, and sound effects were autonomously invented and generated by AI from minimal prompts.'
         );
       }
       syncOptionCards();
@@ -1389,7 +1422,7 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
       const eInfo = formatLevels('E', selectedExecutions);
 
       const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
-      const subDisplay = `Ideation: ${iInfo.spaced} (${iInfo.titles}); Execution: ${eInfo.spaced} (${eInfo.titles})`;
+      const subDisplay = `Ideation ${iInfo.numeric} (${iInfo.titles}); Execution ${eInfo.numeric} (${eInfo.titles})`;
 
       document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
       document.getElementById('live-score-sub').textContent = subDisplay;
@@ -1401,6 +1434,10 @@ Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</code></pre>
 
       // Collect components
       const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
+      const syncWrapper = document.getElementById('sync-components-wrapper');
+      if (syncWrapper) {
+        syncWrapper.classList.toggle('hidden', compRows.length === 0);
+      }
       const comps = compRows.map(r => {
         const iCode = r.querySelector('.comp-i').value;
         const eCode = r.querySelector('.comp-e').value;

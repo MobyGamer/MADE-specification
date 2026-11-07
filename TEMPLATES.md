@@ -47,7 +47,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 ```markdown
 **AI Disclosure (MADE: `I1 / E0-E1`):**
-Ideation: I1 (Assisted), Execution: E0-E1 (Unassisted, Assisted).
+Ideation 1 (Assisted); Execution 0-1 (Unassisted, Assisted).
 All plotlines, characters, arguments, and prose in this work were conceived and written by the human author. AI tools were consulted solely for background historical research (`I1`) and used during editing as an interactive phrase thesaurus and grammar checker (`E1`). No AI-generated prose is present in this publication.
 ```
 
@@ -128,12 +128,12 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ### 6.1 Purely Human Work (`I0 / E0`)
 ```markdown
-**AI Disclosure (MADE: `I0 / E0`):** Ideation 0 (Unassisted), Execution 0 (Unassisted). Created 100% by a human with zero AI involvement in concept, research, design, or production.
+**AI Disclosure (MADE: `I0 / E0`):** Ideation 0 (Unassisted); Execution 0 (Unassisted). Created 100% by a human with zero AI involvement in concept, research, design, or production.
 ```
 
 ### 6.2 Human-Created Work with AI Research & Diagnostics (`I1 / E1`)
 ```markdown
-**AI Disclosure (MADE: `I1 / E1`):** Ideation 1 (Assisted), Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or signal cleanup.
+**AI Disclosure (MADE: `I1 / E1`):** Ideation 1 (Assisted); Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or signal cleanup.
 ```
 
 ### 6.3 Shields.io Markdown Badges
