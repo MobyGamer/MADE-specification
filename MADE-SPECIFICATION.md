@@ -12,12 +12,12 @@
 
 ## 1. Purpose & Philosophy
 
-**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates **original human ideas** separately from *mechanical implementation*, rather than reducing an entire project to a single number.
+**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure (RAID)](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
+Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
 1. A creator with no original ideas who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
-2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is *penalized* with a "high" AI rating, despite only using AI for mechanical tasks.
+2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up reverb on a recording) is *penalized* with a "high" AI rating, despite only using AI for mechanical tasks.
 
 ### MADE's Balanced Alternative: Separating Ideation from Execution
 MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
@@ -40,7 +40,7 @@ Ideation 0 (Unassisted); Execution 2 (Collaborative)
 
 ---
 
-## 2. Category 1: Ideation Levels (`I0` to `I4`)
+## 2. Ideation Levels (`I0` to `I4`)
 
 The **Ideation** level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.
 
@@ -54,7 +54,7 @@ The **Ideation** level measures the intellectual and creative origin of the work
 
 ---
 
-## 3. Category 2: Execution Levels (`E0` to `E4`)
+## 3. Execution Levels (`E0` to `E4`)
 
 The **Execution** level measures how the final deliverables of the work (source code, text, visual artwork, or audio recordings) were mechanically constructed and verified.
 
