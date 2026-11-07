@@ -72,7 +72,7 @@ The **Execution** level measures how the final deliverables of the work (source 
 
 MADE supports a **two-tier disclosure format** so hybrid projects (such as a project where the core work is hand-crafted at `E0` and a secondary component is AI-generated from specifications at `E3`) can represent both the overall release and its individual components accurately.
 
-### 4.1 Tier 1: Compact Shorthand Notation
+### 4.1 Compact Shorthand Notation
 
 1. **Separating Ideation and Execution:**
    Ideation (`I`) and Execution (`E`) are always separated by a forward slash (`/`).
@@ -89,7 +89,7 @@ MADE supports a **two-tier disclosure format** so hybrid projects (such as a pro
    - **Contiguous Ranges:** If a project spans two or more consecutive levels, express the span using a hyphen, and repeat the letter prefix on both numbers:
      `MADE: I0-I1 / E0,E3` or `MADE: I1 / E0-E3`
 
-### 4.2 Tier 2: Component-Level Breakdown
+### 4.2 Component-Level Breakdown
 
 Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where each component declares both its Ideation level and its Execution level:
 
@@ -124,10 +124,10 @@ To prevent individual hand-crafted files from being misattributed to AI (or vice
 
 To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, MADE uses a two-part licensing structure:
 
-1. **Using MADE Ratings, Badges, and Templates in Your Works (`CC0 1.0 Public Domain`):**
-   Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/).
-2. **Republishing the Specification Document (`CC BY-ND 4.0`):**
-   This specification document itself (`MADE-SPECIFICATION.md`) is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE".
+1. **Using MADE Ratings, Badges, and Templates in Your Works:**
+   Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/) (`CC0 1.0 Public Domain`).
+2. **Republishing the Specification Document:**
+   The specification document itself (`MADE-SPECIFICATION.md`), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/) (`CC BY-ND 4.0`). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE".
 
 ---
 
