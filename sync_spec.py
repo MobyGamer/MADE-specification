@@ -33,7 +33,7 @@ REQUIRED_META_KEYS = (
     "Author",
     "Date",
     "Specification License",
-    "Templates, Badges & Header Tags License",
+    "Templates, Badges, & Header Tags License",
 )
 
 # Default initial selected levels rendered into static HTML before JS runs
@@ -757,7 +757,7 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     author_html = render_inline(meta_map["Author"])
     spec_license_html = render_inline(meta_map["Specification License"])
     templates_license_html = render_inline(
-        meta_map["Templates, Badges & Header Tags License"]
+        meta_map["Templates, Badges, & Header Tags License"]
     )
     footer_html = (
         "    <p>\n"

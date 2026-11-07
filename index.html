@@ -624,7 +624,7 @@
         </div>
         <div class="meta-item">
           <strong>Status</strong>
-          <span>Canonical Specification</span>
+          <span>Draft Specification</span>
         </div>
         <div class="meta-item">
           <strong>Specification License</strong>
@@ -639,18 +639,18 @@
           <span>Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</span>
         </div>
         <div class="meta-item">
-          <strong>Templates, Badges &amp; Header Tags License</strong>
+          <strong>Templates, Badges, &amp; Header Tags License</strong>
           <span><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a></span>
         </div>
       </div>
 
       <h2><span>Purpose &amp; Philosophy</span></h2>
-      <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how artificial intelligence was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <strong>original human ideas</strong> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
+      <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <strong>original human ideas</strong> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure (RAID)</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>AI brainstorming and ideation</em> at a lower number than <em>AI mechanical implementation</em>.  This incentivizes the wrong signals:</p>
+      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure (RAID)</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>.  This incentivizes the wrong signals:</p>
       <ol>
         <li>A creator with no original ideas who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
-        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is <strong>penalized</strong> with a "high" AI rating, despite only using AI for mechanical tasks.</li>
+        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities from a specification, cleaning up reverb on a live recording, or generating textured fills) is <em>penalized</em> with a "high" AI rating, despite only using AI for mechanical tasks.</li>
       </ol>
       <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
       <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
@@ -658,7 +658,7 @@
         <li><strong>Ideation (<code>I0</code> to <code>I4</code>)</strong> measures who conceived the ideas, concepts, structure, design, composition, or algorithms.</li>
         <li><strong>Execution (<code>E0</code> to <code>E4</code>)</strong> measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.</li>
       </ul>
-      <p>Both categories share five symmetrical, whole-number level titles:</p>
+      <p>Both categories use the same five symmetrical, whole-number level titles:</p>
       <ul>
         <li><strong><code>0</code>: Unassisted</strong></li>
         <li><strong><code>1</code>: Assisted</strong></li>
@@ -666,6 +666,11 @@
         <li><strong><code>3</code>: Directed</strong></li>
         <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
+      <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate 50% of the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:</p>
+      <blockquote>
+        <p>MADE: I0 / E2</p>
+        <p>Ideation: I0 (Unassisted); Execution: E2 (Collaborative)</p>
+      </blockquote>
     </div>
 
     <div class="card">
@@ -684,13 +689,13 @@
           <tr>
             <td><span class="lvl-badge b-0">I0</span></td>
             <td><strong>Unassisted</strong></td>
-            <td>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation..</td>
+            <td>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.</td>
             <td><strong>Programming:</strong> Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br><strong>Writing:</strong> Conceiving a novel's plot, characters, and chapter structure independently.<br><strong>Art:</strong> Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br><strong>Music:</strong> Composing melodies, harmonies, and arrangements without querying any AI tool.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-1">I1</span></td>
             <td><strong>Assisted</strong></td>
-            <td>Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements..</td>
+            <td>Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.</td>
             <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges.</td>
           </tr>
           <tr>
@@ -768,16 +773,15 @@
       <h3>Tier 1: Compact Shorthand Notation</h3>
       <ol>
         <li>
-          <strong>Separating Ideation and Execution (Always Use a Slash):</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>). Never use a hyphen between <code>I</code> and <code>E</code>, as a hyphen implies a range.
+          <strong>Separating Ideation and Execution (Always Use a Slash):</strong> Ideation (<code>I</code>) and Execution (<code>E</code>) are always separated by a forward slash (<code>/</code>).
           <ul>
-            <li>Correct: <code>MADE: I1 / E0</code></li>
-            <li>Incorrect: <code>MADE: I1-E0</code></li>
+            <li>Example: <code>MADE: I1 / E0</code></li>
           </ul>
         </li>
         <li>
-          <strong>Expanded Human-Readable Format (Use a Comma):</strong> When writing out the full rating in prose, separate the Ideation and Execution clauses with a comma rather than a pipe symbol:
+          <strong>Expanded Human-Readable Format (Use a Comma):</strong> When writing out the full rating in prose, separate the Ideation and Execution clauses with a semicolon:
           <ul>
-            <li><code>MADE: Ideation 1 (Assisted), Execution 0 (Unassisted)</code></li>
+            <li><code>MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)</code></li>
           </ul>
         </li>
         <li>
@@ -841,14 +845,14 @@
               <span class="lvl-badge b-0">I0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation..</span>
+                <span>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.</span>
               </div>
             </div>
             <div class="level-option" data-level="1" onclick="toggleIdeation(1)">
               <span class="lvl-badge b-1">I1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements..</span>
+                <span>Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleIdeation(2)">
@@ -1050,8 +1054,8 @@
       "Autonomous"
     ],
     "ideationDefinitions": [
-      "100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation..",
-      "Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements..",
+      "100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.",
+      "Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.",
       "A human set the creative vision and partnered with AI to co-brainstorm subcomponents or outlines.",
       "A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.",
       "AI conceived the project concept, design, and creative direction with minimal or no human conceptual input."

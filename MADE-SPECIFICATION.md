@@ -33,8 +33,10 @@ Both categories use the same five symmetrical, whole-number level titles:
 
 Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate 50% of the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:
 
-> MADE: I0 / E2
-> Ideation: I0 (Unassisted); Execution: E2 (Collaborative)
+```markdown
+MADE: I0 / E2
+Ideation: I0 (Unassisted); Execution: E2 (Collaborative)
+```
 
 ---
 
@@ -72,24 +74,24 @@ MADE supports a **two-tier disclosure format** so hybrid projects (such as a pro
 
 ### 4.1 Tier 1: Compact Shorthand Notation
 
-1. **Separating Ideation and Execution (Always Use a Slash):**
+1. **Separating Ideation and Execution:**
    Ideation (`I`) and Execution (`E`) are always separated by a forward slash (`/`).
    - Example: `MADE: I1 / E0`
 
-2. **Expanded Human-Readable Format (Use a Comma):**
+2. **Expanded Human-Readable Format:**
    When writing out the full rating in prose, separate the Ideation and Execution clauses with a semicolon:
    - `MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)`
 
 3. **Multi-Component Projects: Discrete Levels (`E0,E3`) vs. Contiguous Ranges (`I0-I1`, `E0-E3`):**
    When a project contains multiple components with different AI involvement levels, MADE distinguishes between discrete selections and continuous ranges:
-   - **Discrete Levels (Comma-Separated):** If a project uses non-contiguous levels (such as `E0` for hand-crafted work and `E3` for a spec-driven utility, with no `E1` or `E2` components), list the exact levels separated by a comma:
-     `MADE: I1 / E0,E3` (or `MADE: I1 / E0, E3`)
-   - **Contiguous Ranges (Hyphen-Separated with Repeated Letter Prefix):** If a project spans two or more consecutive levels (for example, components covering `I0` and `I1`, or `E0`, `E1`, `E2`, and `E3`), express the span using a hyphen and repeat the letter prefix (`I` or `E`) on both numbers:
-     `MADE: I0-I1 / E0,E3` or `MADE: I1 / E0-E3` (Never write `E0-3`, which is visually ambiguous.)
+   - **Discrete Levels:** If a project uses non-contiguous levels (such as `E0` for hand-crafted work and `E3` for a spec-driven utility, with nothing inbetween), list the exact levels separated by a comma:
+     `MADE: I1 / E0,E3`
+   - **Contiguous Ranges:** If a project spans two or more consecutive levels, express the span using a hyphen, and repeat the letter prefix on both numbers:
+     `MADE: I0-I1 / E0,E3` or `MADE: I1 / E0-E3`
 
 ### 4.2 Tier 2: Component-Level Breakdown
 
-Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where **each component declares both its Ideation level and its Execution level**:
+Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where each component declares both its Ideation level and its Execution level:
 
 ```markdown
 **AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
@@ -101,9 +103,9 @@ Whenever a project includes multiple components with different ratings, authors 
 
 To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a `MADE-Usage` line tag in file headers or asset metadata comments:
 
-**Assembly (`.asm`, `.inc`, `.s`):**
-```nasm
-; MADE-Usage: I0/E0 (Ideation: Unassisted; Execution: Unassisted)
+**Python / Shell / YAML / Makefile / Markdown / Text Metadata:**
+```python
+# MADE-Usage: I1/E1 (Ideation: Assisted; Execution: Assisted)
 ```
 
 **C / C++ / Rust / Go / JavaScript / C#:**
@@ -111,9 +113,9 @@ To prevent individual hand-crafted files from being misattributed to AI (or vice
 // MADE-Usage: I1/E3 (Ideation: Assisted; Execution: Directed)
 ```
 
-**Python / Shell / YAML / Makefile / Markdown / Text Metadata:**
-```python
-# MADE-Usage: I1/E1 (Ideation: Assisted; Execution: Assisted)
+**Assembly (`.asm`, `.inc`, `.s`):**
+```nasm
+; MADE-Usage: I0/E0 (Ideation: Unassisted; Execution: Unassisted)
 ```
 
 ---
@@ -125,7 +127,7 @@ To protect the canonical definitions of the scale from fragmentation while ensur
 1. **Using MADE Ratings, Badges, and Templates in Your Works (`CC0 1.0 Public Domain`):**
    Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/).
 2. **Republishing the Specification Document (`CC BY-ND 4.0`):**
-   This specification document itself (`MADE-SPECIFICATION.md`) is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/). This ensures that if someone republishes the specification document itself, the initial authorship remains recorded in the specification text and third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE."
+   This specification document itself (`MADE-SPECIFICATION.md`) is licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE".
 
 ---
 
