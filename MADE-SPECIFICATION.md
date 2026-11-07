@@ -70,27 +70,27 @@ The **Execution** level measures how the final deliverables of the work (source 
 
 ## 4. Disclosure Format & Syntax
 
-At its simplest, a MADE disclosure consists of the `MADE:` prefix followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`), separated by a forward slash (`/`), such as `MADE: I1 / E0`. Ideation is always listed first and Execution second. For standalone works or projects with uniform AI usage throughout, this single rating is all that is required.
+At its simplest, a MADE disclosure consists of the `MADE:` prefix, followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`), such as: `MADE: I1 / E0`. Ideation is always listed first, then Execution. For works with uniform AI usage throughout, this single rating is all that is necessary.
 
-MADE also provides a **layered disclosure format** that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at `E0` but a helper utility was AI-generated from specifications at `E3`) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify this process, the accompanying Interactive Badge and Disclosure Builder can automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)
+MADE also defines a **layered disclosure format** that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at `E0` but a helper utility was AI-generated from specs at `E3`) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify building a layered disclosure, the accompanying **Interactive Badge and Disclosure Builder** is provided to help automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)
 
 ### 4.1 Single-Rating Formats
 
 1. **Compact Shorthand:**
-   Separate the Ideation (`I`) and Execution (`E`) codes with a forward slash (`/`). Include the `MADE:` prefix when the score stands alone, or use the bare score (`I1 / E0`) inline when `MADE` is already named in a surrounding heading or label:
+   Start with the `MADE:` prefix, then separate the Ideation (`I`) and Execution (`E`) levels with a forward slash (`/`).
    - Example: `MADE: I1 / E0`
 
 2. **Expanded Human-Readable Format:**
-   When writing out the full rating in prose, separate the Ideation and Execution clauses with a semicolon:
-   - `MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)`
+   When writing out the full rating in prose, separate the Ideation and Execution clauses with a **semicolon**:
+   - Example: `MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)`
 
 ### 4.2 Multi-Component Projects
 
 When a project contains multiple components with different AI involvement levels, combine all applicable levels within each category in ascending numerical order (`0` to `4`). Always prepend the letter prefix (`I` or `E`) with every level.
 
-- **Discrete Levels (`,`):** When components use non-consecutive levels with nothing in between (such as hand-crafted core work at `E0` and a spec-driven utility at `E3`), list only the levels used, separated by a comma:
+- **Discrete Levels:** When components use non-consecutive levels with nothing in between (such as hand-crafted core work at `E0` and a spec-driven utility at `E3`), list only the levels used, separated by a **comma**:
   - Example: `MADE: I1 / E0,E3`
-- **Contiguous Ranges (`-`):** When components span consecutive levels with no gaps (such as adjacent levels `I0` and `I1`, or every level from `E0` through `E2`), join the first and last level with a hyphen:
+- **Contiguous Ranges:** When components span consecutive levels with no gaps (such as adjacent levels `I0` and `I1`, or every level from `E0` through `E2`), join the first and last level with a **hyphen**:
   - Examples: `MADE: I0-I1 / E0` or `MADE: I1 / E0-E2`
 - **Combined Categories:** Ideation and Execution can apply commas and hyphens independently.  (Both can be combined within a category if needed, such as `E0-E1,E3`):
   - Example: `MADE: I0-I1 / E0,E3`
@@ -100,7 +100,7 @@ When a project contains multiple components with different AI involvement levels
 Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where each component declares both its Ideation level and its Execution level:
 
 ```markdown
-**AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
+AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`
 - **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import & Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).
 ```
@@ -128,7 +128,7 @@ To prevent individual hand-crafted files from being misattributed to AI (or vice
 
 ## 5. Licensing & Governance
 
-To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, MADE uses a two-part licensing structure:
+To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:
 
 1. **Using MADE Ratings, Badges, and Templates in Your Works:**
    Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/) (`CC0 1.0 Public Domain`).

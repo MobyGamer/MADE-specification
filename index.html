@@ -776,20 +776,20 @@ Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
 
     <div class="card">
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
-      <p>At its simplest, a MADE disclosure consists of the <code>MADE:</code> prefix followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>), separated by a forward slash (<code>/</code>), such as <code>MADE: I1 / E0</code>. Ideation is always listed first and Execution second. For standalone works or projects with uniform AI usage throughout, this single rating is all that is required.</p>
-      <p>MADE also provides a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at <code>E0</code> but a helper utility was AI-generated from specifications at <code>E3</code>) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify this process, the accompanying Interactive Badge and Disclosure Builder can automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)</p>
+      <p>At its simplest, a MADE disclosure consists of the <code>MADE:</code> prefix, followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>), such as: <code>MADE: I1 / E0</code>. Ideation is always listed first, then Execution. For works with uniform AI usage throughout, this single rating is all that is necessary.</p>
+      <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at <code>E0</code> but a helper utility was AI-generated from specs at <code>E3</code>) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify building a layered disclosure, the accompanying <strong>Interactive Badge and Disclosure Builder</strong> is provided to help automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)</p>
       <h3>Single-Rating Formats</h3>
       <ol>
         <li>
-          <strong>Compact Shorthand:</strong> Separate the Ideation (<code>I</code>) and Execution (<code>E</code>) codes with a forward slash (<code>/</code>). Include the <code>MADE:</code> prefix when the score stands alone, or use the bare score (<code>I1 / E0</code>) inline when <code>MADE</code> is already named in a surrounding heading or label:
+          <strong>Compact Shorthand:</strong> Start with the <code>MADE:</code> prefix, then separate the Ideation (<code>I</code>) and Execution (<code>E</code>) levels with a forward slash (<code>/</code>).
           <ul>
             <li>Example: <code>MADE: I1 / E0</code></li>
           </ul>
         </li>
         <li>
-          <strong>Expanded Human-Readable Format:</strong> When writing out the full rating in prose, separate the Ideation and Execution clauses with a semicolon:
+          <strong>Expanded Human-Readable Format:</strong> When writing out the full rating in prose, separate the Ideation and Execution clauses with a <strong>semicolon</strong>:
           <ul>
-            <li><code>MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)</code></li>
+            <li>Example: <code>MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)</code></li>
           </ul>
         </li>
       </ol>
@@ -797,13 +797,13 @@ Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       <p>When a project contains multiple components with different AI involvement levels, combine all applicable levels within each category in ascending numerical order (<code>0</code> to <code>4</code>). Always prepend the letter prefix (<code>I</code> or <code>E</code>) with every level.</p>
       <ul>
         <li>
-          <strong>Discrete Levels (<code>,</code>):</strong> When components use non-consecutive levels with nothing in between (such as hand-crafted core work at <code>E0</code> and a spec-driven utility at <code>E3</code>), list only the levels used, separated by a comma:
+          <strong>Discrete Levels:</strong> When components use non-consecutive levels with nothing in between (such as hand-crafted core work at <code>E0</code> and a spec-driven utility at <code>E3</code>), list only the levels used, separated by a <strong>comma</strong>:
           <ul>
             <li>Example: <code>MADE: I1 / E0,E3</code></li>
           </ul>
         </li>
         <li>
-          <strong>Contiguous Ranges (<code>-</code>):</strong> When components span consecutive levels with no gaps (such as adjacent levels <code>I0</code> and <code>I1</code>, or every level from <code>E0</code> through <code>E2</code>), join the first and last level with a hyphen:
+          <strong>Contiguous Ranges:</strong> When components span consecutive levels with no gaps (such as adjacent levels <code>I0</code> and <code>I1</code>, or every level from <code>E0</code> through <code>E2</code>), join the first and last level with a <strong>hyphen</strong>:
           <ul>
             <li>Examples: <code>MADE: I0-I1 / E0</code> or <code>MADE: I1 / E0-E2</code></li>
           </ul>
@@ -817,7 +817,7 @@ Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       </ul>
       <h3>Component-Level Breakdown</h3>
       <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where each component declares both its Ideation level and its Execution level:</p>
-      <pre><code>**AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`**
+      <pre><code>AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `I0-I1 / E0,E3`
 - **Core Application Engine (`I0 / E0`, Unassisted Ideation, Unassisted Execution):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import &amp; Conversion Utilities (`I1 / E3`, Assisted Ideation, Directed Execution):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
       <h3>Per-File Source Code &amp; Asset Metadata Headers</h3>
@@ -832,7 +832,7 @@ Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
 
     <div class="card">
       <h2><span>Licensing &amp; Governance</span></h2>
-      <p>To protect the canonical definitions of the scale from fragmentation while ensuring zero-friction adoption for all creators, MADE uses a two-part licensing structure:</p>
+      <p>To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:</p>
       <ol>
         <li><strong>Using MADE Ratings, Badges, and Templates in Your Works:</strong> Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing <code>MADE-Usage</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a> (<code>CC0 1.0 Public Domain</code>).</li>
         <li><strong>Republishing the Specification Document:</strong> The specification document itself (<code>MADE-SPECIFICATION.md</code>), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a> (<code>CC BY-ND 4.0</code>). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "MADE".</li>
@@ -978,8 +978,7 @@ Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
         <div id="component-list"></div>
         <div id="sync-components-wrapper" class="hidden" style="margin-top:1rem;">
           <button class="btn-sm" onclick="syncTopLevelsFromComponents()"
-            title="Set Section 1 Ideation and Execution selections to match the components listed below">Sync Section 1
-            From These Components</button>
+            title="Set Ideation and Execution selections to match the components listed above">Sync Previous Section From These Components</button>
         </div>
 
         <div class="preset-bar">
