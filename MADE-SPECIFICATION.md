@@ -146,6 +146,8 @@ To preserve a single canonical definition of the scale while ensuring frictionle
 2. **Republishing the Specification Document:**
    The specification document itself (`MADE-SPECIFICATION.md`), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/) (`CC BY-ND 4.0`). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE".
 
+> **Express Permission Addendum:** Notwithstanding the NoDerivatives restriction in Section 3(a)(4) of `CC BY-ND 4.0`, the Licensor grants all users the irrevocable, royalty-free, perpetual permission to: (1) translate the specification document into any natural language and publicly distribute such translation, provided the translation is accurate and preserves the canonical level definitions; (2) extract, modify, and redistribute all software code, scripts, regular expressions, and interactive builder logic; and (3) create and distribute domain-specific extension profiles that append auxiliary metadata fields without altering the definitions of `I0` through `I4` and `E0` through `E4`.
+
 ---
 
 ## 6. Authorship & Provenance
