@@ -656,7 +656,7 @@
       <h2><span>Purpose &amp; Philosophy</span></h2>
       <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <em>original human ideas</em> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, the <a href="https://hypervisor.studio/gait/#levels" target="_blank" rel="noopener">GAIT Framework</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>.  This incentivizes the wrong signals:</p>
+      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>.  This incentivizes the wrong signals:</p>
       <ol>
         <li>A creator with no original ideas who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
         <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up reverb on a recording) is <em>penalized</em> with a "high" AI rating, despite only using AI for mechanical tasks.</li>
@@ -675,7 +675,7 @@
         <li><strong><code>3</code>: Directed</strong></li>
         <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
-      <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate 50% of the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:</p>
+      <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
 MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     </div>
@@ -1062,6 +1062,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
     "version": "0.1",
+    "canonicalUri": "https://example.com",
     "homepage": "https://example.com",
     "ideationTitles": [
       "Unassisted",
@@ -1473,7 +1474,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       });
 
       // 1. Markdown Output
-      const badgeLinkUrl = SPEC_DATA.homepage || 'https://example.com';
+      const badgeLinkUrl = SPEC_DATA.canonicalUri || SPEC_DATA.homepage || 'https://example.com';
       const badgeAlt = `${SPEC_DATA.acronym}: ${scoreCompact}`;
       const badgeMd = `[![${badgeAlt}](made-badge.svg)](${badgeLinkUrl})`;
       const badgeHtml = `<a href="${badgeLinkUrl}"><img src="made-badge.svg" alt="${badgeAlt}" height="24"></a>`;
@@ -1533,7 +1534,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       document.getElementById('out-html').textContent = htmlBlock;
 
       // 3. NFO / Liner Notes Output
-      const disclosureUrl = SPEC_DATA.homepage || 'https://example.com';
+      const disclosureUrl = SPEC_DATA.canonicalUri || SPEC_DATA.homepage || 'https://example.com';
       const introText = `This work is self-disclosed under the ${SPEC_DATA.acronym} (${SPEC_DATA.fullName}) standard. Learn more: ${disclosureUrl}`;
       let nfo = `========================================================================\n`;
       nfo += ` AI DISCLOSURE (${SPEC_DATA.acronym}: ${scoreCompact})\n`;

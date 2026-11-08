@@ -2,7 +2,7 @@
 
 **Version:** 0.1  
 **Status:** Draft Specification  
-**Homepage:** https://example.com  
+**Canonical URI:** https://example.com
 **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
 **Date:** November 2026  
 **Author:** Jim Leonard (<mobygamer@gmail.com>)  
@@ -15,7 +15,7 @@
 **MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), the [GAIT Framework](https://hypervisor.studio/gait/#levels), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
+Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
 1. A creator with no original ideas who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
 2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up reverb on a recording) is *penalized* with a "high" AI rating, despite only using AI for mechanical tasks.
 
@@ -31,7 +31,7 @@ Both categories use the same five symmetrical, whole-number level titles:
 - **`3`: Directed**
 - **`4`: Autonomous**
 
-Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate 50% of the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:
+Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:
 
 ```markdown
 MADE: I0 / E2

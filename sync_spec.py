@@ -643,7 +643,7 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     # Build .meta-grid HTML from all header metadata entries
     meta_items_html: list[str] = []
     for key, val in header_info["meta_items"]:
-        if key.lower() in ("homepage", "specification homepage", "url", "canonical url"):
+        if key.lower() in ("homepage", "specification homepage", "url", "canonical url", "canonical uri"):
             continue
         key_html = render_inline(key)
         val_html = render_inline(val)
@@ -769,12 +769,21 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
         "    </p>"
     )
 
+    canonical_uri = (
+        meta_map.get("Canonical URI")
+        or meta_map.get("Canonical URL")
+        or meta_map.get("Homepage")
+        or meta_map.get("Specification Homepage")
+        or "https://example.com"
+    )
+
     # JavaScript SPEC_DATA constant
     spec_data_obj = {
         "acronym": acronym,
         "fullName": full_name,
         "version": version,
-        "homepage": meta_map.get("Homepage") or meta_map.get("Specification Homepage") or "https://example.com",
+        "canonicalUri": canonical_uri,
+        "homepage": canonical_uri,
         "ideationTitles": [r["title"] for r in ideation_rows],
         "executionTitles": [r["title"] for r in execution_rows],
         "ideationDefinitions": [r["definition_md"] for r in ideation_rows],
