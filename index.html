@@ -1262,6 +1262,12 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 
+    function escapeMdTableCell(str, allowBr = false) {
+      if (!str) return '';
+      let sanitized = str.replace(/\|/g, '\\|');
+      return allowBr ? sanitized.replace(/\r?\n/g, '<br>') : sanitized.replace(/\r?\n/g, ' ');
+    }
+
     function applyPreset(preset) {
       clearComponents();
       if (preset === 'software') {
@@ -1368,30 +1374,46 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       updateOutputs();
     }
 
-    function getThemeBadgeColors(maxLevel) {
+    function getThemeBadgeColor(level) {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const solarizedPalette = ['#859900', '#2aa198', '#268bd2', '#cb4b16', '#dc322f'];
       const darkPalette = ['#16a34a', '#0d9488', '#2563eb', '#d97706', '#dc322f'];
-      return {
-        leftBg: isDark ? '#1e293b' : '#073642',
-        rightBg: isDark ? darkPalette[maxLevel] : solarizedPalette[maxLevel]
-      };
+      return isDark ? darkPalette[level] : solarizedPalette[level];
     }
 
-    function buildSvgBadgeString(scoreText, leftBg, rightBg) {
+    function getBrandBadgeBg() {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      return isDark ? '#1e293b' : '#073642';
+    }
+
+    function buildSvgBadgeString(iText, eText, iLevel, eLevel) {
       const leftText = SPEC_DATA.acronym;
-      const leftWidth = Math.max(54, leftText.length * 9 + 18);
-      const rightWidth = Math.max(82, scoreText.length * 7.8 + 22);
-      const totalWidth = Math.round(leftWidth + rightWidth);
+      const brandBg = getBrandBadgeBg();
+      const iBg = getThemeBadgeColor(iLevel);
+      const eBg = getThemeBadgeColor(eLevel);
+
+      const leftWidth = Math.max(50, Math.round(leftText.length * 8.5 + 16));
+      const iWidth = Math.max(38, Math.round(iText.length * 8 + 16));
+      const eWidth = Math.max(38, Math.round(eText.length * 8 + 16));
+      const totalWidth = leftWidth + iWidth + eWidth;
+
+      const scoreText = `${iText} / ${eText}`;
+
       return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="24" role="img" aria-label="${leftText}: ${scoreText}">
   <title>${leftText}: ${scoreText}</title>
-  <rect width="${leftWidth}" height="24" fill="${leftBg}" rx="4"/>
-  <rect x="${leftWidth - 4}" width="4" height="24" fill="${leftBg}"/>
-  <rect x="${leftWidth}" width="${totalWidth - leftWidth}" height="24" fill="${rightBg}" rx="4"/>
-  <rect x="${leftWidth}" width="4" height="24" fill="${rightBg}"/>
+  <!-- Segment 1: Brand -->
+  <rect width="${leftWidth}" height="24" fill="${brandBg}" rx="4"/>
+  <rect x="${leftWidth - 4}" width="4" height="24" fill="${brandBg}"/>
+  <!-- Segment 2: Ideation -->
+  <rect x="${leftWidth}" width="${iWidth}" height="24" fill="${iBg}"/>
+  <!-- Segment 3: Execution -->
+  <rect x="${leftWidth + iWidth}" width="${eWidth}" height="24" fill="${eBg}" rx="4"/>
+  <rect x="${leftWidth + iWidth}" width="4" height="24" fill="${eBg}"/>
+  <!-- Text Elements -->
   <g fill="#ffffff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" font-size="11">
     <text x="${Math.round(leftWidth / 2)}" y="16" font-weight="bold">${leftText}</text>
-    <text x="${Math.round(leftWidth + (totalWidth - leftWidth) / 2)}" y="16" font-weight="bold">${scoreText}</text>
+    <text x="${Math.round(leftWidth + iWidth / 2)}" y="16" font-weight="bold">${iText}</text>
+    <text x="${Math.round(leftWidth + iWidth + eWidth / 2)}" y="16" font-weight="bold">${eText}</text>
   </g>
 </svg>`;
     }
@@ -1426,9 +1448,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
       document.getElementById('live-score-sub').textContent = subDisplay;
 
-      const maxLvl = Math.max(iInfo.max, eInfo.max);
-      const badgeColors = getThemeBadgeColors(maxLvl);
-      const svgString = buildSvgBadgeString(scoreCompact, badgeColors.leftBg, badgeColors.rightBg);
+      const svgString = buildSvgBadgeString(iInfo.compact, eInfo.compact, iInfo.max, eInfo.max);
       document.getElementById('svg-badge-container').innerHTML = svgString;
 
       // Collect components
@@ -1463,15 +1483,17 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       let md = `## AI Usage Disclosure: \`${SPEC_DATA.acronym}: ${scoreCompact}\`\n\n`;
       md += `${badgeMd}\n\n`;
       md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName})** standard:\n`;
-      md += `- **Ideation (\`${iInfo.compact}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo)}\n`;
-      md += `- **Execution (\`${eInfo.compact}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo)}\n`;
+      md += `- **Ideation (\`${iInfo.compact}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo, comps.length > 0)}\n`;
+      md += `- **Execution (\`${eInfo.compact}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo, comps.length > 0)}\n`;
 
       if (comps.length > 0) {
         md += `\n### Component Breakdown\n\n`;
         md += `| Component / Deliverable | ${SPEC_DATA.acronym} Score | Classification | Details |\n`;
         md += `| :--- | :--- | :--- | :--- |\n`;
         comps.forEach(c => {
-          md += `| **${c.name}** | **\`${c.iCode} / ${c.eCode}\`** | Ideation: ${c.iTitle}; Execution: ${c.eTitle} | ${c.desc} |\n`;
+          const safeName = escapeMdTableCell(c.name, false);
+          const safeDesc = escapeMdTableCell(c.desc, true);
+          md += `| **${safeName}** | **\`${c.iCode} / ${c.eCode}\`** | Ideation: ${c.iTitle}; Execution: ${c.eTitle} | ${safeDesc} |\n`;
         });
       }
       document.getElementById('out-markdown').textContent = md;
@@ -1482,8 +1504,8 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       htmlBlock += `  <p>\n    ${badgeHtml}\n  </p>\n`;
       htmlBlock += `  <p>This work is self-disclosed under the <strong>${SPEC_DATA.acronym} (${escapeHtml(SPEC_DATA.fullName)})</strong> standard:</p>\n`;
       htmlBlock += `  <ul>\n`;
-      htmlBlock += `    <li><strong>Ideation (<code>${escapeHtml(iInfo.compact)}</code>, ${escapeHtml(iInfo.titles)}):</strong> ${escapeHtml(getIdeationSummary(selectedIdeations, iInfo))}</li>\n`;
-      htmlBlock += `    <li><strong>Execution (<code>${escapeHtml(eInfo.compact)}</code>, ${escapeHtml(eInfo.titles)}):</strong> ${escapeHtml(getExecutionSummary(selectedExecutions, eInfo))}</li>\n`;
+      htmlBlock += `    <li><strong>Ideation (<code>${escapeHtml(iInfo.compact)}</code>, ${escapeHtml(iInfo.titles)}):</strong> ${escapeHtml(getIdeationSummary(selectedIdeations, iInfo, comps.length > 0))}</li>\n`;
+      htmlBlock += `    <li><strong>Execution (<code>${escapeHtml(eInfo.compact)}</code>, ${escapeHtml(eInfo.titles)}):</strong> ${escapeHtml(getExecutionSummary(selectedExecutions, eInfo, comps.length > 0))}</li>\n`;
       htmlBlock += `  </ul>\n`;
 
       if (comps.length > 0) {
@@ -1525,7 +1547,8 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       if (comps.length > 0) {
         nfo += `------------------------------------------------------------------------\n`;
         comps.forEach(c => {
-          nfo += ` * ${c.name} [${c.iCode} / ${c.eCode} (Ideation: ${c.iTitle}; Execution: ${c.eTitle})]\n`;
+          const safeName = c.name.replace(/\r?\n/g, ' ');
+          nfo += ` * ${safeName} [${c.iCode} / ${c.eCode} (Ideation: ${c.iTitle}; Execution: ${c.eTitle})]\n`;
           if (c.desc) {
             nfo += `${wrapText(c.desc, 72, '   ')}\n`;
           }
@@ -1539,7 +1562,8 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       if (comps.length > 0) {
         headers += `# --- Component-Specific ${SPEC_DATA.acronym}-Usage Header Lines ---\n`;
         comps.forEach(c => {
-          headers += `# Component: ${c.name}\n`;
+          const safeName = c.name.replace(/\r?\n/g, ' ');
+          headers += `# Component: ${safeName}\n`;
           headers += `# ${SPEC_DATA.acronym}-Usage: ${c.iCode} / ${c.eCode} (Ideation: ${c.iTitle}; Execution: ${c.eTitle})\n\n`;
         });
       }
@@ -1547,6 +1571,11 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       const singleECode = `E${eInfo.min}`;
       const singleITitle = SPEC_DATA.ideationTitles[iInfo.min];
       const singleETitle = SPEC_DATA.executionTitles[eInfo.min];
+
+      if (comps.length === 0 && (iInfo.isMultiple || eInfo.isMultiple)) {
+        headers += `# Note: File headers declare provenance for individual files and require single discrete levels.\n`;
+        headers += `# The examples below use your project's baseline (${singleICode} / ${singleECode}). For mixed projects, tag files individually.\n\n`;
+      }
 
       headers += `// --- C / C++ / Rust / Go / JavaScript / C# Header ---\n`;
       headers += `// ${SPEC_DATA.acronym}-Usage: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
@@ -1559,27 +1588,59 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       document.getElementById('out-headers').textContent = headers;
     }
 
-    function getIdeationSummary(levels, info) {
+    function getIdeationSummary(levels, info, hasComponents) {
       if (levels.length > 1) {
-        return `Project components span multiple ideation levels (${info.compact}: ${info.titles}). See the component breakdown for details.`;
+        const base = `Project components span multiple ideation levels (${info.compact}: ${info.titles}).`;
+        return hasComponents ? `${base} See the component breakdown for details.` : base;
       }
       return SPEC_DATA.ideationDefinitions[levels[0]];
     }
 
-    function getExecutionSummary(levels, info) {
+    function getExecutionSummary(levels, info, hasComponents) {
       if (levels.length > 1) {
-        return `Project components span multiple execution levels (${info.compact}: ${info.titles}). See the component breakdown for details.`;
+        const base = `Project components span multiple execution levels (${info.compact}: ${info.titles}).`;
+        return hasComponents ? `${base} See the component breakdown for details.` : base;
       }
       return SPEC_DATA.executionDefinitions[levels[0]];
     }
 
     function copyText(elementId, btn) {
       const text = document.getElementById(elementId).textContent;
-      navigator.clipboard.writeText(text).then(() => {
+      const indicateSuccess = () => {
         const old = btn.textContent;
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = old; }, 1500);
-      });
+      };
+      const indicateError = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copy Failed';
+        setTimeout(() => { btn.textContent = old; }, 2000);
+      };
+
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(indicateSuccess).catch(() => {
+          fallbackCopy(text) ? indicateSuccess() : indicateError();
+        });
+      } else {
+        fallbackCopy(text) ? indicateSuccess() : indicateError();
+      }
+    }
+
+    function fallbackCopy(text) {
+      try {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        const successful = document.execCommand('copy');
+        document.body.removeChild(ta);
+        return successful;
+      } catch (err) {
+        return false;
+      }
     }
 
     function downloadSvgBadge() {
@@ -1592,8 +1653,10 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       a.download = 'made-badge.svg';
       document.body.appendChild(a);
       a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+        a.remove();
+      }, 1500);
     }
 
     // Initialize with default 100% unassisted human work (I0 / E0) and empty component list
