@@ -1,0 +1,50 @@
+; -----------------------------------------------------------------------------
+; Formal RFC 5234 ABNF Grammar for the MADE Specification (v0.1 Standard)
+; Measure of AI in Design & Execution (MADE)
+; -----------------------------------------------------------------------------
+
+made-disclosure     = canonical-prefix SP ( disclosure-body / expanded-standalone ) [ SP tool-attribution ]
+
+canonical-prefix    = "MADE:"
+
+disclosure-body     = shorthand-rating [ SP expanded-clause ]
+
+shorthand-rating    = ideation-expr SP "/" SP execution-expr
+
+ideation-expr       = ideation-token *( "," ideation-token )
+ideation-token      = "I" level-digit [ "-I" level-digit ]
+
+execution-expr      = execution-token *( "," execution-token )
+execution-token     = "E" level-digit [ "-E" level-digit ]
+
+level-digit         = "0" / "1" / "2" / "3" / "4"
+
+expanded-standalone = expanded-ideation ";" SP expanded-execution
+expanded-clause     = "(" expanded-ideation ";" SP expanded-execution ")"
+
+expanded-ideation   = "Ideation" SP level-expr SP "(" title-list ")"
+expanded-execution  = "Execution" SP level-expr SP "(" title-list ")"
+
+level-expr          = level-range *( "," level-range )
+level-range         = level-digit [ "-" level-digit ]
+title-list          = title *( ", " title )
+title               = "Unassisted" / "Assisted" / "Collaborative" / "Directed" / "Autonomous"
+
+; -----------------------------------------------------------------------------
+; Component & File-Level Classification Grammar (Sections 4.3 & 4.4)
+; -----------------------------------------------------------------------------
+
+file-header-tag     = comment-prefix "MADE-Usage:" SP single-file-score [ SP "(" classification-desc ")" ] [ SP tool-attribution ] [ comment-suffix ]
+
+single-file-score   = "I" level-digit SP "/" SP "E" level-digit
+classification-desc = "Ideation:" SP title ";" SP "Execution:" SP title
+
+comment-prefix      = "//" SP / "#" SP / ";" SP / "--" SP / "/*" SP / "<!--" SP
+comment-suffix      = SP "*/" / SP "-->"
+
+; -----------------------------------------------------------------------------
+; Machine-Readable Tool Attribution Extension
+; -----------------------------------------------------------------------------
+
+tool-attribution    = "[" tool-token *( "," SP tool-token ) "]"
+tool-token          = 1*( ALPHA / DIGIT / "-" / "." / "_" )
