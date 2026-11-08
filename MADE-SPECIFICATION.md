@@ -16,8 +16,8 @@
 
 ### Why Single-Number Scales Fail
 Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
-1. A creator with no original ideas who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
-2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up reverb on a recording) is *penalized* with a "high" AI rating, despite only using AI for mechanical tasks.
+1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
+2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing research) is penalized with a "high" AI rating, despite only using AI for mechanical tasks.
 
 ### MADE's Balanced Alternative: Separating Ideation from Execution
 MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
@@ -31,10 +31,11 @@ Both categories use the same five symmetrical, whole-number level titles:
 - **`3`: Directed**
 - **`4`: Autonomous**
 
-Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:
+Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver it.  The project's author could then self-disclose the following MADE score:
 
 ```markdown
 MADE: I0 / E2
+or:
 MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)
 ```
 
@@ -61,7 +62,7 @@ The **Execution** level measures how the final deliverables of the work (source 
 | Level | Title | Definition | Examples Across Creative & Technical Fields |
 | :--- | :--- | :--- | :--- |
 | **`E0`** | **Unassisted** | 100% hand-crafted code, prose, illustration, or musical performance by the human creator. | **Programming:** Writing source code or assembly routines completely by hand.<br>**Writing:** Typing and editing a manuscript manually without generative text tools.<br>**Art:** Drawing, painting, or modeling artwork entirely by hand.<br>**Music:** Performing, sequencing, mixing, and mastering audio manually without AI plugins. |
-| **`E1`** | **Assisted** | Human-authored output.  AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate. | **Programming:** Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>**Writing:** Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>**Art:** Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br>**Music:** Recording live instruments and using a neural audio filter to remove room reverb or microphone hum. |
+| **`E1`** | **Assisted** | Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate. | **Programming:** Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>**Writing:** Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>**Art:** Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br>**Music:** Recording live instruments and using a neural audio filter to remove room reverb or microphone hum. |
 | **`E2`** | **Collaborative** | Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures. | **Programming:** Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>**Writing:** Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>**Art:** Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br>**Music:** Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills. |
 | **`E3`** | **Directed** | AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator. | **Programming:** Providing an LLM with a detailed, human-authored specification and algorithm so it writes a companion utility in a secondary language, followed by human testing.<br>**Writing:** Translating a human-authored book into another language using AI under strict glossary constraints, followed by human review.<br>**Art:** Generating rendered assets using a workflow tightly constrained by human-drawn control maps, depth maps, and manual paint-overs.<br>**Music:** Synthesizing a vocal or orchestral performance from a human-written score and lyric sheet, followed by manual mixing. |
 | **`E4`** | **Autonomous** | Generated end-to-end by AI from minimal prompts with little or no human specification or review. | **All Fields:** Accepting bulk AI-generated code without reviewing the logic ("vibe-coding"), or publishing raw AI-generated text, images, or music directly from a prompt. |
@@ -149,4 +150,4 @@ To preserve a single canonical definition of the scale while ensuring frictionle
 
 ## 6. Authorship & Provenance
 
-The MADE standard was created by Jim Leonard (<mobygamer@gmail.com>) to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.
+The MADE standard was created by Jim Leonard (<mobygamer@gmail.com>) to provide programmers, writers, visual artists, musicians, and independent creators with a human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.

@@ -658,8 +658,8 @@
       <h3>Why Single-Number Scales Fail</h3>
       <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>.  This incentivizes the wrong signals:</p>
       <ol>
-        <li>A creator with no original ideas who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
-        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up reverb on a recording) is <em>penalized</em> with a "high" AI rating, despite only using AI for mechanical tasks.</li>
+        <li>A creator who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
+        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing research) is penalized with a "high" AI rating, despite only using AI for mechanical tasks.</li>
       </ol>
       <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
       <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
@@ -675,8 +675,9 @@
         <li><strong><code>3</code>: Directed</strong></li>
         <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
-      <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver said project.  The project's author could then self-disclose the following MADE score:</p>
+      <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver it.  The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
+or:
 MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     </div>
 
@@ -749,7 +750,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           <tr>
             <td><span class="lvl-badge b-1">E1</span></td>
             <td><strong>Assisted</strong></td>
-            <td>Human-authored output.  AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</td>
+            <td>Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</td>
             <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br><strong>Music:</strong> Recording live instruments and using a neural audio filter to remove room reverb or microphone hum.</td>
           </tr>
           <tr>
@@ -846,7 +847,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
 
     <div class="card">
       <h2><span>Authorship &amp; Provenance</span></h2>
-      <p>The MADE standard was created by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) to provide programmers, writers, visual artists, musicians, and independent creators with an honest, human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</p>
+      <p>The MADE standard was created by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) to provide programmers, writers, visual artists, musicians, and independent creators with a human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</p>
     </div>
       <!-- SYNC:TAB-SPEC:END -->
     </section>
@@ -926,7 +927,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
               <span class="lvl-badge b-1">E1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Human-authored output.  AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</span>
+                <span>Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
@@ -1087,7 +1088,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     ],
     "executionDefinitions": [
       "100% hand-crafted code, prose, illustration, or musical performance by the human creator.",
-      "Human-authored output.  AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.",
+      "Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.",
       "Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.",
       "AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.",
       "Generated end-to-end by AI from minimal prompts with little or no human specification or review."
