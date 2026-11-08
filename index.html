@@ -53,16 +53,16 @@
       --accent-soft: rgba(38, 139, 210, 0.12);
       --code-text: #073642;
 
-      --lvl-0: #859900;
-      /* solarized green */
-      --lvl-1: #2aa198;
-      /* solarized cyan */
+      --lvl-0: #16a34a;
+      /* emerald green (all-systems-go) */
+      --lvl-1: #0d9488;
+      /* oceanic teal */
       --lvl-2: #268bd2;
       /* solarized blue */
-      --lvl-3: #cb4b16;
-      /* solarized orange */
-      --lvl-4: #dc322f;
-      /* solarized red */
+      --lvl-3: #d97706;
+      /* warm golden amber */
+      --lvl-4: #d9381e;
+      /* warning vermilion */
 
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -86,9 +86,9 @@
 
       --lvl-0: #16a34a;
       --lvl-1: #0d9488;
-      --lvl-2: #2563eb;
+      --lvl-2: #268bd2;
       --lvl-3: #d97706;
-      --lvl-4: #dc2626;
+      --lvl-4: #d9381e;
     }
 
     * {
@@ -1375,10 +1375,8 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     }
 
     function getThemeBadgeColor(level) {
-      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      const solarizedPalette = ['#859900', '#2aa198', '#268bd2', '#cb4b16', '#dc322f'];
-      const darkPalette = ['#16a34a', '#0d9488', '#2563eb', '#d97706', '#dc322f'];
-      return isDark ? darkPalette[level] : solarizedPalette[level];
+      const palette = ['#16a34a', '#0d9488', '#268bd2', '#d97706', '#d9381e'];
+      return palette[level] || palette[0];
     }
 
     function getBrandBadgeBg() {

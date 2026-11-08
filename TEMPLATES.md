@@ -165,11 +165,11 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 ### 7.3 Shields.io Markdown Badges
 - **100% Human (`I0 / E0`):**
   ```markdown
-  [![MADE: I0 / E0](https://img.shields.io/badge/MADE-I0_%2F_E0-859900?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I0 / E0](https://img.shields.io/badge/MADE-I0_%2F_E0-16a34a?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
   ```
 - **Human-Created with Research/Diagnostic Assist (`I1 / E1`):**
   ```markdown
-  [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-2aa198?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-0d9488?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
   ```
 - **Contiguous Range Project (`I1 / E0-E2`):**
   ```markdown
@@ -177,9 +177,9 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
   ```
 - **Hybrid Multi-Level Project (`I0-I1 / E0,E3`):**
   ```markdown
-  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-cb4b16?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-d97706?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
   ```
 - **Vibe-Coded / High-AI Project (`I3-I4 / E4`):**
   ```markdown
-  [![MADE: I3-I4 / E4](https://img.shields.io/badge/MADE-I3--I4_%2F_E4-dc322f?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I3-I4 / E4](https://img.shields.io/badge/MADE-I3--I4_%2F_E4-d9381e?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
   ```
