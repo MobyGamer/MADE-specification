@@ -15,23 +15,23 @@
 **MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*.  This incentivizes the wrong signals:
-1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the completed work lacking human creativity and originality.
-2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing research) is penalized with a "high" AI rating, despite only using AI for mechanical tasks.
+Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
+1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the core concepts originating entirely from AI.
+2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.
 
 ### MADE's Balanced Alternative: Separating Ideation from Execution
 MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
 - **Ideation (`I0` to `I4`)** measures who conceived the ideas, concepts, structure, design, composition, or algorithms.
 - **Execution (`E0` to `E4`)** measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.
 
-Both categories use the same five symmetrical, whole-number level titles:
+Both categories use the same five symmetrical, whole-number levels:
 - **`0`: Unassisted**
 - **`1`: Assisted**
 - **`2`: Collaborative**
 - **`3`: Directed**
 - **`4`: Autonomous**
 
-Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver it.  The project's author could then self-disclose the following MADE score:
+Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting deliverables. The project's author could then self-disclose the following MADE score:
 
 ```markdown
 MADE: I0 / E2
@@ -48,8 +48,8 @@ The **Ideation** level measures the intellectual and creative origin of the work
 | Level | Title | Definition | Examples Across Creative & Technical Fields |
 | :--- | :--- | :--- | :--- |
 | **`I0`** | **Unassisted** | 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation. | **Programming:** Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br>**Writing:** Conceiving a novel's plot, characters, and chapter structure independently.<br>**Art:** Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>**Music:** Composing melodies, harmonies, and arrangements without querying any AI tool. |
-| **`I1`** | **Assisted** | Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges. |
-| **`I2`** | **Collaborative** | A human set the creative vision and partnered with AI to co-brainstorm subcomponents or outlines. | **Programming:** Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>**Writing:** Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>**Art:** Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>**Music:** Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies. |
+| **`I1`** | **Assisted** | Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges. |
+| **`I2`** | **Collaborative** | A human set the creative vision and partnered with AI to brainstorm subcomponents or outlines. | **Programming:** Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>**Writing:** Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>**Art:** Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>**Music:** Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies. |
 | **`I3`** | **Directed** | A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human. | **Programming:** Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br>**Writing:** Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>**Art:** Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>**Music:** Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement. |
 | **`I4`** | **Autonomous** | AI conceived the project concept, design, and creative direction with minimal or no human conceptual input. | **All Fields:** Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request. |
 
@@ -62,8 +62,8 @@ The **Execution** level measures how the final deliverables of the work (source 
 | Level | Title | Definition | Examples Across Creative & Technical Fields |
 | :--- | :--- | :--- | :--- |
 | **`E0`** | **Unassisted** | 100% human-produced code, prose, illustration, or musical performance by the human creator. | **Programming:** Writing source code or assembly routines completely by hand.<br>**Writing:** Typing and editing a manuscript manually without generative text tools.<br>**Art:** Drawing, painting, or modeling artwork entirely by hand.<br>**Music:** Performing, sequencing, mixing, and mastering audio manually without AI plugins. |
-| **`E1`** | **Assisted** | Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate. | **Programming:** Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>**Writing:** Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>**Art:** Hand-painting digital art and using generative spot-healing or margin bleed fill for print preparation.<br>**Music:** Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient. |
-| **`E2`** | **Collaborative** | Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures. | **Programming:** Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>**Writing:** Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>**Art:** Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br>**Music:** Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills. |
+| **`E1`** | **Assisted** | 100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup, with zero AI-generated content incorporated into the final deliverable. | **Programming:** Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>**Writing:** Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>**Art:** Hand-painting digital art and using generative spot-healing or margin bleed fill for print preparation.<br>**Music:** Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient. |
+| **`E2`** | **Collaborative** | Shared human-AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate scaffolding, or secondary utilities. | **Programming:** Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>**Writing:** Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>**Art:** Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br>**Music:** Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills. |
 | **`E3`** | **Directed** | AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator. | **Programming:** Providing an LLM with a detailed, human-authored specification and algorithm so it writes a companion utility in a secondary language, followed by human testing.<br>**Writing:** Translating a human-authored book into another language using AI under strict glossary constraints, followed by human review.<br>**Art:** Generating rendered assets using a workflow tightly constrained by human-drawn control maps, depth maps, and manual paint-overs.<br>**Music:** Synthesizing a vocal or orchestral performance from a human-written score and lyric sheet, followed by manual mixing. |
 | **`E4`** | **Autonomous** | Generated end-to-end by AI from minimal prompts with little or no human specification or review. | **All Fields:** Accepting bulk AI-generated code without reviewing the logic ("vibe-coding"), or publishing raw AI-generated text, images, or music directly from a prompt. |
 
@@ -73,7 +73,9 @@ The **Execution** level measures how the final deliverables of the work (source 
 
 At its simplest, a MADE disclosure consists of the `MADE:` prefix, followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`), such as: `MADE: I1 / E0`. Ideation is always listed first, then Execution. For works with uniform AI usage throughout, this single rating is all that is necessary.
 
-MADE also defines a **layered disclosure format** that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at `E0` but a helper utility was AI-generated from specs at `E3`) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify building a layered disclosure, the accompanying **Interactive Badge and Disclosure Builder** is provided to help automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)
+MADE also defines a **layered disclosure format** that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at `E0` but a helper utility was AI-generated from specs at `E3`) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.
+
+> **Note:** You do not need to format complex disclosures by hand; the accompanying **Interactive Badge and Disclosure Builder** can automatically generate multi-level scores, badges, component breakdowns, and file header tags.
 
 ### 4.1 Single-Rating Formats
 
@@ -111,26 +113,26 @@ AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `MADE: I0-I1 / E0,E3`
 
 ### 4.4 Per-File Source Code & Asset Metadata Headers
 
-To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a `MADE-Usage` line tag in file headers or asset metadata comments. Because header tags declare provenance for an individual file or asset, they specify a single Ideation level and a single Execution level:
+To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a `MADE:` line tag in file headers or asset metadata comments. Because header tags declare provenance for an individual file or asset, they specify a single Ideation level and a single Execution level:
 
 **Python / Shell / YAML / Makefile / Markdown / Text Metadata:**
 ```python
-# MADE-Usage: I1 / E1 (Ideation: Assisted; Execution: Assisted)
+# MADE: I1 / E1 (Ideation: Assisted; Execution: Assisted)
 ```
 
 **C / C++ / Rust / Go / JavaScript / C#:**
 ```c
-// MADE-Usage: I1 / E3 (Ideation: Assisted; Execution: Directed)
+// MADE: I1 / E3 (Ideation: Assisted; Execution: Directed)
 ```
 
 **Assembly (`.asm`, `.inc`, `.s`):**
 ```nasm
-; MADE-Usage: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)
+; MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)
 ```
 
 **HTML / XML / SVG:**
 ```html
-<!-- MADE-Usage: I0 / E0 (Ideation: Unassisted; Execution: Unassisted) -->
+<!-- MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted) -->
 ```
 
 For the complete formal syntax specification, see the RFC 5234 ABNF grammar in [`MADE-GRAMMAR.abnf`](MADE-GRAMMAR.abnf).
@@ -142,7 +144,7 @@ For the complete formal syntax specification, see the RFC 5234 ABNF grammar in [
 To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:
 
 1. **Using MADE Ratings, Badges, and Templates in Your Works:**
-   Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE-Usage` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/) (`CC0 1.0 Public Domain`).
+   Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing `MADE:` tags in your files is completely free of restrictions under [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/) (`CC0 1.0 Public Domain`).
 2. **Republishing the Specification Document:**
    The specification document itself (`MADE-SPECIFICATION.md`), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the [Creative Commons Attribution-NoDerivatives 4.0 International License](https://creativecommons.org/licenses/by-nd/4.0/) (`CC BY-ND 4.0`). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of `I0` through `I4` or `E0` through `E4` while still calling the modified scale "MADE".
 

@@ -26,19 +26,19 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 **For Hand-Crafted Core Source Files (`.c`, `.cpp`, `.rs`):**
 ```c
-// MADE-Usage: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)
+// MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)
 // Note: 100% human-designed and hand-written source code. Zero AI involvement.
 ```
 
 **For Assembly Language Files (`.asm`, `.inc`, `.s`):**
 ```nasm
-; MADE-Usage: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)
+; MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)
 ; Note: 100% human-designed and hand-written source code. Zero AI involvement.
 ```
 
 **For Spec-Driven AI Utility Scripts (`.py`, `.js`, `.sh`):**
 ```python
-# MADE-Usage: I1 / E3 (Ideation: Assisted; Execution: Directed)
+# MADE: I1 / E3 (Ideation: Assisted; Execution: Directed)
 # Note: Implemented by an LLM strictly from technical specifications and
 # constraints designed and verified by the human author.
 ```
@@ -52,8 +52,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 ### 2.1 Copyright Page / Book Colophon / Article Footer
 
 ```markdown
-**AI Disclosure (MADE: `I1 / E0-E1`):**
-MADE: Ideation 1 (Assisted); Execution 0-1 (Unassisted, Assisted).
+**AI Disclosure:** `MADE: I1 / E0-E1` (Ideation 1 (Assisted); Execution 0-1 (Unassisted, Assisted)).
 All plotlines, characters, arguments, and prose in this work were conceived and written by the human author. AI tools were consulted solely for background historical research (`I1`) and used during editing as an interactive phrase thesaurus and grammar checker (`E1`). No AI-generated prose is present in this publication.
 ```
 

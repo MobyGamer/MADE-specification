@@ -656,10 +656,10 @@
       <h2><span>Purpose &amp; Philosophy</span></h2>
       <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <em>original human ideas</em> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>.  This incentivizes the wrong signals:</p>
+      <p>Existing disclosure scales and labels, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>. This distorts how AI usage is represented:</p>
       <ol>
-        <li>A creator who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the completed work lacking human creativity and originality.</li>
-        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing research) is penalized with a "high" AI rating, despite only using AI for mechanical tasks.</li>
+        <li>A creator who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the core concepts originating entirely from AI.</li>
+        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.</li>
       </ol>
       <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
       <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
@@ -667,7 +667,7 @@
         <li><strong>Ideation (<code>I0</code> to <code>I4</code>)</strong> measures who conceived the ideas, concepts, structure, design, composition, or algorithms.</li>
         <li><strong>Execution (<code>E0</code> to <code>E4</code>)</strong> measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.</li>
       </ul>
-      <p>Both categories use the same five symmetrical, whole-number level titles:</p>
+      <p>Both categories use the same five symmetrical, whole-number levels:</p>
       <ul>
         <li><strong><code>0</code>: Unassisted</strong></li>
         <li><strong><code>1</code>: Assisted</strong></li>
@@ -675,7 +675,7 @@
         <li><strong><code>3</code>: Directed</strong></li>
         <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
-      <p>Example Usage:  Assume a creative project was 100% conceived of and designed by a human, who then used AI to automate half the work needed to deliver it.  The project's author could then self-disclose the following MADE score:</p>
+      <p>Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting deliverables. The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
 or:
 MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
@@ -703,13 +703,13 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           <tr>
             <td><span class="lvl-badge b-1">I1</span></td>
             <td><strong>Assisted</strong></td>
-            <td>Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.</td>
+            <td>Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.</td>
             <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">I2</span></td>
             <td><strong>Collaborative</strong></td>
-            <td>A human set the creative vision and partnered with AI to co-brainstorm subcomponents or outlines.</td>
+            <td>A human set the creative vision and partnered with AI to brainstorm subcomponents or outlines.</td>
             <td><strong>Programming:</strong> Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br><strong>Writing:</strong> Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br><strong>Art:</strong> Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br><strong>Music:</strong> Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies.</td>
           </tr>
           <tr>
@@ -750,13 +750,13 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           <tr>
             <td><span class="lvl-badge b-1">E1</span></td>
             <td><strong>Assisted</strong></td>
-            <td>Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate.</td>
+            <td>100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup, with zero AI-generated content incorporated into the final deliverable.</td>
             <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art and using generative spot-healing or margin bleed fill for print preparation.<br><strong>Music:</strong> Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">E2</span></td>
             <td><strong>Collaborative</strong></td>
-            <td>Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.</td>
+            <td>Shared human-AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate scaffolding, or secondary utilities.</td>
             <td><strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br><strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br><strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br><strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.</td>
           </tr>
           <tr>
@@ -778,7 +778,10 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     <div class="card">
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
       <p>At its simplest, a MADE disclosure consists of the <code>MADE:</code> prefix, followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>), such as: <code>MADE: I1 / E0</code>. Ideation is always listed first, then Execution. For works with uniform AI usage throughout, this single rating is all that is necessary.</p>
-      <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at <code>E0</code> but a helper utility was AI-generated from specs at <code>E3</code>) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath. (To simplify building a layered disclosure, the accompanying <strong>Interactive Badge and Disclosure Builder</strong> is provided to help automatically format multi-level scores, generate badges, and produce ready-to-use component breakdowns and file header tags.)</p>
+      <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (such as software where the core work was hand-crafted at <code>E0</code> but a helper utility was AI-generated from specs at <code>E3</code>) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.</p>
+      <blockquote>
+        <p><strong>Note:</strong> You do not need to format complex disclosures by hand; the accompanying <strong>Interactive Badge and Disclosure Builder</strong> can automatically generate multi-level scores, badges, component breakdowns, and file header tags.</p>
+      </blockquote>
       <h3>Single-Rating Formats</h3>
       <ol>
         <li>
@@ -824,15 +827,15 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
 - **Core Application Engine (`I0 / E0`, Ideation: Unassisted; Execution: Unassisted):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import &amp; Conversion Utilities (`I1 / E3`, Ideation: Assisted; Execution: Directed):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
       <h3>Per-File Source Code &amp; Asset Metadata Headers</h3>
-      <p>To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a <code>MADE-Usage</code> line tag in file headers or asset metadata comments. Because header tags declare provenance for an individual file or asset, they specify a single Ideation level and a single Execution level:</p>
+      <p>To prevent individual hand-crafted files from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a <code>MADE:</code> line tag in file headers or asset metadata comments. Because header tags declare provenance for an individual file or asset, they specify a single Ideation level and a single Execution level:</p>
       <p><strong>Python / Shell / YAML / Makefile / Markdown / Text Metadata:</strong></p>
-      <pre><code># MADE-Usage: I1 / E1 (Ideation: Assisted; Execution: Assisted)</code></pre>
+      <pre><code># MADE: I1 / E1 (Ideation: Assisted; Execution: Assisted)</code></pre>
       <p><strong>C / C++ / Rust / Go / JavaScript / C#:</strong></p>
-      <pre><code>// MADE-Usage: I1 / E3 (Ideation: Assisted; Execution: Directed)</code></pre>
+      <pre><code>// MADE: I1 / E3 (Ideation: Assisted; Execution: Directed)</code></pre>
       <p><strong>Assembly (<code>.asm</code>, <code>.inc</code>, <code>.s</code>):</strong></p>
-      <pre><code>; MADE-Usage: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)</code></pre>
+      <pre><code>; MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)</code></pre>
       <p><strong>HTML / XML / SVG:</strong></p>
-      <pre><code>&lt;!-- MADE-Usage: I0 / E0 (Ideation: Unassisted; Execution: Unassisted) --&gt;</code></pre>
+      <pre><code>&lt;!-- MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted) --&gt;</code></pre>
       <p>For the complete formal syntax specification, see the RFC 5234 ABNF grammar in <a href="MADE-GRAMMAR.abnf"><code>MADE-GRAMMAR.abnf</code></a>.</p>
     </div>
 
@@ -840,7 +843,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       <h2><span>Licensing &amp; Governance</span></h2>
       <p>To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:</p>
       <ol>
-        <li><strong>Using MADE Ratings, Badges, and Templates in Your Works:</strong> Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing <code>MADE-Usage</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a> (<code>CC0 1.0 Public Domain</code>).</li>
+        <li><strong>Using MADE Ratings, Badges, and Templates in Your Works:</strong> Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing <code>MADE:</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a> (<code>CC0 1.0 Public Domain</code>).</li>
         <li><strong>Republishing the Specification Document:</strong> The specification document itself (<code>MADE-SPECIFICATION.md</code>), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a> (<code>CC BY-ND 4.0</code>). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "MADE".</li>
       </ol>
       <blockquote>
@@ -884,14 +887,14 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
               <span class="lvl-badge b-1">I1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.</span>
+                <span>Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleIdeation(2)">
               <span class="lvl-badge b-2">I2</span>
               <div class="level-info">
                 <strong>Collaborative</strong>
-                <span>A human set the creative vision and partnered with AI to co-brainstorm subcomponents or outlines.</span>
+                <span>A human set the creative vision and partnered with AI to brainstorm subcomponents or outlines.</span>
               </div>
             </div>
             <div class="level-option" data-level="3" onclick="toggleIdeation(3)">
@@ -930,14 +933,14 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
               <span class="lvl-badge b-1">E1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate.</span>
+                <span>100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup, with zero AI-generated content incorporated into the final deliverable.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
               <span class="lvl-badge b-2">E2</span>
               <div class="level-info">
                 <strong>Collaborative</strong>
-                <span>Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.</span>
+                <span>Shared human-AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate scaffolding, or secondary utilities.</span>
               </div>
             </div>
             <div class="level-option" data-level="3" onclick="toggleExecution(3)">
@@ -966,9 +969,9 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           <span>Optional: Component Level Breakdown</span>
         </h2>
         <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.5rem;">
-          For works comprised of multiple distinct modules, assets, or deliverables, creators can document the specific
-          human versus AI contribution for each component. <b>This breakdown section is completely optional;
-            skip it if you do not want to provide a more granular breakdown of your project.</b>
+          For works composed of multiple distinct modules, assets, or deliverables, creators can document the specific
+          human versus AI contribution for each component. <b>This breakdown section is completely optional, and
+            can be skipped if you do not want to provide a more granular breakdown of your project.</b>
         </p>
         <p style="font-size:0.88rem;margin-bottom:0.75rem;">
           Specify both the <strong>Ideation Level (<code>I0</code> to <code>I4</code>)</strong> and the
@@ -1084,15 +1087,15 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     ],
     "ideationDefinitions": [
       "100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.",
-      "Core concepts and designs are human-originated.  AI used only for background research or minor tested refinements.",
-      "A human set the creative vision and partnered with AI to co-brainstorm subcomponents or outlines.",
+      "Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.",
+      "A human set the creative vision and partnered with AI to brainstorm subcomponents or outlines.",
       "A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.",
       "AI conceived the project concept, design, and creative direction with minimal or no human conceptual input."
     ],
     "executionDefinitions": [
       "100% human-produced code, prose, illustration, or musical performance by the human creator.",
-      "Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate.",
-      "Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.",
+      "100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup, with zero AI-generated content incorporated into the final deliverable.",
+      "Shared human-AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate scaffolding, or secondary utilities.",
       "AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.",
       "Generated end-to-end by AI from minimal prompts with little or no human specification or review."
     ]
@@ -1563,11 +1566,11 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       // 4. Per-File / Asset Metadata Header Tags
       let headers = '';
       if (comps.length > 0) {
-        headers += `# --- Component-Specific ${SPEC_DATA.acronym}-Usage Header Lines ---\n`;
+        headers += `# --- Component-Specific ${SPEC_DATA.acronym} Header Lines ---\n`;
         comps.forEach(c => {
           const safeName = c.name.replace(/\r?\n/g, ' ');
           headers += `# Component: ${safeName}\n`;
-          headers += `# ${SPEC_DATA.acronym}-Usage: ${c.iCode} / ${c.eCode} (Ideation: ${c.iTitle}; Execution: ${c.eTitle})\n\n`;
+          headers += `# ${SPEC_DATA.acronym}: ${c.iCode} / ${c.eCode} (Ideation: ${c.iTitle}; Execution: ${c.eTitle})\n\n`;
         });
       }
       const singleICode = `I${iInfo.min}`;
@@ -1581,13 +1584,13 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       }
 
       headers += `// --- C / C++ / Rust / Go / JavaScript / C# Header ---\n`;
-      headers += `// ${SPEC_DATA.acronym}-Usage: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
+      headers += `// ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
       headers += `# --- Python / Shell / YAML / Markdown Metadata Header ---\n`;
-      headers += `# ${SPEC_DATA.acronym}-Usage: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
+      headers += `# ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
       headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
-      headers += `; ${SPEC_DATA.acronym}-Usage: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
+      headers += `; ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
       headers += `<!-- --- HTML / XML / SVG Metadata Comment --- -->\n`;
-      headers += `<!-- ${SPEC_DATA.acronym}-Usage: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle}) -->`;
+      headers += `<!-- ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle}) -->`;
       document.getElementById('out-headers').textContent = headers;
     }
 

@@ -34,10 +34,15 @@ title               = "Unassisted" / "Assisted" / "Collaborative" / "Directed" /
 ; Component & File-Level Classification Grammar (Sections 4.3 & 4.4)
 ; -----------------------------------------------------------------------------
 
-file-header-tag     = comment-prefix "MADE-Usage:" SP single-file-score [ SP "(" classification-desc ")" ] [ SP tool-attribution ] [ comment-suffix ]
+file-header-tag     = comment-prefix canonical-prefix SP single-file-score [ SP "(" classification-desc ")" ] [ SP tool-attribution ] [ comment-suffix ]
 
 single-file-score   = "I" level-digit SP "/" SP "E" level-digit
 classification-desc = "Ideation:" SP title ";" SP "Execution:" SP title
+
+component-tag       = "(" single-file-score "," SP classification-desc ")" / "[" single-file-score SP "(" classification-desc ")" "]"
+
+nfo-ideation-line   = "Ideation" 1*SP ":" SP ideation-expr SP "(" title-list ")"
+nfo-execution-line  = "Execution" 1*SP ":" SP execution-expr SP "(" title-list ")"
 
 comment-prefix      = "//" SP / "#" SP / ";" SP / "--" SP / "/*" SP / "<!--" SP
 comment-suffix      = SP "*/" / SP "-->"
