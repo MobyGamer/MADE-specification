@@ -744,14 +744,14 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           <tr>
             <td><span class="lvl-badge b-0">E0</span></td>
             <td><strong>Unassisted</strong></td>
-            <td>100% hand-crafted code, prose, illustration, or musical performance by the human creator.</td>
+            <td>100% human-produced code, prose, illustration, or musical performance by the human creator.</td>
             <td><strong>Programming:</strong> Writing source code or assembly routines completely by hand.<br><strong>Writing:</strong> Typing and editing a manuscript manually without generative text tools.<br><strong>Art:</strong> Drawing, painting, or modeling artwork entirely by hand.<br><strong>Music:</strong> Performing, sequencing, mixing, and mastering audio manually without AI plugins.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-1">E1</span></td>
             <td><strong>Assisted</strong></td>
-            <td>Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</td>
-            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art and using a machine-learning filter for final noise reduction or resolution upscaling.<br><strong>Music:</strong> Recording live instruments and using a neural audio filter to remove room reverb or microphone hum.</td>
+            <td>Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate.</td>
+            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art and using generative spot-healing or margin bleed fill for print preparation.<br><strong>Music:</strong> Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">E2</span></td>
@@ -923,14 +923,14 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
               <span class="lvl-badge b-0">E0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% hand-crafted code, prose, illustration, or musical performance by the human creator.</span>
+                <span>100% human-produced code, prose, illustration, or musical performance by the human creator.</span>
               </div>
             </div>
             <div class="level-option" data-level="1" onclick="toggleExecution(1)">
               <span class="lvl-badge b-1">E1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.</span>
+                <span>Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
@@ -1090,8 +1090,8 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       "AI conceived the project concept, design, and creative direction with minimal or no human conceptual input."
     ],
     "executionDefinitions": [
-      "100% hand-crafted code, prose, illustration, or musical performance by the human creator.",
-      "Human-authored output. AI used only for read-only diagnostics, phrase lookup, signal cleanup, or minor boilerplate.",
+      "100% human-produced code, prose, illustration, or musical performance by the human creator.",
+      "Human-authored output. AI used only for read-only diagnostics, phrase lookup, minor touch-ups, or minor boilerplate.",
       "Shared human-AI production, such as human-created core work paired with AI-generated helper scripts or background textures.",
       "AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.",
       "Generated end-to-end by AI from minimal prompts with little or no human specification or review."
@@ -1321,10 +1321,10 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           '100% conceived, sketched, inked, and painted by hand by the human artist.'
         );
         addComponentRow(
-          'High-Resolution Print Exports',
+          'Print Layout & Margin Bleed Exports',
           'I0',
           'E1',
-          'Hand-painted illustrations processed through a non-generative machine-learning upscaler and denoiser for print.'
+          'Hand-painted illustrations prepared for print using generative spot-healing for stray scan dust and minor margin bleed extension.'
         );
         addComponentRow(
           'Repeating Background Surface Textures',
@@ -1348,10 +1348,10 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           'Alternate harmonic voicings co-brainstormed with an AI tool (I2) and performed manually on hardware instruments by the artist (E0).'
         );
         addComponentRow(
-          'Audio Restoration & Mastering',
+          'Mix Diagnostics & Mastering',
           'I0',
           'E1',
-          'Acoustic microphone recordings cleaned up using a neural de-reverb and noise-reduction filter during mixing.'
+          'Acoustic recordings mixed and mastered manually, using an AI assistant only for read-only frequency-masking diagnostics and minor transient patching.'
         );
       } else if (preset === 'vibegame') {
         selectedIdeations = [3, 4];

@@ -72,7 +72,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ## 3. Graphical & Visual Art Scenario (`MADE: I0-I1 / E0-E2`)
 
-*Scenario: A visual artist or indie comic creator designs and illustrates all characters, line art, and key scenes by hand (`I0 / E0`), uses ML denoising/upscaling on final exports (`I0 / E1`), and uses AI-assisted texture tiling for repetitive background patterns (`I1 / E2`). Because Execution spans `E0`, `E1`, and `E2` continuously, it is expressed as the contiguous range `E0-E2`.*
+*Scenario: A visual artist or indie comic creator designs and illustrates all characters, line art, and key scenes by hand (`I0 / E0`), uses generative spot-healing and margin bleed fill on final print exports (`I0 / E1`), and uses AI-assisted texture tiling for repetitive background patterns (`I1 / E2`). Because Execution spans `E0`, `E1`, and `E2` continuously, it is expressed as the contiguous range `E0-E2`.*
 
 ### 3.1 Portfolio / Artbook / Storefront Disclosure
 
@@ -82,7 +82,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 | Artwork Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
 | **Character Design, Line Art & Key Illustrations** | **`I0 / E0`** | Ideation: Unassisted; Execution: Unassisted | 100% conceived, sketched, inked, and painted by hand by the human artist. |
-| **High-Resolution Print Exports** | **`I0 / E1`** | Ideation: Unassisted; Execution: Assisted | Hand-painted illustrations processed through a non-generative machine-learning upscaler and denoiser for print preparation. |
+| **Print Layout & Margin Bleed Exports** | **`I0 / E1`** | Ideation: Unassisted; Execution: Assisted | Hand-painted illustrations prepared for print using generative spot-healing for stray scan dust and minor margin bleed extension. |
 | **Repeating Environmental Textures** | **`I1 / E2`** | Ideation: Assisted; Execution: Collaborative | Secondary background surface patterns created through a hybrid human-AI texture workflow and manually composited into scenes. |
 ```
 
@@ -90,7 +90,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ## 4. Music Composition & Audio Production Scenario (`MADE: I0,I2 / E0-E1`)
 
-*Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), room noise on acoustic recordings is cleaned up using a neural audio restoration plugin (`I0 / E1`), and one bonus track features chord variations co-brainstormed with an AI tool but performed by the human musician (`I2 / E0`).*
+*Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), mixing and mastering use an AI assistant for read-only frequency-masking diagnostics and minor transient patching (`I0 / E1`), and one bonus track features chord variations co-brainstormed with an AI tool but performed by the human musician (`I2 / E0`).*
 
 ### 4.1 Album Liner Notes / Bandcamp / Streaming Description
 
@@ -99,7 +99,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 - **Lead Compositions & Instrumental Performances (`I0 / E0`, Ideation: Unassisted; Execution: Unassisted):** All melodies, arrangements, lyrics, and instrumental performances were composed and played by the human artist.
 - **Harmonic Variations on Track 7 (`I2 / E0`, Ideation: Collaborative; Execution: Unassisted):** Alternate bridge chord voicings were co-brainstormed with an AI assistant (`I2`) and performed manually on hardware synthesizers by the artist (`E0`).
-- **Audio Restoration & Mastering (`I0 / E1`, Ideation: Unassisted; Execution: Assisted):** Acoustic microphone recordings were processed with a neural de-reverb and noise-reduction filter during mixing (`E1`). No generative AI audio or synthetic vocals are used on this release.
+- **Mix Diagnostics & Mastering (`I0 / E1`, Ideation: Unassisted; Execution: Assisted):** Acoustic recordings were mixed and mastered manually, using an AI assistant only for read-only frequency-masking diagnostics and minor transient patching (`E1`). No generative AI musical stems or synthetic vocals are used on this release.
 ```
 
 ---
@@ -159,7 +159,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 ### 7.2 Human-Created Work with AI Research & Diagnostics (`I1 / E1`)
 ```markdown
-**AI Disclosure (MADE: `I1 / E1`):** Ideation 1 (Assisted); Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or signal cleanup.
+**AI Disclosure (MADE: `I1 / E1`):** Ideation 1 (Assisted); Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or minor touch-ups.
 ```
 
 ### 7.3 Shields.io Markdown Badges
