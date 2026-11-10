@@ -323,6 +323,35 @@
       background: var(--accent-soft);
     }
 
+    .locked-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.15rem;
+      font-size: 0.86rem;
+      color: var(--text);
+      transition: box-shadow 0.2s ease, transform 0.15s ease;
+    }
+
+    .locked-banner.pulse {
+      box-shadow: 0 0 0 3px var(--accent);
+    }
+
+    .options-locked .level-option:not(.selected) {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .options-locked .level-option.selected {
+      cursor: not-allowed;
+    }
+
     .lvl-badge {
       font-family: var(--font-mono);
       font-weight: 700;
@@ -857,7 +886,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
         <li><strong>Republishing the Specification Document:</strong> The specification document itself (<code>MADE-SPECIFICATION.md</code>), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a> (<code>CC BY-ND 4.0</code>). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "MADE".</li>
       </ol>
       <blockquote>
-        <p><strong>Express Permission Addendum:</strong> Notwithstanding the NoDerivatives restriction in Section 3(a)(4) of <code>CC BY-ND 4.0</code>, the Licensor grants all users the irrevocable, royalty-free, perpetual permission to: (1) translate the specification document into any natural language and publicly distribute such translation, provided the translation is accurate and preserves the canonical level definitions; (2) extract, modify, and redistribute all software code, scripts, regular expressions, and interactive builder logic; and (3) create and distribute domain-specific extension profiles that append auxiliary metadata fields without altering the definitions of <code>I0</code> through <code>I4</code> and <code>E0</code> through <code>E4</code>.</p>
+        <p><strong>Express Permission Addendum:</strong> Notwithstanding the NoDerivatives restriction in Section 3(a)(4) of <code>CC BY-ND 4.0</code>, the Licensor grants all users the irrevocable, royalty-free, perpetual permission to: (1) translate the specification document into any natural language and publicly distribute such translation, provided the translation is accurate and preserves the canonical level definitions; (2) quote and display the unmodified level titles and definitions in user interfaces, tooltips, and documentation, and extract, modify, and redistribute all software code, scripts, regular expressions, and interactive builder logic; and (3) create and distribute domain-specific extension profiles that append auxiliary metadata fields without altering the definitions of <code>I0</code> through <code>I4</code> and <code>E0</code> through <code>E4</code>.</p>
       </blockquote>
     </div>
 
@@ -878,7 +907,12 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           Select the applicable ideation and execution levels below to accurately communicate the balance between original human creativity and mechanical AI assistance across your project.
         </p>
 
-        <div class="grid-2">
+        <div id="section1-lock-banner" class="locked-banner hidden" role="status" aria-live="polite">
+          <span><strong>Auto-Synced from Components:</strong> Overall Ideation and Execution levels are being set automatically from your Component Level Breakdown below. To manually select overall levels here, delete all components below.</span>
+          <button class="btn-sm" onclick="clearAllComponents()">Clear All Components</button>
+        </div>
+
+        <div class="grid-2" id="section1-options-grid">
           <!-- Ideation -->
           <div>
             <h3>Ideation Levels (I0 to I4)</h3>
@@ -987,8 +1021,9 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           Specify both the <strong>Ideation Level (<code>I0</code> to <code>I4</code>)</strong> and the
           <strong>Execution Level (<code>E0</code> to <code>E4</code>)</strong> for each distinct part of your work.
         </p>
-        <div style="margin-bottom:1rem;">
+        <div style="margin-bottom:1rem;display:flex;gap:0.6rem;flex-wrap:wrap;">
           <button class="btn-sm" onclick="addComponentRow('', 'I0', 'E0', '')">+ Add Component Row</button>
+          <button id="clear-components-btn" class="btn-sm hidden" onclick="clearAllComponents()">Clear All Components</button>
         </div>
         <div class="comp-header">
           <div>Component / Deliverable Name</div>
@@ -998,10 +1033,6 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           <div></div>
         </div>
         <div id="component-list"></div>
-        <div id="sync-components-wrapper" class="hidden" style="margin-top:1rem;">
-          <button class="btn-sm" onclick="syncTopLevelsFromComponents()"
-            title="Set Ideation and Execution selections to match the components listed above">Sync Previous Section From These Components</button>
-        </div>
 
         <div class="preset-bar">
           <div class="preset-label">Quick Presets:</div>
@@ -1132,7 +1163,20 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       btn.classList.add('active');
     }
 
+    function pulseLockBanner() {
+      const banner = document.getElementById('section1-lock-banner');
+      if (!banner) return;
+      banner.classList.remove('pulse');
+      void banner.offsetWidth;
+      banner.classList.add('pulse');
+      setTimeout(() => banner.classList.remove('pulse'), 600);
+    }
+
     function toggleIdeation(lvl) {
+      if (document.querySelectorAll('#component-list .comp-row').length > 0) {
+        pulseLockBanner();
+        return;
+      }
       const idx = selectedIdeations.indexOf(lvl);
       if (idx > -1) {
         if (selectedIdeations.length > 1) {
@@ -1147,6 +1191,10 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     }
 
     function toggleExecution(lvl) {
+      if (document.querySelectorAll('#component-list .comp-row').length > 0) {
+        pulseLockBanner();
+        return;
+      }
       const idx = selectedExecutions.indexOf(lvl);
       if (idx > -1) {
         if (selectedExecutions.length > 1) {
@@ -1231,6 +1279,11 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       document.getElementById('component-list').innerHTML = '';
     }
 
+    function clearAllComponents() {
+      clearComponents();
+      updateOutputs();
+    }
+
     function addComponentRow(name = '', iCode = 'I0', eCode = 'E0', desc = '') {
       const list = document.getElementById('component-list');
       const row = document.createElement('div');
@@ -1256,23 +1309,6 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <button class="btn-sm" onclick="this.parentElement.remove(); updateOutputs();" title="Remove component">&times;</button>
     `;
       list.appendChild(row);
-      updateOutputs();
-    }
-
-    function syncTopLevelsFromComponents() {
-      const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
-      if (compRows.length === 0) return;
-      const iSet = new Set();
-      const eSet = new Set();
-      compRows.forEach(r => {
-        const iVal = parseInt(r.querySelector('.comp-i').value.slice(1), 10);
-        const eVal = parseInt(r.querySelector('.comp-e').value.slice(1), 10);
-        iSet.add(iVal);
-        eSet.add(eVal);
-      });
-      selectedIdeations = Array.from(iSet).sort((a, b) => a - b);
-      selectedExecutions = Array.from(eSet).sort((a, b) => a - b);
-      syncOptionCards();
       updateOutputs();
     }
 
@@ -1455,6 +1491,33 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     }
 
     function updateOutputs() {
+      // Collect components first so Section 1 auto-syncs whenever components exist
+      const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
+      const hasComps = compRows.length > 0;
+
+      if (hasComps) {
+        const iSet = new Set();
+        const eSet = new Set();
+        compRows.forEach(r => {
+          const iVal = parseInt(r.querySelector('.comp-i').value.slice(1), 10);
+          const eVal = parseInt(r.querySelector('.comp-e').value.slice(1), 10);
+          iSet.add(iVal);
+          eSet.add(eVal);
+        });
+        selectedIdeations = Array.from(iSet).sort((a, b) => a - b);
+        selectedExecutions = Array.from(eSet).sort((a, b) => a - b);
+        syncOptionCards();
+      }
+
+      const lockBanner = document.getElementById('section1-lock-banner');
+      if (lockBanner) lockBanner.classList.toggle('hidden', !hasComps);
+
+      const optionsGrid = document.getElementById('section1-options-grid');
+      if (optionsGrid) optionsGrid.classList.toggle('options-locked', hasComps);
+
+      const clearBtn = document.getElementById('clear-components-btn');
+      if (clearBtn) clearBtn.classList.toggle('hidden', !hasComps);
+
       const iInfo = formatLevels('I', selectedIdeations);
       const eInfo = formatLevels('E', selectedExecutions);
 
@@ -1467,12 +1530,6 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       const svgString = buildSvgBadgeString(iInfo.compact, eInfo.compact, iInfo.max, eInfo.max);
       document.getElementById('svg-badge-container').innerHTML = svgString;
 
-      // Collect components
-      const compRows = Array.from(document.querySelectorAll('#component-list .comp-row'));
-      const syncWrapper = document.getElementById('sync-components-wrapper');
-      if (syncWrapper) {
-        syncWrapper.classList.toggle('hidden', compRows.length === 0);
-      }
       const comps = compRows.map(r => {
         const iCode = r.querySelector('.comp-i').value;
         const eCode = r.querySelector('.comp-e').value;
@@ -1599,7 +1656,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       headers += `# ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
       headers += `; --- Assembly (.asm / .inc) / INI Header ---\n`;
       headers += `; ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle})\n\n`;
-      headers += `<!-- --- HTML / XML / SVG Metadata Comment --- -->\n`;
+      headers += `<!-- === HTML / XML / SVG Metadata Comment === -->\n`;
       headers += `<!-- ${SPEC_DATA.acronym}: ${singleICode} / ${singleECode} (Ideation: ${singleITitle}; Execution: ${singleETitle}) -->`;
       document.getElementById('out-headers').textContent = headers;
     }

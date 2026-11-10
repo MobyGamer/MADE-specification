@@ -22,7 +22,7 @@ execution-token     = "E" level-digit [ "-E" level-digit ]
 level-digit         = "0" / "1" / "2" / "3" / "4"
 
 expanded-standalone = expanded-ideation ";" SP expanded-execution
-expanded-clause     = "(" expanded-ideation ";" SP expanded-execution ")"
+expanded-clause     = "(" ( ( expanded-ideation ";" SP expanded-execution ) / classification-desc ) ")"
 
 expanded-ideation   = "Ideation" SP level-expr SP "(" title-list ")"
 expanded-execution  = "Execution" SP level-expr SP "(" title-list ")"

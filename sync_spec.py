@@ -90,6 +90,88 @@ def validate_stylistic_rules(spec_text: str) -> None:
         )
 
 
+_TITLES_PAT = r"(?:Unassisted|Assisted|Collaborative|Directed|Autonomous)"
+_TOOL_ATTR_PAT = r"(?:\s+\[[A-Za-z0-9_./+-]+(?:\s+[A-Za-z0-9_./+-]+)*(?:,\s+[A-Za-z0-9_./+-]+(?:\s+[A-Za-z0-9_./+-]+)*)*\])?"
+_EXPANDED_PAIR_PAT = (
+    rf"Ideation\s+([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*)\s+\({_TITLES_PAT}(?:,\s+{_TITLES_PAT})*\);\s+"
+    rf"Execution\s+([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*)\s+\({_TITLES_PAT}(?:,\s+{_TITLES_PAT})*\)"
+)
+_CLASS_DESC_PAT = rf"Ideation:\s+{_TITLES_PAT};\s+Execution:\s+{_TITLES_PAT}"
+_MADE_DISCLOSURE_RE = re.compile(
+    rf"^(?:(?://|#|;|--|/\*|<!--)\s+)?MADE:\s+"
+    rf"(?:"
+    rf"(I[0-4](?:-I[0-4])?(?:,I[0-4](?:-I[0-4])?)*)\s+/\s+(E[0-4](?:-E[0-4])?(?:,E[0-4](?:-E[0-4])?)*)"
+    rf"(?:\s+\((?:{_EXPANDED_PAIR_PAT}|{_CLASS_DESC_PAT})\))?"
+    rf"|(?:{_EXPANDED_PAIR_PAT})"
+    rf"){_TOOL_ATTR_PAT}(?:\s+(?:\*/|-->))?$"
+)
+
+
+def _check_ascending_non_adjacent(expr: str, prefix: str) -> str | None:
+    """Verify level tokens are strictly ascending and consecutive numbers use hyphens."""
+    prev_end = -1
+    for part in expr.split(","):
+        clean = part.replace(prefix, "")
+        if "-" in clean:
+            start_s, end_s = clean.split("-", 1)
+            start_n, end_n = int(start_s), int(end_s)
+            if start_n >= end_n:
+                return f"Range '{part}' must be strictly ascending"
+        else:
+            start_n = end_n = int(clean)
+        if prev_end != -1:
+            if start_n <= prev_end:
+                return f"Levels in '{expr}' must be in strictly ascending order"
+            if start_n == prev_end + 1:
+                return f"Consecutive levels in '{expr}' must use a hyphen, not a comma"
+        prev_end = end_n
+    return None
+
+
+def validate_grammar_examples(spec_text: str) -> None:
+    """Validate all MADE: disclosure strings and header tags against MADE-GRAMMAR.abnf."""
+    errors: list[str] = []
+    in_fence = False
+    for idx, line in enumerate(spec_text.splitlines(), start=1):
+        stripped = line.strip()
+        if stripped.startswith("```"):
+            in_fence = not in_fence
+            continue
+
+        candidates: list[str] = []
+        if in_fence:
+            if re.match(r"^(?:(?://|#|;|--|/\*|<!--)\s+)?MADE:\s+\S+", stripped):
+                candidates.append(stripped)
+        else:
+            for m in re.finditer(r"`((?:(?://|#|;|--|/\*|<!--)\s+)?MADE:\s+[^`]+)`", line):
+                candidates.append(m.group(1).strip())
+
+        for cand in candidates:
+            match = _MADE_DISCLOSURE_RE.match(cand)
+            if not match:
+                errors.append(f"  Line {idx}: Invalid MADE grammar syntax: {cand}")
+                continue
+            i_short, e_short, i_exp1, e_exp1, i_exp2, e_exp2 = match.groups()
+            for expr, pfx in (
+                (i_short, "I"),
+                (e_short, "E"),
+                (i_exp1, ""),
+                (e_exp1, ""),
+                (i_exp2, ""),
+                (e_exp2, ""),
+            ):
+                if expr:
+                    err = _check_ascending_non_adjacent(expr, pfx)
+                    if err:
+                        errors.append(f"  Line {idx}: {err} in '{cand}'")
+
+    if errors:
+        joined = "\n".join(errors)
+        raise SpecValidationError(
+            f"ABNF grammar validation failed in specification:\n{joined}"
+        )
+
+
 def split_top_level_sections(spec_text: str) -> list[list[str]]:
     """Split Markdown lines on top-level '---' dividers outside fenced code blocks."""
     sections: list[list[str]] = []
@@ -140,7 +222,7 @@ def strip_markdown_inline(text: str) -> str:
     """Strip inline Markdown emphasis, code ticks, and links to plain text."""
     out = re.sub(r"<br\s*/?>", " ", text, flags=re.IGNORECASE)
     out = re.sub(r"`([^`]+)`", r"\1", out)
-    out = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", out)
+    out = re.sub(r"\[([^\]]+)\]\(((?:[^()\s]+|\([^()\s]*\))+)\)", r"\1", out)
     out = re.sub(r"<([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})>", r"\1", out)
     out = re.sub(r"\*\*\*(.+?)\*\*\*", r"\1", out)
     out = re.sub(r"\*\*(.+?)\*\*", r"\1", out)
@@ -227,7 +309,7 @@ def render_inline(text: str) -> str:
         )
         return stash(f'<a href="{url_attr}"{ext_attrs}>{label_html}</a>')
 
-    work = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", replace_link, work)
+    work = re.sub(r"\[([^\]]+)\]\(((?:[^()\s]+|\([^()\s]*\))+)\)", replace_link, work)
 
     # 6. Escape remaining raw characters and apply bold/italic + hard line breaks
     work = html.escape(work, quote=False)
@@ -635,6 +717,7 @@ def render_blocks(
 def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     """Validate MADE-SPECIFICATION.md and compile all synced HTML & JS fragments."""
     validate_stylistic_rules(spec_text)
+    validate_grammar_examples(spec_text)
     sections = split_top_level_sections(spec_text)
     header_info = parse_header_chunk(sections[0])
 
