@@ -11,6 +11,8 @@ disclosure-body     = shorthand-rating [ SP expanded-clause ]
 
 shorthand-rating    = ideation-expr SP "/" SP execution-expr
 
+; Note: Multi-level expressions must list levels in ascending numerical order (0 to 4).
+; Consecutive levels with no gaps must be joined with a hyphen (e.g., "I0-I1"), never a comma ("I0,I1").
 ideation-expr       = ideation-token *( "," ideation-token )
 ideation-token      = "I" level-digit [ "-I" level-digit ]
 
@@ -48,8 +50,9 @@ comment-prefix      = "//" SP / "#" SP / ";" SP / "--" SP / "/*" SP / "<!--" SP
 comment-suffix      = SP "*/" / SP "-->"
 
 ; -----------------------------------------------------------------------------
-; Machine-Readable Tool Attribution Extension
+; Optional Tool & Model Attribution Extension (Section 4.5)
 ; -----------------------------------------------------------------------------
 
-tool-attribution    = "[" tool-token *( "," SP tool-token ) "]"
-tool-token          = 1*( ALPHA / DIGIT / "-" / "." / "_" )
+tool-attribution    = "[" tool-name *( "," SP tool-name ) "]"
+tool-name           = tool-word *( SP tool-word )
+tool-word           = 1*( ALPHA / DIGIT / "-" / "." / "_" / "/" / "+" )

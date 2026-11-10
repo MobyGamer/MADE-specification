@@ -910,7 +910,18 @@ def sync_once(spec_path: Path, html_path: Path, check_only: bool = False) -> boo
     if changed:
         tmp_path = html_path.with_suffix(html_path.suffix + ".tmp")
         tmp_path.write_bytes(synced_raw_html.encode("utf-8"))
-        tmp_path.replace(html_path)
+        try:
+            tmp_path.replace(html_path)
+        except OSError:
+            # On Windows (especially SMB/network shares or when files are open in Git,
+            # browsers, or editors without FILE_SHARE_DELETE), atomic replacement
+            # fails with PermissionError (WinError 5 or 32). Fall back to writing
+            # directly to the target file in place.
+            html_path.write_bytes(synced_raw_html.encode("utf-8"))
+            try:
+                tmp_path.unlink(missing_ok=True)
+            except OSError:
+                pass
 
     return changed
 

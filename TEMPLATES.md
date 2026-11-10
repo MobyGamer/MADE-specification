@@ -11,7 +11,7 @@ All templates, badges, and metadata header tags in this document are dedicated t
 ### 1.1 Markdown Table (`README.md`)
 
 ```markdown
-## AI Usage Disclosure: MADE `I0-I1 / E0,E3`
+## AI Usage Disclosure: `MADE: I0-I1 / E0,E3`
 
 This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](MADE-SPECIFICATION.md)** standard:
 
@@ -59,7 +59,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ### 2.2 Detailed Breakdown for an Anthology or Tabletop RPG Book (`MADE: I1-I2 / E0,E2`)
 
 ```markdown
-## AI Usage Disclosure: MADE `I1-I2 / E0,E2`
+## AI Usage Disclosure: `MADE: I1-I2 / E0,E2`
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -76,7 +76,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ### 3.1 Portfolio / Artbook / Storefront Disclosure
 
 ```markdown
-## AI Usage Disclosure: MADE `I0-I1 / E0-E2`
+## AI Usage Disclosure: `MADE: I0-I1 / E0-E2`
 
 | Artwork Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -94,7 +94,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ### 4.1 Album Liner Notes / Bandcamp / Streaming Description
 
 ```markdown
-## AI Usage Disclosure: MADE `I0,I2 / E0-E1`
+## AI Usage Disclosure: `MADE: I0,I2 / E0-E1`
 
 - **Lead Compositions & Instrumental Performances (`I0 / E0`, Ideation: Unassisted; Execution: Unassisted):** All melodies, arrangements, lyrics, and instrumental performances were composed and played by the human artist.
 - **Harmonic Variations on Track 7 (`I2 / E0`, Ideation: Collaborative; Execution: Unassisted):** Alternate bridge chord voicings were co-brainstormed with an AI assistant (`I2`) and performed manually on hardware synthesizers by the artist (`E0`).
@@ -110,7 +110,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ### 5.1 Storefront / Itch.io / Steam / Repository Disclosure
 
 ```markdown
-## AI Usage Disclosure: MADE `I3-I4 / E4`
+## AI Usage Disclosure: `MADE: I3-I4 / E4`
 
 This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](MADE-SPECIFICATION.md)** standard:
 
@@ -153,12 +153,12 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 ### 7.1 Purely Human Work (`I0 / E0`)
 ```markdown
-**AI Disclosure (MADE: `I0 / E0`):** Ideation 0 (Unassisted); Execution 0 (Unassisted). Created 100% by a human with zero AI involvement in concept, research, design, or production.
+**AI Disclosure:** `MADE: I0 / E0` (Ideation 0 (Unassisted); Execution 0 (Unassisted)). Created 100% by a human with zero AI involvement in concept, research, design, or production.
 ```
 
 ### 7.2 Human-Created Work with AI Research & Diagnostics (`I1 / E1`)
 ```markdown
-**AI Disclosure (MADE: `I1 / E1`):** Ideation 1 (Assisted); Execution 1 (Assisted). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or minor touch-ups.
+**AI Disclosure:** `MADE: I1 / E1` (Ideation 1 (Assisted); Execution 1 (Assisted)). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or minor touch-ups.
 ```
 
 ### 7.3 Shields.io Markdown Badges
