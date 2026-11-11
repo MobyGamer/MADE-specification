@@ -15,7 +15,7 @@
 **MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing disclosure scales and labels, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
+Existing disclosure scales and frameworks, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), the [AI Attribution Tooklit](https://aiattribution.github.io/), and [Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
 1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the core concepts originating entirely from AI.
 2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing background research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.
 
@@ -35,7 +35,7 @@ Example Usage: Assume a creative project was 100% designed by a human, who then 
 
 ```markdown
 MADE: I0 / E2
-or:
+(or:)
 MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)
 ```
 
