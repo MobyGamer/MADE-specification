@@ -1,7 +1,7 @@
 # MADE: Measure of AI in Design & Execution, Specification v0.1
 
-**Version:** 0.1  
-**Status:** Draft Specification  
+**Version:** 0.9
+**Status:** Draft Specification
 **Canonical URI:** https://example.com
 **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
 **Date:** November 2026  
