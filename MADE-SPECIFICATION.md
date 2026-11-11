@@ -15,7 +15,7 @@
 **MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Existing disclosure scales and frameworks, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), the [AI Attribution Tooklit](https://aiattribution.github.io/), and [RAID - Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
+Most disclosure scales and frameworks, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), the [AI Attribution Tooklit](https://aiattribution.github.io/), and [RAID - Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
 1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the core concepts originating entirely from AI.
 2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing background research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.
 
@@ -71,7 +71,11 @@ The **Execution** level measures how the finished work (source code, prose, visu
 
 ## 4. Disclosure Format & Syntax
 
-At its simplest, a MADE disclosure always begins with the `MADE:` prefix (including the colon), followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`), such as: `MADE: I1 / E0`. Ideation is always listed first, then Execution. For works with uniform AI usage throughout, this single rating is all that is necessary.
+At its simplest, a MADE disclosure always begins with the `MADE:` prefix (including the colon), followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`).  For example:
+
+`MADE: I1 / E0`
+
+For works with uniform AI usage throughout, this single rating is all that is necessary.
 
 MADE also defines a **layered disclosure format** that can scale with project complexity. Hybrid projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.
 
@@ -86,13 +90,13 @@ MADE also defines a **layered disclosure format** that can scale with project co
 2. **Expanded Human-Readable Format:**
    Start with the `MADE:` prefix and write out the Ideation and Execution level numbers and parenthesized titles, separating the two clauses with a **semicolon** (`;`). The expanded clause may also be placed in parentheses immediately after a shorthand rating:
    - Example: `MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)`
-   - Combined Example: `MADE: I1 / E0 (Ideation 1 (Assisted); Execution 0 (Unassisted))`
+   - Alternate: `MADE: I1 / E0 (Ideation 1 (Assisted); Execution 0 (Unassisted))`
 
 ### 4.2 Multi-Component Projects
 
 When a project contains multiple components with different AI involvement levels, combine all applicable levels within each category from lowest to highest (`0` to `4`). Always include the letter (`I` or `E`) before every number.
 
-- **Discrete Levels:** When components use non-consecutive levels with nothing in between (such as hand-crafted primary work at `E0` and a spec-driven utility or translated appendix at `E3`), list only the levels used, separated by a **comma** without spaces:
+- **Discrete Levels:** When components use non-consecutive levels with nothing in between, list only the levels used, separated by a **comma** without spaces:
   - Example: `MADE: I1 / E0,E3`
 - **Contiguous Ranges:** When components span consecutive levels with no gaps (such as adjacent levels `I0` and `I1`, or every level from `E0` through `E2`), always join the first and last level with a **hyphen** rather than commas:
   - Examples: `MADE: I0-I1 / E0` or `MADE: I1 / E0-E2`
@@ -153,6 +157,8 @@ MADE: I1 / E2 [Claude 3.5 Sonnet, Midjourney v6]
 # Example 2
 MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]
 ```
+
+### 4.6 Machine Verification
 
 For the complete formal syntax specification, see the RFC 5234 ABNF grammar in [`MADE-GRAMMAR.abnf`](MADE-GRAMMAR.abnf).
 

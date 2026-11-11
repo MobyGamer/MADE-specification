@@ -685,7 +685,7 @@
       <h2><span>Purpose &amp; Philosophy</span></h2>
       <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <em>original human ideas</em> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>Existing disclosure scales and frameworks, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, <a href="https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values" target="_blank" rel="noopener">W3C's AI Content Disclosure for HTML</a>, the <a href="https://aiattribution.github.io/" target="_blank" rel="noopener">AI Attribution Tooklit</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">RAID - Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>. This distorts how AI usage is represented:</p>
+      <p>Most disclosure scales and frameworks, such as the <a href="https://www.realgoodai.org/real-rating" target="_blank" rel="noopener">REAL Rating</a>, the <a href="https://aiassessmentscale.com/" target="_blank" rel="noopener">AI Assessment Scale</a>, <a href="https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values" target="_blank" rel="noopener">W3C's AI Content Disclosure for HTML</a>, the <a href="https://aiattribution.github.io/" target="_blank" rel="noopener">AI Attribution Tooklit</a>, and <a href="https://responsibleaidisclosure.com/" target="_blank" rel="noopener">RAID - Responsible AI Disclosure</a>, collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>. This distorts how AI usage is represented:</p>
       <ol>
         <li>A creator who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the core concepts originating entirely from AI.</li>
         <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing background research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.</li>
@@ -780,7 +780,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
             <td><span class="lvl-badge b-1">E1</span></td>
             <td><strong>Assisted</strong></td>
             <td>100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup.</td>
-            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art and using generative spot-healing or margin bleed fill for print preparation.<br><strong>Music:</strong> Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient.</td>
+            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art, then using generative spot-healing or margin bleed fill for print preparation.<br><strong>Music:</strong> Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">E2</span></td>
@@ -806,7 +806,9 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
 
     <div class="card">
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
-      <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>), such as: <code>MADE: I1 / E0</code>. Ideation is always listed first, then Execution. For works with uniform AI usage throughout, this single rating is all that is necessary.</p>
+      <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>).  For example:</p>
+      <p><code>MADE: I1 / E0</code></p>
+      <p>For works with uniform AI usage throughout, this single rating is all that is necessary.</p>
       <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.</p>
       <blockquote>
         <p><strong>Note:</strong> You do not need to format complex disclosures by hand; the accompanying <strong>Interactive Badge and Disclosure Builder</strong> can automatically generate multi-level scores, badges, component breakdowns, and file header tags.</p>
@@ -823,7 +825,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           <strong>Expanded Human-Readable Format:</strong> Start with the <code>MADE:</code> prefix and write out the Ideation and Execution level numbers and parenthesized titles, separating the two clauses with a <strong>semicolon</strong> (<code>;</code>). The expanded clause may also be placed in parentheses immediately after a shorthand rating:
           <ul>
             <li>Example: <code>MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)</code></li>
-            <li>Combined Example: <code>MADE: I1 / E0 (Ideation 1 (Assisted); Execution 0 (Unassisted))</code></li>
+            <li>Alternate: <code>MADE: I1 / E0 (Ideation 1 (Assisted); Execution 0 (Unassisted))</code></li>
           </ul>
         </li>
       </ol>
@@ -831,7 +833,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       <p>When a project contains multiple components with different AI involvement levels, combine all applicable levels within each category from lowest to highest (<code>0</code> to <code>4</code>). Always include the letter (<code>I</code> or <code>E</code>) before every number.</p>
       <ul>
         <li>
-          <strong>Discrete Levels:</strong> When components use non-consecutive levels with nothing in between (such as hand-crafted primary work at <code>E0</code> and a spec-driven utility or translated appendix at <code>E3</code>), list only the levels used, separated by a <strong>comma</strong> without spaces:
+          <strong>Discrete Levels:</strong> When components use non-consecutive levels with nothing in between, list only the levels used, separated by a <strong>comma</strong> without spaces:
           <ul>
             <li>Example: <code>MADE: I1 / E0,E3</code></li>
           </ul>
@@ -875,6 +877,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
 MADE: I1 / E2 [Claude 3.5 Sonnet, Midjourney v6]
 # Example 2
 MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
+      <h3>Machine Verification</h3>
       <p>For the complete formal syntax specification, see the RFC 5234 ABNF grammar in <a href="MADE-GRAMMAR.abnf"><code>MADE-GRAMMAR.abnf</code></a>.</p>
     </div>
 
