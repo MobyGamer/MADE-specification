@@ -4,7 +4,7 @@ MADE is a self-disclosure AI rating scale for creative and technical works that 
 
 The canonical MADE specification is located in MADE-SPECIFICATION.md, which can be referenced as a "ground truth" document for MADE.
 
-**This is a draft specification, which is still under review.** When the specification is fully published, this notice will be removied.
+**This is a draft specification, which is still under review.** When the specification is fully published, this notice will be removed.
 
 ## AI Usage Disclosure
 
