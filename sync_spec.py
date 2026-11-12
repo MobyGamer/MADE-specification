@@ -223,6 +223,7 @@ def strip_markdown_inline(text: str) -> str:
     """Strip inline Markdown emphasis, code ticks, and links to plain text."""
     out = re.sub(r"<br\s*/?>", " ", text, flags=re.IGNORECASE)
     out = re.sub(r"`([^`]+)`", r"\1", out)
+    out = re.sub(r"\[\^\d+\]", "", out)
     out = re.sub(r"\[([^\]]+)\]\(((?:[^()\s]+|\([^()\s]*\))+)\)", r"\1", out)
     out = re.sub(r"<([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})>", r"\1", out)
     out = re.sub(r"\*\*\*(.+?)\*\*\*", r"\1", out)
@@ -318,7 +319,18 @@ def render_inline(text: str) -> str:
 
     work = re.sub(r"<(https?://[^\s>]+)>", replace_autourl, work)
 
-    # 5. Standard Markdown links [label](url)
+    # 5. Inline footnote references [^1]
+    def replace_fn_ref(match: re.Match[str]) -> str:
+        fn_num = match.group(1)
+        return stash(
+            f'<sup class="fn-ref" id="fnref-{fn_num}">'
+            f'<a href="#fn-{fn_num}" aria-label="Footnote {fn_num}">[{fn_num}]</a>'
+            f"</sup>"
+        )
+
+    work = re.sub(r"\[\^(\d+)\](?!:)", replace_fn_ref, work)
+
+    # 6. Standard Markdown links [label](url)
     def replace_link(match: re.Match[str]) -> str:
         raw_label = match.group(1)
         raw_url = match.group(2).strip()
@@ -462,6 +474,8 @@ def is_block_start(lines: list[str], idx: int) -> bool:
     if re.match(r"^\s*>\s?", line):
         return True
     if re.match(r"^\s*-{3,}\s*$", line):
+        return True
+    if re.match(r"^\s*\[\^\d+\]:\s+", line):
         return True
     if match_list_item(line) is not None:
         return True
@@ -641,7 +655,43 @@ def render_blocks(
             )
             continue
 
-        # 5. Lists (ul / ol) with indented continuations and nested sublists
+        # 5. Footnote definitions ([^1]: ...)
+        fn_def_match = re.match(r"^\s*\[\^(\d+)\]:\s*(.+?)\s*$", line)
+        if fn_def_match:
+            fn_items_html: list[str] = []
+            while i < n:
+                curr_fn = re.match(r"^\s*\[\^(\d+)\]:\s*(.+?)\s*$", lines[i])
+                if not curr_fn:
+                    break
+                fn_num = curr_fn.group(1)
+                fn_body_lines: list[str] = [curr_fn.group(2).strip()]
+                i += 1
+                while i < n and lines[i].strip() and not is_block_start(lines, i):
+                    fn_body_lines.append(lines[i].strip())
+                    i += 1
+                fn_inline = render_inline(" ".join(fn_body_lines))
+                fn_items_html.append(
+                    f'  <li id="fn-{fn_num}" value="{fn_num}" tabindex="-1">'
+                    f"{fn_inline} "
+                    f'<a class="fn-backref" href="#fnref-{fn_num}" '
+                    f'aria-label="Back to reference {fn_num}">&#8617;</a></li>'
+                )
+                while i < n and not lines[i].strip():
+                    peek = i + 1
+                    while peek < n and not lines[peek].strip():
+                        peek += 1
+                    if peek < n and re.match(r"^\s*\[\^\d+\]:\s+", lines[peek]):
+                        i = peek
+                    break
+            fn_list_html = (
+                '<ol class="footnotes-list">\n'
+                + "\n".join(fn_items_html)
+                + "\n</ol>"
+            )
+            blocks.append(("footnotes", fn_list_html))
+            continue
+
+        # 6. Lists (ul / ol) with indented continuations and nested sublists
         first_item = match_list_item(line)
         if first_item is not None:
             list_type, base_indent, _, _ = first_item
@@ -810,7 +860,9 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
                 suffix += 1
             used_slugs.add(sec_slug)
 
-            if custom_nav_label:
+            if custom_nav_label and custom_nav_label.lower() == "none":
+                clean_label = None
+            elif custom_nav_label:
                 clean_label = strip_markdown_inline(custom_nav_label)
             else:
                 clean_label = re.sub(
@@ -818,10 +870,11 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
                     "",
                     strip_markdown_inline(cleaned_heading_raw),
                 )
-            toc_items_html.append(
-                f'          <li><a href="#{sec_slug}">'
-                f"{html.escape(clean_label, quote=False)}</a></li>"
-            )
+            if clean_label:
+                toc_items_html.append(
+                    f'          <li><a href="#{sec_slug}">'
+                    f"{html.escape(clean_label, quote=False)}</a></li>"
+                )
             card_open = f'    <div class="card" id="{sec_slug}" tabindex="-1">'
         else:
             card_open = '    <div class="card">'

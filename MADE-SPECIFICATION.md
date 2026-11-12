@@ -15,7 +15,7 @@
 **MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Most disclosure scales and frameworks, such as the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), the [AI Attribution Tooklit](https://aiattribution.github.io/), and [RAID - Responsible AI Disclosure](https://responsibleaidisclosure.com/), collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
+Most disclosure scales and frameworks[^1] collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
 1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the core concepts originating entirely from AI.
 2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing background research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.
 
@@ -177,6 +177,24 @@ To preserve a single canonical definition of the scale while ensuring frictionle
 
 ---
 
-## 6. Authorship & Provenance <!-- nav: Authorship -->
+## 6. Questions and Answers <!-- nav: Q&A -->
+
+### If I use an AI tool that only checks or cleans up my work and doesn't create anything new, would I still be obligated to disclose it?
+While international laws and industry standards differ, in general you would not be obligated.  Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted.  Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds *de minimis amounts*; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure.  However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as inpainting image regions, rewriting passages, generating code, or patching an audio performance.
+
+MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage.  That said, an AI tool used strictly for diagnostics, proofreading, or non-generative cleanup would generally be classified as `E1`.
+
+### There must be at least [14 competing standards](https://xkcd.com/927/) for AI disclosure.  Which ones allow me to separate Design from Execution just like MADE, but provide even more functionality?
+[AI-DECLARATION.md](https://ai-declaration.md/) is more comprehensive than MADE, providing extensive features relevant to software developemnt: A formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings.  However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or prefer a compact human-readable shorthand (such as "`MADE: I0 / E2`"). 
+
+---
+
+## 7. Authorship & Provenance <!-- nav: Authorship -->
 
 The MADE standard was created by Jim Leonard (<mobygamer@gmail.com>) to provide programmers, writers, visual artists, musicians, and independent creators with a human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.
+
+---
+
+## 8. Notes & References <!-- nav: none -->
+
+[^1]: Examples of single-spectrum or single-label AI disclosure frameworks include the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), the [AI Attribution Tooklit](https://aiattribution.github.io/), and [RAID - Responsible AI Disclosure](https://responsibleaidisclosure.com/).
