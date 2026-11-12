@@ -16,9 +16,9 @@ This work is self-disclosed under the **MADE (Measure of AI in Design & Executio
 
 ### Component Breakdown
 
-| Component / Deliverable | MADE Score | Classification | Details |
+| Component / Deliverable | MADE&nbsp;Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
-| **MADE Specification** | **`I0 / E0`** | Ideation: Unassisted; Execution: Unassisted | Specification design, wording, and markdown "ground truth" document all written by a human. |
-| **MADE Landing page** | **`I0 / E2`** | Ideation: Unassisted; Execution: Collaborative | Landing page design, layout, and non-interactive elements were design by a human, partially executed by AI. |
-| **MADE Interactive Builder** | **`I0 / E3`** | Ideation: Unassisted; Execution: Directed | Interactive builder, including purpose, colors, text, and behavior, was designed by a human; AI built most of the HTML/CSS/logic. |
+| **MADE Specification** | **<code>I0&nbsp;/&nbsp;E0</code>** | Ideation: Unassisted; Execution: Unassisted | Specification design, wording, and markdown "ground truth" document all written by a human. |
+| **MADE Landing page** | **<code>I0&nbsp;/&nbsp;E2</code>** | Ideation: Unassisted; Execution: Collaborative | Landing page design, layout, and non-interactive elements were design by a human, partially executed by AI. |
+| **MADE Interactive Builder** | **<code>I0&nbsp;/&nbsp;E3</code>** | Ideation: Unassisted; Execution: Directed | Interactive builder, including purpose, colors, text, and behavior, was designed by a human; AI built most of the HTML/CSS/logic. |
 

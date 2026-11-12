@@ -1771,12 +1771,12 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
 
       if (comps.length > 0) {
         md += `\n### Component Breakdown\n\n`;
-        md += `| Component / Deliverable | ${SPEC_DATA.acronym} Score | Classification | Details |\n`;
+        md += `| Component / Deliverable | ${SPEC_DATA.acronym}&nbsp;Score | Classification | Details |\n`;
         md += `| :--- | :--- | :--- | :--- |\n`;
         comps.forEach(c => {
           const safeName = escapeMdTableCell(c.name, false);
           const safeDesc = escapeMdTableCell(c.desc, true);
-          md += `| **${safeName}** | **\`${c.iCode} / ${c.eCode}\`** | Ideation: ${c.iTitle}; Execution: ${c.eTitle} | ${safeDesc} |\n`;
+          md += `| **${safeName}** | **<code>${c.iCode}&nbsp;/&nbsp;${c.eCode}</code>** | Ideation: ${c.iTitle}; Execution: ${c.eTitle} | ${safeDesc} |\n`;
         });
       }
       document.getElementById('out-markdown').textContent = md;
