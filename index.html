@@ -97,6 +97,17 @@
       padding: 0;
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
+
+    :where(a:any-link, button, input, select, textarea):focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
     body {
       background-color: var(--bg);
       color: var(--text);
@@ -130,20 +141,36 @@
     }
 
     .version-pill {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      min-block-size: 28px;
       font-family: var(--font-mono);
       font-size: 0.78rem;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      letter-spacing: 0.04em;
       color: var(--accent);
       background: var(--accent-soft);
       border: 1px solid var(--accent);
-      padding: 0.25rem 0.75rem;
+      padding: 0.3rem 0.8rem;
       border-radius: 999px;
+      text-decoration: none;
+      transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .version-pill:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .version-pill .pill-icon {
+      flex-shrink: 0;
+      display: block;
     }
 
     .theme-toggle {
+      min-block-size: 28px;
       background: var(--bg-elevated);
       color: var(--text);
       border: 1px solid var(--border-strong);
@@ -208,7 +235,96 @@
     }
 
     section {
-      margin-top: 2.25rem;
+      margin-top: 1.5rem;
+    }
+
+    #tab-spec {
+      overflow-anchor: none;
+    }
+
+    .spec-toc-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      container-type: scroll-state;
+      container-name: spec-toc;
+      margin-bottom: 1.25rem;
+    }
+
+    .spec-toc {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.5rem 0.85rem;
+      transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, border-radius 0.2s ease;
+    }
+
+    @container spec-toc scroll-state(stuck: top) {
+      .spec-toc {
+        background: var(--bg-elevated);
+        border-color: var(--border-strong);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+      }
+    }
+
+    .spec-toc-sticky.is-stuck .spec-toc {
+      background: var(--bg-elevated);
+      border-color: var(--border-strong);
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+    }
+
+    .spec-toc-list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      scroll-target-group: auto;
+    }
+
+    .spec-toc-list li {
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .spec-toc-list a {
+      display: inline-flex;
+      align-items: center;
+      min-block-size: 26px;
+      padding: 0.2rem 0.68rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .spec-toc-list a:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .spec-toc-list a:is(:target-current, .target-current) {
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      font-weight: 700;
     }
 
     .card {
@@ -217,6 +333,18 @@
       border-radius: 12px;
       padding: 1.75rem;
       margin-bottom: 1.75rem;
+    }
+
+    #tab-spec .card[id] {
+      scroll-margin-top: calc(var(--toc-sticky-height, 2.75rem) + 0.35rem);
+    }
+
+    #tab-spec #spec-purpose-philosophy {
+      scroll-margin-top: 100dvh;
+    }
+
+    #tab-spec .card[id]:focus {
+      outline: none;
     }
 
     h2 {
@@ -627,7 +755,10 @@
     <div class="container">
       <div class="top-bar">
         <!-- SYNC:VERSION-PILL:START -->
-      <span class="version-pill">MADE Standard v0.9</span>
+      <a class="version-pill" href="https://www.examplegithub.com/" target="_blank" rel="noopener">
+        <svg class="pill-icon" viewBox="0 0 16 16" width="15" height="15" fill="currentColor" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+        <span>MADE Project Files on GitHub</span>
+      </a>
         <!-- SYNC:VERSION-PILL:END -->
         <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()">Switch to Dark Theme</button>
       </div>
@@ -639,7 +770,7 @@
         <strong>human conceptual authorship (Ideation / Design)</strong> from <strong>mechanical production
           (Execution)</strong>.
       </p>
-      <nav class="tabs">
+      <nav class="tabs" aria-label="Document views">
         <!-- SYNC:TAB1-BTN:START -->
       <button class="tab-btn active" onclick="switchTab('spec', this)">Full v0.9 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
@@ -654,7 +785,20 @@
     <!-- ================= TAB 1 (DEFAULT): FULL v1.0 SPECIFICATION ================= -->
     <section id="tab-spec">
       <!-- SYNC:TAB-SPEC:START -->
-    <div class="card">
+    <div class="spec-toc-sticky">
+      <nav class="spec-toc" aria-label="Table of contents">
+        <ol class="spec-toc-list" role="list">
+          <li><a href="#spec-purpose-philosophy">Purpose &amp; Philosophy</a></li>
+          <li><a href="#spec-ideation-levels">Ideation</a></li>
+          <li><a href="#spec-execution-levels">Execution</a></li>
+          <li><a href="#spec-disclosure-format-syntax">Format &amp; Syntax</a></li>
+          <li><a href="#spec-licensing-governance">Licensing</a></li>
+          <li><a href="#spec-authorship-provenance">Authorship</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="card" id="spec-purpose-philosophy" tabindex="-1">
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
@@ -710,7 +854,7 @@
 MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
     </div>
 
-    <div class="card">
+    <div class="card" id="spec-ideation-levels" tabindex="-1">
       <h2><span>Ideation Levels (<code>I0</code> to <code>I4</code>)</span></h2>
       <p>The <strong>Ideation</strong> level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.</p>
       <table class="spec-table">
@@ -757,7 +901,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       </table>
     </div>
 
-    <div class="card">
+    <div class="card" id="spec-execution-levels" tabindex="-1">
       <h2><span>Execution Levels (<code>E0</code> to <code>E4</code>)</span></h2>
       <p>The <strong>Execution</strong> level measures how the finished work (source code, prose, visual artwork, or audio recordings) was produced and reviewed.</p>
       <table class="spec-table">
@@ -804,7 +948,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       </table>
     </div>
 
-    <div class="card">
+    <div class="card" id="spec-disclosure-format-syntax" tabindex="-1">
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
       <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>).  For example:</p>
       <p><code>MADE: I1 / E0</code></p>
@@ -881,7 +1025,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <p>For the complete formal syntax specification, see the RFC 5234 ABNF grammar in <a href="MADE-GRAMMAR.abnf"><code>MADE-GRAMMAR.abnf</code></a>.</p>
     </div>
 
-    <div class="card">
+    <div class="card" id="spec-licensing-governance" tabindex="-1">
       <h2><span>Licensing &amp; Governance</span></h2>
       <p>To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:</p>
       <ol>
@@ -893,7 +1037,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       </blockquote>
     </div>
 
-    <div class="card">
+    <div class="card" id="spec-authorship-provenance" tabindex="-1">
       <h2><span>Authorship &amp; Provenance</span></h2>
       <p>The MADE standard was created by Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>) to provide programmers, writers, visual artists, musicians, and independent creators with a human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.</p>
     </div>
@@ -1100,7 +1244,8 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <!-- SYNC:FOOTER:START -->
     <p>
       <strong>MADE Specification v0.9</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
-      All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.
+      All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
+      Official specification source, templates, and grammar files: <a href="https://www.examplegithub.com/" target="_blank" rel="noopener">MADE Project Files on GitHub</a>.
     </p>
       <!-- SYNC:FOOTER:END -->
     </footer>
@@ -1735,10 +1880,86 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       }, 1500);
     }
 
+    function initSpecScrollSpy() {
+      const tocLinks = document.querySelectorAll('.spec-toc-list a');
+      const specCards = document.querySelectorAll('#tab-spec .card[id]');
+      const stickyToc = document.querySelector('.spec-toc-sticky');
+
+      if (stickyToc) {
+        const updateTocHeight = () => {
+          const h = stickyToc.offsetHeight;
+          if (h > 0) {
+            document.documentElement.style.setProperty('--toc-sticky-height', `${h}px`);
+          }
+        };
+        updateTocHeight();
+        if ('ResizeObserver' in window) {
+          const ro = new ResizeObserver(updateTocHeight);
+          ro.observe(stickyToc);
+        } else {
+          window.addEventListener('resize', updateTocHeight, { passive: true });
+        }
+      }
+
+      if (tocLinks.length > 0 && specCards.length > 0) {
+        const firstCardId = specCards[0].getAttribute('id');
+        const firstLink = tocLinks[0];
+        if (firstLink && firstCardId && firstLink.getAttribute('href') === `#${firstCardId}`) {
+          firstLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            const smooth = window.matchMedia && window.matchMedia('(prefers-reduced-motion: no-preference)').matches;
+            window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+            if (history.replaceState) {
+              history.replaceState(null, '', `#${firstCardId}`);
+            }
+          });
+        }
+      }
+
+      if (typeof CSS !== 'undefined' && CSS.supports('scroll-target-group: auto')) {
+        const syncAriaCurrent = () => {
+          const currentLink = document.querySelector('.spec-toc-list a:target-current');
+          tocLinks.forEach(link => {
+            link.setAttribute('aria-current', link === currentLink ? 'true' : 'false');
+          });
+        };
+        syncAriaCurrent();
+        document.addEventListener('scrollend', syncAriaCurrent);
+      } else if ('IntersectionObserver' in window && specCards.length > 0) {
+        const spyObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              tocLinks.forEach(link => {
+                const isActive = link.getAttribute('href') === `#${id}`;
+                link.classList.toggle('target-current', isActive);
+                link.setAttribute('aria-current', isActive ? 'true' : 'false');
+              });
+            }
+          });
+        }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+        specCards.forEach(card => spyObserver.observe(card));
+      }
+
+      if (typeof CSS === 'undefined' || !CSS.supports('container-type', 'scroll-state')) {
+        if (stickyToc && 'IntersectionObserver' in window) {
+          const topOffset = parseFloat(getComputedStyle(stickyToc).top) || 0;
+          const stuckObserver = new IntersectionObserver(
+            ([e]) => {
+              e.target.classList.toggle('is-stuck', e.intersectionRatio < 1);
+            },
+            { threshold: [1], rootMargin: `-${topOffset + 1}px 0px 0px 0px` }
+          );
+          stuckObserver.observe(stickyToc);
+        }
+      }
+    }
+
     // Initialize with default 100% unassisted human work (I0 / E0) and empty component list
     clearComponents();
     syncOptionCards();
     updateOutputs();
+    initSpecScrollSpy();
   </script>
 
 </body>

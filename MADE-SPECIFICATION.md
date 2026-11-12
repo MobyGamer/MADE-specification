@@ -10,7 +10,7 @@
 
 ---
 
-## 1. Purpose & Philosophy
+## 1. Purpose & Philosophy <!-- nav: Purpose & Philosophy -->
 
 **MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
@@ -41,7 +41,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)
 
 ---
 
-## 2. Ideation Levels (`I0` to `I4`)
+## 2. Ideation Levels (`I0` to `I4`) <!-- nav: Ideation -->
 
 The **Ideation** level measures the intellectual and creative origin of the work, including its core concepts, narrative themes, visual design, musical composition, or software algorithms.
 
@@ -55,7 +55,7 @@ The **Ideation** level measures the intellectual and creative origin of the work
 
 ---
 
-## 3. Execution Levels (`E0` to `E4`)
+## 3. Execution Levels (`E0` to `E4`) <!-- nav: Execution -->
 
 The **Execution** level measures how the finished work (source code, prose, visual artwork, or audio recordings) was produced and reviewed.
 
@@ -69,7 +69,7 @@ The **Execution** level measures how the finished work (source code, prose, visu
 
 ---
 
-## 4. Disclosure Format & Syntax
+## 4. Disclosure Format & Syntax <!-- nav: Format & Syntax -->
 
 At its simplest, a MADE disclosure always begins with the `MADE:` prefix (including the colon), followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`).  For example:
 
@@ -164,7 +164,7 @@ For the complete formal syntax specification, see the RFC 5234 ABNF grammar in [
 
 ---
 
-## 5. Licensing & Governance
+## 5. Licensing & Governance <!-- nav: Licensing -->
 
 To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:
 
@@ -177,6 +177,6 @@ To preserve a single canonical definition of the scale while ensuring frictionle
 
 ---
 
-## 6. Authorship & Provenance
+## 6. Authorship & Provenance <!-- nav: Authorship -->
 
 The MADE standard was created by Jim Leonard (<mobygamer@gmail.com>) to provide programmers, writers, visual artists, musicians, and independent creators with a human-readable self-disclosure standard that distinguishes human conceptual originality from mechanical AI assistance.

@@ -26,6 +26,7 @@ from typing import Any
 
 DEFAULT_SPEC_FILENAME = "MADE-SPECIFICATION.md"
 DEFAULT_HTML_FILENAME = "index.html"
+DEFAULT_GITHUB_REPO_URL = "https://www.examplegithub.com/"
 
 REQUIRED_META_KEYS = (
     "Version",
@@ -228,6 +229,27 @@ def strip_markdown_inline(text: str) -> str:
     out = re.sub(r"\*\*(.+?)\*\*", r"\1", out)
     out = re.sub(r"(?<!\*)\*([^*]+?)\*(?!\*)", r"\1", out)
     return out.strip()
+
+
+_NAV_COMMENT_RE = re.compile(r"<!--\s*nav:\s*(.+?)\s*-->", re.IGNORECASE)
+
+
+def extract_heading_and_nav(raw_heading: str) -> tuple[str, str | None]:
+    """Return (heading_text_without_nav_comment, optional_nav_pill_label)."""
+    match = _NAV_COMMENT_RE.search(raw_heading)
+    nav_label = match.group(1).strip() if match else None
+    cleaned_heading = _NAV_COMMENT_RE.sub("", raw_heading).strip()
+    return cleaned_heading, nav_label
+
+
+def slugify_heading(raw_heading: str) -> str:
+    """Create a deterministic URL-safe slug from a Markdown heading."""
+    cleaned_heading, _ = extract_heading_and_nav(raw_heading)
+    plain = strip_markdown_inline(cleaned_heading)
+    plain = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", plain)
+    plain = re.sub(r"\([^)]*\)", "", plain)
+    slug = re.sub(r"[^a-z0-9]+", "-", plain.lower()).strip("-")
+    return f"spec-{slug}" if slug else "spec-section"
 
 
 def render_inline(text: str) -> str:
@@ -514,7 +536,7 @@ def render_blocks(
         heading_match = re.match(r"^\s*(#{1,6})\s+(.+?)\s*$", line)
         if heading_match:
             hashes = len(heading_match.group(1))
-            heading_text = heading_match.group(2)
+            heading_text, _ = extract_heading_and_nav(heading_match.group(2))
             clean_heading = re.sub(r"^\d+(?:\.\d+)*\.?\s+", "", heading_text)
             content_html = render_inline(clean_heading)
             tag_level = min(max(hashes, 2), 4)
@@ -726,7 +748,16 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     # Build .meta-grid HTML from all header metadata entries
     meta_items_html: list[str] = []
     for key, val in header_info["meta_items"]:
-        if key.lower() in ("homepage", "specification homepage", "url", "canonical url", "canonical uri"):
+        if key.lower() in (
+            "homepage",
+            "specification homepage",
+            "url",
+            "canonical url",
+            "canonical uri",
+            "repository",
+            "github repository",
+            "github",
+        ):
             continue
         key_html = render_inline(key)
         val_html = render_inline(val)
@@ -752,21 +783,74 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
 
     # Render each '---'-delimited body section into its own .card container
     cards_html: list[str] = []
+    toc_items_html: list[str] = []
+    used_slugs: set[str] = set()
+
     for sec_idx, sec_lines in enumerate(sections[1:]):
         body_html = render_blocks(sec_lines, level_collector=level_collector)
         if not body_html.strip():
             continue
+
+        sec_heading_raw: str | None = None
+        for ln in sec_lines:
+            h_match = re.match(r"^\s*##\s+(.+?)\s*$", ln)
+            if h_match:
+                sec_heading_raw = h_match.group(1)
+                break
+
+        if sec_heading_raw:
+            cleaned_heading_raw, custom_nav_label = extract_heading_and_nav(
+                sec_heading_raw
+            )
+            base_slug = slugify_heading(cleaned_heading_raw)
+            sec_slug = base_slug
+            suffix = 2
+            while sec_slug in used_slugs:
+                sec_slug = f"{base_slug}-{suffix}"
+                suffix += 1
+            used_slugs.add(sec_slug)
+
+            if custom_nav_label:
+                clean_label = strip_markdown_inline(custom_nav_label)
+            else:
+                clean_label = re.sub(
+                    r"^\d+(?:\.\d+)*\.?\s+",
+                    "",
+                    strip_markdown_inline(cleaned_heading_raw),
+                )
+            toc_items_html.append(
+                f'          <li><a href="#{sec_slug}">'
+                f"{html.escape(clean_label, quote=False)}</a></li>"
+            )
+            card_open = f'    <div class="card" id="{sec_slug}" tabindex="-1">'
+        else:
+            card_open = '    <div class="card">'
+
         indented_body = indent_block(body_html, 6)
         if sec_idx == 0:
             card_html = (
-                '    <div class="card">\n'
+                f"{card_open}\n"
                 f"{meta_grid_html}{extra_preamble_html}\n\n"
                 f"{indented_body}\n"
                 "    </div>"
             )
         else:
-            card_html = f'    <div class="card">\n{indented_body}\n    </div>'
+            card_html = f"{card_open}\n{indented_body}\n    </div>"
         cards_html.append(card_html)
+
+    if toc_items_html:
+        toc_bar_html = (
+            '    <div class="spec-toc-sticky">\n'
+            '      <nav class="spec-toc" aria-label="Table of contents">\n'
+            '        <ol class="spec-toc-list" role="list">\n'
+            + "\n".join(toc_items_html)
+            + "\n        </ol>\n"
+            "      </nav>\n"
+            "    </div>"
+        )
+        tab_spec_html = toc_bar_html + "\n\n" + "\n\n".join(cards_html)
+    else:
+        tab_spec_html = "\n\n".join(cards_html)
 
     # Structural validation of Ideation (I0..I4) and Execution (E0..E4) tables
     expected_levels = {0, 1, 2, 3, 4}
@@ -821,15 +905,35 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
     meta_map = header_info["meta_map"]
     version = strip_markdown_inline(meta_map["Version"])
 
+    repo_url = (
+        meta_map.get("Repository")
+        or meta_map.get("GitHub Repository")
+        or meta_map.get("GitHub")
+        or DEFAULT_GITHUB_REPO_URL
+    )
+    github_svg = (
+        '<svg class="pill-icon" viewBox="0 0 16 16" width="15" height="15" '
+        'fill="currentColor" aria-hidden="true" focusable="false">'
+        '<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 '
+        "0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 "
+        "1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 "
+        "0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 "
+        "0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 "
+        "0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 "
+        '8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>'
+    )
+
     head_title_html = (
         f"  <title>{html.escape(acronym, quote=False)} "
         f"v{html.escape(version, quote=False)}: "
         f"{html.escape(full_name, quote=False)}</title>"
     )
     version_pill_html = (
-        f'      <span class="version-pill">'
-        f"{html.escape(acronym, quote=False)} Standard "
-        f"v{html.escape(version, quote=False)}</span>"
+        f'      <a class="version-pill" href="{html.escape(repo_url, quote=True)}" '
+        'target="_blank" rel="noopener">\n'
+        f"        {github_svg}\n"
+        f"        <span>{html.escape(acronym, quote=False)} Project Files on GitHub</span>\n"
+        "      </a>"
     )
     header_h1_html = f"    <h1>{html.escape(display_h1, quote=False)}</h1>"
     tab1_btn_html = (
@@ -848,7 +952,10 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
         f"v{html.escape(version, quote=False)}</strong> "
         f"is licensed under {spec_license_html}.<br>\n"
         "      All generated badges, disclosure snippets, and metadata header tags "
-        f"are dedicated to the public domain under {templates_license_html}.\n"
+        f"are dedicated to the public domain under {templates_license_html}.<br>\n"
+        "      Official specification source, templates, and grammar files: "
+        f'<a href="{html.escape(repo_url, quote=True)}" target="_blank" rel="noopener">'
+        f"{html.escape(acronym, quote=False)} Project Files on GitHub</a>.\n"
         "    </p>"
     )
 
@@ -887,7 +994,7 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
         "VERSION-PILL": version_pill_html,
         "HEADER-H1": header_h1_html,
         "TAB1-BTN": tab1_btn_html,
-        "TAB-SPEC": "\n\n".join(cards_html),
+        "TAB-SPEC": tab_spec_html,
         "IDEATION-OPTIONS": ideation_options_html,
         "EXECUTION-OPTIONS": execution_options_html,
         "FOOTER": footer_html,
