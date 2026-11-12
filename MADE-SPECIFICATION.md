@@ -2,7 +2,8 @@
 
 **Version:** 0.9
 **Status:** Draft Specification
-**Canonical URI:** https://example.com
+**Canonical URI:** https://mobygamer.github.io/MADE-specification/
+**Repository:** https://github.com/MobyGamer/MADE-specification
 **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
 **Date:** November 2026  
 **Author:** Jim Leonard (<mobygamer@gmail.com>)  
