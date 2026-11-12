@@ -4,7 +4,7 @@ MADE is a self-disclosure AI rating scale for creative and technical works that 
 
 The canonical MADE specification is located in MADE-SPECIFICATION.md, which can be referenced as a "ground truth" document for MADE.
 
-## AI Usage Disclosure:
+## AI Usage Disclosure
 
 [![MADE: I0 / E0,E2-E3](images/made-badge.svg)](https://mobygamer.github.io/MADE-specification/)
 
