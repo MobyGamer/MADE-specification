@@ -13,7 +13,7 @@ All templates, badges, and metadata header tags in this document are dedicated t
 ```markdown
 ## AI Usage Disclosure: `MADE: I0-I1 / E0,E3`
 
-This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](MADE-SPECIFICATION.md)** standard:
+This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](https://mobygamer.github.io/MADE-specification/)** standard:
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -52,7 +52,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 ### 2.1 Copyright Page / Book Colophon / Article Footer
 
 ```markdown
-**AI Disclosure:** `MADE: I1 / E0-E1` (Ideation 1 (Assisted); Execution 0-1 (Unassisted, Assisted)).
+**AI Disclosure:** `MADE: I1 / E0-E1 (Ideation: Assisted; Execution: Unassisted, Assisted)`.
 All plotlines, characters, arguments, and prose in this work were conceived and written by the human author. AI tools were consulted solely for background historical research (`I1`) and used during editing as an interactive phrase thesaurus and grammar checker (`E1`). No AI-generated prose is present in this publication.
 ```
 
@@ -71,7 +71,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ## 3. Graphical & Visual Art Scenario (`MADE: I0-I1 / E0-E2`)
 
-*Scenario: A visual artist or indie comic creator designs and illustrates all characters, line art, and key scenes by hand (`I0 / E0`), uses generative spot-healing and margin bleed fill on final print exports (`I0 / E1`), and uses AI-assisted texture tiling for repetitive background patterns (`I1 / E2`). Because Execution spans `E0`, `E1`, and `E2` continuously, it is expressed as the contiguous range `E0-E2`.*
+*Scenario: A visual artist or indie comic creator designs and illustrates all characters, line art, and key scenes by hand (`I0 / E0`), uses automated dust removal and margin bleed fill on final print exports (`I0 / E1`), and uses AI-assisted texture tiling for repetitive background patterns (`I1 / E2`). Because Execution spans `E0`, `E1`, and `E2` continuously, it is expressed as the contiguous range `E0-E2`.*
 
 ### 3.1 Portfolio / Artbook / Storefront Disclosure
 
@@ -81,7 +81,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 | Artwork Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
 | **Character Design & Key Illustrations** | **`I0 / E0`** | Ideation: Unassisted; Execution: Unassisted | 100% conceived, sketched, inked, and painted by hand by the human artist. |
-| **Print Layout & Margin Bleed Exports** | **`I0 / E1`** | Ideation: Unassisted; Execution: Assisted | Hand-painted illustrations prepared for print using generative spot-healing for stray scan dust and minor margin bleed extension. |
+| **Print Layout & Margin Bleed Exports** | **`I0 / E1`** | Ideation: Unassisted; Execution: Assisted | Hand-painted illustrations prepared for print using automated dust removal for stray scan dust and minor margin bleed extension. |
 | **Repeating Background Surface Textures** | **`I1 / E2`** | Ideation: Assisted; Execution: Collaborative | Secondary environmental patterns created via a hybrid human-AI texture workflow and manually composited. |
 ```
 
@@ -89,7 +89,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 ## 4. Music Composition & Audio Production Scenario (`MADE: I0,I2 / E0-E1`)
 
-*Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), mixing and mastering use an AI assistant for read-only frequency-masking diagnostics and minor transient patching (`I0 / E1`), and Track 4 features bridge chord variations co-brainstormed with an AI tool but performed manually on hardware instruments by the artist (`I2 / E0`).*
+*Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), mixing and mastering use an AI assistant only for corrective signal cleanup (such as spectral denoising, dynamic EQ, or restoring a clipped sample) (`I0 / E1`), and Track 4 features bridge chord variations co-brainstormed with an AI tool but performed manually on hardware instruments by the artist (`I2 / E0`).*
 
 ### 4.1 Album Liner Notes / Bandcamp / Streaming Description
 
@@ -98,7 +98,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 
 - **Main Compositions & Live Instruments (`I0 / E0`, Ideation: Unassisted; Execution: Unassisted):** All melodies, lyrics, arrangements, and instrumental performances composed and played by the human musician.
 - **Bridge Chord Variations (Track 4) (`I2 / E0`, Ideation: Collaborative; Execution: Unassisted):** Alternate harmonic voicings co-brainstormed with an AI tool (`I2`) and performed manually on hardware instruments by the artist (`E0`).
-- **Mix Diagnostics & Mastering (`I0 / E1`, Ideation: Unassisted; Execution: Assisted):** Acoustic recordings mixed and mastered manually, using an AI assistant only for read-only frequency-masking diagnostics and minor transient patching.
+- **Mix Diagnostics & Mastering (`I0 / E1`, Ideation: Unassisted; Execution: Assisted):** Acoustic recordings mixed and mastered manually, using an AI assistant only for corrective signal cleanup (such as spectral denoising, dynamic EQ, or restoring a clipped sample) without generating new musical material.
 ```
 
 ---
@@ -112,11 +112,11 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ```markdown
 ## AI Usage Disclosure: `MADE: I3-I4 / E4`
 
-This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](MADE-SPECIFICATION.md)** standard:
+This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](https://mobygamer.github.io/MADE-specification/)** standard:
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
-| **Game Design & Storytelling** | **`I3 / E4`** | Ideation: Directed; Execution: Autonomous | Human provided a generic premise ("retro platformer"); AI conceived all level progression, plot twists, character backstories, and in-game dialogue without curation. |
+| **Game Design & Storytelling** | **`I4 / E4`** | Ideation: Autonomous; Execution: Autonomous | Human provided a generic premise ("retro platformer"); AI conceived all level progression, plot twists, character backstories, and in-game dialogue without curation. |
 | **Gameplay Code & Mechanics** | **`I3 / E4`** | Ideation: Directed; Execution: Autonomous | High-level gameplay goals prompted by creator; game loop, physics, collision, and state logic generated in bulk by an LLM without code review ("vibe-coded"). |
 | **Graphics, Music & Sound Effects** | **`I4 / E4`** | Ideation: Autonomous; Execution: Autonomous | All character sprites, environment tilesets, chiptune music tracks, and sound effects were autonomously invented and generated by AI from minimal prompts. |
 ```
@@ -130,7 +130,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
  AI DISCLOSURE (MADE: I0-I1 / E0,E3)
 ------------------------------------------------------------------------
  This work is self-disclosed under the MADE (Measure of AI in Design &
- Execution) standard. Learn more: https://example.com
+ Execution) standard. Learn more: https://mobygamer.github.io/MADE-specification/
 ------------------------------------------------------------------------
  Project Summary:
    Ideation  : I0-I1 (Unassisted, Assisted)
@@ -153,32 +153,32 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 ### 7.1 Purely Human Work (`I0 / E0`)
 ```markdown
-**AI Disclosure:** `MADE: I0 / E0` (Ideation 0 (Unassisted); Execution 0 (Unassisted)). Created 100% by a human with zero AI involvement in concept, research, design, or production.
+**AI Disclosure:** `MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)`. Created 100% by a human with zero AI involvement in concept, research, design, or production.
 ```
 
 ### 7.2 Human-Created Work with AI Research & Diagnostics (`I1 / E1`)
 ```markdown
-**AI Disclosure:** `MADE: I1 / E1` (Ideation 1 (Assisted); Execution 1 (Assisted)). All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or minor touch-ups.
+**AI Disclosure:** `MADE: I1 / E1 (Ideation: Assisted; Execution: Assisted)`. All concepts and final work were created by the human author; AI was used only for background reference research, proofreading/diagnostics, or minor touch-ups.
 ```
 
 ### 7.3 Shields.io Markdown Badges
 - **100% Human (`I0 / E0`):**
   ```markdown
-  [![MADE: I0 / E0](https://img.shields.io/badge/MADE-I0_%2F_E0-16a34a?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I0 / E0](https://img.shields.io/badge/MADE-I0_%2F_E0-16a34a?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
   ```
 - **Human-Created with Research/Diagnostic Assist (`I1 / E1`):**
   ```markdown
-  [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-0d9488?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-06b6d4?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
   ```
 - **Contiguous Range Project (`I1 / E0-E2`):**
   ```markdown
-  [![MADE: I1 / E0-E2](https://img.shields.io/badge/MADE-I1_%2F_E0--E2-268bd2?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I1 / E0-E2](https://img.shields.io/badge/MADE-I1_%2F_E0--E2-268bd2?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
   ```
 - **Hybrid Multi-Level Project (`I0-I1 / E0,E3`):**
   ```markdown
-  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-d97706?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-d97706?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
   ```
 - **Vibe-Coded / High-AI Project (`I3-I4 / E4`):**
   ```markdown
-  [![MADE: I3-I4 / E4](https://img.shields.io/badge/MADE-I3--I4_%2F_E4-d9381e?style=flat-square&labelColor=073642)](MADE-SPECIFICATION.md)
+  [![MADE: I3-I4 / E4](https://img.shields.io/badge/MADE-I3--I4_%2F_E4-d9381e?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
   ```

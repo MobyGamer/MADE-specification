@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>MADE v0.9: Measure of AI in Design &amp; Execution</title>
+  <title>MADE v0.9.1: Measure of AI in Design &amp; Execution</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -54,15 +54,15 @@
       --code-text: #073642;
 
       --lvl-0: #16a34a;
-      /* emerald green (all-systems-go) */
-      --lvl-1: #0d9488;
-      /* oceanic teal */
+      /* emerald green */
+      --lvl-1: #06b6d4;
+      /* vivid cyan */
       --lvl-2: #268bd2;
       /* solarized blue */
       --lvl-3: #d97706;
       /* warm golden amber */
       --lvl-4: #d9381e;
-      /* warning vermilion */
+      /* vermilion */
 
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -85,7 +85,7 @@
       --code-text: #e2e8f0;
 
       --lvl-0: #16a34a;
-      --lvl-1: #0d9488;
+      --lvl-1: #06b6d4;
       --lvl-2: #268bd2;
       --lvl-3: #d97706;
       --lvl-4: #d9381e;
@@ -817,7 +817,7 @@
       </p>
       <nav class="tabs" aria-label="Document views">
         <!-- SYNC:TAB1-BTN:START -->
-      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v0.9 Specification</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v0.9.1 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
         <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
           Builder</button>
@@ -827,7 +827,7 @@
 
   <main class="container">
 
-    <!-- ================= TAB 1 (DEFAULT): FULL v1.0 SPECIFICATION ================= -->
+    <!-- ================= TAB 1 (DEFAULT): FULL v0.9.1 SPECIFICATION ================= -->
     <section id="tab-spec">
       <!-- SYNC:TAB-SPEC:START -->
     <div class="spec-toc-sticky">
@@ -848,7 +848,7 @@
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
-          <span>0.9</span>
+          <span>0.9.1</span>
         </div>
         <div class="meta-item">
           <strong>Status</strong>
@@ -867,7 +867,7 @@
           <span>Jim Leonard (<a href="mailto:mobygamer@gmail.com">mobygamer@gmail.com</a>)</span>
         </div>
         <div class="meta-item">
-          <strong>Templates, Badges, &amp; Header Tags License</strong>
+          <strong>Templates, Badges, Tags, &amp; Code License</strong>
           <span><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a></span>
         </div>
       </div>
@@ -878,7 +878,7 @@
       <p>Most disclosure scales and frameworks<sup class="fn-ref" id="fnref-1"><a href="#fn-1" aria-label="Footnote 1">[1]</a></sup> collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>. This distorts how AI usage is represented:</p>
       <ol>
         <li>A creator who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the core concepts originating entirely from AI.</li>
-        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or performing background research) is assigned a "high" AI rating, despite only using AI for mechanical tasks.</li>
+        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up audio and image noise) is assigned a "high" AI rating, despite only using AI for mechanical tasks.</li>
       </ol>
       <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
       <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
@@ -897,7 +897,7 @@
       <p>Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting material. The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
 (or:)
-MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
+MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
     </div>
 
     <div class="card" id="spec-ideation-levels" tabindex="-1">
@@ -923,7 +923,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
             <td><span class="lvl-badge b-1">I1</span></td>
             <td><strong>Assisted</strong></td>
             <td>Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.</td>
-            <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original piece while asking an AI tutor about modal music theory or instrumentation ranges.</td>
+            <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original song while using AI to brainstorm lyric rhymes, thematic phrasing, or instrumentation references.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">I2</span></td>
@@ -964,19 +964,19 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
             <td><span class="lvl-badge b-0">E0</span></td>
             <td><strong>Unassisted</strong></td>
             <td>100% human-produced code, prose, illustration, or musical performance by the human creator.</td>
-            <td><strong>Programming:</strong> Writing source code or assembly routines completely by hand.<br><strong>Writing:</strong> Typing and editing a manuscript manually without generative text tools.<br><strong>Art:</strong> Drawing, painting, or modeling artwork entirely by hand.<br><strong>Music:</strong> Performing, sequencing, mixing, and mastering audio manually without AI plugins.</td>
+            <td><strong>Programming:</strong> Writing source code or assembly routines completely by hand.<br><strong>Writing:</strong> Typing and editing a manuscript manually without generative text tools.<br><strong>Art:</strong> Drawing, painting, or modeling artwork entirely by hand.<br><strong>Music:</strong> Performing, sequencing, mixing, and mastering audio manually using only traditional (non-AI) tools, or read-only meters that do not modify the output signal.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-1">E1</span></td>
             <td><strong>Assisted</strong></td>
-            <td>100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup.</td>
-            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art, then using generative spot-healing or margin bleed fill for print preparation.<br><strong>Music:</strong> Recording live instruments and using an AI assistant for read-only mix diagnostics or to patch a clipped transient.</td>
+            <td>100% human-authored primary output. AI is used strictly for diagnostics, proofreading, syntax checking, or minor restorative cleanup.</td>
+            <td><strong>Programming:</strong> Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br><strong>Writing:</strong> Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br><strong>Art:</strong> Hand-painting digital art, then using AI tools strictly for automated dust removal or minor margin bleed extension for print preparation.<br><strong>Music:</strong> Recording live instruments and using AI-assisted plugins strictly for corrective signal cleanup (such as spectral denoising, dynamic EQ, pitch correction, or restoring a clipped sample) without generating new musical material.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">E2</span></td>
             <td><strong>Collaborative</strong></td>
             <td>Shared human-AI production, such as human-crafted primary work paired with AI-generated supporting assets, boilerplate, or utilities.</td>
-            <td><strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br><strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br><strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between tween frames.<br><strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.</td>
+            <td><strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br><strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br><strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between animation frames.<br><strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-3">E3</span></td>
@@ -998,7 +998,7 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
       <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>).  For example:</p>
       <p><code>MADE: I1 / E0</code></p>
-      <p>For works with uniform AI usage throughout, this single rating is all that is necessary.</p>
+      <p>For works with uniform AI usage throughout, this single rating is all that is necessary. When first introducing MADE in prose alongside a rating, authors are encouraged to spell out its full name (<strong>MADE (Measure of AI in Design &amp; Execution)</strong>) or link to the specification.</p>
       <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.</p>
       <blockquote>
         <p><strong>Note:</strong> You do not need to format complex disclosures by hand; the accompanying <strong>Interactive Badge and Disclosure Builder</strong> can automatically generate multi-level scores, badges, component breakdowns, and file header tags.</p>
@@ -1012,10 +1012,9 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           </ul>
         </li>
         <li>
-          <strong>Expanded Human-Readable Format:</strong> Start with the <code>MADE:</code> prefix and write out the Ideation and Execution level numbers and parenthesized titles, separating the two clauses with a <strong>semicolon</strong> (<code>;</code>). The expanded clause may also be placed in parentheses immediately after a shorthand rating:
+          <strong>Expanded Human-Readable Format:</strong> Start with a shorthand rating, then append the parenthesized <code>Ideation:</code> and <code>Execution:</code> titles immediately afterward, separating the two clauses with a <strong>semicolon</strong> (<code>;</code>):
           <ul>
-            <li>Example: <code>MADE: Ideation 1 (Assisted); Execution 0 (Unassisted)</code></li>
-            <li>Alternate: <code>MADE: I1 / E0 (Ideation 1 (Assisted); Execution 0 (Unassisted))</code></li>
+            <li>Example: <code>MADE: I1 / E0 (Ideation: Assisted; Execution: Unassisted)</code></li>
           </ul>
         </li>
       </ol>
@@ -1041,14 +1040,14 @@ MADE: Ideation 0 (Unassisted); Execution 2 (Collaborative)</code></pre>
           </ul>
         </li>
       </ul>
-      <p>When writing multi-component ratings in the expanded format, level numbers follow the same comma and hyphen rules, followed by comma-separated titles, such as: <code>MADE: Ideation 0-1 (Unassisted, Assisted); Execution 0,3 (Unassisted, Directed)</code>.</p>
+      <p>When writing multi-component ratings in the expanded format, append the applicable level titles in ascending order separated by commas after each category label, such as: <code>MADE: I0-I1 / E0,E3 (Ideation: Unassisted, Assisted; Execution: Unassisted, Directed)</code>.</p>
       <h3>Component-Level Breakdown</h3>
       <p>Whenever a project includes multiple components with different ratings, authors are encouraged to include a brief component breakdown where each component declares both its Ideation level and its Execution level:</p>
-      <pre><code>AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `MADE: I0-I1 / E0,E3`
+      <pre><code>AI Disclosure ([MADE](https://mobygamer.github.io/MADE-specification/)): `MADE: I0-I1 / E0,E3`
 - **Core Application Engine (`I0 / E0`, Ideation: Unassisted; Execution: Unassisted):** Designed and hand-coded 100% by the human author with zero AI involvement.
 - **Data Import &amp; Conversion Utilities (`I1 / E3`, Ideation: Assisted; Execution: Directed):** Algorithms designed by the author (`I1`), with code generated by an LLM from detailed human specifications and verified by hand (`E3`).</code></pre>
       <p>Or for a creative publication or album:</p>
-      <pre><code>AI Disclosure ([MADE](MADE-SPECIFICATION.md)): `MADE: I0-I1 / E0,E2`
+      <pre><code>AI Disclosure ([MADE](https://mobygamer.github.io/MADE-specification/)): `MADE: I0-I1 / E0,E2`
 - **Novel Manuscript &amp; Dialogue (`I1 / E0`, Ideation: Assisted; Execution: Unassisted):** Plot and prose written 100% by the author (`E0`), using AI only for historical period research (`I1`).
 - **Chapter Header Illustrations (`I0 / E2`, Ideation: Unassisted; Execution: Collaborative):** Character line art drawn by hand (`I0`), paired with AI-assisted background textures (`E2`).</code></pre>
       <h3>Per-File Source Code &amp; Asset Metadata Headers</h3>
@@ -1068,29 +1067,36 @@ MADE: I1 / E2 [Claude 3.5 Sonnet, Midjourney v6]
 # Example 2
 MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <h3>Machine Verification</h3>
-      <p>For the complete formal syntax specification, see the RFC 5234 ABNF grammar in <a href="MADE-GRAMMAR.abnf"><code>MADE-GRAMMAR.abnf</code></a>.</p>
+      <p>For the complete formal syntax rules, see the RFC 5234 / RFC 7405 ABNF grammar in <a href="MADE-GRAMMAR.abnf"><code>MADE-GRAMMAR.abnf</code></a>.</p>
     </div>
 
     <div class="card" id="spec-licensing-governance" tabindex="-1">
       <h2><span>Licensing &amp; Governance</span></h2>
-      <p>To preserve a single canonical definition of the scale while ensuring frictionless adoption across all creators and licenses, MADE uses a two-part licensing structure:</p>
+      <p>MADE is free to use. The <strong>specification prose</strong> is licensed under <strong><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></strong>, and <strong>everything else</strong> (ratings, badges, templates, header tags, and software code) is dedicated to the public domain under <strong><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a></strong> (see <a href="LICENSE"><code>LICENSE</code></a> for full details):</p>
       <ol>
-        <li><strong>Using MADE Ratings, Badges, and Templates in Your Works:</strong> Declaring a MADE rating on your project, embedding MADE badges, copying disclosure templates, or placing <code>MADE:</code> tags in your files is completely free of restrictions under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a> (<code>CC0 1.0 Public Domain</code>).</li>
-        <li><strong>Republishing the Specification Document:</strong> The specification document itself (<code>MADE-SPECIFICATION.md</code>), the HTML conversion of the specification, and the HTML Interactive Badge and Disclosure Builder, are licensed under the <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NoDerivatives 4.0 International License</a> (<code>CC BY-ND 4.0</code>). This ensures that if someone republishes the specification document itself, third parties cannot alter the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while still calling the modified scale "MADE".</li>
+        <li><strong>Everything Else (<code>CC0 1.0 Public Domain</code>):</strong> Assigning MADE ratings, embedding badges, copying disclosure templates or <code>MADE:</code> header tags, and using, modifying, or redistributing all accompanying software scripts, regular expressions, and builder code (<code>sync_spec.py</code>, <code>sync.bat</code>, and the builder CSS/JavaScript in <code>index.html</code>) are completely free of restrictions.</li>
+        <li><strong>Specification Prose (<code>CC BY-ND 4.0</code>):</strong> The normative specification text (<code>MADE-SPECIFICATION.md</code>, the specification prose in <code>index.html</code>, <code>MADE-GRAMMAR.abnf</code>, and <code>README.md</code>) is licensed under <code>CC BY-ND 4.0</code>. Republishers may distribute the specification verbatim, but may not modify the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while calling the resulting scale MADE.</li>
       </ol>
       <blockquote>
-        <p><strong>Express Permission Addendum:</strong> Notwithstanding the NoDerivatives restriction in Section 3(a)(4) of <code>CC BY-ND 4.0</code>, the Licensor grants all users the irrevocable, royalty-free, perpetual permission to: (1) translate the specification document into any natural language and publicly distribute such translation, provided the translation is accurate and preserves the canonical level definitions; (2) quote and display the unmodified level titles and definitions in user interfaces, tooltips, and documentation, and extract, modify, and redistribute all software code, scripts, regular expressions, and interactive builder logic; and (3) create and distribute domain-specific extension profiles that append auxiliary metadata fields without altering the definitions of <code>I0</code> through <code>I4</code> and <code>E0</code> through <code>E4</code>.</p>
+        <p><strong>Express Permission Addendum:</strong> Notwithstanding Section 3(a)(4) of <code>CC BY-ND 4.0</code>, the Licensor grants perpetual, irrevocable, royalty-free permission to: (1) translate and distribute the specification in any natural language, provided the translation preserves the canonical <code>I0</code> through <code>I4</code> and <code>E0</code> through <code>E4</code> identifiers and definitions, identifies itself as a community translation, and links to the canonical English specification URI; (2) quote and display unmodified level titles and definitions in user interfaces, tooltips, and documentation; and (3) publish separate, externally authored extension profiles that add auxiliary metadata fields without altering <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code>.</p>
       </blockquote>
     </div>
 
     <div class="card" id="spec-questions-and-answers" tabindex="-1">
       <h2><span>Questions and Answers</span></h2>
       <h3>If I use an AI tool that only checks or cleans up my work and doesn't create anything new, would I still be obligated to disclose it?</h3>
-      <p>While international laws and industry standards differ, in general you would not be obligated.  Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted.  Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds <em>de minimis amounts</em>; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure.  However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as inpainting image regions, rewriting passages, generating code, or patching an audio performance.</p>
-      <p>MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage.  That said, an AI tool used strictly for diagnostics, proofreading, or non-generative cleanup would generally be classified as <code>E1</code>.</p>
-      <h3>There must be at least <a href="https://xkcd.com/927/" target="_blank" rel="noopener">14 competing standards</a> for AI disclosure.  Which ones allow me to separate Design from Execution just like MADE, but provide even more functionality?</h3>
-      <p><a href="https://ai-declaration.md/" target="_blank" rel="noopener">AI-DECLARATION.md</a> is more comprehensive than MADE, providing extensive features relevant to software developemnt: A formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings.  However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or prefer a compact human-readable shorthand (such as "<code>MADE: I0 / E2</code>").</p>
-      <p>The <a href="https://aiattribution.github.io/" target="_blank" rel="noopener">AI Attribution Tooklit</a> has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-softwware works.  Attributions are represented as tagged shorthand, such as <code>AIA Ph SeCe Hin R v1.0</code>.  They offer <a href="https://aiattribution.github.io/interpret-attribution" target="_blank" rel="noopener">a tool to expand attributions back into natural language</a>.</p>
+      <p>While international laws and industry standards differ, in general you would not be obligated.  Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted.  Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds <em>de minimis amounts</em>; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure.  However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as generative inpainting of new visual elements, rewriting passages, generating code, or resynthesizing vocal takes.</p>
+      <p>MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage.  That said, an AI tool used strictly for diagnostics, proofreading, or corrective signal cleanup (such as denoising, dynamic EQ, or pitch correction) would generally be classified as <code>E1</code>, whereas tools that do not modify the output signal remain <code>E0</code>.</p>
+      <h3>Which other AI disclosure standards separate Design from Execution just like MADE, but provide even more functionality?</h3>
+      <p>With at least <a href="https://xkcd.com/927/" target="_blank" rel="noopener">14 competing standards</a> for AI disclosure in circulation, as of publication there are at least two specifications that allow separating conceptual design from execution while providing additional specialized features:</p>
+      <p><a href="https://ai-declaration.md/" target="_blank" rel="noopener">AI-DECLARATION.md</a> is more comprehensive than MADE, providing extensive features relevant to software development: a formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings.  However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or if you prefer a compact human-readable shorthand (such as "<code>MADE: I0 / E2</code>").</p>
+      <p>The <a href="https://aiattribution.github.io/" target="_blank" rel="noopener">AI Attribution Toolkit</a> has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-software works.  Attributions are represented as tagged shorthand, such as <code>AIA Ph SeCe Hin R v1.0</code>.  They offer <a href="https://aiattribution.github.io/interpret-attribution" target="_blank" rel="noopener">a tool to expand attributions back into natural language</a>.</p>
+      <h3>Does MADE align with disclosure rules on commercial platforms?</h3>
+      <p>Mostly yes.  Major digital storefronts already draw a practical line between assistive workflow tools and directly generated output.  Amazon Kindle Direct Publishing (KDP) exempts AI-assisted brainstorming, outlining, and grammar editing from disclosure, while requiring authors to declare AI-generated text and images.  Valve's Steam Content Survey focuses disclosure on pre-generated or live-generated player-facing assets.  Medium requires explicit transparency labels whenever AI assistance is used.  MADE mirrors these by letting creators disclose individual pieces or components of their project separately from generative execution, without over-reporting routine operations as "AI generation".</p>
+      <h3>Does MADE compete with cryptographic provenance standards like C2PA (Content Credentials)?</h3>
+      <p>No, because C2PA and MADE solve different problems.  C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.</p>
+      <h3>If I prompt an AI tool with my own original idea, can I use <code>I0</code> (Unassisted) Ideation?</h3>
+      <p><code>I0</code> is meant to represent unassisted ideation; a wholly original idea represented in great detail.  <code>I0</code> means you personally originated the concrete structure, plot, composition, or architecture before any tool execution.  Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is <code>I3</code> (Directed) or <code>I4</code> (Autonomous) Ideation, not <code>I0</code>.</p>
     </div>
 
     <div class="card" id="spec-authorship-provenance" tabindex="-1">
@@ -1187,7 +1193,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
               <span class="lvl-badge b-1">E1</span>
               <div class="level-info">
                 <strong>Assisted</strong>
-                <span>100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup.</span>
+                <span>100% human-authored primary output. AI is used strictly for diagnostics, proofreading, syntax checking, or minor restorative cleanup.</span>
               </div>
             </div>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
@@ -1225,11 +1231,12 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           <div>
             <div id="live-score-text" style="font-size:1.5rem;font-weight:800;color:var(--text);">MADE: I0 / E0
             </div>
-            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">MADE: Ideation 0 (Unassisted); Execution 0 (Unassisted)</div>
+            <div id="live-score-sub" style="font-size:0.88rem;color:var(--text-dim);">MADE: I0 / E0 (Ideation: Unassisted; Execution: Unassisted)</div>
           </div>
           <div style="display:flex;align-items:center;gap:0.85rem;flex-wrap:wrap;">
             <div id="svg-badge-container"></div>
             <button class="btn-sm" onclick="downloadSvgBadge()">Download SVG Badge</button>
+            <button class="btn-sm" onclick="downloadPngBadge()">Download PNG Badge</button>
           </div>
         </div>
       </div>
@@ -1241,8 +1248,8 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
         </h2>
         <p style="font-size:0.88rem;color:var(--text-dim);margin-bottom:0.5rem;">
           For works composed of multiple distinct modules, assets, or deliverables, creators can document the specific
-          human versus AI contribution for each component. <b>This breakdown section is completely optional, and
-            can be skipped if you do not want to provide a more granular breakdown of your project.</b>
+          human versus AI contribution for each component. <b>This breakdown is optional; skip it if a single
+            project-wide rating is sufficient.</b>
         </p>
         <p style="font-size:0.88rem;margin-bottom:0.75rem;">
           Specify both the <strong>Ideation Level (<code>I0</code> to <code>I4</code>)</strong> and the
@@ -1268,7 +1275,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
             <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0-E1)</button>
             <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0-I1 / E0-E2)</button>
             <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0-E1)</button>
-            <button class="btn-sm" onclick="applyPreset('vibegame')">Project: Vibe-Coded Game (I3-I4 / E4)</button>
+            <button class="btn-sm" onclick="applyPreset('vibegame')">Game Development: Vibe-Coded Game (I3-I4 / E4)</button>
           </div>
         </div>
       </div>
@@ -1306,8 +1313,8 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     <footer>
       <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>MADE Specification v0.9</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
-      All generated badges, disclosure snippets, and metadata header tags are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
+      <strong>MADE Specification v0.9.1</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      All generated badges, disclosure snippets, metadata header tags, and accompanying software scripts are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
       Official specification source, templates, and grammar files: <a href="https://github.com/MobyGamer/MADE-specification" target="_blank" rel="noopener">MADE Project Files on GitHub</a>.
     </p>
       <!-- SYNC:FOOTER:END -->
@@ -1320,7 +1327,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
   const SPEC_DATA = {
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
-    "version": "0.9",
+    "version": "0.9.1",
     "canonicalUri": "https://mobygamer.github.io/MADE-specification/",
     "homepage": "https://mobygamer.github.io/MADE-specification/",
     "ideationTitles": [
@@ -1346,7 +1353,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     ],
     "executionDefinitions": [
       "100% human-produced code, prose, illustration, or musical performance by the human creator.",
-      "100% human-authored output. AI is used strictly for read-only diagnostics, proofreading, syntax checking, or signal cleanup.",
+      "100% human-authored primary output. AI is used strictly for diagnostics, proofreading, syntax checking, or minor restorative cleanup.",
       "Shared human-AI production, such as human-crafted primary work paired with AI-generated supporting assets, boilerplate, or utilities.",
       "AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.",
       "Generated end-to-end by AI from minimal prompts with little or no human specification or review."
@@ -1584,7 +1591,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           'Print Layout & Margin Bleed Exports',
           'I0',
           'E1',
-          'Hand-painted illustrations prepared for print using generative spot-healing for stray scan dust and minor margin bleed extension.'
+          'Hand-painted illustrations prepared for print using automated dust removal for stray scan dust and minor margin bleed extension.'
         );
         addComponentRow(
           'Repeating Background Surface Textures',
@@ -1611,14 +1618,14 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           'Mix Diagnostics & Mastering',
           'I0',
           'E1',
-          'Acoustic recordings mixed and mastered manually, using an AI assistant only for read-only frequency-masking diagnostics and minor transient patching.'
+          'Acoustic recordings mixed and mastered manually, using an AI assistant only for corrective signal cleanup (such as spectral denoising, dynamic EQ, or restoring a clipped sample) without generating new musical material.'
         );
       } else if (preset === 'vibegame') {
         selectedIdeations = [3, 4];
         selectedExecutions = [4];
         addComponentRow(
           'Game Design & Storytelling',
-          'I3',
+          'I4',
           'E4',
           'Human provided a generic premise ("retro platformer"); AI conceived all level progression, plot twists, character backstories, and in-game dialogue without curation.'
         );
@@ -1640,7 +1647,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     }
 
     function getThemeBadgeColor(level) {
-      const palette = ['#16a34a', '#0d9488', '#268bd2', '#d97706', '#d9381e'];
+      const palette = ['#16a34a', '#06b6d4', '#268bd2', '#d97706', '#d9381e'];
       return palette[level] || palette[0];
     }
 
@@ -1733,7 +1740,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       const eInfo = formatLevels('E', selectedExecutions);
 
       const scoreCompact = `${iInfo.compact} / ${eInfo.compact}`;
-      const subDisplay = `${SPEC_DATA.acronym}: Ideation ${iInfo.numeric} (${iInfo.titles}); Execution ${eInfo.numeric} (${eInfo.titles})`;
+      const subDisplay = `${SPEC_DATA.acronym}: ${scoreCompact} (Ideation: ${iInfo.titles}; Execution: ${eInfo.titles})`;
 
       document.getElementById('live-score-text').textContent = `${SPEC_DATA.acronym}: ${scoreCompact}`;
       document.getElementById('live-score-sub').textContent = subDisplay;
@@ -1761,8 +1768,8 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       // 1. Markdown Output
       const badgeLinkUrl = SPEC_DATA.canonicalUri || SPEC_DATA.homepage || 'https://example.com';
       const badgeAlt = `${SPEC_DATA.acronym}: ${scoreCompact}`;
-      const badgeMd = `[![${badgeAlt}](made-badge.svg)](${badgeLinkUrl})`;
-      const badgeHtml = `<a href="${badgeLinkUrl}"><img src="made-badge.svg" alt="${badgeAlt}" height="24"></a>`;
+      const badgeMd = `[![${badgeAlt}](images/made-badge.svg)](${badgeLinkUrl})`;
+      const badgeHtml = `<a href="${badgeLinkUrl}"><img src="images/made-badge.svg" alt="${badgeAlt}" height="24"></a>`;
 
       let md = `## AI Usage Disclosure: \`${SPEC_DATA.acronym}: ${scoreCompact}\`\n\n`;
       md += `${badgeMd}\n\n`;
@@ -1941,6 +1948,39 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
         URL.revokeObjectURL(url);
         a.remove();
       }, 1500);
+    }
+
+    function downloadPngBadge() {
+      const svgEl = document.querySelector('#svg-badge-container svg');
+      if (!svgEl) return;
+      const scale = 4;
+      const w = parseInt(svgEl.getAttribute('width'), 10) || 160;
+      const h = parseInt(svgEl.getAttribute('height'), 10) || 24;
+      const svgData = new XMLSerializer().serializeToString(svgEl);
+      const dataUrl = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgData);
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = w * scale;
+        canvas.height = h * scale;
+        const ctx = canvas.getContext('2d');
+        ctx.scale(scale, scale);
+        ctx.drawImage(img, 0, 0, w, h);
+        canvas.toBlob(blob => {
+          if (!blob) return;
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'made-badge.png';
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => {
+            URL.revokeObjectURL(url);
+            a.remove();
+          }, 1500);
+        }, 'image/png');
+      };
+      img.src = dataUrl;
     }
 
     function initSpecScrollSpy() {

@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: CC0-1.0
 """Synchronize MADE-SPECIFICATION.md (ground truth) into index.html.
 
 Zero-dependency Python 3 script that validates MADE-SPECIFICATION.md against
-structural and stylistic rules, then updates all marked regions of index.html
-(Tab 1 full specification, Tab 2 Ideation/Execution level buttons, header/footer
-metadata, and the JavaScript SPEC_DATA object driving generated disclosures).
+structural and stylistic rules, checks TEMPLATES.md and MADE-GRAMMAR.abnf, then
+updates all marked regions of index.html (Tab 1 full specification, Tab 2
+Ideation/Execution level buttons, header/footer metadata, and the JavaScript
+SPEC_DATA object driving generated disclosures).
 
 Usage:
   python sync_spec.py           # Validate spec and update index.html in-place
@@ -26,7 +28,9 @@ from typing import Any
 
 DEFAULT_SPEC_FILENAME = "MADE-SPECIFICATION.md"
 DEFAULT_HTML_FILENAME = "index.html"
-DEFAULT_GITHUB_REPO_URL = "https://www.examplegithub.com/"
+DEFAULT_TEMPLATES_FILENAME = "TEMPLATES.md"
+DEFAULT_GRAMMAR_FILENAME = "MADE-GRAMMAR.abnf"
+DEFAULT_GITHUB_REPO_URL = "https://github.com/MobyGamer/MADE-specification"
 
 REQUIRED_META_KEYS = (
     "Version",
@@ -34,7 +38,7 @@ REQUIRED_META_KEYS = (
     "Author",
     "Date",
     "Specification License",
-    "Templates, Badges, & Header Tags License",
+    "Templates, Badges, Tags, & Code License",
 )
 
 # Default initial selected levels rendered into static HTML before JS runs
@@ -46,8 +50,10 @@ class SpecValidationError(Exception):
     """Raised when MADE-SPECIFICATION.md or index.html fails validation."""
 
 
-def validate_stylistic_rules(spec_text: str) -> None:
-    """Enforce strict fail-fast stylistic invariants on MADE-SPECIFICATION.md."""
+def validate_stylistic_rules(
+    spec_text: str, source_name: str = "specification"
+) -> None:
+    """Enforce strict fail-fast stylistic invariants on MADE specification prose."""
     violations: list[str] = []
     checks: list[tuple[re.Pattern[str], str]] = [
         (
@@ -87,28 +93,57 @@ def validate_stylistic_rules(spec_text: str) -> None:
     if violations:
         joined = "\n".join(violations)
         raise SpecValidationError(
-            f"Stylistic validation failed in specification:\n{joined}"
+            f"Stylistic validation failed in {source_name}:\n{joined}"
         )
 
 
+_LEVEL_TITLES = (
+    "Unassisted",
+    "Assisted",
+    "Collaborative",
+    "Directed",
+    "Autonomous",
+)
 _WS_PAT = r"(?:\s|&nbsp;|&#0*160;|&#[xX]0*[aA]0;)+"
 _TITLES_PAT = r"(?:Unassisted|Assisted|Collaborative|Directed|Autonomous)"
+_TITLE_LIST_PAT = rf"{_TITLES_PAT}(?:,{_WS_PAT}{_TITLES_PAT})*"
 _TOOL_ATTR_PAT = (
     rf"(?:{_WS_PAT}\[[A-Za-z0-9_./+-]+(?:{_WS_PAT}[A-Za-z0-9_./+-]+)*"
     rf"(?:,{_WS_PAT}[A-Za-z0-9_./+-]+(?:{_WS_PAT}[A-Za-z0-9_./+-]+)*)*\])?"
 )
-_EXPANDED_PAIR_PAT = (
-    rf"Ideation{_WS_PAT}([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*){_WS_PAT}\({_TITLES_PAT}(?:,{_WS_PAT}{_TITLES_PAT})*\);{_WS_PAT}"
-    rf"Execution{_WS_PAT}([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*){_WS_PAT}\({_TITLES_PAT}(?:,{_WS_PAT}{_TITLES_PAT})*\)"
+_I_EXPR_PAT = r"I[0-4](?:-I[0-4])?(?:,I[0-4](?:-I[0-4])?)*"
+_E_EXPR_PAT = r"E[0-4](?:-E[0-4])?(?:,E[0-4](?:-E[0-4])?)*"
+_MULTI_CLASS_DESC_PAT = (
+    rf"Ideation:{_WS_PAT}({_TITLE_LIST_PAT});{_WS_PAT}"
+    rf"Execution:{_WS_PAT}({_TITLE_LIST_PAT})"
 )
-_CLASS_DESC_PAT = rf"Ideation:{_WS_PAT}{_TITLES_PAT};{_WS_PAT}Execution:{_WS_PAT}{_TITLES_PAT}"
-_MADE_DISCLOSURE_RE = re.compile(
-    rf"^(?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}"
-    rf"(?:"
-    rf"(I[0-4](?:-I[0-4])?(?:,I[0-4](?:-I[0-4])?)*){_WS_PAT}/{_WS_PAT}(E[0-4](?:-E[0-4])?(?:,E[0-4](?:-E[0-4])?)*)"
-    rf"(?:{_WS_PAT}\((?:{_EXPANDED_PAIR_PAT}|{_CLASS_DESC_PAT})\))?"
-    rf"|(?:{_EXPANDED_PAIR_PAT})"
-    rf"){_TOOL_ATTR_PAT}(?:{_WS_PAT}(?:\*/|-->))?$"
+_SINGLE_CLASS_DESC_PAT = (
+    rf"Ideation:{_WS_PAT}({_TITLES_PAT});{_WS_PAT}"
+    rf"Execution:{_WS_PAT}({_TITLES_PAT})"
+)
+_BARE_DISCLOSURE_RE = re.compile(
+    rf"^MADE:{_WS_PAT}({_I_EXPR_PAT}){_WS_PAT}/{_WS_PAT}({_E_EXPR_PAT})"
+    rf"(?:{_WS_PAT}\({_MULTI_CLASS_DESC_PAT}\))?{_TOOL_ATTR_PAT}$"
+)
+_FILE_BODY_PAT = (
+    rf"MADE:{_WS_PAT}(I[0-4]){_WS_PAT}/{_WS_PAT}(E[0-4])"
+    rf"(?:{_WS_PAT}\({_SINGLE_CLASS_DESC_PAT}\))?{_TOOL_ATTR_PAT}"
+)
+_FILE_HEADER_RES = (
+    re.compile(rf"^(?://|#|;|--){_WS_PAT}{_FILE_BODY_PAT}$"),
+    re.compile(rf"^/\*{_WS_PAT}{_FILE_BODY_PAT}{_WS_PAT}\*/$"),
+    re.compile(rf"^<!--{_WS_PAT}{_FILE_BODY_PAT}{_WS_PAT}-->$"),
+)
+_COMPONENT_PAREN_RE = re.compile(
+    rf"\(\s*(`?)(I[0-4](?:[-,0-9IE]*)?){_WS_PAT}/{_WS_PAT}(E[0-4](?:[-,0-9IE]*)?)(`?)"
+    rf",{_WS_PAT}Ideation:{_WS_PAT}([^;)]+);{_WS_PAT}Execution:{_WS_PAT}([^)]+)\)"
+)
+_COMPONENT_BRACKET_RE = re.compile(
+    rf"\[(I[0-4](?:[-,0-9IE]*)?){_WS_PAT}/{_WS_PAT}(E[0-4](?:[-,0-9IE]*)?)"
+    rf"{_WS_PAT}\(Ideation:{_WS_PAT}([^;)]+);{_WS_PAT}Execution:{_WS_PAT}([^)]+)\)\]"
+)
+_NFO_SUMMARY_RE = re.compile(
+    rf"^\s*(Ideation|Execution)\s+:\s+(\S+)\s+\(([^)]+)\)\s*$"
 )
 
 
@@ -133,8 +168,123 @@ def _check_ascending_non_adjacent(expr: str, prefix: str) -> str | None:
     return None
 
 
-def validate_grammar_examples(spec_text: str) -> None:
-    """Validate all MADE: disclosure strings and header tags against MADE-GRAMMAR.abnf."""
+def _expand_level_expr(expr: str, prefix: str) -> list[int]:
+    """Expand a validated level expression (e.g. 'I0-I1,I3') into integer levels."""
+    levels: list[int] = []
+    for part in expr.split(","):
+        clean = part.replace(prefix, "")
+        if "-" in clean:
+            start_s, end_s = clean.split("-", 1)
+            levels.extend(range(int(start_s), int(end_s) + 1))
+        else:
+            levels.append(int(clean))
+    return levels
+
+
+def _verify_title_congruence(
+    expr: str, prefix: str, titles_str: str
+) -> str | None:
+    """Ensure expanded level titles match the numeric level expression in order."""
+    expected_levels = _expand_level_expr(expr, prefix)
+    expected_titles = [_LEVEL_TITLES[n] for n in expected_levels]
+    norm_titles = re.sub(rf"{_WS_PAT}", " ", titles_str).strip()
+    actual_titles = [t.strip() for t in norm_titles.split(",")]
+    if actual_titles != expected_titles:
+        return (
+            f"Title mismatch for '{expr}': expected "
+            f"({', '.join(expected_titles)}), got ({', '.join(actual_titles)})"
+        )
+    return None
+
+
+def _check_disclosure_candidate(cand: str) -> str | None:
+    """Validate a single standalone MADE disclosure or file header tag."""
+    stripped = cand.strip()
+    if stripped.startswith("MADE:"):
+        match = _BARE_DISCLOSURE_RE.match(stripped)
+        if not match:
+            return f"Invalid MADE grammar syntax: {stripped}"
+        i_expr, e_expr, i_titles, e_titles = match.groups()
+        for expr, pfx, titles_str in (
+            (i_expr, "I", i_titles),
+            (e_expr, "E", e_titles),
+        ):
+            err = _check_ascending_non_adjacent(expr, pfx)
+            if err:
+                return f"{err} in '{stripped}'"
+            if titles_str is not None:
+                t_err = _verify_title_congruence(expr, pfx, titles_str)
+                if t_err:
+                    return f"{t_err} in '{stripped}'"
+        return None
+
+    for hdr_re in _FILE_HEADER_RES:
+        match = hdr_re.match(stripped)
+        if match:
+            i_single, e_single, i_title, e_title = match.groups()
+            if i_title is not None and e_title is not None:
+                for expr, pfx, t_str in (
+                    (i_single, "I", i_title),
+                    (e_single, "E", e_title),
+                ):
+                    t_err = _verify_title_congruence(expr, pfx, t_str)
+                    if t_err:
+                        return f"{t_err} in '{stripped}'"
+            return None
+
+    return f"Invalid MADE file header syntax: {stripped}"
+
+
+def validate_disclosure_line(candidate: str) -> None:
+    """Validate one disclosure or file header line, raising SpecValidationError if invalid."""
+    err = _check_disclosure_candidate(candidate)
+    if err:
+        raise SpecValidationError(err)
+
+
+def validate_component_or_nfo_line(line: str) -> str | None:
+    """Validate component tags and .NFO summary lines, returning an error string if invalid."""
+    for m in _COMPONENT_PAREN_RE.finditer(line):
+        open_bt, i_str, e_str, close_bt, i_titles, e_titles = m.groups()
+        if open_bt != close_bt:
+            return f"Mismatched backticks in component tag: {m.group(0)}"
+        if not re.fullmatch(r"I[0-4]", i_str) or not re.fullmatch(r"E[0-4]", e_str):
+            return f"Component tag must use single-level scores: {m.group(0)}"
+        for expr, pfx, t_str in ((i_str, "I", i_titles), (e_str, "E", e_titles)):
+            t_err = _verify_title_congruence(expr, pfx, t_str)
+            if t_err:
+                return f"{t_err} in component tag '{m.group(0)}'"
+
+    for m in _COMPONENT_BRACKET_RE.finditer(line):
+        i_str, e_str, i_titles, e_titles = m.groups()
+        if not re.fullmatch(r"I[0-4]", i_str) or not re.fullmatch(r"E[0-4]", e_str):
+            return f"Component tag must use single-level scores: {m.group(0)}"
+        for expr, pfx, t_str in ((i_str, "I", i_titles), (e_str, "E", e_titles)):
+            t_err = _verify_title_congruence(expr, pfx, t_str)
+            if t_err:
+                return f"{t_err} in component tag '{m.group(0)}'"
+
+    nfo_m = _NFO_SUMMARY_RE.match(line)
+    if nfo_m:
+        cat, expr, titles_str = nfo_m.groups()
+        pfx = "I" if cat == "Ideation" else "E"
+        expr_pat = _I_EXPR_PAT if cat == "Ideation" else _E_EXPR_PAT
+        if not re.fullmatch(expr_pat, expr):
+            return f"Invalid .NFO {cat} level expression '{expr}' in '{line.strip()}'"
+        err = _check_ascending_non_adjacent(expr, pfx)
+        if err:
+            return f"{err} in .NFO line '{line.strip()}'"
+        t_err = _verify_title_congruence(expr, pfx, titles_str)
+        if t_err:
+            return f"{t_err} in .NFO line '{line.strip()}'"
+
+    return None
+
+
+def validate_grammar_examples(
+    spec_text: str, source_name: str = "specification"
+) -> None:
+    """Validate all MADE disclosures, headers, component tags, and .NFO lines."""
     errors: list[str] = []
     in_fence = False
     for idx, line in enumerate(spec_text.splitlines(), start=1):
@@ -145,10 +295,20 @@ def validate_grammar_examples(spec_text: str) -> None:
 
         candidates: list[str] = []
         if in_fence:
-            if re.match(rf"^(?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}\S+", stripped):
+            if re.match(
+                rf"^(?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}\S+",
+                stripped,
+            ):
                 candidates.append(stripped)
+            else:
+                nfo_hdr = re.match(r"^\s*AI DISCLOSURE \((MADE:[^)]+)\)\s*$", stripped)
+                if nfo_hdr:
+                    candidates.append(nfo_hdr.group(1).strip())
         else:
-            for m in re.finditer(rf"`((?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}[^`]+)`", line):
+            for m in re.finditer(
+                rf"`((?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}[^`]+)`",
+                line,
+            ):
                 candidates.append(m.group(1).strip())
             for m in re.finditer(
                 rf"<code>((?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}.*?)</code>",
@@ -158,28 +318,33 @@ def validate_grammar_examples(spec_text: str) -> None:
                 candidates.append(m.group(1).strip())
 
         for cand in candidates:
-            match = _MADE_DISCLOSURE_RE.match(cand)
-            if not match:
-                errors.append(f"  Line {idx}: Invalid MADE grammar syntax: {cand}")
-                continue
-            i_short, e_short, i_exp1, e_exp1, i_exp2, e_exp2 = match.groups()
-            for expr, pfx in (
-                (i_short, "I"),
-                (e_short, "E"),
-                (i_exp1, ""),
-                (e_exp1, ""),
-                (i_exp2, ""),
-                (e_exp2, ""),
-            ):
-                if expr:
-                    err = _check_ascending_non_adjacent(expr, pfx)
-                    if err:
-                        errors.append(f"  Line {idx}: {err} in '{cand}'")
+            err = _check_disclosure_candidate(cand)
+            if err:
+                errors.append(f"  Line {idx}: {err}")
+
+        comp_err = validate_component_or_nfo_line(line)
+        if comp_err:
+            errors.append(f"  Line {idx}: {comp_err}")
 
     if errors:
         joined = "\n".join(errors)
         raise SpecValidationError(
-            f"ABNF grammar validation failed in specification:\n{joined}"
+            f"ABNF grammar validation failed in {source_name}:\n{joined}"
+        )
+
+
+def validate_abnf_file(grammar_path: Path) -> None:
+    """Verify MADE-GRAMMAR.abnf uses strict RFC 5234 CRLF endings and root rule."""
+    raw = grammar_path.read_bytes()
+    if b"\n" not in raw or raw.count(b"\n") != raw.count(b"\r\n"):
+        raise SpecValidationError(
+            f"ABNF grammar '{grammar_path.name}' must use strict CRLF (\\r\\n) "
+            "line endings per RFC 5234 Section 2.1."
+        )
+    text = raw.decode("utf-8")
+    if "made-construct" not in text:
+        raise SpecValidationError(
+            f"ABNF grammar '{grammar_path.name}' is missing root rule 'made-construct'."
         )
 
 
@@ -1006,15 +1171,17 @@ def parse_and_compile_spec(spec_text: str) -> dict[str, Any]:
 
     author_html = render_inline(meta_map["Author"])
     spec_license_html = render_inline(meta_map["Specification License"])
-    templates_license_html = render_inline(
-        meta_map["Templates, Badges, & Header Tags License"]
+    templates_license_val = (
+        meta_map.get("Templates, Badges, Tags, & Code License")
+        or meta_map["Templates, Badges, & Header Tags License"]
     )
+    templates_license_html = render_inline(templates_license_val)
     footer_html = (
         "    <p>\n"
         f"      <strong>{html.escape(acronym, quote=False)} Specification "
         f"v{html.escape(version, quote=False)}</strong> "
         f"is licensed under {spec_license_html}.<br>\n"
-        "      All generated badges, disclosure snippets, and metadata header tags "
+        "      All generated badges, disclosure snippets, metadata header tags, and accompanying software scripts "
         f"are dedicated to the public domain under {templates_license_html}.<br>\n"
         "      Official specification source, templates, and grammar files: "
         f'<a href="{html.escape(repo_url, quote=True)}" target="_blank" rel="noopener">'
@@ -1133,7 +1300,13 @@ def build_synced_html(spec_text: str, html_text: str) -> str:
     return updated
 
 
-def sync_once(spec_path: Path, html_path: Path, check_only: bool = False) -> bool:
+def sync_once(
+    spec_path: Path,
+    html_path: Path,
+    check_only: bool = False,
+    templates_path: Path | None = None,
+    grammar_path: Path | None = None,
+) -> bool:
     """Perform a single validation + sync pass.
 
     Returns True if html_path was modified (or needed modification in --check mode),
@@ -1143,6 +1316,22 @@ def sync_once(spec_path: Path, html_path: Path, check_only: bool = False) -> boo
         raise SpecValidationError(f"Specification file not found: {spec_path}")
     if not html_path.is_file():
         raise SpecValidationError(f"Target HTML file not found: {html_path}")
+
+    resolved_templates = templates_path or (spec_path.parent / DEFAULT_TEMPLATES_FILENAME)
+    if templates_path is not None and not resolved_templates.is_file():
+        raise SpecValidationError(f"Templates file not found: {resolved_templates}")
+    if resolved_templates.is_file():
+        raw_templates = (
+            resolved_templates.read_bytes().decode("utf-8").replace("\r\n", "\n")
+        )
+        validate_stylistic_rules(raw_templates, source_name=resolved_templates.name)
+        validate_grammar_examples(raw_templates, source_name=resolved_templates.name)
+
+    resolved_grammar = grammar_path or (spec_path.parent / DEFAULT_GRAMMAR_FILENAME)
+    if grammar_path is not None and not resolved_grammar.is_file():
+        raise SpecValidationError(f"ABNF grammar file not found: {resolved_grammar}")
+    if resolved_grammar.is_file():
+        validate_abnf_file(resolved_grammar)
 
     raw_spec = spec_path.read_bytes().decode("utf-8")
     raw_html = html_path.read_bytes().decode("utf-8")
@@ -1179,7 +1368,13 @@ def sync_once(spec_path: Path, html_path: Path, check_only: bool = False) -> boo
     return changed
 
 
-def watch_loop(spec_path: Path, html_path: Path, interval: float = 0.5) -> int:
+def watch_loop(
+    spec_path: Path,
+    html_path: Path,
+    interval: float = 0.5,
+    templates_path: Path | None = None,
+    grammar_path: Path | None = None,
+) -> int:
     """Watch spec_path for saves and automatically sync into html_path."""
     print(f"Watching {spec_path.name} for changes (Ctrl+C to stop)...")
     last_mtime: int | None = None
@@ -1192,7 +1387,13 @@ def watch_loop(spec_path: Path, html_path: Path, interval: float = 0.5) -> int:
                 last_mtime = mtime_ns
                 ts = time.strftime("%H:%M:%S")
                 try:
-                    changed = sync_once(spec_path, html_path, check_only=False)
+                    changed = sync_once(
+                        spec_path,
+                        html_path,
+                        check_only=False,
+                        templates_path=templates_path,
+                        grammar_path=grammar_path,
+                    )
                     status = "updated" if changed else "already in sync"
                     print(f"[{ts}] Synced {spec_path.name} -> {html_path.name} ({status}).")
                 except SpecValidationError as exc:
@@ -1223,6 +1424,18 @@ def main(argv: list[str] | None = None) -> int:
         default=base_dir / DEFAULT_HTML_FILENAME,
         help=f"Path to target HTML file (default: {DEFAULT_HTML_FILENAME})",
     )
+    parser.add_argument(
+        "--templates",
+        type=Path,
+        default=base_dir / DEFAULT_TEMPLATES_FILENAME,
+        help=f"Path to templates Markdown file (default: {DEFAULT_TEMPLATES_FILENAME})",
+    )
+    parser.add_argument(
+        "--grammar",
+        type=Path,
+        default=base_dir / DEFAULT_GRAMMAR_FILENAME,
+        help=f"Path to ABNF grammar file (default: {DEFAULT_GRAMMAR_FILENAME})",
+    )
     mode_group = parser.add_mutually_exclusive_group()
     mode_group.add_argument(
         "--check",
@@ -1238,10 +1451,21 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     if args.watch:
-        return watch_loop(args.spec, args.html)
+        return watch_loop(
+            args.spec,
+            args.html,
+            templates_path=args.templates,
+            grammar_path=args.grammar,
+        )
 
     try:
-        changed = sync_once(args.spec, args.html, check_only=args.check)
+        changed = sync_once(
+            args.spec,
+            args.html,
+            check_only=args.check,
+            templates_path=args.templates,
+            grammar_path=args.grammar,
+        )
     except SpecValidationError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 1
