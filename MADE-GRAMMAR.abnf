@@ -13,6 +13,8 @@ shorthand-rating    = ideation-expr SP "/" SP execution-expr
 
 ; Note: Multi-level expressions must list levels in ascending numerical order (0 to 4).
 ; Consecutive levels with no gaps must be joined with a hyphen (e.g., "I0-I1"), never a comma ("I0,I1").
+; Presentation Note: When extracting ratings from HTML or Markdown where non-breaking
+; spaces (%xA0 or "&nbsp;") are used to prevent wrapping, normalize them to SP (%x20).
 ideation-expr       = ideation-token *( "," ideation-token )
 ideation-token      = "I" level-digit [ "-I" level-digit ]
 

@@ -91,20 +91,24 @@ def validate_stylistic_rules(spec_text: str) -> None:
         )
 
 
+_WS_PAT = r"(?:\s|&nbsp;|&#0*160;|&#[xX]0*[aA]0;)+"
 _TITLES_PAT = r"(?:Unassisted|Assisted|Collaborative|Directed|Autonomous)"
-_TOOL_ATTR_PAT = r"(?:\s+\[[A-Za-z0-9_./+-]+(?:\s+[A-Za-z0-9_./+-]+)*(?:,\s+[A-Za-z0-9_./+-]+(?:\s+[A-Za-z0-9_./+-]+)*)*\])?"
-_EXPANDED_PAIR_PAT = (
-    rf"Ideation\s+([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*)\s+\({_TITLES_PAT}(?:,\s+{_TITLES_PAT})*\);\s+"
-    rf"Execution\s+([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*)\s+\({_TITLES_PAT}(?:,\s+{_TITLES_PAT})*\)"
+_TOOL_ATTR_PAT = (
+    rf"(?:{_WS_PAT}\[[A-Za-z0-9_./+-]+(?:{_WS_PAT}[A-Za-z0-9_./+-]+)*"
+    rf"(?:,{_WS_PAT}[A-Za-z0-9_./+-]+(?:{_WS_PAT}[A-Za-z0-9_./+-]+)*)*\])?"
 )
-_CLASS_DESC_PAT = rf"Ideation:\s+{_TITLES_PAT};\s+Execution:\s+{_TITLES_PAT}"
+_EXPANDED_PAIR_PAT = (
+    rf"Ideation{_WS_PAT}([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*){_WS_PAT}\({_TITLES_PAT}(?:,{_WS_PAT}{_TITLES_PAT})*\);{_WS_PAT}"
+    rf"Execution{_WS_PAT}([0-4](?:-[0-4])?(?:,[0-4](?:-[0-4])?)*){_WS_PAT}\({_TITLES_PAT}(?:,{_WS_PAT}{_TITLES_PAT})*\)"
+)
+_CLASS_DESC_PAT = rf"Ideation:{_WS_PAT}{_TITLES_PAT};{_WS_PAT}Execution:{_WS_PAT}{_TITLES_PAT}"
 _MADE_DISCLOSURE_RE = re.compile(
-    rf"^(?:(?://|#|;|--|/\*|<!--)\s+)?MADE:\s+"
+    rf"^(?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}"
     rf"(?:"
-    rf"(I[0-4](?:-I[0-4])?(?:,I[0-4](?:-I[0-4])?)*)\s+/\s+(E[0-4](?:-E[0-4])?(?:,E[0-4](?:-E[0-4])?)*)"
-    rf"(?:\s+\((?:{_EXPANDED_PAIR_PAT}|{_CLASS_DESC_PAT})\))?"
+    rf"(I[0-4](?:-I[0-4])?(?:,I[0-4](?:-I[0-4])?)*){_WS_PAT}/{_WS_PAT}(E[0-4](?:-E[0-4])?(?:,E[0-4](?:-E[0-4])?)*)"
+    rf"(?:{_WS_PAT}\((?:{_EXPANDED_PAIR_PAT}|{_CLASS_DESC_PAT})\))?"
     rf"|(?:{_EXPANDED_PAIR_PAT})"
-    rf"){_TOOL_ATTR_PAT}(?:\s+(?:\*/|-->))?$"
+    rf"){_TOOL_ATTR_PAT}(?:{_WS_PAT}(?:\*/|-->))?$"
 )
 
 
@@ -141,10 +145,16 @@ def validate_grammar_examples(spec_text: str) -> None:
 
         candidates: list[str] = []
         if in_fence:
-            if re.match(r"^(?:(?://|#|;|--|/\*|<!--)\s+)?MADE:\s+\S+", stripped):
+            if re.match(rf"^(?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}\S+", stripped):
                 candidates.append(stripped)
         else:
-            for m in re.finditer(r"`((?:(?://|#|;|--|/\*|<!--)\s+)?MADE:\s+[^`]+)`", line):
+            for m in re.finditer(rf"`((?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}[^`]+)`", line):
+                candidates.append(m.group(1).strip())
+            for m in re.finditer(
+                rf"<code>((?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}.*?)</code>",
+                line,
+                flags=re.IGNORECASE,
+            ):
                 candidates.append(m.group(1).strip())
 
         for cand in candidates:
