@@ -188,6 +188,8 @@ MADE does not evaluate or dictate how an author chooses to measure or disclose t
 ### There must be at least [14 competing standards](https://xkcd.com/927/) for AI disclosure.  Which ones allow me to separate Design from Execution just like MADE, but provide even more functionality?
 [AI-DECLARATION.md](https://ai-declaration.md/) is more comprehensive than MADE, providing extensive features relevant to software developemnt: A formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings.  However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or prefer a compact human-readable shorthand (such as "`MADE: I0 / E2`"). 
 
+The [AI Attribution Tooklit](https://aiattribution.github.io/) has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-softwware works.  Attributions are represented as tagged shorthand, such as `AIA Ph SeCe Hin R v1.0`.  They offer [a tool to expand attributions back into natural language](https://aiattribution.github.io/interpret-attribution).
+
 ---
 
 ## 7. Authorship & Provenance <!-- nav: Authorship -->
@@ -198,4 +200,4 @@ The MADE standard was created by Jim Leonard (<mobygamer@gmail.com>) to provide 
 
 ## 8. Notes & References <!-- nav: none -->
 
-[^1]: Examples of single-spectrum or single-label AI disclosure frameworks include the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), the [AI Attribution Tooklit](https://aiattribution.github.io/), and [RAID - Responsible AI Disclosure](https://responsibleaidisclosure.com/).
+[^1]: Examples of single-spectrum or single-label AI disclosure frameworks include the [REAL Rating](https://www.realgoodai.org/real-rating), the [AI Assessment Scale](https://aiassessmentscale.com/), [W3C's AI Content Disclosure for HTML](https://w3c-cg.github.io/ai-content-disclosure/#disclosure-values), and [RAID - Responsible AI Disclosure](https://responsibleaidisclosure.com/).
