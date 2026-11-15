@@ -41,8 +41,7 @@ file-header-tag     = single-line-comment canonical-prefix SP single-file-score 
 
 single-file-score   = %s"I" level-digit SP "/" SP %s"E" level-digit
 
-opt-bt              = [ "`" ]
-component-tag       = "(" opt-bt single-file-score opt-bt "," SP single-class-desc ")"
+component-tag       = "(" ( single-file-score / "`" single-file-score "`" ) "," SP single-class-desc ")"
                     / "[" single-file-score SP "(" single-class-desc ")" "]"
 
 nfo-summary-line    = nfo-ideation-line / nfo-execution-line

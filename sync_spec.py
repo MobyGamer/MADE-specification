@@ -287,10 +287,16 @@ def validate_grammar_examples(
     """Validate all MADE disclosures, headers, component tags, and .NFO lines."""
     errors: list[str] = []
     in_fence = False
+    fence_lang = ""
     for idx, line in enumerate(spec_text.splitlines(), start=1):
         stripped = line.strip()
         if stripped.startswith("```"):
             in_fence = not in_fence
+            fence_lang = (
+                stripped[3:].strip().split()[0].lower()
+                if in_fence and stripped[3:].strip()
+                else ""
+            )
             continue
 
         candidates: list[str] = []
@@ -304,7 +310,7 @@ def validate_grammar_examples(
                 nfo_hdr = re.match(r"^\s*AI DISCLOSURE \((MADE:[^)]+)\)\s*$", stripped)
                 if nfo_hdr:
                     candidates.append(nfo_hdr.group(1).strip())
-        else:
+        if not in_fence or fence_lang in ("markdown", "md"):
             for m in re.finditer(
                 rf"`((?:(?://|#|;|--|/\*|<!--){_WS_PAT})?MADE:{_WS_PAT}[^`]+)`",
                 line,
