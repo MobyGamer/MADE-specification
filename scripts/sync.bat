@@ -1,6 +1,6 @@
 @echo off
 :: SPDX-License-Identifier: CC0-1.0
-:: Double-click to manually regenerate index.html after revising MADE-SPECIFICATION.md.
+:: Double-click to manually regenerate docs\index.html after revising MADE-SPECIFICATION.md.
 :: Any command-line flags (such as --check or --watch) are forwarded to sync_spec.py.
 setlocal EnableExtensions EnableDelayedExpansion
 

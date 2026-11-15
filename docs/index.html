@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>MADE v0.9.1: Measure of AI in Design &amp; Execution</title>
+  <title>MADE v1.0.0-rc1: Measure of AI in Design &amp; Execution</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -817,7 +817,7 @@
       </p>
       <nav class="tabs" aria-label="Document views">
         <!-- SYNC:TAB1-BTN:START -->
-      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v0.9.1 Specification</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc1 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
         <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
           Builder</button>
@@ -827,7 +827,7 @@
 
   <main class="container">
 
-    <!-- ================= TAB 1 (DEFAULT): FULL v0.9.1 SPECIFICATION ================= -->
+    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc1 SPECIFICATION ================= -->
     <section id="tab-spec">
       <!-- SYNC:TAB-SPEC:START -->
     <div class="spec-toc-sticky">
@@ -848,11 +848,11 @@
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
-          <span>0.9.1</span>
+          <span>1.0.0-rc1</span>
         </div>
         <div class="meta-item">
           <strong>Status</strong>
-          <span>Draft Specification</span>
+          <span>Release Candidate</span>
         </div>
         <div class="meta-item">
           <strong>Specification License</strong>
@@ -1067,15 +1067,15 @@ MADE: I1 / E2 [Claude 3.5 Sonnet, Midjourney v6]
 # Example 2
 MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <h3>Machine Verification</h3>
-      <p>For the complete formal syntax rules, see the RFC 5234 / RFC 7405 ABNF grammar in <a href="MADE-GRAMMAR.abnf"><code>MADE-GRAMMAR.abnf</code></a>.</p>
+      <p>For the complete formal syntax rules, see the RFC 5234 / RFC 7405 ABNF grammar in <a href="https://github.com/MobyGamer/MADE-specification/blob/main/MADE-GRAMMAR.abnf" target="_blank" rel="noopener"><code>MADE-GRAMMAR.abnf</code></a>.</p>
     </div>
 
     <div class="card" id="spec-licensing-governance" tabindex="-1">
       <h2><span>Licensing &amp; Governance</span></h2>
-      <p>MADE is free to use. The <strong>specification prose</strong> is licensed under <strong><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></strong>, and <strong>everything else</strong> (ratings, badges, templates, header tags, and software code) is dedicated to the public domain under <strong><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a></strong> (see <a href="LICENSE"><code>LICENSE</code></a> for full details):</p>
+      <p>MADE is free to use. The <strong>specification prose</strong> is licensed under <strong><a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a></strong>, and <strong>everything else</strong> (ratings, badges, templates, header tags, and software code) is dedicated to the public domain under <strong><a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal</a></strong> (see <a href="https://github.com/MobyGamer/MADE-specification/blob/main/LICENSE" target="_blank" rel="noopener"><code>LICENSE</code></a> for full details):</p>
       <ol>
-        <li><strong>Everything Else (<code>CC0 1.0 Public Domain</code>):</strong> Assigning MADE ratings, embedding badges, copying disclosure templates or <code>MADE:</code> header tags, and using, modifying, or redistributing all accompanying software scripts, regular expressions, and builder code (<code>sync_spec.py</code>, <code>sync.bat</code>, and the builder CSS/JavaScript in <code>index.html</code>) are completely free of restrictions.</li>
-        <li><strong>Specification Prose (<code>CC BY-ND 4.0</code>):</strong> The normative specification text (<code>MADE-SPECIFICATION.md</code>, the specification prose in <code>index.html</code>, <code>MADE-GRAMMAR.abnf</code>, and <code>README.md</code>) is licensed under <code>CC BY-ND 4.0</code>. Republishers may distribute the specification verbatim, but may not modify the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while calling the resulting scale MADE.</li>
+        <li><strong>Everything Else (<code>CC0 1.0 Public Domain</code>):</strong> Assigning MADE ratings, embedding badges, copying disclosure templates or <code>MADE:</code> header tags, and using, modifying, or redistributing all accompanying software scripts, regular expressions, and builder code (<code>scripts/sync_spec.py</code>, <code>scripts/sync.bat</code>, and the builder CSS/JavaScript in <code>docs/index.html</code>) are completely free of restrictions.</li>
+        <li><strong>Specification Prose (<code>CC BY-ND 4.0</code>):</strong> The normative specification text (<code>MADE-SPECIFICATION.md</code>, the specification prose in <code>docs/index.html</code>, <code>MADE-GRAMMAR.abnf</code>, and <code>README.md</code>) is licensed under <code>CC BY-ND 4.0</code>. Republishers may distribute the specification verbatim, but may not modify the definitions of <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code> while calling the resulting scale MADE.</li>
       </ol>
       <blockquote>
         <p><strong>Express Permission Addendum:</strong> Notwithstanding Section 3(a)(4) of <code>CC BY-ND 4.0</code>, the Licensor grants perpetual, irrevocable, royalty-free permission to: (1) translate and distribute the specification in any natural language, provided the translation preserves the canonical <code>I0</code> through <code>I4</code> and <code>E0</code> through <code>E4</code> identifiers and definitions, identifies itself as a community translation, and links to the canonical English specification URI; (2) quote and display unmodified level titles and definitions in user interfaces, tooltips, and documentation; and (3) publish separate, externally authored extension profiles that add auxiliary metadata fields without altering <code>I0</code> through <code>I4</code> or <code>E0</code> through <code>E4</code>.</p>
@@ -1313,7 +1313,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     <footer>
       <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>MADE Specification v0.9.1</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>MADE Specification v1.0.0-rc1</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, metadata header tags, and accompanying software scripts are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
       Official specification source, templates, and grammar files: <a href="https://github.com/MobyGamer/MADE-specification" target="_blank" rel="noopener">MADE Project Files on GitHub</a>.
     </p>
@@ -1327,7 +1327,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
   const SPEC_DATA = {
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
-    "version": "0.9.1",
+    "version": "1.0.0-rc1",
     "canonicalUri": "https://mobygamer.github.io/MADE-specification/",
     "homepage": "https://mobygamer.github.io/MADE-specification/",
     "ideationTitles": [

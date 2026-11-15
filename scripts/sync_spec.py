@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: CC0-1.0
-"""Synchronize MADE-SPECIFICATION.md (ground truth) into index.html.
+"""Synchronize MADE-SPECIFICATION.md (ground truth) into docs/index.html.
 
 Zero-dependency Python 3 script that validates MADE-SPECIFICATION.md against
 structural and stylistic rules, checks TEMPLATES.md and MADE-GRAMMAR.abnf, then
-updates all marked regions of index.html (Tab 1 full specification, Tab 2
+updates all marked regions of docs/index.html (Tab 1 full specification, Tab 2
 Ideation/Execution level buttons, header/footer metadata, and the JavaScript
 SPEC_DATA object driving generated disclosures).
 
 Usage:
-  python sync_spec.py           # Validate spec and update index.html in-place
-  python sync_spec.py --check   # Dry-run check (exit 0 if synced, 1 otherwise)
-  python sync_spec.py --watch   # Watch MADE-SPECIFICATION.md and auto-sync
+  python scripts/sync_spec.py           # Validate spec and update docs/index.html in-place
+  python scripts/sync_spec.py --check   # Dry-run check (exit 0 if synced, 1 otherwise)
+  python scripts/sync_spec.py --watch   # Watch MADE-SPECIFICATION.md and auto-sync
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ from typing import Any
 
 
 DEFAULT_SPEC_FILENAME = "MADE-SPECIFICATION.md"
-DEFAULT_HTML_FILENAME = "index.html"
+DEFAULT_HTML_RELPATH = "docs/index.html"
 DEFAULT_TEMPLATES_FILENAME = "TEMPLATES.md"
 DEFAULT_GRAMMAR_FILENAME = "MADE-GRAMMAR.abnf"
 DEFAULT_GITHUB_REPO_URL = "https://github.com/MobyGamer/MADE-specification"
@@ -1411,42 +1411,42 @@ def watch_loop(
 
 
 def main(argv: list[str] | None = None) -> int:
-    base_dir = Path(__file__).resolve().parent
+    repo_root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(
         description=(
             "Validate MADE-SPECIFICATION.md and synchronize all specification "
-            "prose, level definitions, and metadata into index.html."
+            "prose, level definitions, and metadata into docs/index.html."
         )
     )
     parser.add_argument(
         "--spec",
         type=Path,
-        default=base_dir / DEFAULT_SPEC_FILENAME,
+        default=repo_root / DEFAULT_SPEC_FILENAME,
         help=f"Path to ground-truth Markdown file (default: {DEFAULT_SPEC_FILENAME})",
     )
     parser.add_argument(
         "--html",
         type=Path,
-        default=base_dir / DEFAULT_HTML_FILENAME,
-        help=f"Path to target HTML file (default: {DEFAULT_HTML_FILENAME})",
+        default=repo_root / DEFAULT_HTML_RELPATH,
+        help=f"Path to target HTML file (default: {DEFAULT_HTML_RELPATH})",
     )
     parser.add_argument(
         "--templates",
         type=Path,
-        default=base_dir / DEFAULT_TEMPLATES_FILENAME,
+        default=repo_root / DEFAULT_TEMPLATES_FILENAME,
         help=f"Path to templates Markdown file (default: {DEFAULT_TEMPLATES_FILENAME})",
     )
     parser.add_argument(
         "--grammar",
         type=Path,
-        default=base_dir / DEFAULT_GRAMMAR_FILENAME,
+        default=repo_root / DEFAULT_GRAMMAR_FILENAME,
         help=f"Path to ABNF grammar file (default: {DEFAULT_GRAMMAR_FILENAME})",
     )
     mode_group = parser.add_mutually_exclusive_group()
     mode_group.add_argument(
         "--check",
         action="store_true",
-        help="Validate spec and verify index.html is already in sync without modifying files.",
+        help="Validate spec and verify docs/index.html is already in sync without modifying files.",
     )
     mode_group.add_argument(
         "--watch",
@@ -1480,7 +1480,7 @@ def main(argv: list[str] | None = None) -> int:
         if changed:
             print(
                 f"OUT OF SYNC: {args.html.name} differs from {args.spec.name}. "
-                "Run 'python sync_spec.py' (or 'sync.bat') to update.",
+                "Run 'python scripts/sync_spec.py' (or 'scripts\\sync.bat') to update.",
                 file=sys.stderr,
             )
             return 1

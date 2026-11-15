@@ -4,11 +4,11 @@ MADE is a self-disclosure AI rating scale for creative and technical works that 
 
 The canonical MADE specification is located in MADE-SPECIFICATION.md, which can be referenced as a "ground truth" document for MADE.
 
-**This is a draft specification, which is still under review.** When the specification is fully published, this notice will be removed.
+**This is a release candidate specification, currently in final review.** When the specification is finalized, this notice will be removed.
 
 ## AI Usage Disclosure
 
-[![MADE: I0 / E0,E2-E3](images/made-badge.svg)](https://mobygamer.github.io/MADE-specification/)
+[![MADE: I0 / E0,E2-E3](docs/images/made-badge.svg)](https://mobygamer.github.io/MADE-specification/)
 
 The MADE Specification itself is, appropriately, self-disclosed under the **MADE (Measure of AI in Design & Execution)** standard:
 - **Ideation (`I0`, Unassisted):** 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.
@@ -25,6 +25,6 @@ The MADE Specification itself is, appropriately, self-disclosed under the **MADE
 ## License
 
 MADE uses a two-part licensing structure (see [`LICENSE`](LICENSE) for full legal text):
-- **Ratings, Templates, Badges, Header Tags, and Software Code (`CC0 1.0 Universal`):** Public domain dedication with zero restrictions on declaring MADE ratings, copying templates/badges, or using/modifying `sync_spec.py`, `sync.bat`, and the builder code.
+- **Ratings, Templates, Badges, Header Tags, and Software Code (`CC0 1.0 Universal`):** Public domain dedication with zero restrictions on declaring MADE ratings, copying templates/badges, or using/modifying `scripts/sync_spec.py`, `scripts/sync.bat`, and the builder code.
 - **Specification Document (`CC BY-ND 4.0` with Express Permission Addendum):** Preserves canonical `I0` to `I4` and `E0` to `E4` definitions while permitting translations, UI/documentation quoting, and separate extension profiles.
 

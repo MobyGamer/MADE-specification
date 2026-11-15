@@ -1,7 +1,7 @@
-# MADE: Measure of AI in Design & Execution, Specification v0.9.1
+# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc1
 
-**Version:** 0.9.1
-**Status:** Draft Specification
+**Version:** 1.0.0-rc1
+**Status:** Release Candidate
 **Canonical URI:** https://mobygamer.github.io/MADE-specification/
 **Repository:** https://github.com/MobyGamer/MADE-specification
 **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
@@ -160,18 +160,18 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]
 
 ### 4.6 Machine Verification
 
-For the complete formal syntax rules, see the RFC 5234 / RFC 7405 ABNF grammar in [`MADE-GRAMMAR.abnf`](MADE-GRAMMAR.abnf).
+For the complete formal syntax rules, see the RFC 5234 / RFC 7405 ABNF grammar in [`MADE-GRAMMAR.abnf`](https://github.com/MobyGamer/MADE-specification/blob/main/MADE-GRAMMAR.abnf).
 
 ---
 
 ## 5. Licensing & Governance <!-- nav: Licensing -->
 
-MADE is free to use. The **specification prose** is licensed under **[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)**, and **everything else** (ratings, badges, templates, header tags, and software code) is dedicated to the public domain under **[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)** (see [`LICENSE`](LICENSE) for full details):
+MADE is free to use. The **specification prose** is licensed under **[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)**, and **everything else** (ratings, badges, templates, header tags, and software code) is dedicated to the public domain under **[CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/)** (see [`LICENSE`](https://github.com/MobyGamer/MADE-specification/blob/main/LICENSE) for full details):
 
 1. **Everything Else (`CC0 1.0 Public Domain`):**
-   Assigning MADE ratings, embedding badges, copying disclosure templates or `MADE:` header tags, and using, modifying, or redistributing all accompanying software scripts, regular expressions, and builder code (`sync_spec.py`, `sync.bat`, and the builder CSS/JavaScript in `index.html`) are completely free of restrictions.
+   Assigning MADE ratings, embedding badges, copying disclosure templates or `MADE:` header tags, and using, modifying, or redistributing all accompanying software scripts, regular expressions, and builder code (`scripts/sync_spec.py`, `scripts/sync.bat`, and the builder CSS/JavaScript in `docs/index.html`) are completely free of restrictions.
 2. **Specification Prose (`CC BY-ND 4.0`):**
-   The normative specification text (`MADE-SPECIFICATION.md`, the specification prose in `index.html`, `MADE-GRAMMAR.abnf`, and `README.md`) is licensed under `CC BY-ND 4.0`. Republishers may distribute the specification verbatim, but may not modify the definitions of `I0` through `I4` or `E0` through `E4` while calling the resulting scale MADE.
+   The normative specification text (`MADE-SPECIFICATION.md`, the specification prose in `docs/index.html`, `MADE-GRAMMAR.abnf`, and `README.md`) is licensed under `CC BY-ND 4.0`. Republishers may distribute the specification verbatim, but may not modify the definitions of `I0` through `I4` or `E0` through `E4` while calling the resulting scale MADE.
 
 > **Express Permission Addendum:** Notwithstanding Section 3(a)(4) of `CC BY-ND 4.0`, the Licensor grants perpetual, irrevocable, royalty-free permission to: (1) translate and distribute the specification in any natural language, provided the translation preserves the canonical `I0` through `I4` and `E0` through `E4` identifiers and definitions, identifies itself as a community translation, and links to the canonical English specification URI; (2) quote and display unmodified level titles and definitions in user interfaces, tooltips, and documentation; and (3) publish separate, externally authored extension profiles that add auxiliary metadata fields without altering `I0` through `I4` or `E0` through `E4`.
 
