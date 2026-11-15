@@ -10,7 +10,7 @@ The canonical MADE specification is located in MADE-SPECIFICATION.md, which can 
 
 [![MADE: I0 / E0,E2-E3](images/made-badge.svg)](https://mobygamer.github.io/MADE-specification/)
 
-This work is self-disclosed under the **MADE (Measure of AI in Design & Execution)** standard:
+The MADE Specification itself is, appropriately, self-disclosed under the **MADE (Measure of AI in Design & Execution)** standard:
 - **Ideation (`I0`, Unassisted):** 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.
 - **Execution (`E0,E2-E3`, Unassisted, Collaborative, Directed):** Project components span multiple execution levels. See the component breakdown below for details.
 
