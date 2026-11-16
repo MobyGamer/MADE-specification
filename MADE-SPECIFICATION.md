@@ -1,13 +1,13 @@
 # MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc2
 
-**Version:** 1.0.0-rc2
-**Status:** Release Candidate
-**Canonical URI:** https://madespec.org/
-**Repository:** https://github.com/MobyGamer/MADE-specification
-**Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)
-**Date:** November 2026
-**Author:** Jim Leonard (<mobygamer@gmail.com>)
-**Templates, Badges, Tags, & Code License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
+- **Version:** 1.0.0-rc2
+- **Status:** Release Candidate
+- **Canonical URI:** https://madespec.org/
+- **Repository:** https://github.com/MobyGamer/MADE-specification
+- **Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)
+- **Date:** November 2026
+- **Author:** Jim Leonard (<mobygamer@gmail.com>)
+- **Templates, Badges, Tags, & Code License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 ---
 

@@ -550,7 +550,11 @@ def parse_header_chunk(lines: list[str]) -> dict[str, Any]:
             raw_h1 = stripped[2:].strip()
             continue
 
-        meta_match = re.match(r"^\*\*([^*]+?):\*\*\s*(.+?)\s*$", stripped)
+        meta_match = re.match(
+            r"^(?:[-*]\s+)?\*\*([^*]+?):\*\*\s*(.+?)(?:\s*(?:\\|<br\s*/?>))?\s*$",
+            stripped,
+            flags=re.IGNORECASE,
+        )
         if meta_match:
             key = meta_match.group(1).strip()
             val = meta_match.group(2).strip()
