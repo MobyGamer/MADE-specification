@@ -4,8 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="canonical" href="https://madespec.org/">
+  <meta name="description" content="MADE (Measure of AI in Design &amp; Execution) is an open, author-declared AI disclosure rating scale separating human conceptual authorship (Ideation) from mechanical production (Execution).">
+  <meta property="og:title" content="MADE: Measure of AI in Design &amp; Execution">
+  <meta property="og:description" content="An open self-disclosure AI rating standard separating conceptual Ideation (I0-I4) from mechanical Execution (E0-E4).">
+  <meta property="og:url" content="https://madespec.org/">
+  <meta property="og:type" content="website">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>MADE v1.0.0-rc1: Measure of AI in Design &amp; Execution</title>
+  <title>MADE v1.0.0-rc2: Measure of AI in Design &amp; Execution</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -817,7 +824,7 @@
       </p>
       <nav class="tabs" aria-label="Document views">
         <!-- SYNC:TAB1-BTN:START -->
-      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc1 Specification</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc2 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
         <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
           Builder</button>
@@ -827,7 +834,7 @@
 
   <main class="container">
 
-    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc1 SPECIFICATION ================= -->
+    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc2 SPECIFICATION ================= -->
     <section id="tab-spec">
       <!-- SYNC:TAB-SPEC:START -->
     <div class="spec-toc-sticky">
@@ -848,7 +855,7 @@
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
-          <span>1.0.0-rc1</span>
+          <span>1.0.0-rc2</span>
         </div>
         <div class="meta-item">
           <strong>Status</strong>
@@ -916,7 +923,7 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
           <tr>
             <td><span class="lvl-badge b-0">I0</span></td>
             <td><strong>Unassisted</strong></td>
-            <td>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.</td>
+            <td>100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.</td>
             <td><strong>Programming:</strong> Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br><strong>Writing:</strong> Conceiving a novel's plot, characters, and chapter structure independently.<br><strong>Art:</strong> Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br><strong>Music:</strong> Composing melodies, harmonies, and arrangements without querying any AI tool.</td>
           </tr>
           <tr>
@@ -996,7 +1003,7 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
 
     <div class="card" id="spec-disclosure-format-syntax" tabindex="-1">
       <h2><span>Disclosure Format &amp; Syntax</span></h2>
-      <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>).  For example:</p>
+      <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>). For example:</p>
       <p><code>MADE: I1 / E0</code></p>
       <p>For works with uniform AI usage throughout, this single rating is all that is necessary. When first introducing MADE in prose alongside a rating, authors are encouraged to spell out its full name (<strong>MADE (Measure of AI in Design &amp; Execution)</strong>) or link to the specification.</p>
       <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.</p>
@@ -1034,7 +1041,7 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
           </ul>
         </li>
         <li>
-          <strong>Combined Categories:</strong> Ideation and Execution can apply commas and hyphens independently.  (Both can be combined within a category if needed, such as <code>E0-E1,E3</code>):
+          <strong>Combined Categories:</strong> Ideation and Execution can apply commas and hyphens independently. (Both can be combined within a category if needed, such as <code>E0-E1,E3</code>):
           <ul>
             <li>Example: <code>MADE: I0-I1 / E0,E3</code></li>
           </ul>
@@ -1085,18 +1092,18 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     <div class="card" id="spec-questions-and-answers" tabindex="-1">
       <h2><span>Questions and Answers</span></h2>
       <h3>If I use an AI tool that only checks or cleans up my work and doesn't create anything new, would I still be obligated to disclose it?</h3>
-      <p>While international laws and industry standards differ, in general you would not be obligated.  Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted.  Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds <em>de minimis amounts</em>; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure.  However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as generative inpainting of new visual elements, rewriting passages, generating code, or resynthesizing vocal takes.</p>
-      <p>MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage.  That said, an AI tool used strictly for diagnostics, proofreading, or corrective signal cleanup (such as denoising, dynamic EQ, or pitch correction) would generally be classified as <code>E1</code>, whereas tools that do not modify the output signal remain <code>E0</code>.</p>
+      <p>While international laws and industry standards differ, in general you would not be obligated. Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted. Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds <em>de minimis amounts</em>; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure. However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as generative inpainting of new visual elements, rewriting passages, generating code, or resynthesizing vocal takes.</p>
+      <p>MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage. That said, an AI tool used strictly for diagnostics, proofreading, or corrective signal cleanup (such as denoising, dynamic EQ, or pitch correction) would generally be classified as <code>E1</code>, whereas tools that do not modify the output signal remain <code>E0</code>.</p>
       <h3>Which other AI disclosure standards separate Design from Execution just like MADE, but provide even more functionality?</h3>
       <p>With at least <a href="https://xkcd.com/927/" target="_blank" rel="noopener">14 competing standards</a> for AI disclosure in circulation, as of publication there are at least two specifications that allow separating conceptual design from execution while providing additional specialized features:</p>
-      <p><a href="https://ai-declaration.md/" target="_blank" rel="noopener">AI-DECLARATION.md</a> is more comprehensive than MADE, providing extensive features relevant to software development: a formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings.  However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or if you prefer a compact human-readable shorthand (such as "<code>MADE: I0 / E2</code>").</p>
-      <p>The <a href="https://aiattribution.github.io/" target="_blank" rel="noopener">AI Attribution Toolkit</a> has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-software works.  Attributions are represented as tagged shorthand, such as <code>AIA Ph SeCe Hin R v1.0</code>.  They offer <a href="https://aiattribution.github.io/interpret-attribution" target="_blank" rel="noopener">a tool to expand attributions back into natural language</a>.</p>
+      <p><a href="https://ai-declaration.md/" target="_blank" rel="noopener">AI-DECLARATION.md</a> is more comprehensive than MADE, providing extensive features relevant to software development: a formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings. However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or if you prefer a compact human-readable shorthand (such as "<code>MADE: I0 / E2</code>").</p>
+      <p>The <a href="https://aiattribution.github.io/" target="_blank" rel="noopener">AI Attribution Toolkit</a> has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-software works. Attributions are represented as tagged shorthand, such as <code>AIA Ph SeCe Hin R v1.0</code>. They offer <a href="https://aiattribution.github.io/interpret-attribution" target="_blank" rel="noopener">a tool to expand attributions back into natural language</a>.</p>
       <h3>Does MADE align with disclosure rules on commercial platforms?</h3>
-      <p>Mostly yes.  Major digital storefronts already draw a practical line between assistive workflow tools and directly generated output.  Amazon Kindle Direct Publishing (KDP) exempts AI-assisted brainstorming, outlining, and grammar editing from disclosure, while requiring authors to declare AI-generated text and images.  Valve's Steam Content Survey focuses disclosure on pre-generated or live-generated player-facing assets.  Medium requires explicit transparency labels whenever AI assistance is used.  MADE mirrors these by letting creators disclose individual pieces or components of their project separately from generative execution, without over-reporting routine operations as "AI generation".</p>
+      <p>Mostly yes. Major digital storefronts already draw a practical line between assistive workflow tools and directly generated output. Amazon Kindle Direct Publishing (KDP) exempts AI-assisted brainstorming, outlining, and grammar editing from disclosure, while requiring authors to declare AI-generated text and images. Valve's Steam Content Survey focuses disclosure on pre-generated or live-generated player-facing assets. Medium requires explicit transparency labels whenever AI assistance is used. MADE mirrors these by letting creators disclose individual pieces or components of their project separately from generative execution, without over-reporting routine operations as "AI generation".</p>
       <h3>Does MADE compete with cryptographic provenance standards like C2PA (Content Credentials)?</h3>
-      <p>No, because C2PA and MADE solve different problems.  C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.</p>
+      <p>No, because C2PA and MADE solve different problems. C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.</p>
       <h3>If I prompt an AI tool with my own original idea, can I use <code>I0</code> (Unassisted) Ideation?</h3>
-      <p><code>I0</code> is meant to represent unassisted ideation; a wholly original idea represented in great detail.  <code>I0</code> means you personally originated the concrete structure, plot, composition, or architecture before any tool execution.  Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is <code>I3</code> (Directed) or <code>I4</code> (Autonomous) Ideation, not <code>I0</code>.</p>
+      <p><code>I0</code> is meant to represent unassisted ideation; a wholly original idea represented in great detail. <code>I0</code> means you personally originated the concrete structure, plot, composition, or architecture before any tool execution. Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is <code>I3</code> (Directed) or <code>I4</code> (Autonomous) Ideation, not <code>I0</code>.</p>
     </div>
 
     <div class="card" id="spec-authorship-provenance" tabindex="-1">
@@ -1140,7 +1147,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
               <span class="lvl-badge b-0">I0</span>
               <div class="level-info">
                 <strong>Unassisted</strong>
-                <span>100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.</span>
+                <span>100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.</span>
               </div>
             </div>
             <div class="level-option" data-level="1" onclick="toggleIdeation(1)">
@@ -1313,7 +1320,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     <footer>
       <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>MADE Specification v1.0.0-rc1</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>MADE Specification v1.0.0-rc2</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, metadata header tags, and accompanying software scripts are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
       Official specification source, templates, and grammar files: <a href="https://github.com/MobyGamer/MADE-specification" target="_blank" rel="noopener">MADE Project Files on GitHub</a>.
     </p>
@@ -1327,9 +1334,9 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
   const SPEC_DATA = {
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
-    "version": "1.0.0-rc1",
-    "canonicalUri": "https://madespec.org",
-    "homepage": "https://madespec.org",
+    "version": "1.0.0-rc2",
+    "canonicalUri": "https://madespec.org/",
+    "homepage": "https://madespec.org/",
     "ideationTitles": [
       "Unassisted",
       "Assisted",
@@ -1345,7 +1352,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       "Autonomous"
     ],
     "ideationDefinitions": [
-      "100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.",
+      "100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.",
       "Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.",
       "A human set the creative vision and partnered with AI to brainstorm specific elements, sections, or outlines.",
       "A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.",

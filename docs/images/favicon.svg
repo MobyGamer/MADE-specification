@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="MADE Favicon">
+  <rect x="0" y="0" width="32" height="32" fill="#16a34a" />
+  <rect x="32" y="0" width="32" height="32" fill="#06b6d4" />
+  <rect x="0" y="32" width="32" height="32" fill="#268bd2" />
+  <rect x="32" y="32" width="32" height="32" fill="#d97706" />
+  <g fill="#ffffff" text-anchor="middle" dominant-baseline="central" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif" font-size="22" font-weight="800">
+    <text x="16" y="16">M</text>
+    <text x="48" y="16">A</text>
+    <text x="16" y="48">D</text>
+    <text x="48" y="48">E</text>
+  </g>
+</svg>

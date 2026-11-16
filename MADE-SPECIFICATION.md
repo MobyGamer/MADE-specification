@@ -1,12 +1,12 @@
-# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc1
+# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc2
 
-**Version:** 1.0.0-rc1
+**Version:** 1.0.0-rc2
 **Status:** Release Candidate
 **Canonical URI:** https://madespec.org/
 **Repository:** https://github.com/MobyGamer/MADE-specification
-**Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)  
-**Date:** November 2026  
-**Author:** Jim Leonard (<mobygamer@gmail.com>)  
+**Specification License:** [CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0/)
+**Date:** November 2026
+**Author:** Jim Leonard (<mobygamer@gmail.com>)
 **Templates, Badges, Tags, & Code License:** [CC0 1.0 Universal (Public Domain)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 ---
@@ -48,7 +48,7 @@ The **Ideation** level measures the intellectual and creative origin of the work
 
 | Level | Title | Definition | Examples Across Creative & Technical Fields |
 | :--- | :--- | :--- | :--- |
-| **`I0`** | **Unassisted** | 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation. | **Programming:** Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br>**Writing:** Conceiving a novel's plot, characters, and chapter structure independently.<br>**Art:** Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>**Music:** Composing melodies, harmonies, and arrangements without querying any AI tool. |
+| **`I0`** | **Unassisted** | 100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation. | **Programming:** Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br>**Writing:** Conceiving a novel's plot, characters, and chapter structure independently.<br>**Art:** Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>**Music:** Composing melodies, harmonies, and arrangements without querying any AI tool. |
 | **`I1`** | **Assisted** | Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original song while using AI to brainstorm lyric rhymes, thematic phrasing, or instrumentation references. |
 | **`I2`** | **Collaborative** | A human set the creative vision and partnered with AI to brainstorm specific elements, sections, or outlines. | **Programming:** Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>**Writing:** Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>**Art:** Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>**Music:** Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies. |
 | **`I3`** | **Directed** | A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human. | **Programming:** Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br>**Writing:** Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>**Art:** Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>**Music:** Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement. |
@@ -72,7 +72,7 @@ The **Execution** level measures how the finished work (source code, prose, visu
 
 ## 4. Disclosure Format & Syntax <!-- nav: Format & Syntax -->
 
-At its simplest, a MADE disclosure always begins with the `MADE:` prefix (including the colon), followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`).  For example:
+At its simplest, a MADE disclosure always begins with the `MADE:` prefix (including the colon), followed by a single Ideation level (`I0` to `I4`) and a single Execution level (`E0` to `E4`) separated by a forward slash (`/`). For example:
 
 `MADE: I1 / E0`
 
@@ -100,7 +100,7 @@ When a project contains multiple components with different AI involvement levels
   - Example: `MADE: I1 / E0,E3`
 - **Contiguous Ranges:** When components span consecutive levels with no gaps (such as adjacent levels `I0` and `I1`, or every level from `E0` through `E2`), always join the first and last level with a **hyphen** rather than commas:
   - Examples: `MADE: I0-I1 / E0` or `MADE: I1 / E0-E2`
-- **Combined Categories:** Ideation and Execution can apply commas and hyphens independently.  (Both can be combined within a category if needed, such as `E0-E1,E3`):
+- **Combined Categories:** Ideation and Execution can apply commas and hyphens independently. (Both can be combined within a category if needed, such as `E0-E1,E3`):
   - Example: `MADE: I0-I1 / E0,E3`
 
 When writing multi-component ratings in the expanded format, append the applicable level titles in ascending order separated by commas after each category label, such as: `MADE: I0-I1 / E0,E3 (Ideation: Unassisted, Assisted; Execution: Unassisted, Directed)`.
@@ -180,25 +180,25 @@ MADE is free to use. The **specification prose** is licensed under **[CC BY-ND 4
 ## 6. Questions and Answers <!-- nav: Q&A -->
 
 ### If I use an AI tool that only checks or cleans up my work and doesn't create anything new, would I still be obligated to disclose it?
-While international laws and industry standards differ, in general you would not be obligated.  Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted.  Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds *de minimis amounts*; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure.  However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as generative inpainting of new visual elements, rewriting passages, generating code, or resynthesizing vocal takes.
+While international laws and industry standards differ, in general you would not be obligated. Under the European Union AI Act (Regulation (EU) 2024/1689, Article 50(2)), tools that "perform an assistive function for standard editing" or do not substantially alter the input data or its semantics are exempted. Similarly, the United States Copyright Office registration policy (88 FR 16190) establishes that authors are only required to disclose AI-generated content that exceeds *de minimis amounts*; using AI merely as an assistive tool to edit, touch up, or format work that remains human-authored does not require disclosure. However, this distinction changes once a tool synthesizes novel material that goes into the finished release, such as generative inpainting of new visual elements, rewriting passages, generating code, or resynthesizing vocal takes.
 
-MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage.  That said, an AI tool used strictly for diagnostics, proofreading, or corrective signal cleanup (such as denoising, dynamic EQ, or pitch correction) would generally be classified as `E1`, whereas tools that do not modify the output signal remain `E0`.
+MADE does not evaluate or dictate how an author chooses to measure or disclose their level of AI usage. That said, an AI tool used strictly for diagnostics, proofreading, or corrective signal cleanup (such as denoising, dynamic EQ, or pitch correction) would generally be classified as `E1`, whereas tools that do not modify the output signal remain `E0`.
 
 ### Which other AI disclosure standards separate Design from Execution just like MADE, but provide even more functionality?
 With at least [14 competing standards](https://xkcd.com/927/) for AI disclosure in circulation, as of publication there are at least two specifications that allow separating conceptual design from execution while providing additional specialized features:
 
-[AI-DECLARATION.md](https://ai-declaration.md/) is more comprehensive than MADE, providing extensive features relevant to software development: a formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings.  However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or if you prefer a compact human-readable shorthand (such as "`MADE: I0 / E2`").
+[AI-DECLARATION.md](https://ai-declaration.md/) is more comprehensive than MADE, providing extensive features relevant to software development: a formal machine-readable YAML specification, tracking AI involvement across six discrete software lifecycle processes, and granular path-based component mappings. However, you may still prefer MADE if your work spans non-software disciplines like creative writing, art, and music, or if you prefer a compact human-readable shorthand (such as "`MADE: I0 / E2`").
 
-The [AI Attribution Toolkit](https://aiattribution.github.io/) has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-software works.  Attributions are represented as tagged shorthand, such as `AIA Ph SeCe Hin R v1.0`.  They offer [a tool to expand attributions back into natural language](https://aiattribution.github.io/interpret-attribution).
+The [AI Attribution Toolkit](https://aiattribution.github.io/) has multiple orthogonal declarations, allows for independent disclosure of design and execution, and is applicable to non-software works. Attributions are represented as tagged shorthand, such as `AIA Ph SeCe Hin R v1.0`. They offer [a tool to expand attributions back into natural language](https://aiattribution.github.io/interpret-attribution).
 
 ### Does MADE align with disclosure rules on commercial platforms?
-Mostly yes.  Major digital storefronts already draw a practical line between assistive workflow tools and directly generated output.  Amazon Kindle Direct Publishing (KDP) exempts AI-assisted brainstorming, outlining, and grammar editing from disclosure, while requiring authors to declare AI-generated text and images.  Valve's Steam Content Survey focuses disclosure on pre-generated or live-generated player-facing assets.  Medium requires explicit transparency labels whenever AI assistance is used.  MADE mirrors these by letting creators disclose individual pieces or components of their project separately from generative execution, without over-reporting routine operations as "AI generation".
+Mostly yes. Major digital storefronts already draw a practical line between assistive workflow tools and directly generated output. Amazon Kindle Direct Publishing (KDP) exempts AI-assisted brainstorming, outlining, and grammar editing from disclosure, while requiring authors to declare AI-generated text and images. Valve's Steam Content Survey focuses disclosure on pre-generated or live-generated player-facing assets. Medium requires explicit transparency labels whenever AI assistance is used. MADE mirrors these by letting creators disclose individual pieces or components of their project separately from generative execution, without over-reporting routine operations as "AI generation".
 
 ### Does MADE compete with cryptographic provenance standards like C2PA (Content Credentials)?
-No, because C2PA and MADE solve different problems.  C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.
+No, because C2PA and MADE solve different problems. C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.
 
 ### If I prompt an AI tool with my own original idea, can I use `I0` (Unassisted) Ideation?
-`I0` is meant to represent unassisted ideation; a wholly original idea represented in great detail.  `I0` means you personally originated the concrete structure, plot, composition, or architecture before any tool execution.  Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is `I3` (Directed) or `I4` (Autonomous) Ideation, not `I0`.
+`I0` is meant to represent unassisted ideation; a wholly original idea represented in great detail. `I0` means you personally originated the concrete structure, plot, composition, or architecture before any tool execution. Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is `I3` (Directed) or `I4` (Autonomous) Ideation, not `I0`.
 
 ---
 
