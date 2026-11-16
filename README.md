@@ -1,6 +1,6 @@
 # MADE: Measure of AI in Design & Execution
 
-MADE is a self-disclosure AI rating scale for creative and technical works that separates human conceptual authorship (Ideation / Design) from mechanical production (Execution).  For more information, as well as an interactive builder for MADE disclosures, visit https://mobygamer.github.io/MADE-specification/
+MADE is a self-disclosure AI rating scale for creative and technical works that separates human conceptual authorship (Ideation / Design) from mechanical production (Execution).  For more information, as well as an interactive builder for MADE disclosures, visit https://madespec.org/
 
 The canonical MADE specification is located in MADE-SPECIFICATION.md, which can be referenced as a "ground truth" document for MADE.
 
@@ -8,7 +8,7 @@ The canonical MADE specification is located in MADE-SPECIFICATION.md, which can 
 
 ## AI Usage Disclosure
 
-[![MADE: I0 / E0,E2-E3](docs/images/made-badge.svg)](https://mobygamer.github.io/MADE-specification/)
+[![MADE: I0 / E0,E2-E3](docs/images/made-badge.svg)](https://madespec.org/)
 
 The MADE Specification itself is, appropriately, self-disclosed under the **MADE (Measure of AI in Design & Execution)** standard:
 - **Ideation (`I0`, Unassisted):** 100% human-originated concepts, designs, compositions, and algorithms.  Zero AI consultation.

@@ -13,7 +13,7 @@ All templates, badges, and metadata header tags in this document are dedicated t
 ```markdown
 ## AI Usage Disclosure: `MADE: I0-I1 / E0,E3`
 
-This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](https://mobygamer.github.io/MADE-specification/)** standard:
+This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](https://madespec.org/)** standard:
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -112,7 +112,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ```markdown
 ## AI Usage Disclosure: `MADE: I3-I4 / E4`
 
-This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](https://mobygamer.github.io/MADE-specification/)** standard:
+This project is self-disclosed under the **[MADE (Measure of AI in Design & Execution)](https://madespec.org/)** standard:
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
@@ -130,7 +130,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
  AI DISCLOSURE (MADE: I0-I1 / E0,E3)
 ------------------------------------------------------------------------
  This work is self-disclosed under the MADE (Measure of AI in Design &
- Execution) standard. Learn more: https://mobygamer.github.io/MADE-specification/
+ Execution) standard. Learn more: https://madespec.org/
 ------------------------------------------------------------------------
  Project Summary:
    Ideation  : I0-I1 (Unassisted, Assisted)
@@ -164,21 +164,21 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 ### 7.3 Shields.io Markdown Badges
 - **100% Human (`I0 / E0`):**
   ```markdown
-  [![MADE: I0 / E0](https://img.shields.io/badge/MADE-I0_%2F_E0-16a34a?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
+  [![MADE: I0 / E0](https://img.shields.io/badge/MADE-I0_%2F_E0-16a34a?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```
 - **Human-Created with Research/Diagnostic Assist (`I1 / E1`):**
   ```markdown
-  [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-06b6d4?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
+  [![MADE: I1 / E1](https://img.shields.io/badge/MADE-I1_%2F_E1-06b6d4?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```
 - **Contiguous Range Project (`I1 / E0-E2`):**
   ```markdown
-  [![MADE: I1 / E0-E2](https://img.shields.io/badge/MADE-I1_%2F_E0--E2-268bd2?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
+  [![MADE: I1 / E0-E2](https://img.shields.io/badge/MADE-I1_%2F_E0--E2-268bd2?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```
 - **Hybrid Multi-Level Project (`I0-I1 / E0,E3`):**
   ```markdown
-  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-d97706?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
+  [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-d97706?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```
 - **Vibe-Coded / High-AI Project (`I3-I4 / E4`):**
   ```markdown
-  [![MADE: I3-I4 / E4](https://img.shields.io/badge/MADE-I3--I4_%2F_E4-d9381e?style=flat-square&labelColor=073642)](https://mobygamer.github.io/MADE-specification/)
+  [![MADE: I3-I4 / E4](https://img.shields.io/badge/MADE-I3--I4_%2F_E4-d9381e?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```
