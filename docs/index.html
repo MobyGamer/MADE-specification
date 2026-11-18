@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://madespec.org/">
   <meta property="og:type" content="website">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>MADE v1.0.0-rc2: Measure of AI in Design &amp; Execution</title>
+  <title>MADE v1.0.0-rc3: Measure of AI in Design &amp; Execution</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -824,7 +824,7 @@
       </p>
       <nav class="tabs" aria-label="Document views">
         <!-- SYNC:TAB1-BTN:START -->
-      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc2 Specification</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc3 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
         <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
           Builder</button>
@@ -834,7 +834,7 @@
 
   <main class="container">
 
-    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc2 SPECIFICATION ================= -->
+    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc3 SPECIFICATION ================= -->
     <section id="tab-spec">
       <!-- SYNC:TAB-SPEC:START -->
     <div class="spec-toc-sticky">
@@ -855,7 +855,7 @@
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
-          <span>1.0.0-rc2</span>
+          <span>1.0.0-rc3</span>
         </div>
         <div class="meta-item">
           <strong>Status</strong>
@@ -880,12 +880,13 @@
       </div>
 
       <h2><span>Purpose &amp; Philosophy</span></h2>
-      <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <em>original human ideas</em> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
+      <p><strong>MADE (Measure of AI in Design &amp; Execution)</strong> is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates <em>conceptual design</em> separately from <em>mechanical implementation</em>, rather than reducing an entire project to a single number.</p>
       <h3>Why Single-Number Scales Fail</h3>
-      <p>Most disclosure scales and frameworks<sup class="fn-ref" id="fnref-1"><a href="#fn-1" aria-label="Footnote 1">[1]</a></sup> collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>. This distorts how AI usage is represented:</p>
+      <p>Different audiences, creative disciplines, and platforms care about different aspects of how a work was made. Some care primarily about <em>conceptual origin</em> (whether the underlying ideas, architecture, plot, or composition came from a human mind), while others care primarily about <em>tangible craft</em> (whether the code, prose, artwork, or recording was produced by hand).</p>
+      <p>Most disclosure scales and frameworks<sup class="fn-ref" id="fnref-1"><a href="#fn-1" aria-label="Footnote 1">[1]</a></sup> collapse both categories onto a single numeric spectrum or a single category label, routinely placing <em>brainstorming and ideation</em> at a lower number than <em>mechanical implementation</em>. Merging these two independent categories into one score obscures how a work was actually made:</p>
       <ol>
-        <li>A creator who prompts an AI model for all creative inspiration, <em>and then manually types or illustrates the result</em>, receives a "low" AI rating, despite the core concepts originating entirely from AI.</li>
-        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up audio and image noise) is assigned a "high" AI rating, despite only using AI for mechanical tasks.</li>
+        <li>A creator who prompts an AI model for all creative concepts, <em>and then manually types, codes, or illustrates the result</em>, receives a "low" AI rating, obscuring that the underlying design originated from AI.</li>
+        <li>A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up audio and image noise) is assigned a "high" AI rating, obscuring that the core design and primary craft are human-authored.</li>
       </ol>
       <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
       <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
@@ -901,6 +902,7 @@
         <li><strong><code>3</code>: Directed</strong></li>
         <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
+      <p>MADE is a descriptive measurement standard, not a value judgment. It separates conceptual origin from mechanical production so creators can describe their process accurately, leaving audiences to apply their own priorities.</p>
       <p>Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting material. The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
 (or:)
@@ -1320,7 +1322,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     <footer>
       <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>MADE Specification v1.0.0-rc2</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>MADE Specification v1.0.0-rc3</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, metadata header tags, and accompanying software scripts are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
       Official specification source, templates, and grammar files: <a href="https://github.com/MobyGamer/MADE-specification" target="_blank" rel="noopener">MADE Project Files on GitHub</a>.
     </p>
@@ -1334,7 +1336,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
   const SPEC_DATA = {
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
-    "version": "1.0.0-rc2",
+    "version": "1.0.0-rc3",
     "canonicalUri": "https://madespec.org/",
     "homepage": "https://madespec.org/",
     "ideationTitles": [

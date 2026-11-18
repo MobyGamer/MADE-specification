@@ -1,6 +1,6 @@
-# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc2
+# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc3
 
-- **Version:** 1.0.0-rc2
+- **Version:** 1.0.0-rc3
 - **Status:** Release Candidate
 - **Canonical URI:** https://madespec.org/
 - **Repository:** https://github.com/MobyGamer/MADE-specification
@@ -13,12 +13,14 @@
 
 ## 1. Purpose & Philosophy <!-- nav: Purpose & Philosophy -->
 
-**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *original human ideas* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
+**MADE (Measure of AI in Design & Execution)** is a voluntary, author-declared rating framework that enables creators of software, writing, art, music, and other public works to transparently communicate how generative AI was used in their projects. What sets MADE apart from previous AI disclosure scales is that it rates *conceptual design* separately from *mechanical implementation*, rather than reducing an entire project to a single number.
 
 ### Why Single-Number Scales Fail
-Most disclosure scales and frameworks[^1] collapse all AI usage onto a single numeric spectrum or a single category label. Such scales routinely place *brainstorming and ideation* at a lower number than *mechanical implementation*. This distorts how AI usage is represented:
-1. A creator who prompts an AI model for all creative inspiration, *and then manually types or illustrates the result*, receives a "low" AI rating, despite the core concepts originating entirely from AI.
-2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up audio and image noise) is assigned a "high" AI rating, despite only using AI for mechanical tasks.
+Different audiences, creative disciplines, and platforms care about different aspects of how a work was made. Some care primarily about *conceptual origin* (whether the underlying ideas, architecture, plot, or composition came from a human mind), while others care primarily about *tangible craft* (whether the code, prose, artwork, or recording was produced by hand).
+
+Most disclosure scales and frameworks[^1] collapse both categories onto a single numeric spectrum or a single category label, routinely placing *brainstorming and ideation* at a lower number than *mechanical implementation*. Merging these two independent categories into one score obscures how a work was actually made:
+1. A creator who prompts an AI model for all creative concepts, *and then manually types, codes, or illustrates the result*, receives a "low" AI rating, obscuring that the underlying design originated from AI.
+2. A creator who conceives a 100% original design, hand-crafts the primary work, and uses AI strictly to handle repetitive procedural tasks (such as writing file-conversion utilities, or cleaning up audio and image noise) is assigned a "high" AI rating, obscuring that the core design and primary craft are human-authored.
 
 ### MADE's Balanced Alternative: Separating Ideation from Execution
 MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
@@ -31,6 +33,8 @@ Both categories use the same five symmetrical, whole-number levels:
 - **`2`: Collaborative**
 - **`3`: Directed**
 - **`4`: Autonomous**
+
+MADE is a descriptive measurement standard, not a value judgment. It separates conceptual origin from mechanical production so creators can describe their process accurately, leaving audiences to apply their own priorities.
 
 Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting material. The project's author could then self-disclose the following MADE score:
 
