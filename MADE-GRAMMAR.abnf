@@ -1,6 +1,6 @@
 ; SPDX-License-Identifier: CC-BY-ND-4.0
 ; -----------------------------------------------------------------------------
-; Formal RFC 5234 / RFC 7405 ABNF Grammar for the MADE Specification (v1.0.0-rc3)
+; Formal RFC 5234 / RFC 7405 ABNF Grammar for the MADE Specification (v1.0.0-rc4)
 ; Measure of AI in Design & Execution (MADE)
 ; -----------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ classification-desc = %s"Ideation:" SP title-list ";" SP %s"Execution:" SP title
 single-class-desc   = %s"Ideation:" SP title ";" SP %s"Execution:" SP title
 
 title-list          = title *( "," SP title )
-title               = %s"Unassisted" / %s"Assisted" / %s"Collaborative" / %s"Directed" / %s"Autonomous"
+title               = %s"Unassisted" / %s"Assisted" / %s"Hybrid" / %s"Directed" / %s"Autonomous"
 
 ; -----------------------------------------------------------------------------
 ; Component & File-Level Classification Grammar (Sections 4.3 & 4.4)

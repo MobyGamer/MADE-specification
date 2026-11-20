@@ -1,6 +1,6 @@
-# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc3
+# MADE: Measure of AI in Design & Execution, Specification v1.0.0-rc4
 
-- **Version:** 1.0.0-rc3
+- **Version:** 1.0.0-rc4
 - **Status:** Release Candidate
 - **Canonical URI:** https://madespec.org/
 - **Repository:** https://github.com/MobyGamer/MADE-specification
@@ -24,24 +24,24 @@ Most disclosure scales and frameworks[^1] collapse both categories onto a single
 
 ### MADE's Balanced Alternative: Separating Ideation from Execution
 MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from `0` to `4`:
-- **Ideation (`I0` to `I4`)** measures who conceived the ideas, concepts, structure, design, composition, or algorithms.
+- **Ideation (`I0` to `I4`)** measures how the ideas, concepts, structure, design, composition, or algorithms were originated.
 - **Execution (`E0` to `E4`)** measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.
 
 Both categories use the same five symmetrical, whole-number levels:
 - **`0`: Unassisted**
 - **`1`: Assisted**
-- **`2`: Collaborative**
+- **`2`: Hybrid**
 - **`3`: Directed**
 - **`4`: Autonomous**
 
 MADE is a descriptive measurement standard, not a value judgment. It separates conceptual origin from mechanical production so creators can describe their process accurately, leaving audiences to apply their own priorities.
 
-Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting material. The project's author could then self-disclose the following MADE score:
+Example Usage: Assume a creative project was 100% designed by a human, who then used AI to generate the supporting material alongside hand-crafted primary work. The project's author could then self-disclose the following MADE score:
 
 ```markdown
 MADE: I0 / E2
 (or:)
-MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)
+MADE: I0 / E2 (Ideation: Unassisted; Execution: Hybrid)
 ```
 
 ---
@@ -53,10 +53,10 @@ The **Ideation** level measures the intellectual and creative origin of the work
 | Level | Title | Definition | Examples Across Creative & Technical Fields |
 | :--- | :--- | :--- | :--- |
 | **`I0`** | **Unassisted** | 100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation. | **Programming:** Designing an algorithm or system architecture solely from personal knowledge and non-AI documentation.<br>**Writing:** Conceiving a novel's plot, characters, and chapter structure independently.<br>**Art:** Designing characters, layouts, and color palettes entirely from imagination and traditional references.<br>**Music:** Composing melodies, harmonies, and arrangements without querying any AI tool. |
-| **`I1`** | **Assisted** | Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original song while using AI to brainstorm lyric rhymes, thematic phrasing, or instrumentation references. |
-| **`I2`** | **Collaborative** | A human set the creative vision and partnered with AI to brainstorm specific elements, sections, or outlines. | **Programming:** Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br>**Writing:** Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br>**Art:** Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br>**Music:** Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies. |
-| **`I3`** | **Directed** | A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human. | **Programming:** Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br>**Writing:** Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>**Art:** Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>**Music:** Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement. |
-| **`I4`** | **Autonomous** | AI conceived the project concept, design, and creative direction with minimal or no human conceptual input. | **All Fields:** Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request. |
+| **`I1`** | **Assisted** | Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements. | **Programming:** Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br>**Writing:** Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br>**Art:** Designing an original illustration while using AI to search for historical costume references.<br>**Music:** Composing an original song while querying an AI tool for candidate lyric rhymes, thematic phrasing, or instrumentation references. |
+| **`I2`** | **Hybrid** | A human set the creative vision and used AI interactively to generate, iterate on, and refine specific elements, sections, or outlines. | **Programming:** Designing an application architecture by iteratively prompting an LLM to generate and compare candidate subsystem designs.<br>**Writing:** Developing worldbuilding lore or secondary subplot beats through iterative prompting and human selection.<br>**Art:** Iterating on rough composition thumbnails and visual motifs using an AI tool before illustrating.<br>**Music:** Composing a main theme by hand and using an AI tool to generate candidate chord progressions or counter-melodies. |
+| **`I3`** | **Directed** | A human provided a high-level goal; AI generated the primary structure or design choices, curated by the human. | **Programming:** Prompting an AI with desired input/output goals and using the AI-generated data structures and architecture after human review.<br>**Writing:** Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br>**Art:** Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br>**Music:** Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement. |
+| **`I4`** | **Autonomous** | AI generated the project concept, design, and creative direction from a minimal prompt with little or no human conceptual input. | **All Fields:** Prompting an AI system to generate a software project concept, story premise, visual theme, or musical composition from a minimal, open-ended request. |
 
 ---
 
@@ -68,7 +68,7 @@ The **Execution** level measures how the finished work (source code, prose, visu
 | :--- | :--- | :--- | :--- |
 | **`E0`** | **Unassisted** | 100% human-produced code, prose, illustration, or musical performance by the human creator. | **Programming:** Writing source code or assembly routines completely by hand.<br>**Writing:** Typing and editing a manuscript manually without generative text tools.<br>**Art:** Drawing, painting, or modeling artwork entirely by hand.<br>**Music:** Performing, sequencing, mixing, and mastering audio manually using only traditional (non-AI) tools, or read-only meters that do not modify the output signal. |
 | **`E1`** | **Assisted** | 100% human-authored primary output. AI is used strictly for diagnostics, proofreading, syntax checking, or minor restorative cleanup. | **Programming:** Writing code manually and using an LLM to scan for off-by-one bugs or syntax errors.<br>**Writing:** Writing prose by hand while using AI as an interactive phrase thesaurus or proofreader.<br>**Art:** Hand-painting digital art, then using AI tools strictly for automated dust removal or minor margin bleed extension for print preparation.<br>**Music:** Recording live instruments and using AI-assisted plugins strictly for corrective signal cleanup (such as spectral denoising, dynamic EQ, pitch correction, or restoring a clipped sample) without generating new musical material. |
-| **`E2`** | **Collaborative** | Shared human-AI production, such as human-crafted primary work paired with AI-generated supporting assets, boilerplate, or utilities. | **Programming:** Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>**Writing:** Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>**Art:** Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between animation frames.<br>**Music:** Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills. |
+| **`E2`** | **Hybrid** | Combined human and AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate, or utilities. | **Programming:** Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br>**Writing:** Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br>**Art:** Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between animation frames.<br>**Music:** Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills. |
 | **`E3`** | **Directed** | AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator. | **Programming:** Providing an LLM with a detailed, human-authored specification and algorithm so it writes a companion utility in a secondary language, followed by human testing.<br>**Writing:** Translating a human-authored book into another language using AI under strict glossary constraints, followed by human review.<br>**Art:** Generating rendered assets using a workflow tightly constrained by human-drawn control maps, depth maps, and manual paint-overs.<br>**Music:** Synthesizing a vocal or orchestral performance from a human-written score and lyric sheet, followed by manual mixing. |
 | **`E4`** | **Autonomous** | Generated end-to-end by AI from minimal prompts with little or no human specification or review. | **All Fields:** Accepting bulk AI-generated code without reviewing the logic ("vibe-coding"), or publishing raw AI-generated text, images, or music directly from a prompt. |
 
@@ -82,7 +82,7 @@ At its simplest, a MADE disclosure always begins with the `MADE:` prefix (includ
 
 For works with uniform AI usage throughout, this single rating is all that is necessary. When first introducing MADE in prose alongside a rating, authors are encouraged to spell out its full name (**MADE (Measure of AI in Design & Execution)**) or link to the specification.
 
-MADE also defines a **layered disclosure format** that can scale with project complexity. Hybrid projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.
+MADE also defines a **layered disclosure format** that can scale with project complexity. Multi-component projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.
 
 > **Note:** You do not need to format complex disclosures by hand; the accompanying **Interactive Badge and Disclosure Builder** can automatically generate multi-level scores, badges, component breakdowns, and file header tags.
 
@@ -124,7 +124,7 @@ Or for a creative publication or album:
 ```markdown
 AI Disclosure ([MADE](https://madespec.org/)): `MADE: I0-I1 / E0,E2`
 - **Novel Manuscript & Dialogue (`I1 / E0`, Ideation: Assisted; Execution: Unassisted):** Plot and prose written 100% by the author (`E0`), using AI only for historical period research (`I1`).
-- **Chapter Header Illustrations (`I0 / E2`, Ideation: Unassisted; Execution: Collaborative):** Character line art drawn by hand (`I0`), paired with AI-assisted background textures (`E2`).
+- **Chapter Header Illustrations (`I0 / E2`, Ideation: Unassisted; Execution: Hybrid):** Character line art drawn by hand (`I0`), paired with AI-assisted background textures (`E2`).
 ```
 
 ### 4.4 Per-File Source Code & Asset Metadata Headers
@@ -202,7 +202,7 @@ Mostly yes. Major digital storefronts already draw a practical line between assi
 No, because C2PA and MADE solve different problems. C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.
 
 ### If I prompt an AI tool with my own original idea, can I use `I0` (Unassisted) Ideation?
-`I0` is meant to represent unassisted ideation; a wholly original idea represented in great detail. `I0` means you personally originated the concrete structure, plot, composition, or architecture before any tool execution. Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is `I3` (Directed) or `I4` (Autonomous) Ideation, not `I0`.
+`I0` is meant to represent unassisted ideation; a wholly original idea represented in great detail. `I0` means you personally originated the concrete structure, plot, composition, or architecture before any tool execution. Simply entering a short prompt and letting an AI generate the underlying structure, details, or creative direction is `I3` (Directed) or `I4` (Autonomous) Ideation, not `I0`.
 
 ---
 

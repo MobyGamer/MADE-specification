@@ -12,14 +12,14 @@ The canonical MADE specification is located in [`MADE-SPECIFICATION.md`](MADE-SP
 
 The MADE Specification itself is, appropriately, self-disclosed under the **MADE (Measure of AI in Design & Execution)** standard:
 - **Ideation (`I0`, Unassisted):** 100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.
-- **Execution (`E0,E2-E3`, Unassisted, Collaborative, Directed):** Project components span multiple execution levels. See the component breakdown below for details.
+- **Execution (`E0,E2-E3`, Unassisted, Hybrid, Directed):** Project components span multiple execution levels. See the component breakdown below for details.
 
 ### Component Breakdown
 
 | Component / Deliverable | MADE&nbsp;Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
 | **MADE Specification** | **<code>I0&nbsp;/&nbsp;E0</code>** | Ideation: Unassisted; Execution: Unassisted | Specification design, wording, and markdown "ground truth" document all written by a human. |
-| **MADE Landing Page** | **<code>I0&nbsp;/&nbsp;E2</code>** | Ideation: Unassisted; Execution: Collaborative | Landing page design, layout, and non-interactive elements were designed by a human, partially executed by AI. |
+| **MADE Landing Page** | **<code>I0&nbsp;/&nbsp;E2</code>** | Ideation: Unassisted; Execution: Hybrid | Landing page design, layout, and non-interactive elements were designed by a human, partially executed by AI. |
 | **MADE Interactive Builder** | **<code>I0&nbsp;/&nbsp;E3</code>** | Ideation: Unassisted; Execution: Directed | Interactive builder, including purpose, colors, text, and behavior, was designed by a human; AI built most of the HTML/CSS/logic. |
 
 ## License

@@ -64,7 +64,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
 | **Core Narrative & Prose** | **`I1 / E0`** | Ideation: Assisted; Execution: Unassisted | Story, dialogue, and lore were written 100% by hand (`E0`), with AI used only for historical fact-checking (`I1`). |
-| **Worldbuilding & Encounter Tables** | **`I2 / E2`** | Ideation: Collaborative; Execution: Collaborative | Secondary setting locations and random encounter tables were co-brainstormed (`I2`) and co-drafted (`E2`) between the author and an LLM. |
+| **Worldbuilding & Encounter Tables** | **`I2 / E2`** | Ideation: Hybrid; Execution: Hybrid | Secondary setting locations and random encounter tables were iteratively developed (`I2`) and drafted (`E2`) by the author using an LLM. |
 ```
 
 ---
@@ -82,14 +82,14 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 | :--- | :--- | :--- | :--- |
 | **Character Design & Key Illustrations** | **`I0 / E0`** | Ideation: Unassisted; Execution: Unassisted | 100% conceived, sketched, inked, and painted by hand by the human artist. |
 | **Print Layout & Margin Bleed Exports** | **`I0 / E1`** | Ideation: Unassisted; Execution: Assisted | Hand-painted illustrations prepared for print using automated dust removal for stray scan dust and minor margin bleed extension. |
-| **Repeating Background Surface Textures** | **`I1 / E2`** | Ideation: Assisted; Execution: Collaborative | Secondary environmental patterns created via a hybrid human-AI texture workflow and manually composited. |
+| **Repeating Background Surface Textures** | **`I1 / E2`** | Ideation: Assisted; Execution: Hybrid | Secondary environmental patterns created via a hybrid human-AI texture workflow and manually composited. |
 ```
 
 ---
 
 ## 4. Music Composition & Audio Production Scenario (`MADE: I0,I2 / E0-E1`)
 
-*Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), mixing and mastering use an AI assistant only for corrective signal cleanup (such as spectral denoising, dynamic EQ, or restoring a clipped sample) (`I0 / E1`), and Track 4 features bridge chord variations co-brainstormed with an AI tool but performed manually on hardware instruments by the artist (`I2 / E0`).*
+*Scenario: A musician composes and performs an album or soundtrack. Most tracks are 100% human-composed and performed on physical instruments (`I0 / E0`), mixing and mastering use an AI assistant only for corrective signal cleanup (such as spectral denoising, dynamic EQ, or restoring a clipped sample) (`I0 / E1`), and Track 4 features bridge chord variations iteratively explored using an AI tool but performed manually on hardware instruments by the artist (`I2 / E0`).*
 
 ### 4.1 Album Liner Notes / Bandcamp / Streaming Description
 
@@ -97,7 +97,7 @@ All plotlines, characters, arguments, and prose in this work were conceived and 
 ## AI Usage Disclosure: `MADE: I0,I2 / E0-E1`
 
 - **Main Compositions & Live Instruments (`I0 / E0`, Ideation: Unassisted; Execution: Unassisted):** All melodies, lyrics, arrangements, and instrumental performances composed and played by the human musician.
-- **Bridge Chord Variations (Track 4) (`I2 / E0`, Ideation: Collaborative; Execution: Unassisted):** Alternate harmonic voicings co-brainstormed with an AI tool (`I2`) and performed manually on hardware instruments by the artist (`E0`).
+- **Bridge Chord Variations (Track 4) (`I2 / E0`, Ideation: Hybrid; Execution: Unassisted):** Alternate harmonic voicings iteratively explored using an AI tool (`I2`) and performed manually on hardware instruments by the artist (`E0`).
 - **Mix Diagnostics & Mastering (`I0 / E1`, Ideation: Unassisted; Execution: Assisted):** Acoustic recordings mixed and mastered manually, using an AI assistant only for corrective signal cleanup (such as spectral denoising, dynamic EQ, or restoring a clipped sample) without generating new musical material.
 ```
 
@@ -116,9 +116,9 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
 
 | Component | MADE Score | Classification | Details |
 | :--- | :--- | :--- | :--- |
-| **Game Design & Storytelling** | **`I4 / E4`** | Ideation: Autonomous; Execution: Autonomous | Human provided a generic premise ("retro platformer"); AI conceived all level progression, plot twists, character backstories, and in-game dialogue without curation. |
+| **Game Design & Storytelling** | **`I4 / E4`** | Ideation: Autonomous; Execution: Autonomous | Human provided a generic premise ("retro platformer"); AI generated all level progression, plot twists, character backstories, and in-game dialogue without curation. |
 | **Gameplay Code & Mechanics** | **`I3 / E4`** | Ideation: Directed; Execution: Autonomous | High-level gameplay goals prompted by creator; game loop, physics, collision, and state logic generated in bulk by an LLM without code review ("vibe-coded"). |
-| **Graphics, Music & Sound Effects** | **`I4 / E4`** | Ideation: Autonomous; Execution: Autonomous | All character sprites, environment tilesets, chiptune music tracks, and sound effects were autonomously invented and generated by AI from minimal prompts. |
+| **Graphics, Music & Sound Effects** | **`I4 / E4`** | Ideation: Autonomous; Execution: Autonomous | All character sprites, environment tilesets, chiptune music tracks, and sound effects were generated end-to-end by AI from minimal prompts. |
 ```
 
 ---
@@ -174,7 +174,7 @@ This project is self-disclosed under the **[MADE (Measure of AI in Design & Exec
   ```markdown
   [![MADE: I1 / E0-E2](https://img.shields.io/badge/MADE-I1_%2F_E0--E2-268bd2?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```
-- **Hybrid Multi-Level Project (`I0-I1 / E0,E3`):**
+- **Multi-Component Project (`I0-I1 / E0,E3`):**
   ```markdown
   [![MADE: I0-I1 / E0,E3](https://img.shields.io/badge/MADE-I0--I1_%2F_E0%2CE3-d97706?style=flat-square&labelColor=073642)](https://madespec.org/)
   ```

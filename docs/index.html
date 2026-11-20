@@ -12,7 +12,7 @@
   <meta property="og:url" content="https://madespec.org/">
   <meta property="og:type" content="website">
   <!-- SYNC:HEAD-TITLE:START -->
-  <title>MADE v1.0.0-rc3: Measure of AI in Design &amp; Execution</title>
+  <title>MADE v1.0.0-rc4: Measure of AI in Design &amp; Execution</title>
   <!-- SYNC:HEAD-TITLE:END -->
   <style>
     /* Default Theme: Solarized Light (Canonical Ethan Schoonover Palette) */
@@ -824,7 +824,7 @@
       </p>
       <nav class="tabs" aria-label="Document views">
         <!-- SYNC:TAB1-BTN:START -->
-      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc3 Specification</button>
+      <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc4 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
         <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
           Builder</button>
@@ -834,7 +834,7 @@
 
   <main class="container">
 
-    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc3 SPECIFICATION ================= -->
+    <!-- ================= TAB 1 (DEFAULT): FULL v1.0.0-rc4 SPECIFICATION ================= -->
     <section id="tab-spec">
       <!-- SYNC:TAB-SPEC:START -->
     <div class="spec-toc-sticky">
@@ -855,7 +855,7 @@
       <div class="meta-grid">
         <div class="meta-item">
           <strong>Version</strong>
-          <span>1.0.0-rc3</span>
+          <span>1.0.0-rc4</span>
         </div>
         <div class="meta-item">
           <strong>Status</strong>
@@ -891,22 +891,22 @@
       <h3>MADE's Balanced Alternative: Separating Ideation from Execution</h3>
       <p>MADE resolves this problem by evaluating a project across two distinct rating categories, each scored from <code>0</code> to <code>4</code>:</p>
       <ul>
-        <li><strong>Ideation (<code>I0</code> to <code>I4</code>)</strong> measures who conceived the ideas, concepts, structure, design, composition, or algorithms.</li>
+        <li><strong>Ideation (<code>I0</code> to <code>I4</code>)</strong> measures how the ideas, concepts, structure, design, composition, or algorithms were originated.</li>
         <li><strong>Execution (<code>E0</code> to <code>E4</code>)</strong> measures how the tangible work (code, prose, visual art, music, etc.) was mechanically produced.</li>
       </ul>
       <p>Both categories use the same five symmetrical, whole-number levels:</p>
       <ul>
         <li><strong><code>0</code>: Unassisted</strong></li>
         <li><strong><code>1</code>: Assisted</strong></li>
-        <li><strong><code>2</code>: Collaborative</strong></li>
+        <li><strong><code>2</code>: Hybrid</strong></li>
         <li><strong><code>3</code>: Directed</strong></li>
         <li><strong><code>4</code>: Autonomous</strong></li>
       </ul>
       <p>MADE is a descriptive measurement standard, not a value judgment. It separates conceptual origin from mechanical production so creators can describe their process accurately, leaving audiences to apply their own priorities.</p>
-      <p>Example Usage: Assume a creative project was 100% designed by a human, who then collaborated with AI to produce the supporting material. The project's author could then self-disclose the following MADE score:</p>
+      <p>Example Usage: Assume a creative project was 100% designed by a human, who then used AI to generate the supporting material alongside hand-crafted primary work. The project's author could then self-disclose the following MADE score:</p>
       <pre><code>MADE: I0 / E2
 (or:)
-MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
+MADE: I0 / E2 (Ideation: Unassisted; Execution: Hybrid)</code></pre>
     </div>
 
     <div class="card" id="spec-ideation-levels" tabindex="-1">
@@ -932,25 +932,25 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
             <td><span class="lvl-badge b-1">I1</span></td>
             <td><strong>Assisted</strong></td>
             <td>Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.</td>
-            <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original song while using AI to brainstorm lyric rhymes, thematic phrasing, or instrumentation references.</td>
+            <td><strong>Programming:</strong> Inventing an original algorithm while using an LLM to review mathematical formulas and test minor edge-case tweaks.<br><strong>Writing:</strong> Plotting an original historical novel while using AI to summarize archival documents or verify period timelines.<br><strong>Art:</strong> Designing an original illustration while using AI to search for historical costume references.<br><strong>Music:</strong> Composing an original song while querying an AI tool for candidate lyric rhymes, thematic phrasing, or instrumentation references.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">I2</span></td>
-            <td><strong>Collaborative</strong></td>
-            <td>A human set the creative vision and partnered with AI to brainstorm specific elements, sections, or outlines.</td>
-            <td><strong>Programming:</strong> Designing an application architecture through an iterative dialogue where human and AI jointly propose subsystem designs.<br><strong>Writing:</strong> Co-developing worldbuilding lore or secondary subplot beats in a back-and-forth brainstorming session.<br><strong>Art:</strong> Iterating on rough composition thumbnails and visual motifs in collaboration with an AI tool before illustrating.<br><strong>Music:</strong> Composing a main theme by hand and collaborating with an AI tool to explore alternate chord progressions or counter-melodies.</td>
+            <td><strong>Hybrid</strong></td>
+            <td>A human set the creative vision and used AI interactively to generate, iterate on, and refine specific elements, sections, or outlines.</td>
+            <td><strong>Programming:</strong> Designing an application architecture by iteratively prompting an LLM to generate and compare candidate subsystem designs.<br><strong>Writing:</strong> Developing worldbuilding lore or secondary subplot beats through iterative prompting and human selection.<br><strong>Art:</strong> Iterating on rough composition thumbnails and visual motifs using an AI tool before illustrating.<br><strong>Music:</strong> Composing a main theme by hand and using an AI tool to generate candidate chord progressions or counter-melodies.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-3">I3</span></td>
             <td><strong>Directed</strong></td>
-            <td>A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.</td>
-            <td><strong>Programming:</strong> Prompting an AI with desired input/output goals and allowing the AI to select the underlying data structures and architecture for human approval.<br><strong>Writing:</strong> Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br><strong>Art:</strong> Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br><strong>Music:</strong> Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement.</td>
+            <td>A human provided a high-level goal; AI generated the primary structure or design choices, curated by the human.</td>
+            <td><strong>Programming:</strong> Prompting an AI with desired input/output goals and using the AI-generated data structures and architecture after human review.<br><strong>Writing:</strong> Prompting an AI to generate several chapter outlines from a one-paragraph premise and curating the best outline.<br><strong>Art:</strong> Generating multiple concept layouts from a text prompt and selecting one as the blueprint for production.<br><strong>Music:</strong> Prompting an AI for song structures and harmonic progressions in a specific genre and curating the arrangement.</td>
           </tr>
           <tr>
             <td><span class="lvl-badge b-4">I4</span></td>
             <td><strong>Autonomous</strong></td>
-            <td>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</td>
-            <td><strong>All Fields:</strong> Prompting an autonomous system to invent a software project, story concept, visual theme, or musical composition from a minimal, open-ended request.</td>
+            <td>AI generated the project concept, design, and creative direction from a minimal prompt with little or no human conceptual input.</td>
+            <td><strong>All Fields:</strong> Prompting an AI system to generate a software project concept, story premise, visual theme, or musical composition from a minimal, open-ended request.</td>
           </tr>
         </tbody>
       </table>
@@ -983,8 +983,8 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
           </tr>
           <tr>
             <td><span class="lvl-badge b-2">E2</span></td>
-            <td><strong>Collaborative</strong></td>
-            <td>Shared human-AI production, such as human-crafted primary work paired with AI-generated supporting assets, boilerplate, or utilities.</td>
+            <td><strong>Hybrid</strong></td>
+            <td>Combined human and AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate, or utilities.</td>
             <td><strong>Programming:</strong> Hand-coding the core application engine while using AI to generate test harnesses, build scripts, or CLI parsers.<br><strong>Writing:</strong> Writing the primary text of a book or article while using AI to generate summary tables, indexes, or data charts.<br><strong>Art:</strong> Hand-drawing all characters and foregrounds while using AI to assist with repetitive background textures or in-between animation frames.<br><strong>Music:</strong> Performing lead vocals and primary instruments by hand while using AI to generate secondary accompaniment stems or drum fills.</td>
           </tr>
           <tr>
@@ -1008,7 +1008,7 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
       <p>At its simplest, a MADE disclosure always begins with the <code>MADE:</code> prefix (including the colon), followed by a single Ideation level (<code>I0</code> to <code>I4</code>) and a single Execution level (<code>E0</code> to <code>E4</code>) separated by a forward slash (<code>/</code>). For example:</p>
       <p><code>MADE: I1 / E0</code></p>
       <p>For works with uniform AI usage throughout, this single rating is all that is necessary. When first introducing MADE in prose alongside a rating, authors are encouraged to spell out its full name (<strong>MADE (Measure of AI in Design &amp; Execution)</strong>) or link to the specification.</p>
-      <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Hybrid projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.</p>
+      <p>MADE also defines a <strong>layered disclosure format</strong> that can scale with project complexity. Multi-component projects (where there were multiple levels of human and AI involvement for various pieces) can summarize multiple levels in the overall score, while optionally documenting individual components and source files underneath.</p>
       <blockquote>
         <p><strong>Note:</strong> You do not need to format complex disclosures by hand; the accompanying <strong>Interactive Badge and Disclosure Builder</strong> can automatically generate multi-level scores, badges, component breakdowns, and file header tags.</p>
       </blockquote>
@@ -1058,7 +1058,7 @@ MADE: I0 / E2 (Ideation: Unassisted; Execution: Collaborative)</code></pre>
       <p>Or for a creative publication or album:</p>
       <pre><code>AI Disclosure ([MADE](https://madespec.org/)): `MADE: I0-I1 / E0,E2`
 - **Novel Manuscript &amp; Dialogue (`I1 / E0`, Ideation: Assisted; Execution: Unassisted):** Plot and prose written 100% by the author (`E0`), using AI only for historical period research (`I1`).
-- **Chapter Header Illustrations (`I0 / E2`, Ideation: Unassisted; Execution: Collaborative):** Character line art drawn by hand (`I0`), paired with AI-assisted background textures (`E2`).</code></pre>
+- **Chapter Header Illustrations (`I0 / E2`, Ideation: Unassisted; Execution: Hybrid):** Character line art drawn by hand (`I0`), paired with AI-assisted background textures (`E2`).</code></pre>
       <h3>Per-File Source Code &amp; Asset Metadata Headers</h3>
       <p>To prevent individual hand-crafted files, manuscripts, or digital assets from being misattributed to AI (or vice versa) when viewed in isolation, authors may place a <code>MADE:</code> line tag in source file headers, document frontmatter, or asset metadata comments. Because a header tag describes how a single file or asset was made, it specifies a single Ideation level and a single Execution level:</p>
       <p><strong>Python / Shell / YAML / Makefile / Markdown / Text Metadata:</strong></p>
@@ -1105,7 +1105,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <h3>Does MADE compete with cryptographic provenance standards like C2PA (Content Credentials)?</h3>
       <p>No, because C2PA and MADE solve different problems. C2PA embeds cryptographic assertions inside binary files to verify editing history and tool provenance, while MADE is used to self-declare how much AI was involved in the creation of an asset.</p>
       <h3>If I prompt an AI tool with my own original idea, can I use <code>I0</code> (Unassisted) Ideation?</h3>
-      <p><code>I0</code> is meant to represent unassisted ideation; a wholly original idea represented in great detail. <code>I0</code> means you personally originated the concrete structure, plot, composition, or architecture before any tool execution. Simply entering a short prompt and letting an AI invent the underlying structure, details, or creative direction is <code>I3</code> (Directed) or <code>I4</code> (Autonomous) Ideation, not <code>I0</code>.</p>
+      <p><code>I0</code> is meant to represent unassisted ideation; a wholly original idea represented in great detail. <code>I0</code> means you personally originated the concrete structure, plot, composition, or architecture before any tool execution. Simply entering a short prompt and letting an AI generate the underlying structure, details, or creative direction is <code>I3</code> (Directed) or <code>I4</code> (Autonomous) Ideation, not <code>I0</code>.</p>
     </div>
 
     <div class="card" id="spec-authorship-provenance" tabindex="-1">
@@ -1141,7 +1141,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           <!-- Ideation -->
           <div>
             <h3>Ideation Levels (I0 to I4)</h3>
-            <p style="font-size:0.86rem;">Who conceived the ideas, designs, compositions, or algorithms? <em>(Click one
+            <p style="font-size:0.86rem;">How were the ideas, designs, compositions, or algorithms originated? <em>(Click one
                 or more levels that apply across your project.)</em></p>
             <div id="ideation-options">
               <!-- SYNC:IDEATION-OPTIONS:START -->
@@ -1162,22 +1162,22 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
             <div class="level-option" data-level="2" onclick="toggleIdeation(2)">
               <span class="lvl-badge b-2">I2</span>
               <div class="level-info">
-                <strong>Collaborative</strong>
-                <span>A human set the creative vision and partnered with AI to brainstorm specific elements, sections, or outlines.</span>
+                <strong>Hybrid</strong>
+                <span>A human set the creative vision and used AI interactively to generate, iterate on, and refine specific elements, sections, or outlines.</span>
               </div>
             </div>
             <div class="level-option" data-level="3" onclick="toggleIdeation(3)">
               <span class="lvl-badge b-3">I3</span>
               <div class="level-info">
                 <strong>Directed</strong>
-                <span>A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.</span>
+                <span>A human provided a high-level goal; AI generated the primary structure or design choices, curated by the human.</span>
               </div>
             </div>
             <div class="level-option" data-level="4" onclick="toggleIdeation(4)">
               <span class="lvl-badge b-4">I4</span>
               <div class="level-info">
                 <strong>Autonomous</strong>
-                <span>AI conceived the project concept, design, and creative direction with minimal or no human conceptual input.</span>
+                <span>AI generated the project concept, design, and creative direction from a minimal prompt with little or no human conceptual input.</span>
               </div>
             </div>
               <!-- SYNC:IDEATION-OPTIONS:END -->
@@ -1208,8 +1208,8 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
             <div class="level-option" data-level="2" onclick="toggleExecution(2)">
               <span class="lvl-badge b-2">E2</span>
               <div class="level-info">
-                <strong>Collaborative</strong>
-                <span>Shared human-AI production, such as human-crafted primary work paired with AI-generated supporting assets, boilerplate, or utilities.</span>
+                <strong>Hybrid</strong>
+                <span>Combined human and AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate, or utilities.</span>
               </div>
             </div>
             <div class="level-option" data-level="3" onclick="toggleExecution(3)">
@@ -1280,7 +1280,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
         <div class="preset-bar">
           <div class="preset-label">Quick Presets:</div>
           <div class="preset-buttons">
-            <button class="btn-sm" onclick="applyPreset('software')">Programming: Hybrid App (I0-I1 / E0,E3)</button>
+            <button class="btn-sm" onclick="applyPreset('software')">Programming: Multi-Component App (I0-I1 / E0,E3)</button>
             <button class="btn-sm" onclick="applyPreset('writing')">Creative Writing: Novel / Essay (I1 / E0-E1)</button>
             <button class="btn-sm" onclick="applyPreset('art')">Graphical Art: Illustrated Work (I0-I1 / E0-E2)</button>
             <button class="btn-sm" onclick="applyPreset('music')">Music Composition: Album (I0,I2 / E0-E1)</button>
@@ -1322,7 +1322,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
     <footer>
       <!-- SYNC:FOOTER:START -->
     <p>
-      <strong>MADE Specification v1.0.0-rc3</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
+      <strong>MADE Specification v1.0.0-rc4</strong> is licensed under <a href="https://creativecommons.org/licenses/by-nd/4.0/" target="_blank" rel="noopener">CC BY-ND 4.0</a>.<br>
       All generated badges, disclosure snippets, metadata header tags, and accompanying software scripts are dedicated to the public domain under <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener">CC0 1.0 Universal (Public Domain)</a>.<br>
       Official specification source, templates, and grammar files: <a href="https://github.com/MobyGamer/MADE-specification" target="_blank" rel="noopener">MADE Project Files on GitHub</a>.
     </p>
@@ -1336,34 +1336,34 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
   const SPEC_DATA = {
     "acronym": "MADE",
     "fullName": "Measure of AI in Design & Execution",
-    "version": "1.0.0-rc3",
+    "version": "1.0.0-rc4",
     "canonicalUri": "https://madespec.org/",
     "homepage": "https://madespec.org/",
     "ideationTitles": [
       "Unassisted",
       "Assisted",
-      "Collaborative",
+      "Hybrid",
       "Directed",
       "Autonomous"
     ],
     "executionTitles": [
       "Unassisted",
       "Assisted",
-      "Collaborative",
+      "Hybrid",
       "Directed",
       "Autonomous"
     ],
     "ideationDefinitions": [
       "100% human-originated concepts, designs, compositions, and algorithms. Zero AI consultation.",
       "Core concepts and designs are human-originated. AI used only for background research or minor conceptual refinements.",
-      "A human set the creative vision and partnered with AI to brainstorm specific elements, sections, or outlines.",
-      "A human provided a high-level goal; AI proposed the primary structure or design choices, curated by the human.",
-      "AI conceived the project concept, design, and creative direction with minimal or no human conceptual input."
+      "A human set the creative vision and used AI interactively to generate, iterate on, and refine specific elements, sections, or outlines.",
+      "A human provided a high-level goal; AI generated the primary structure or design choices, curated by the human.",
+      "AI generated the project concept, design, and creative direction from a minimal prompt with little or no human conceptual input."
     ],
     "executionDefinitions": [
       "100% human-produced code, prose, illustration, or musical performance by the human creator.",
       "100% human-authored primary output. AI is used strictly for diagnostics, proofreading, syntax checking, or minor restorative cleanup.",
-      "Shared human-AI production, such as human-crafted primary work paired with AI-generated supporting assets, boilerplate, or utilities.",
+      "Combined human and AI production, where human-crafted primary work is paired with AI-generated supporting assets, boilerplate, or utilities.",
       "AI produced the component's output strictly from detailed human specifications and constraints, verified by the creator.",
       "Generated end-to-end by AI from minimal prompts with little or no human specification or review."
     ]
@@ -1621,7 +1621,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           'Bridge Chord Variations (Track 4)',
           'I2',
           'E0',
-          'Alternate harmonic voicings co-brainstormed with an AI tool (I2) and performed manually on hardware instruments by the artist (E0).'
+          'Alternate harmonic voicings iteratively explored using an AI tool (I2) and performed manually on hardware instruments by the artist (E0).'
         );
         addComponentRow(
           'Mix Diagnostics & Mastering',
@@ -1636,7 +1636,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           'Game Design & Storytelling',
           'I4',
           'E4',
-          'Human provided a generic premise ("retro platformer"); AI conceived all level progression, plot twists, character backstories, and in-game dialogue without curation.'
+          'Human provided a generic premise ("retro platformer"); AI generated all level progression, plot twists, character backstories, and in-game dialogue without curation.'
         );
         addComponentRow(
           'Gameplay Code & Mechanics',
@@ -1648,7 +1648,7 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           'Graphics, Music & Sound Effects',
           'I4',
           'E4',
-          'All character sprites, environment tilesets, chiptune music tracks, and sound effects were autonomously invented and generated by AI from minimal prompts.'
+          'All character sprites, environment tilesets, chiptune music tracks, and sound effects were generated end-to-end by AI from minimal prompts.'
         );
       }
       syncOptionCards();

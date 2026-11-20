@@ -100,12 +100,12 @@ def validate_stylistic_rules(
 _LEVEL_TITLES = (
     "Unassisted",
     "Assisted",
-    "Collaborative",
+    "Hybrid",
     "Directed",
     "Autonomous",
 )
 _WS_PAT = r"(?:\s|&nbsp;|&#0*160;|&#[xX]0*[aA]0;)+"
-_TITLES_PAT = r"(?:Unassisted|Assisted|Collaborative|Directed|Autonomous)"
+_TITLES_PAT = r"(?:Unassisted|Assisted|Hybrid|Directed|Autonomous)"
 _TITLE_LIST_PAT = rf"{_TITLES_PAT}(?:,{_WS_PAT}{_TITLES_PAT})*"
 _TOOL_ATTR_PAT = (
     rf"(?:{_WS_PAT}\[[A-Za-z0-9_./+-]+(?:{_WS_PAT}[A-Za-z0-9_./+-]+)*"
