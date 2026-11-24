@@ -798,6 +798,259 @@
     .card a.fn-backref:hover {
       text-decoration: underline;
     }
+
+    /* Section 4 Link-Style Radio Selector */
+    .link-style-fieldset {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1.1rem;
+      margin-bottom: 1.25rem;
+      background: var(--bg-elevated);
+    }
+
+    .link-style-fieldset legend {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text);
+      padding: 0 0.45rem;
+    }
+
+    .link-style-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 0.35rem;
+    }
+
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem 1.5rem;
+    }
+
+    .radio-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-block-size: 32px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .radio-option input[type="radio"] {
+      accent-color: var(--accent);
+      width: 1rem;
+      height: 1rem;
+      margin: 0;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .radio-option label {
+      cursor: pointer;
+    }
+
+    @media (pointer: coarse) {
+      .radio-option {
+        min-block-size: 44px;
+      }
+    }
+
+    .link-style-badge-controls:not(.hidden) {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    #link-style-svg-badge-container {
+      display: flex;
+      align-items: center;
+    }
+
+    #link-style-svg-badge-container svg {
+      display: block;
+    }
+
+    /* Hidden Score Explainer Tab */
+    .explainer-score-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .explainer-score-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .explainer-banner-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    #explainer-svg-badge-container {
+      display: flex;
+      align-items: center;
+    }
+
+    #explainer-svg-badge-container svg {
+      display: block;
+    }
+
+    .explainer-summary {
+      margin-top: 0.75rem;
+      padding: 0.75rem 0 0;
+      border: 0;
+      border-top: 1px solid var(--border);
+      border-radius: 0;
+      background: transparent;
+      color: var(--text);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .explainer-summary p + p {
+      margin-top: 0.65rem;
+    }
+
+    .explainer-builder-action {
+      margin-top: 1.25rem;
+      text-align: center;
+    }
+
+    .explainer-summary code,
+    .explainer-notice code,
+    .explainer-hint code,
+    .explainer-input-hint code {
+      font-family: var(--font-mono);
+      font-size: 0.86em;
+      background: var(--bg-card);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      color: var(--code-text);
+    }
+
+    .explainer-notice {
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.7rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.86rem;
+      color: var(--text);
+    }
+
+    .explainer-error {
+      border-color: var(--lvl-4);
+      border-left: 4px solid var(--lvl-4);
+      background: color-mix(in srgb, var(--lvl-4) 8%, var(--bg-card));
+    }
+
+    .explainer-hint {
+      margin-top: 0.65rem;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+    }
+
+    .explainer-tools {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .explainer-tools-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    .explainer-tool-chip {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-strong);
+      color: var(--text);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    .explainer-breakdown {
+      margin-top: 1.35rem;
+    }
+
+    .explainer-level-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.65rem;
+    }
+
+    .explainer-form .explainer-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .explainer-form label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .explainer-input-hint {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .explainer-input-row {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+      align-items: stretch;
+      margin-top: 0.25rem;
+    }
+
+    .explainer-input-row input[type="text"] {
+      flex: 1 1 260px;
+      font-family: var(--font-mono);
+      font-size: max(1rem, 1em);
+      min-block-size: 42px;
+    }
+
+    .explainer-input-row input[aria-invalid="true"] {
+      border-color: var(--lvl-4);
+    }
+
+    .explainer-submit-btn {
+      min-block-size: 42px;
+      padding: 0.5rem 1.1rem;
+      font-size: 0.88rem;
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .explainer-submit-btn:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #ffffff;
+    }
   </style>
 </head>
 
@@ -826,7 +1079,7 @@
         <!-- SYNC:TAB1-BTN:START -->
       <button class="tab-btn active" onclick="switchTab('spec', this)">Full v1.0.0-rc4 Specification</button>
         <!-- SYNC:TAB1-BTN:END -->
-        <button class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
+        <button id="tab-btn-generator" class="tab-btn" onclick="switchTab('generator', this)">Interactive Badge &amp; Disclosure
           Builder</button>
       </nav>
     </div>
@@ -1293,6 +1546,27 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       <div class="card">
         <h2><span>Copy-Paste Disclosure Blocks &amp; Metadata Headers</span></h2>
 
+        <fieldset class="link-style-fieldset">
+          <legend>Markdown &amp; HTML Explainer Link Style</legend>
+          <div class="link-style-row">
+            <div class="radio-group">
+              <div class="radio-option">
+                <input type="radio" id="link-style-heading" name="disclosure-link-style" value="heading" onchange="updateOutputs()">
+                <label for="link-style-heading">Text Link</label>
+              </div>
+              <div class="radio-option">
+                <input type="radio" id="link-style-badge" name="disclosure-link-style" value="badge" checked onchange="updateOutputs()">
+                <label for="link-style-badge">Graphical Badge</label>
+              </div>
+            </div>
+            <div id="link-style-badge-controls" class="link-style-badge-controls">
+              <div id="link-style-svg-badge-container"></div>
+              <button type="button" class="btn-sm" onclick="downloadSvgBadge()">Download SVG Badge</button>
+              <button type="button" class="btn-sm" onclick="downloadPngBadge()">Download PNG Badge</button>
+            </div>
+          </div>
+        </fieldset>
+
         <h3>Markdown Disclosure Block (for README.md, Portfolio, or Colophon)</h3>
         <div class="code-box">
           <button class="copy-btn" onclick="copyText('out-markdown', this)">Copy</button>
@@ -1316,6 +1590,82 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
           <button class="copy-btn" onclick="copyText('out-headers', this)">Copy</button>
           <pre id="out-headers"></pre>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3 (HIDDEN): SCORE EXPLAINER ================= -->
+    <section id="tab-explainer" class="hidden" aria-labelledby="explainer-heading">
+      <!-- Error Card (shown only when a non-empty ?score= is invalid) -->
+      <div id="explainer-error-card" class="card explainer-error hidden" role="alert">
+        <h2><span>Unable to Decipher MADE Score</span></h2>
+        <p id="explainer-error-message"></p>
+        <p class="explainer-hint">
+          Expected syntax: <code>I0 / E2</code>, <code>I0-I1 / E0,E3</code>, or <code>MADE: I1 / E2 [Tool Name]</code> (Ideation <code>I0</code>–<code>I4</code> and Execution <code>E0</code>–<code>E4</code>).
+        </p>
+      </div>
+
+      <!-- Valid Decoded Score Card -->
+      <div id="explainer-result-card" class="card hidden">
+        <h2 id="explainer-heading"><span>MADE Score Explanation</span></h2>
+
+        <div id="explainer-notice" class="explainer-notice hidden" role="status" aria-live="polite"></div>
+
+        <div class="explainer-score-box">
+          <div class="explainer-banner-top">
+            <div id="explainer-score-text" class="explainer-score-title"></div>
+            <div id="explainer-svg-badge-container"></div>
+          </div>
+          <div id="explainer-summary" class="explainer-summary"></div>
+        </div>
+
+        <div id="explainer-tools-box" class="explainer-tools hidden">
+          <h3>Attributed AI Tools &amp; Models</h3>
+          <ul id="explainer-tools-list" class="explainer-tools-list"></ul>
+        </div>
+
+        <div class="grid-2 explainer-breakdown">
+          <div>
+            <h3>Ideation Levels Declared</h3>
+            <div id="explainer-ideation-cards"></div>
+          </div>
+          <div>
+            <h3>Execution Levels Declared</h3>
+            <div id="explainer-execution-cards"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explain Another MADE Score Form -->
+      <div class="card">
+        <h2><span>Explain Another MADE Score</span></h2>
+        <form id="explainer-form" class="explainer-form" method="GET" action="">
+          <div class="explainer-field">
+            <label for="explainer-score-input">Enter a MADE score</label>
+            <span id="explainer-input-hint" class="explainer-input-hint">
+              Examples: <code>I0 / E2</code>, <code>I0-I1 / E0,E3</code>, or <code>MADE: I1 / E2 [Claude 3.5 Sonnet]</code>.
+            </span>
+            <div class="explainer-input-row">
+              <input
+                type="text"
+                id="explainer-score-input"
+                name="score"
+                aria-describedby="explainer-input-hint"
+                autocorrect="off"
+                autocapitalize="none"
+                spellcheck="false"
+                enterkeyhint="go"
+                placeholder="e.g., I0-I1 / E0,E3"
+                required
+              >
+              <button type="submit" class="btn-sm explainer-submit-btn">Explain Score</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Standalone Builder Action (shown only when a valid score is decoded) -->
+      <div id="explainer-builder-action" class="explainer-builder-action hidden">
+        <button type="button" class="btn-sm" id="explainer-load-builder-btn">Copy to Interactive Builder</button>
       </div>
     </section>
 
@@ -1370,8 +1720,10 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
   };
     /* SYNC:SPEC-DATA:END */
 
+    const DEFAULT_PAGE_TITLE = document.title;
     let selectedIdeations = [0];
     let selectedExecutions = [0];
+    let currentExplainerState = null;
 
     function toggleTheme() {
       const html = document.documentElement;
@@ -1381,13 +1733,64 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       const btn = document.getElementById('theme-toggle-btn');
       btn.textContent = next === 'light' ? 'Switch to Dark Theme' : 'Switch to Solarized Light';
       updateOutputs();
+      if (currentExplainerState && currentExplainerState.valid) {
+        refreshExplainerBadge();
+      }
     }
 
-    function switchTab(tabId, btn) {
+    function getTabButton(tabId) {
+      if (tabId === 'spec') {
+        return document.querySelector('nav.tabs button[onclick*="\'spec\'"]');
+      }
+      if (tabId === 'generator') {
+        return document.getElementById('tab-btn-generator');
+      }
+      return null;
+    }
+
+    function buildCleanUrlWithoutScore() {
+      try {
+        const url = new URL(window.location.href);
+        url.searchParams.delete('score');
+        url.hash = '';
+        return url.pathname + (url.search ? url.search : '');
+      } catch (_) {
+        return window.location.pathname || '/';
+      }
+    }
+
+    function updateDocumentTitleForTab(tabId) {
+      if (tabId === 'generator') {
+        document.title = `Interactive Badge & Disclosure Builder | ${DEFAULT_PAGE_TITLE}`;
+      } else if (tabId === 'explainer') {
+        if (currentExplainerState && currentExplainerState.valid) {
+          document.title = `${SPEC_DATA.acronym}: ${currentExplainerState.canonicalCompact} — Score Explainer | ${DEFAULT_PAGE_TITLE}`;
+        } else {
+          document.title = `Score Explainer | ${DEFAULT_PAGE_TITLE}`;
+        }
+      } else {
+        document.title = DEFAULT_PAGE_TITLE;
+      }
+    }
+
+    function switchTab(tabId, btn, options = {}) {
       document.getElementById('tab-spec').classList.toggle('hidden', tabId !== 'spec');
       document.getElementById('tab-generator').classList.toggle('hidden', tabId !== 'generator');
+      document.getElementById('tab-explainer').classList.toggle('hidden', tabId !== 'explainer');
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      const activeBtn = btn || getTabButton(tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+      updateDocumentTitleForTab(tabId);
+
+      if ((tabId === 'spec' || tabId === 'generator') && !options.fromPopstate) {
+        try {
+          if (new URLSearchParams(window.location.search).has('score')) {
+            history.pushState({ tab: tabId }, '', buildCleanUrlWithoutScore());
+          }
+        } catch (_) {}
+      }
     }
 
     function pulseLockBanner() {
@@ -1756,6 +2159,15 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
 
       const svgString = buildSvgBadgeString(iInfo.compact, eInfo.compact, iInfo.max, eInfo.max);
       document.getElementById('svg-badge-container').innerHTML = svgString;
+      const linkStyleBadgeEl = document.getElementById('link-style-svg-badge-container');
+      if (linkStyleBadgeEl) {
+        const parsedBadge = new DOMParser().parseFromString(svgString, 'image/svg+xml').documentElement;
+        if (parsedBadge && parsedBadge.nodeName.toLowerCase() === 'svg') {
+          linkStyleBadgeEl.replaceChildren(document.importNode(parsedBadge, true));
+        } else {
+          linkStyleBadgeEl.replaceChildren();
+        }
+      }
 
       const comps = compRows.map(r => {
         const iCode = r.querySelector('.comp-i').value;
@@ -1775,13 +2187,20 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       });
 
       // 1. Markdown Output
-      const badgeLinkUrl = SPEC_DATA.canonicalUri || SPEC_DATA.homepage || 'https://example.com';
+      const badgeLinkUrl = buildExplainerUrl(iInfo.compact, eInfo.compact);
+      const linkStyleEl = document.querySelector('input[name="disclosure-link-style"]:checked');
+      const linkStyle = linkStyleEl ? linkStyleEl.value : 'badge';
+      const linkStyleBadgeControls = document.getElementById('link-style-badge-controls');
+      if (linkStyleBadgeControls) {
+        linkStyleBadgeControls.classList.toggle('hidden', linkStyle !== 'badge');
+      }
       const badgeAlt = `${SPEC_DATA.acronym}: ${scoreCompact}`;
       const badgeMd = `[![${badgeAlt}](images/made-badge.svg)](${badgeLinkUrl})`;
-      const badgeHtml = `<a href="${badgeLinkUrl}"><img src="images/made-badge.svg" alt="${badgeAlt}" height="24"></a>`;
+      const badgeHtml = `<a href="${escapeHtml(badgeLinkUrl)}"><img src="images/made-badge.svg" alt="${escapeHtml(badgeAlt)}" height="24"></a>`;
 
-      let md = `## AI Usage Disclosure: \`${SPEC_DATA.acronym}: ${scoreCompact}\`\n\n`;
-      md += `${badgeMd}\n\n`;
+      let md = linkStyle === 'heading'
+        ? `## AI Usage Disclosure: [\`${SPEC_DATA.acronym}: ${scoreCompact}\`](${badgeLinkUrl})\n\n`
+        : `## AI Usage Disclosure: \`${SPEC_DATA.acronym}: ${scoreCompact}\`\n\n${badgeMd}\n\n`;
       md += `This work is self-disclosed under the **${SPEC_DATA.acronym} (${SPEC_DATA.fullName})** standard:\n`;
       md += `- **Ideation (\`${iInfo.compact}\`, ${iInfo.titles}):** ${getIdeationSummary(selectedIdeations, iInfo, comps.length > 0)}\n`;
       md += `- **Execution (\`${eInfo.compact}\`, ${eInfo.titles}):** ${getExecutionSummary(selectedExecutions, eInfo, comps.length > 0)}\n`;
@@ -1800,8 +2219,12 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
 
       // 2. HTML Output
       let htmlBlock = `<section class="made-disclosure">\n`;
-      htmlBlock += `  <h2>AI Usage Disclosure: <code>${SPEC_DATA.acronym}: ${escapeHtml(scoreCompact)}</code></h2>\n`;
-      htmlBlock += `  <p>\n    ${badgeHtml}\n  </p>\n`;
+      if (linkStyle === 'heading') {
+        htmlBlock += `  <h2>AI Usage Disclosure: <a href="${escapeHtml(badgeLinkUrl)}"><code>${SPEC_DATA.acronym}: ${escapeHtml(scoreCompact)}</code></a></h2>\n`;
+      } else {
+        htmlBlock += `  <h2>AI Usage Disclosure: <code>${SPEC_DATA.acronym}: ${escapeHtml(scoreCompact)}</code></h2>\n`;
+        htmlBlock += `  <p>\n    ${badgeHtml}\n  </p>\n`;
+      }
       htmlBlock += `  <p>This work is self-disclosed under the <strong>${SPEC_DATA.acronym} (${escapeHtml(SPEC_DATA.fullName)})</strong> standard:</p>\n`;
       htmlBlock += `  <ul>\n`;
       htmlBlock += `    <li><strong>Ideation (<code>${escapeHtml(iInfo.compact)}</code>, ${escapeHtml(iInfo.titles)}):</strong> ${escapeHtml(getIdeationSummary(selectedIdeations, iInfo, comps.length > 0))}</li>\n`;
@@ -2067,11 +2490,347 @@ MADE: I1 / E3 (Ideation: Assisted; Execution: Directed) [GPT-4o]</code></pre>
       }
     }
 
+    function buildExplainerRelativeQuery(iCompact, eCompact, tools = []) {
+      let query = `?score=${iCompact}/${eCompact}`;
+      if (tools && tools.length > 0) {
+        query += `%20${encodeURIComponent(`[${tools.join(', ')}]`)}`;
+      }
+      return query;
+    }
+
+    function buildExplainerUrl(iCompact, eCompact, tools = []) {
+      const rawBase = SPEC_DATA.canonicalUri || SPEC_DATA.homepage || 'https://madespec.org/';
+      const normalizedBase = rawBase.endsWith('/') ? rawBase : `${rawBase}/`;
+      return `${normalizedBase}${buildExplainerRelativeQuery(iCompact, eCompact, tools)}`;
+    }
+
+    function parseAxisExpression(rawExpr, expectedPrefix) {
+      const axisName = expectedPrefix === 'I' ? 'Ideation' : 'Execution';
+      const trimmed = rawExpr.trim();
+      if (!trimmed) {
+        return { valid: false, error: `Missing ${axisName} level expression.` };
+      }
+      const otherPrefix = expectedPrefix === 'I' ? 'E' : 'I';
+      if (trimmed[0].toUpperCase() === otherPrefix) {
+        return { valid: false, error: 'Ideation levels (I0–I4) must appear before Execution levels (E0–E4).' };
+      }
+
+      const compactInput = trimmed.replace(/\s*,\s*/g, ',').replace(/\s*-\s*/g, '-');
+      const tokens = compactInput.split(',');
+      const levels = [];
+
+      for (let idx = 0; idx < tokens.length; idx++) {
+        const tok = tokens[idx];
+        if (!tok) {
+          return { valid: false, error: `Empty level token in ${axisName} expression.` };
+        }
+        const match = tok.match(/^([IEie])?(\d+)(?:-([IEie])?(\d+))?$/);
+        if (!match) {
+          return { valid: false, error: `Unrecognized ${axisName} token "${tok}".` };
+        }
+        const startPrefix = match[1] ? match[1].toUpperCase() : '';
+        if (idx === 0 && !startPrefix) {
+          return { valid: false, error: `${axisName} levels must begin with "${expectedPrefix}" (for example, ${expectedPrefix}0).` };
+        }
+        if (startPrefix && startPrefix !== expectedPrefix) {
+          return { valid: false, error: 'Ideation levels (I0–I4) must appear before Execution levels (E0–E4).' };
+        }
+        const start = parseInt(match[2], 10);
+        if (start < 0 || start > 4) {
+          return { valid: false, error: `Level digit "${match[2]}" in "${tok}" is out of range; valid MADE levels are 0 through 4.` };
+        }
+
+        if (match[4] !== undefined) {
+          const endPrefix = match[3] ? match[3].toUpperCase() : '';
+          if (endPrefix && endPrefix !== expectedPrefix) {
+            return { valid: false, error: `Invalid range prefix in "${tok}"; expected "${expectedPrefix}".` };
+          }
+          const end = parseInt(match[4], 10);
+          if (end < 0 || end > 4) {
+            return { valid: false, error: `Level digit "${match[4]}" in "${tok}" is out of range; valid MADE levels are 0 through 4.` };
+          }
+          if (start >= end) {
+            return {
+              valid: false,
+              error: `Invalid range "${tok}": range endpoints must be in ascending order (for example, ${expectedPrefix}0-${expectedPrefix}2).`
+            };
+          }
+          for (let n = start; n <= end; n++) {
+            levels.push(n);
+          }
+        } else {
+          levels.push(start);
+        }
+      }
+
+      const sortedLevels = Array.from(new Set(levels)).sort((a, b) => a - b);
+      const info = formatLevels(expectedPrefix, sortedLevels);
+      const wasNormalized = compactInput !== info.compact;
+      return { valid: true, levels: sortedLevels, info, wasNormalized };
+    }
+
+    function parseMadeScore(rawInput) {
+      let working = String(rawInput || '').replace(/\u00A0/g, ' ').replace(/\s+/g, ' ').trim();
+      if (!working) {
+        return { valid: false, error: 'Please enter a MADE score to decipher.' };
+      }
+
+      let tools = [];
+      if (working.includes('[') || working.includes(']')) {
+        const bracketMatch = working.match(/^(.*?)\s*\[([^\[\]]*)\]\s*$/);
+        if (!bracketMatch) {
+          return {
+            valid: false,
+            error: 'Malformed tool attribution brackets "[...]". Place optional tools in a single balanced "[Tool 1, Tool 2]" block at the end.'
+          };
+        }
+        working = bracketMatch[1].trim();
+        const rawTools = bracketMatch[2].trim();
+        if (!rawTools) {
+          return { valid: false, error: 'Tool attribution brackets "[]" cannot be empty.' };
+        }
+        tools = rawTools.split(',').map(t => t.trim());
+        if (tools.some(t => !t)) {
+          return { valid: false, error: 'Tool attribution list contains an empty entry.' };
+        }
+      }
+
+      working = working.replace(/\s*\(\s*Ideation\s*:[^)]*\)\s*$/i, '').trim();
+      working = working.replace(/^MADE\s*:\s*/i, '').trim();
+
+      const parts = working.split('/');
+      if (parts.length !== 2) {
+        return {
+          valid: false,
+          error: 'MADE scores must separate Ideation and Execution with a single "/" (for example, "I0 / E2" or "I0-I1 / E0,E3").'
+        };
+      }
+
+      const iParsed = parseAxisExpression(parts[0], 'I');
+      if (!iParsed.valid) return iParsed;
+
+      const eParsed = parseAxisExpression(parts[1], 'E');
+      if (!eParsed.valid) return eParsed;
+
+      const canonicalCompact = `${iParsed.info.compact} / ${eParsed.info.compact}`;
+      return {
+        valid: true,
+        iLevels: iParsed.levels,
+        eLevels: eParsed.levels,
+        iInfo: iParsed.info,
+        eInfo: eParsed.info,
+        tools,
+        wasNormalized: iParsed.wasNormalized || eParsed.wasNormalized,
+        rawCore: working,
+        canonicalCompact
+      };
+    }
+
+    function buildExplainerSummaryNodes(parsed) {
+      const { iLevels, eLevels, iInfo, eInfo } = parsed;
+      const isUniform = iLevels.length === 1 && eLevels.length === 1;
+
+      const p1 = document.createElement('p');
+      p1.append(`This work is self-disclosed under ${SPEC_DATA.acronym} with `);
+      const strongI = document.createElement('strong');
+      strongI.textContent = 'Ideation';
+      p1.append(strongI, `: ${iInfo.titles} and `);
+      const strongE = document.createElement('strong');
+      strongE.textContent = 'Execution';
+      p1.append(strongE, `: ${eInfo.titles}.`);
+      p1.append(document.createElement('br'));
+      p1.append(
+        isUniform
+          ? 'A single Ideation level and a single Execution level apply uniformly across the work.'
+          : 'This is a multi-component disclosure summarizing all applicable Ideation and Execution levels used across distinct parts of the work.'
+      );
+
+      return [p1];
+    }
+
+    function buildExplainerLevelCard(prefix, lvl) {
+      const titlesList = prefix === 'I' ? SPEC_DATA.ideationTitles : SPEC_DATA.executionTitles;
+      const defsList = prefix === 'I' ? SPEC_DATA.ideationDefinitions : SPEC_DATA.executionDefinitions;
+
+      const card = document.createElement('div');
+      card.className = 'explainer-level-card';
+
+      const badge = document.createElement('span');
+      badge.className = `lvl-badge b-${lvl}`;
+      badge.textContent = `${prefix}${lvl}`;
+
+      const info = document.createElement('div');
+      info.className = 'level-info';
+
+      const strong = document.createElement('strong');
+      strong.textContent = titlesList[lvl];
+
+      const span = document.createElement('span');
+      span.textContent = defsList[lvl];
+
+      info.append(strong, span);
+      card.append(badge, info);
+      return card;
+    }
+
+    function refreshExplainerBadge() {
+      if (!currentExplainerState || !currentExplainerState.valid) return;
+      const container = document.getElementById('explainer-svg-badge-container');
+      const { iInfo, eInfo } = currentExplainerState;
+      const svgString = buildSvgBadgeString(iInfo.compact, eInfo.compact, iInfo.max, eInfo.max);
+      const parsedSvg = new DOMParser().parseFromString(svgString, 'image/svg+xml');
+      const svgNode = parsedSvg.documentElement;
+      if (svgNode && svgNode.nodeName.toLowerCase() === 'svg') {
+        container.replaceChildren(document.importNode(svgNode, true));
+      } else {
+        container.replaceChildren();
+      }
+    }
+
+    function renderExplainer(rawScore) {
+      const errorCard = document.getElementById('explainer-error-card');
+      const resultCard = document.getElementById('explainer-result-card');
+      const builderActionEl = document.getElementById('explainer-builder-action');
+      const errorMsgEl = document.getElementById('explainer-error-message');
+      const noticeEl = document.getElementById('explainer-notice');
+      const inputEl = document.getElementById('explainer-score-input');
+
+      const parsed = parseMadeScore(rawScore);
+
+      if (!parsed.valid) {
+        currentExplainerState = { valid: false, raw: rawScore };
+        resultCard.classList.add('hidden');
+        builderActionEl.classList.add('hidden');
+        errorCard.classList.remove('hidden');
+        errorMsgEl.textContent = parsed.error;
+        inputEl.value = String(rawScore || '').trim();
+        inputEl.setAttribute('aria-invalid', 'true');
+        return;
+      }
+
+      currentExplainerState = parsed;
+      errorCard.classList.add('hidden');
+      resultCard.classList.remove('hidden');
+      builderActionEl.classList.remove('hidden');
+      inputEl.removeAttribute('aria-invalid');
+      inputEl.value = parsed.tools.length > 0
+        ? `${parsed.canonicalCompact} [${parsed.tools.join(', ')}]`
+        : parsed.canonicalCompact;
+
+      if (parsed.wasNormalized) {
+        const noticeStrong = document.createElement('strong');
+        noticeStrong.textContent = 'Normalized Input:';
+        const rawCode = document.createElement('code');
+        rawCode.textContent = parsed.rawCore;
+        const canonCode = document.createElement('code');
+        canonCode.textContent = `${SPEC_DATA.acronym}: ${parsed.canonicalCompact}`;
+        noticeEl.replaceChildren(
+          noticeStrong,
+          ' Interpreted ',
+          rawCode,
+          ' as canonical MADE syntax ',
+          canonCode,
+          '.'
+        );
+        noticeEl.classList.remove('hidden');
+      } else {
+        noticeEl.replaceChildren();
+        noticeEl.classList.add('hidden');
+      }
+
+      document.getElementById('explainer-score-text').textContent = `${SPEC_DATA.acronym}: ${parsed.canonicalCompact}`;
+
+      refreshExplainerBadge();
+
+      document.getElementById('explainer-summary').replaceChildren(...buildExplainerSummaryNodes(parsed));
+
+      const toolsBox = document.getElementById('explainer-tools-box');
+      const toolsList = document.getElementById('explainer-tools-list');
+      if (parsed.tools.length > 0) {
+        const chips = parsed.tools.map(tool => {
+          const li = document.createElement('li');
+          li.className = 'explainer-tool-chip';
+          li.textContent = tool;
+          return li;
+        });
+        toolsList.replaceChildren(...chips);
+        toolsBox.classList.remove('hidden');
+      } else {
+        toolsList.replaceChildren();
+        toolsBox.classList.add('hidden');
+      }
+
+      document.getElementById('explainer-ideation-cards').replaceChildren(
+        ...parsed.iLevels.map(lvl => buildExplainerLevelCard('I', lvl))
+      );
+      document.getElementById('explainer-execution-cards').replaceChildren(
+        ...parsed.eLevels.map(lvl => buildExplainerLevelCard('E', lvl))
+      );
+    }
+
+    function routeFromLocation(fromPopstate = false) {
+      const params = new URLSearchParams(window.location.search);
+      const rawScore = params.get('score');
+
+      if (rawScore !== null && rawScore.trim() !== '') {
+        renderExplainer(rawScore);
+        switchTab('explainer', null, { fromPopstate: true });
+        return;
+      }
+
+      currentExplainerState = null;
+      const targetTab = (fromPopstate && window.history.state && window.history.state.tab === 'generator')
+        ? 'generator'
+        : 'spec';
+      switchTab(targetTab, null, { fromPopstate: true });
+    }
+
     // Initialize with default 100% unassisted human work (I0 / E0) and empty component list
     clearComponents();
     syncOptionCards();
     updateOutputs();
     initSpecScrollSpy();
+
+    document.getElementById('explainer-load-builder-btn').addEventListener('click', () => {
+      if (!currentExplainerState || !currentExplainerState.valid) return;
+      clearComponents();
+      selectedIdeations = [...currentExplainerState.iLevels];
+      selectedExecutions = [...currentExplainerState.eLevels];
+      syncOptionCards();
+      updateOutputs();
+      switchTab('generator');
+      window.scrollTo({ top: 0, behavior: 'auto' });
+    });
+
+    const explainerInputEl = document.getElementById('explainer-score-input');
+    explainerInputEl.addEventListener('input', () => {
+      explainerInputEl.removeAttribute('aria-invalid');
+    });
+
+    document.getElementById('explainer-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const raw = explainerInputEl.value.trim();
+      if (!raw) {
+        explainerInputEl.focus();
+        return;
+      }
+      const parsed = parseMadeScore(raw);
+      const relQuery = parsed.valid
+        ? buildExplainerRelativeQuery(parsed.iInfo.compact, parsed.eInfo.compact, parsed.tools)
+        : `?score=${encodeURIComponent(raw)}`;
+      try {
+        const url = new URL(window.location.href);
+        history.pushState({ tab: 'explainer', score: raw }, '', `${url.pathname}${relQuery}`);
+      } catch (_) {}
+      renderExplainer(raw);
+      updateDocumentTitleForTab('explainer');
+    });
+
+    window.addEventListener('popstate', () => {
+      routeFromLocation(true);
+    });
+
+    routeFromLocation(false);
   </script>
 
 </body>
